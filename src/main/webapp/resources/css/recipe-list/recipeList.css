@@ -1,0 +1,85 @@
+@charset "UTF-8";
+
+.recipe-container {
+    display: flex;
+    justify-content: center;
+    margin: 5% auto;
+    background-color: #fff;
+}
+.recipe-list a {
+    text-decoration: none;
+}
+.recipe-list a:visited {
+    color: black;
+}
+.button-container {
+    display: grid;
+    justify-content: end;
+}
+.write-recipe {
+    margin-top: 40px;
+    padding: 8px;
+    background-color: #FEFFDC;
+    border: 3px solid #f2f594;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.write-recipe:active{
+    background-color: #9c9e6e;
+    border: 3px solid #FEFFDC;
+}
+.recipe-list {
+	margin: 10px 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 70px;
+    justify-content: center;
+    padding: 20px;
+}
+.recipe-list img {
+    width: 150px;
+    height: 150px;
+    border: 1px solid #feffdc
+}
+.recipe-inf {
+    text-align: center;
+}
+.recipe-name {
+    margin: 5px;
+    font-size: 20px;
+}
+span {
+    margin: 5px;
+    font-size: 12px;
+}
+/*페이지 네이션*/
+.pagination {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 30px;
+	gap: 5px;
+}
+.pagination a {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 4px 7px;
+	border: 1px solid #95975c;
+	color: rgb(119, 118, 98);
+	text-decoration: none;
+	min-width: 35px;
+	height: 35px;
+}
+.pagination a:hover {
+	background-color: #faf9d8;
+}
+.pagination .active {
+	background-color: #cacc98;
+	color: #fff;
+	border-color: rgb(239, 240, 196);
+}
+.pagination .prev, 
+.pagination .next {
+	padding: 8px 15px;
+}
