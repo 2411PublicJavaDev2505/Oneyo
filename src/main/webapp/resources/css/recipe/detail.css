@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+main {
+	width: 1000px;
+	margin: 50px auto;
+}
+
+.recipe-detail {
+	border-top: 2px solid #045;
+	border-bottom: 2px solid #045;
+	background-color: #fff;
+}
+
+.button-group {
+	margin-top: 20px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.btn {
+	display: inline-block;
+	padding: 8px 20px;
+	border: 1px solid #045;
+	background-color: #fff;
+	color: #045;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.btn:hover {
+	background-color: #045;
+	color: #fff;
+}
+
+.btn-admin {
+	border-color: #e74c3c;
+	color: #e74c3c;
+}
+
+.btn-admin:hover {
+	background-color: #e74c3c;
+	color: #fff;
+}
+
+.recipe-file {
+	padding: 20px;
+}
