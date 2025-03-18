@@ -1,0 +1,137 @@
+@charset "UTF-8";
+
+.main {
+  margin-top: 200px;
+}
+
+.myPageMain {
+  height: 500px;
+  width: 1500px;
+  display: inline-flex;
+}
+
+.myInfomation {
+  background-color: #fefef3;
+  border: 1px solid #DacF5B;
+  border-radius: 10px;
+  margin: 0 auto;
+  width: 200px;
+  height: 400px;
+  text-align: center;
+}
+
+.myPicture {
+  width: 100px;
+  height: 100px;
+  border: 1px solid #f0ecc7;
+  border-radius: 50%;;
+  background-color: white;
+  margin-top: 20px;
+  display: inline-block;
+}
+
+.detailInformation {
+  background-color: #F8F8F8;
+  width: 180px;
+  height: 250px;
+  margin-top: 20px;
+  display: inline-block;
+  border: 1px solid #f0ecc7;
+  border-radius: 20px;
+  position: relative;
+}
+
+.detailInformation button {
+  width:20%;
+  height: 10%;
+  margin: 10px;
+  border-radius: 10px;
+  background-color: #B2AC67; 
+}
+
+
+.myDetail-container {
+  background-color: #fefef3;
+  border: 1px solid #DACF5B;
+  border-radius: 10px;
+  margin: 0 100px;
+  width: 1000px;
+  height: 600px;
+
+}
+
+.myPageMenu {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.myPageMenu button {
+  background-color: #feffdc;
+  text-align: center;
+  border: 1px solid #DacF5B;
+  border-radius: 10px;
+  margin-top: 10px;
+  width: 200px;
+  height: 60px;
+  color: #773333;
+}
+
+.myPageMenu button a{
+  text-decoration: none;
+  font-size: 20px;
+}
+
+a:visited {
+  background: #773333;
+}
+
+
+
+.refrigerator-container {
+  display: flex;
+  justify-content: space-evenly;
+  width:100%;
+}
+
+.refrigerator-container .refrige-storage{
+  height:400px;
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid #DacF5B;
+  margin-top: 30px;
+  align-items: center;
+}
+
+.refrige-storage div{
+  text-align: center;
+  width: 200px;
+  flex-direction: column;
+  display: flex;
+}
+
+.cooler , .freeze {
+  height: 50px;
+  
+  border: 1px solid #f0ecc7;
+  border-radius: 10px;
+  background-color: #f0ecc7;
+
+}
+
+.list {
+  width: 100%;
+  
+}
+
+.sources button{
+  background-color: white;
+  margin-top: 30px;
+  border: 1px solid white;
+  padding: 10px;
+  
+}
+
+.sources {
+  background-color: white;
+  border: 1px solid #DacF5B;
+}

@@ -5,12 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-	<link rel="stylesheet" href="../resources/css/mypage.css"> 
+	<link rel="stylesheet" href="../resources/css/mypage/mypage.css"> 
 	<link rel="stylesheet" href="../resources/css/footer.css"> 
 	<link rel="stylesheet" href="../resources/css/header.css"> 
 </head>
 <body>
- 		<jsp:include page ="/WEB-INF/views/mypage/header.jsp"></jsp:include> 
+ 		<jsp:include page ="/WEB-INF/views/include/header.jsp"></jsp:include> 
     
 
     <main class="main">
@@ -63,7 +63,7 @@
       </div>
 		</div>
     </main>
- 		<jsp:include page = "/WEB-INF/views/mypage/footer.jsp"></jsp:include> 		
+ 		<jsp:include page = "/WEB-INF/views/include/footer.jsp"></jsp:include> 		
 
 </body>
 </html>

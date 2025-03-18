@@ -6,7 +6,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>메인페이지</title>
-		<link rel="stylesheet" href="../resources/css/login.css">
+		<link rel="stylesheet" href="../resources/css/index.css">
 		</head>
 	<body>	
 			
