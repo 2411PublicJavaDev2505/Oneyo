@@ -1,0 +1,54 @@
+@charset "UTF-8";
+body {
+    background-color: #ffffff;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* 로그인 박스 */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.login-box {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 40px;
+    border-radius: 10px;
+    border: 2px solid #c2b08f;
+    text-align: center;
+    width: 300px;
+}
+
+.login-box h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #c2b08f;
+    border-radius: 5px;
+}
+
+.login-btn {
+    width: 100%;
+    background-color: #c2b08f;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.register-link {
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #c2b08f;
+}

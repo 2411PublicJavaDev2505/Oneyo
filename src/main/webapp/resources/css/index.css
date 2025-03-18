@@ -1,0 +1,59 @@
+@charset "UTF-8";
+/* 메인 컨텐츠 스타일 */
+.main-content {
+    margin-top: 100px;
+    padding: 20px;
+}
+
+/* 추천 레시피 스타일 */
+.recipe-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.recipe-container h2 {
+    font-size: 24px;
+    color: #444;
+}
+
+.recipe-container p {
+    font-size: 18px;
+    color: #777;
+}
+
+.recipe-image {
+    width: 100%;
+    height: auto;
+    max-width: 1400px;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px #b1a36a;
+}
+.before-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #b1a36a;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+.before-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+.before-btn:hover, .next-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
