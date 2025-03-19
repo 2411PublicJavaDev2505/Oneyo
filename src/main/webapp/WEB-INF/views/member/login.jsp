@@ -14,10 +14,22 @@
 	<main>
         <div class="login-box">
             <h2>로그인</h2>
-            <input type="text" placeholder="아이디 또는 이메일 주소">
-            <input type="password" placeholder="비밀번호">
-            <button class="login-btn">로그인</button>
-            <a href="#" class="register-link">회원가입</a>
+                <form action="/member/login" method="get">
+                    <label>아이디 (이메일)</label>
+                    <input type="text" placeholder="아이디 또는 이메일 주소">
+                    <label>비밀번호</label>
+                    <input type="password" placeholder="비밀번호">
+                    <button class="login-btn">로그인</button>
+                    
+                    <div class="linkButtons">
+                        <a href="/member/join" class="register-link">회원가입</a>
+                        <a href="/member/findid" class="findid-link">|아이디 찾기</a>
+                        <a href="/member/findpw" class="findpw-link">|비밀번호 찾기</a>
+                        
+                    </div>
+
+
+                </form>
         </div>
     </main>
     </form>
