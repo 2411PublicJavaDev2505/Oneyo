@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="../resources/css/header.css"> 
 </head>
 <body>
- 		<jsp:include page ="/WEB-INF/views/mypage/header.jsp"></jsp:include> 
+ 		<jsp:include page ="/WEB-INF/views/include/header.jsp"></jsp:include> 
     
 
     <main class="main">
@@ -63,7 +63,7 @@
       </div>
 		</div>
     </main>
- 		<jsp:include page = "/WEB-INF/views/mypage/footer.jsp"></jsp:include> 		
+ 		<jsp:include page = "/WEB-INF/views/include/footer.jsp"></jsp:include> 		
 
 </body>
 </html>

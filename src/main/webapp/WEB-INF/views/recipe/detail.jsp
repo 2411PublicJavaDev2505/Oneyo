@@ -11,22 +11,6 @@
     <link rel="stylesheet" href="../ONEYO/css/footer.css">
 </head>
 <body>
-    <header class="header">
-        <div class="header-content">
-            <h1 class="logo" ><a href="/">ONEYO</a></h1>
-            <nav class="nav-menu">
-                <a href="#">레시피</a>
-                <a href="#">게시판</a>
-                <a href="#">마이페이지</a>
-                <div class="search-container">
-                    <input type="text" class="search-input" placeholder="검색">
-                    <button class="search-btn">🔍</button>
-                </div>
-                <a href="#" class="login">로그인</a>
-            </nav>
-        </div>
-    </header>
-
     <main>
         <div class="container">
             <div class="recipe-card">
@@ -54,12 +38,6 @@
                         <div class="item"> <input type="text" placeholder="재료명"> <input type="text" placeholder="수량"> </div>
                     </div>
                 </div>
-                <footer class="footer">
-                    <div class="footer-content">
-                        <a href="#">사이트 소개</a>
-                        <a href="#">연락처</a>
-                    </div>
-                </footer>
             </div>
         </div>
     </main>

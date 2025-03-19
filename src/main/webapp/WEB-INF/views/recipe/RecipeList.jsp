@@ -19,7 +19,7 @@
             <section class="recipe-list">
                 <a href="#" class="recipe">
                     <div class="recipe-style">
-                        <img src="../resources/images/김치찌개냠냠굿.jpg" alt="요리 썸네일">
+                        <img src="../resources/img/김치찌개냠냠굿.jpg" alt="요리 썸네일">
                         <section class="recipe-inf">
                             <p class="recipe-name">요리 이름</p>
                             <span class="recipe-writer">작성자</span>
@@ -29,7 +29,7 @@
                 </a>
                 <a href="#" class="recipe">
                     <div class="recipe-style">
-                        <img src="../resources/images/푸드어셈블 더 알찬 연남동 통삼겹 김치찌개 밀키트, 820g, 1팩.jpg" alt="요리 썸네일">
+                        <img src="../resources/img/김치찌개냠냠굿.jpg" alt="요리 썸네일">
                         <section class="recipe-inf">
                             <p class="recipe-name">요리 이름</p>
                             <span class="recipe-writer">작성자</span>
@@ -39,7 +39,7 @@
                 </a>
                 <a href="#" class="recipe">
                     <div class="recipe-style">
-                        <img src="../resources/images/푸드어셈블 더 알찬 연남동 통삼겹 김치찌개 밀키트, 820g, 1팩.jpg" alt="요리 썸네일">
+                        <img src="../resources/img/김치찌개냠냠굿.jpg" alt="요리 썸네일">
                         <section class="recipe-inf">
                             <p class="recipe-name">요리 이름</p>
                             <span class="recipe-writer">작성자</span>
@@ -49,7 +49,7 @@
                 </a>
                 <a href="#" class="recipe">
                     <div class="recipe-style">
-                        <img src="../resources/images/푸드어셈블 더 알찬 연남동 통삼겹 김치찌개 밀키트, 820g, 1팩.jpg" alt="요리 썸네일">
+                        <img src="../resources/img/김치찌개냠냠굿.jpg" alt="요리 썸네일">
                         <section class="recipe-inf">
                             <p class="recipe-name">요리 이름</p>
                             <span class="recipe-writer">작성자</span>
@@ -59,7 +59,7 @@
                 </a>
                 <a href="#" class="recipe">
                     <div class="recipe-style">
-                        <img src="../resources/images/푸드어셈블 더 알찬 연남동 통삼겹 김치찌개 밀키트, 820g, 1팩.jpg" alt="요리 썸네일">
+                        <img src="../resources/img/김치찌개냠냠굿.jpg" alt="요리 썸네일">
                         <section class="recipe-inf">
                             <p class="recipe-name">요리 이름</p>
                             <span class="recipe-writer">작성자</span>
@@ -69,7 +69,7 @@
                 </a>
                 <a href="#" class="recipe">
                     <div class="recipe-style">
-                        <img src="../resources/images/푸드어셈블 더 알찬 연남동 통삼겹 김치찌개 밀키트, 820g, 1팩.jpg" alt="요리 썸네일">
+                        <img src="../resources/img/김치찌개냠냠굿.jpg" alt="요리 썸네일">
                         <section class="recipe-inf">
                             <p class="recipe-name">요리 이름</p>
                             <span class="recipe-writer">작성자</span>
@@ -79,7 +79,7 @@
                 </a>
                 <a href="#" class="recipe">
                     <div class="recipe-style">
-                        <img src="../resources/images/푸드어셈블 더 알찬 연남동 통삼겹 김치찌개 밀키트, 820g, 1팩.jpg" alt="요리 썸네일">
+                        <img src="../resources/img/김치찌개냠냠굿.jpg" alt="요리 썸네일">
                         <section class="recipe-inf">
                             <p class="recipe-name">요리 이름</p>
                             <span class="recipe-writer">작성자</span>
@@ -89,7 +89,7 @@
                 </a>
                 <a href="#" class="recipe">
                     <div class="recipe-style">
-                        <img src="../resources/images/푸드어셈블 더 알찬 연남동 통삼겹 김치찌개 밀키트, 820g, 1팩.jpg" alt="요리 썸네일">
+                        <img src="../resources/img/김치찌개냠냠굿.jpg" alt="요리 썸네일">
                         <section class="recipe-inf">
                             <p class="recipe-name">요리 이름</p>
                             <span class="recipe-writer">작성자</span>
