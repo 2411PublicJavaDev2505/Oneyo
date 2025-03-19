@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="../resources/css/member/memberJoin.css">
 </head>
 	<body>
+		<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
 		<main>
         <div class="container">
             <form action="/member/join" method="post">
@@ -31,5 +32,6 @@
         </div>
 
     </main>
+    <jsp:include page = "/WEB-INF/views/include/footer.jsp"></jsp:include> 	
 	</body>
 </html>

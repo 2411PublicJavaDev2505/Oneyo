@@ -1,4 +1,4 @@
-package com.oneyo.spring.member.controller;
+package com.oneyo.spring.myref.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.oneyo.spring.member.service.MemberService;
 
 
-public class MemberController {
+public class MypageController {
 	@Autowired
 	private MemberService mService;
 
