@@ -5,6 +5,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>아이디찾기</title>
+		<link rel="stylesheet" href="../resources/css/member/findid.css">
 	</head>
 	<body>
 	<form action="/member/findid" method="get">
