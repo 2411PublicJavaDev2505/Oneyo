@@ -91,6 +91,7 @@ a:visited {
   display: flex;
   justify-content: space-evenly;
   width:100%;
+  border-radius: 10px;
 }
 
 .refrigerator-container .refrige-storage{
@@ -109,6 +110,10 @@ a:visited {
   display: flex;
 }
 
+.refrige-storage img{
+  border-radius: 10px;;
+}
+
 .cooler , .freeze {
   height: 50px;
   
@@ -123,15 +128,22 @@ a:visited {
   
 }
 
-.sources button{
-  background-color: white;
-  margin-top: 30px;
-  border: 1px solid white;
-  padding: 10px;
-  
-}
-
 .sources {
   background-color: white;
   border: 1px solid #DacF5B;
+  border-radius: 10px;
+}
+
+
+.sources button{
+  background-color: white;
+  margin-top: 30px;
+  border: 1px solid white; 
+  padding: 10px;
+  border-radius: 10px;
+  
+}
+
+.sources button a , a:active{
+  text-decoration: none;
 }
