@@ -1,0 +1,166 @@
+@charset "UTF-8";
+/* 공통 */
+main {
+    max-width: 1400px;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* 전체 레이아웃 중앙 정렬 */
+.admin-manage-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1400px;
+}
+
+/* 관리자 프로필 */
+.profile {
+    border: 2px solid #DACF5B;
+    border-radius: 20px;
+    background-color: #FEFEF3;
+    width: 220px;
+    height: 390px;
+    text-align: center;
+    padding: 20px;
+}
+
+.profile .adminPicture {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 1px solid #DACF5B;
+    background-color: #fff;
+    margin: 20px auto;
+}
+
+.admin-info {
+    text-align: center;
+    margin-top: 10px;
+}
+.admin-info a{
+    text-decoration: none;
+}
+.admin-info a {
+    display: block;
+    margin: 10px auto;
+}
+.admin-info button {
+    display: block;
+    margin: 10px auto;
+    padding: 8px 12px;
+    border-radius: 8px;
+    text-align: center;
+    background-color: #FEFFDC;
+    border: 1px solid #DACF5B;
+}
+
+.admin-info button:hover {
+    background-color: #fffff8;
+    color: #1a1a1a;
+}
+
+/* 재료 관리 컨테이너 */
+.manage-controll {
+    width: 800px;
+    height: 600px;
+    border: 2px solid #DACF5B;
+    background-color: #FEFEF3;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+/* 상단 버튼 그룹 */
+.manage-controll .manage-btn-group {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-top: 12px;
+}
+
+.manage-btn-group button {
+    padding: 45px 65px;
+    background-color: #FEFFDC;
+    border: 1px solid #DACF5B;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.manage-btn-group button:hover {
+    background-color: #fffff8;
+    color: #1a1a1a;
+}
+
+.manage-btn-group button:active {
+    background-color: #DACF5B;
+}
+
+/* grocery-manage-box 중앙 배치 및 간격 */
+.grocery-manage-box {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    width: 90%;
+    margin: 30px auto;
+    margin-top: 100px;
+}
+
+/* 각 관리 박스 스타일 */
+.category-controll,
+.grocery-controll {
+    width: 48%;
+    padding: 20px;
+    border: 2px solid #DACF5B;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+/* 라벨과 입력창을 위아래 정렬 */
+.grocery-manage-box label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.grocery-manage-box input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #DACF5B;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* 버튼 그룹 */
+.constroll-btn-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+button:nth-child(1) {
+    background-color: #d4c48c;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+button:nth-child(2) {
+    background-color: #d4c48c;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+button:nth-child(3) {
+    background-color: #c94f4f;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
