@@ -10,34 +10,6 @@
 </head>
 <body>
     <main>
-<<<<<<< HEAD
-        <div class="container">
-            <div class="recipe-card">
-                <button class="edit-button">수정</button>
-                <div style="height: 200px; background-color: #ffffcc; display: flex; align-items: center; justify-content: center; border-radius: 5px;">
-                    image
-                </div>
-                <div class="recipe-info">
-                    <span>레시피 명</span>
-                    <span>작성자</span>
-                    <span>조회수: 0</span>
-                </div>
-                <h2>재료 양념</h2>
-                <div class="wrapper">
-                    <div class="section">
-                        <div class="item"> <input type="text" placeholder="재료명"> <input type="text" placeholder="수량"> </div>
-                        <div class="item"> <input type="text" placeholder="재료명"> <input type="text" placeholder="수량"> </div>
-                        <div class="item"> <input type="text" placeholder="재료명"> <input type="text" placeholder="수량"> </div>
-                        <div class="item"> <input type="text" placeholder="재료명"> <input type="text" placeholder="수량"> </div>
-                    </div>
-                    <div class="section">
-                        <div class="item"> <input type="text" placeholder="재료명"> <input type="text" placeholder="수량"> </div>
-                        <div class="item"> <input type="text" placeholder="재료명"> <input type="text" placeholder="수량"> </div>
-                        <div class="item"> <input type="text" placeholder="재료명"> <input type="text" placeholder="수량"> </div>
-                        <div class="item"> <input type="text" placeholder="재료명"> <input type="text" placeholder="수량"> </div>
-                    </div>
-                </div>
-=======
         <div class="recipe-card">
             <button class="edit-btn">수정</button>
             <div class="image-placeholder">image</div>
@@ -45,7 +17,6 @@
                 <div class="text1">레시피 명</div>
                 <div class="text2">작성자</div>
                 <div class="text2">조회수:0</div>
->>>>>>> refs/remotes/origin/jiyongkim
             </div>
         </div>
     </main>
