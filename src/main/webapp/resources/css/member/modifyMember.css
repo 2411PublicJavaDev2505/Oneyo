@@ -1,0 +1,60 @@
+@charset "UTF-8";
+main{
+    max-width: 1400px;
+    }
+
+body {
+    font-family: normal ;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.container {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 40px;
+    border-radius: 10px;
+    border: 2px solid #c2b08f;
+    width: 350px;
+}
+h2 {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 3px solid #c4b07c;
+}
+label {
+    display: block;
+    margin-top: 10px;
+}
+input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px dotted #ccc;
+    border-radius: 5px;
+}
+.id-input,.nickname-input{
+    width: 240px;
+}
+
+
+.check-button {
+    background-color: #ddd;
+    border: none;
+    padding: 5px 10px;
+    margin-left: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.signup-button {
+    width: 100%;
+    background-color: #c4b07c;
+    color: white;
+    padding: 10px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
