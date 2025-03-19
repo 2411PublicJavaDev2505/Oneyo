@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="../resources/css/member/findid.css">
 </head>
 <body>
+<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
 	 <main>
         <div class="login-box">
             <h2>비밀번호 찾기</h2>
@@ -23,5 +24,6 @@
                 </form>
         </div>
     </main>
+    <jsp:include page = "/WEB-INF/views/include/footer.jsp"></jsp:include> 	
 </body>
 </html>

@@ -57,5 +57,6 @@
             
         </form>
     </main>
+    <jsp:include page = "/WEB-INF/views/include/footer.jsp"></jsp:include> 	
 		</body>
 	</html>
