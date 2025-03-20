@@ -26,7 +26,7 @@
             <div class="form-group">
                 <label>내용</label>
                 <textarea class="content" placeholder="내용을 입력해주세요" rows="5"></textarea>    
-                <span>공백포함 최대 1,500자까지 입력가능합니다.</span>
+                <span>공백포함 최대 1,330자까지 입력가능합니다.</span>
             </div>
             <div class="file-group">
                 <label>첨부파일</label>
