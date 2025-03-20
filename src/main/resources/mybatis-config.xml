@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<!-- 널  값이 발생할 경우 빈칸이 아닌 NULL로 인식하라-->
+		<setting name="jdbcTypeForNull" value="NULL"/>
+	</settings>
+
+	
+	<mappers>
+		<mapper resource="mappers/board-mapper.xml" />
+		<mapper resource="mappers/member-mapper.xml" />
+		<mapper resource="mappers/mypage-mapper.xml" />
+		<mapper resource="mappers/myref-mapper.xml" />
+		<mapper resource="mappers/recipe-mapper.xml" />
+	</mappers>
+</configuration>

@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 </head>
 <body>
 	<div class="admin-container">
@@ -65,5 +66,6 @@
             </article>
         </main>
     </div>
+    <jsp:include page = "/WEB-INF/views/include/footer.jsp"></jsp:include> 	
 </body>
 </html>
