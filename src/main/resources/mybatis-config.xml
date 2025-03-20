@@ -6,10 +6,7 @@
 		<!-- 널  값이 발생할 경우 빈칸이 아닌 NULL로 인식하라-->
 		<setting name="jdbcTypeForNull" value="NULL"/>
 	</settings>
-	<typeAliases>
-		<typeAlias type="com.oneyo.spring.member.model.vo.MemberVO" alias="MemberVO"/>
-		
-	</typeAliases>
+
 	
 	<mappers>
 		<mapper resource="mappers/board-mapper.xml" />
