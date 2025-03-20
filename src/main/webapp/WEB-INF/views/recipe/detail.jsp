@@ -20,7 +20,6 @@
             </div>
         </div>
     </main>
-    
         <div class="ingredient-container">
             <div class="ingredient-group">
                 <h2>재료</h2>
@@ -75,8 +74,7 @@
                 <h2>레시피 상세 내용</h2>
             </div>
             <div class="recipe-image">image</div>
-        </div>
-    
+        </div>  
         <div class="recipe">
             <div class="recipe-number">2</div>
             <div class="recipe-info">
@@ -95,6 +93,5 @@
                 <a href="#">연락처</a>
             </div>
         </footer>
-    
 </body>
 </html>
