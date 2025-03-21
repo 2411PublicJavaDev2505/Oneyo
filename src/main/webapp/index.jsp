@@ -33,8 +33,8 @@
 	
 	        const images = [
 	            { src: '../resources/img/pasta.jpg', alt: '양송이 크림 파스타', recipe: '양송이 크림 파스타' },
-	            { src: '../resources/img/salad.jpg', alt: '신선한 샐러드', recipe: '신선한 샐러드' },
-	            { src: '../resources/img/steak.jpg', alt: '불고기 덮밥', recipe: '완벽한 스테이크' }
+	            { src: '../resources/img/salad.jpg', alt: '샐러드 파스타', recipe: '신선한 샐러드 파스타' },
+	            { src: '../resources/img/steak.jpg', alt: '불고기 덮밥', recipe: '불고기 덮밥' }
 	        ];
 	
 	        let currentImageIndex = 0;
