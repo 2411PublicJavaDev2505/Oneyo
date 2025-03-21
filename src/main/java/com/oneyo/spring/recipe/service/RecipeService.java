@@ -3,6 +3,7 @@ package com.oneyo.spring.recipe.service;
 import java.util.List;
 
 import com.oneyo.spring.recipe.controller.dto.RecipeInsertRequest;
+import com.oneyo.spring.recipe.controller.dto.RecipeUpdateRequest;
 import com.oneyo.spring.recipe.domain.RecipeVO;
 
 public interface RecipeService {
@@ -11,9 +12,13 @@ public interface RecipeService {
 
 	List<RecipeVO> selectRecipeList();
 	
-	int insertRecipe(RecipeInsertRequest recipe);
+	List<RecipeVO> selectListAll(int currentPage);
 
 	RecipeVO selectOneByNo(int recipeNo);
+	
+	int insertRecipe(RecipeInsertRequest recipe);
 
-	List<RecipeVO> selectListAll(int currentPage);
+	int updateRecipe(RecipeUpdateRequest recipe);
+
+	int deleteRecipe(int recipeNo);
 }

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="RecipeContentMapper">
+	<resultMap type="Recipe" id="recipeResult">
+		<id property="recipeContentNo" column="RECIPE_CONTENT_NO"/>
+		<result property="recipeStepNo" column="RECIPE_STEP_NO"/>
+		<result property="recipeStepContent" column="RECIPE_STEP_CONTENT"/>
+		<result property="recipeStepOrder" column="RECIPE_STEP_ORDER"/>
+		<result property="recipeNo" column="RECIPE_NO"/>
+	</resultMap>
+	<insert id="insertRecipeContent">
+		INSERT INTO RECIPE_CONTENT VALUES(SEQ_RECIPE_CONTENT_NO.NEXTVAL, #{recipeStepContent}, DEFAULT, DEFAULT
+		,DEFAULT, DEFAULT, DEFAULT)
+	</insert>
+	<update id="updateRecipeContent">
+		UPDATE RECIPE_CONTENT SET RECIPE_STEP_CONTENT = #{recipeStepContent}, RECIPE_STEP_ORDER = DEFAULT
+		, WHERE RECIPE_CONTENT_NO = #{recipeContentNo} 
+	</update>
+	<delete id="deleteRecipeContent">
+		DELETE
+	</delete>
+</mapper>

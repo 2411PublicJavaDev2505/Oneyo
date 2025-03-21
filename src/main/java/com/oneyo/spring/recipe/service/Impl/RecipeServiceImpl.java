@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.oneyo.spring.recipe.controller.dto.RecipeInsertRequest;
+import com.oneyo.spring.recipe.controller.dto.RecipeUpdateRequest;
 import com.oneyo.spring.recipe.domain.RecipeVO;
 import com.oneyo.spring.recipe.service.RecipeService;
 import com.oneyo.spring.recipe.store.RecipeStore;
@@ -47,5 +48,17 @@ public class RecipeServiceImpl implements RecipeService {
 	public RecipeVO selectOneByNo(int recipeNo) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public int updateRecipe(RecipeUpdateRequest recipe) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int deleteRecipe(int recipeNo) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }
