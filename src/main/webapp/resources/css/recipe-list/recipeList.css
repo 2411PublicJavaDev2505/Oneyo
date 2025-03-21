@@ -6,10 +6,10 @@
     margin: 5% auto;
     background-color: #fff;
 }
-.recipe-list a {
+.recipe-constainer a {
     text-decoration: none;
 }
-.recipe-list a:visited {
+.recipe-constainer a:visited {
     color: black;
 }
 .button-container {

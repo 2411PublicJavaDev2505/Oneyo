@@ -79,19 +79,6 @@
 	            </div>
 	            <div class="recipe-image">image</div>
 	        </div>
-	    
-	        <div class="recipe">
-	            <div class="recipe-number">2</div>
-	            <div class="recipe-info">
-	                <h2>레시피 상세 내용</h2>
-	            </div>
-	            <div class="recipe-image">image</div>
-	        </div>
-	    
-	        <div class="recommend">
-	            <button class="star">⭐</button>
-	            <p>추천해요!</p>
-	        </div>
 	        <jsp:include page = "/WEB-INF/views/include/footer.jsp"></jsp:include> 	
 	</body>
 </html>

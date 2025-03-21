@@ -52,7 +52,7 @@ main {
 
 .recipe-card {
     position: relative;
-    width: 400px;
+    width: 900px;
     padding: 20px;
     text-align: center;
     border-radius: 10px;
@@ -72,8 +72,8 @@ main {
 
 .image-placeholder {
     background-color: #fefee5;
-    height: 200px;
-    line-height: 200px;
+    height: 600px;
+    line-height: 400px;
     color: black;
     font-size: 20px;
     border: 1px solid #c5b583;
@@ -130,7 +130,7 @@ main {
     border: 2px solid #333;
     border-radius: 10px;
     padding: 10px;
-    width: 250px;
+    width: 30%;
     margin-bottom: 10px;
 }
 
@@ -139,7 +139,7 @@ main {
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 5px;
-    width: 100px;
+    width: 20%;
     text-align: center;
 }
 

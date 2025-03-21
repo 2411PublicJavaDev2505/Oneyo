@@ -8,11 +8,11 @@
 	</settings>
 
 	
-	<mappers>
+<!-- 	<mappers>
 		<mapper resource="mappers/board-mapper.xml" />
 		<mapper resource="mappers/member-mapper.xml" />
 		<mapper resource="mappers/mypage-mapper.xml" />
 		<mapper resource="mappers/myref-mapper.xml" />
 		<mapper resource="mappers/recipe-mapper.xml" />
-	</mappers>
+	</mappers> -->
 </configuration>
