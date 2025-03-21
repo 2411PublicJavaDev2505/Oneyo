@@ -4,10 +4,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Recipe List</title>
-	<link rel="stylesheet" href="../resources/css/header.css">
-	<link rel="stylesheet" href="../resources/css/recipe-list/recipeList.css">
-	<link rel="stylesheet" href="../resources/css/footer.css">
+	<title>Insert title here</title>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>

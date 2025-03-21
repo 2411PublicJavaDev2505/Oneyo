@@ -1,8 +1,12 @@
 package com.oneyo.spring.recipe.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,10 +36,17 @@ public class RecipeController {
 	
 	@GetMapping("/RecipeList")
 	public String ShowRecipeList(
-		@RequestParam(value="page", defaultValue="1") int currentPage
-		, Model model) {
+		@RequestParam(value="page", defaultValue="1") int currentPage,
+		Model model,
+		HttpSession session) {
 	try {
-		List<RecipeVO> rList = rService.selectListAll(currentPage); 
+		List<RecipeVO> rList;
+		String memberId = (String)session.getAttribute("memberId");
+		if(memberId != null) {
+			rList = rService.selectPersonalList(memberId, currentPage);
+		}else {
+			rList = rService.selectListAll(currentPage);
+		}
 		int totalCount = rService.getTotalCount();
 		Map<String, Integer> pageInfo = page.generatePageInfo(totalCount, currentPage);
 		if(!rList.isEmpty()) {
@@ -60,7 +71,7 @@ public class RecipeController {
 		try {
 			return "recipe/insert";
 		} catch (Exception e) {
-			// TODO: handle exception
+			
 		}
 		return "common/error";
 	}
@@ -74,10 +85,33 @@ public class RecipeController {
 			model.addAttribute("recipe", recipe);
 			return "recipe/detail";
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 			model.addAttribute("errorMessage", e.getMessage());
 			return "common/error";
 		}
 	}
+	@GetMapping("/search")
+	public String showSearchList(
+			@RequestParam("searchKeyword") String searchkeyword,
+			@RequestParam(value="currnetPage", defaultValue="1")int currentPage,
+			Model model) {
+		try {
+			Map<String, String> paramMap = new HashMap<String, String>();
+			paramMap.put("searchkeyword", searchkeyword);
+			List<RecipeVO> searchList = rService.selectSearchList(paramMap, currentPage);
+			int totalCount = rService.getTotalCount(paramMap);
+			Map<String, Integer> pageInfo = page.generatePageInfo(totalCount, currentPage);
+			model.addAttribute("maxPage", pageInfo.get("maxPage"));
+			model.addAttribute("startNavi", pageInfo.get("startNavi"));
+			model.addAttribute("endNavi", pageInfo.get("endNavi"));
+			model.addAttribute("searchList", searchList);
+			model.addAttribute("searchkeyword", searchkeyword);
+			return "recipe/search";
+		} catch (Exception e) {
+			e.printStackTrace();
+			model.addAttribute("errorMessage", e.getMessage());
+			return "common/error";
+		}
+	}
+	
 }

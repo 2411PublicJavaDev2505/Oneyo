@@ -6,7 +6,7 @@ public class RecipeVO {
 	
 	private String memberId;
 	private String recipeTitle;
-	private String recipeContent;
+	private int recipeContentNo;
 	private int recipeNo;
 	private int recipeSourcesNo;
 	private int viewCount;
@@ -24,8 +24,8 @@ public class RecipeVO {
 		return recipeTitle;
 	}
 
-	public String getRecipeContent() {
-		return recipeContent;
+	public int getRecipeContentNo() {
+		return recipeContentNo;
 	}
 
 	public int getRecipeNo() {
@@ -54,7 +54,7 @@ public class RecipeVO {
 
 	@Override
 	public String toString() {
-		return "RecipeVO [memberId=" + memberId + ", recipeTitle=" + recipeTitle + ", recipeContent=" + recipeContent
+		return "RecipeVO [memberId=" + memberId + ", recipeTitle=" + recipeTitle + ", recipeContentNo=" + recipeContentNo
 				+ ", recipeNo=" + recipeNo + ", recipeSourcesNo=" + recipeSourcesNo + ", viewCount=" + viewCount
 				+ ", delYn=" + delYn + ", recipeDate=" + recipeDate + ", updateDate=" + updateDate + "]";
 	}
