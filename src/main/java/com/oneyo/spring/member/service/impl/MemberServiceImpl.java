@@ -52,6 +52,12 @@ public class MemberServiceImpl implements MemberService{
 		return result;
 	}
 
+	@Override
+	public int modifyPassword(ModifyPasswordRequest password) {
+		int result= mStore.modifyPassword(session, password);
+		return result;
+	}
+
 
 
 	

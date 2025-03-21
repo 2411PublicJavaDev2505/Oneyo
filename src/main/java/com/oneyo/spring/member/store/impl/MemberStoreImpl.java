@@ -44,6 +44,12 @@ public class MemberStoreImpl implements MemberStore{
 		return result;
 	}
 
+	@Override
+	public int modifyPassword(SqlSession session, ModifyPasswordRequest password) {
+		int result= session.update("MemberMapper.updatePassword", password);
+		return result;
+	}
+
 	
 
 
