@@ -1,6 +1,7 @@
 package com.oneyo.spring.myref.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
@@ -22,9 +23,26 @@ public class MypageServiceImpl implements MypageService{
 	
 	
 	@Override
-	public List<MySourceList> selectSourceList() {
-		List<MySourceList> mList = mStore.selectSourceList(session);
+	public List<MySourceList> selectCoolSourceList() {
+		List<MySourceList> mList = mStore.selectCoolSourceList(session);
 		return mList;
 	}
+
+
+	@Override
+	public List<MySourceList> selectIceSourceList() {
+		List<MySourceList> iList = mStore.selectIceSourceList(session);
+		return iList;
+	}
+
+
+	@Override
+	public List<MySourceList> selectStorageList(Map<String, String> paramMap) {
+		List<MySourceList> storageList = mStore.selectStorageList(session, paramMap);
+		return storageList;
+	}
+
+
+
 
 }

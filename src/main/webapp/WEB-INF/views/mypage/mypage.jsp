@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,11 +40,11 @@
               <div class="list">      
               <div class="freeze">냉동실</div>   
               <div class="sources">
-                <button><a href="/">재료1</a></button>
-                <button><a href="/">재료2</a></button>
-                <button><a href="/">재료3</a></button>
-                <button><a href="/">....</a></button>
-                <button><a href="/mypage/myRefridge">등록/수정</a></button>
+              	<c:forEach items= "${iList }" var="iceSource">
+                <button><a href="/">${iceSource.sourceName }</a></button>
+                </c:forEach>
+              	<button><a href="/">....</a></button>
+                <button><a href="/mypage/myIceStorage">등록/수정</a></button>
                 </div>
               </div>
             </div>
@@ -50,11 +53,11 @@
               <div class="list">
               <div class="cooler">냉장실</div>
               <div class="sources">
-                <button><a href="/">재료1</a></button>
-                <button><a href="/">재료2</a></button>
-                <button><a href="/">재료3</a></button>
+              	<c:forEach items= "${cList }" var="coolSource">
+                <button><a href="/">${coolSource.sourceName }</a></button>
+                </c:forEach>
                 <button><a href="/">....</a></button>
-                <button><a href="/mypage/myRefridge">등록/수정</a></button>
+                <button><a href="/mypage/myCoolStorage">등록/수정</a></button>
                 </div>
                 </div>
             </div>

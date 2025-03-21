@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-	
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,28 +65,6 @@
 
                         </tr>
                     </thead>
-                                     
-					<%-- <p>cList 크기: ${cList != null ? cList.size() : 0}</p>   --%> 
-					
-         
-
-	                    <tbody>
-	                        <div class="sources-Lists" id="coolStorage">
-	                           	<c:forEach items= "${cList }" var="source">
-		                            <tr  class="sources" id="">
-		                                <td class="num">1</td>
-		                                <td class="source-name">${source.sourceName }</td>
-		                                <td class="due-date">${source.dueDate }</td>
-		                                <td class="count">${source.sourceCount }</td>
-		                                <td class="action">
-		                                    <button><a href="#">수정</a></button>
-		                                    <button><a href="#">삭제</a></button>
-		                                </td>
-		                             </tr>
-	                           	 </c:forEach>
-	                        </div>                        
-	                    </tbody>
-
 	                    <tbody>
 	                        <div class="sources-Lists" id="iceStorage">
 	                           	<c:forEach items= "${iList }" var="source">
@@ -103,9 +80,7 @@
 		                             </tr>
 	                           	 </c:forEach>
 	                        </div>                        
-	                    </tbody>
-
-	                 
+	                    </tbody>           
                 </table>
                 
                 <!-- 페이지네이션 --> 
@@ -146,6 +121,5 @@
         
     </script> 		
  		
- 		
-</body>
+ 
 </html>
