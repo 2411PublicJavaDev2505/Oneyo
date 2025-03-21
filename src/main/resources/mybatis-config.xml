@@ -9,17 +9,18 @@
 	</settings>
 	<typeAliases>
 
-
-
 		<typeAlias type="com.oneyo.spring.board.domain.BoardVO" alias="Board"/>
 		<typeAlias type="com.oneyo.spring.member.domain.MemberVO" alias="Member"/>
 		 <typeAlias type="com.oneyo.spring.myref.controller.dto.MySourceList" alias="sourceList"/>
 	</typeAliases>
 
 	<mappers>
-			<mapper resource="mappers/member-mapper.xml" />
-			<mapper resource="mappers/board-mapper.xml" />
-<!-- 			<mapper resource="mappers/myref-mapper.xml" />
- -->	</mappers> 
+
+		<mapper resource="mappers/board-mapper.xml" />
+		<mapper resource="mappers/member-mapper.xml" />
+		<mapper resource="mappers/mypage-mapper.xml" />
+		<mapper resource="mappers/myref-mapper.xml" />
+		<mapper resource="mappers/recipe-mapper.xml" />
+	</mappers> 
 
 </configuration>
