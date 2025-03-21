@@ -10,6 +10,7 @@
 	<typeAliases>
 
 
+
 		<typeAlias type="com.oneyo.spring.board.domain.BoardVO" alias="Board"/>
 		<typeAlias type="com.oneyo.spring.member.domain.MemberVO" alias="Member"/>
 		 <typeAlias type="com.oneyo.spring.myref.controller.dto.MySourceList" alias="sourceList"/>

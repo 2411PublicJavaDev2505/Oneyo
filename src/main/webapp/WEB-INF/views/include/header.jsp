@@ -14,7 +14,6 @@
         <div class="header-content">
             <h1 class="logo" ><a href="/">ONEYO</a></h1>
             <nav class="nav-menu">
-
                 
                 <c:if test="${memberId ne null && memberId ne '' }">
                 	<a href="/">레시피</a>
@@ -28,7 +27,7 @@
 				</c:if>
 				
 				<c:if test="${memberId eq null || memberId eq '' }">
-				<a href="/">레시피</a>
+				<a href="/recipe">레시피</a>
                 	<a href="/board/boardlist">게시판</a>
                 <div class="search-container">
                     <input type="text" class="search-input" placeholder="검색">
