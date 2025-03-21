@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.oneyo.spring.member.controller.dto.JoinRequest;
 import com.oneyo.spring.member.controller.dto.LoginRequest;
+import com.oneyo.spring.member.controller.dto.ModifyPasswordRequest;
 import com.oneyo.spring.member.domain.MemberVO;
 import com.oneyo.spring.member.service.MemberService;
 import com.oneyo.spring.member.controller.dto.ModifyRequest;
@@ -72,7 +73,7 @@ public class MemberController {
 		}
 	}
 	
-	@GetMapping("/logout")
+	@GetMapping("/member/logout")
 	public String memberLogout(HttpSession session) {
 		if(session !=null) {
 			session.invalidate();
@@ -81,15 +82,16 @@ public class MemberController {
 	}
 	
 	//계정삭제
-	@GetMapping("/delete")
+	@GetMapping("/member/delete")
 	public String memberDelete(HttpSession session, Model model) {
 		try {
 			String memberId = (String) session.getAttribute("memberId");
-			int result =mService.deleteMember(memberId);
+			System.out.println(memberId);
+			int result = mService.deleteMember(memberId);
 			
 			if(result>0) {
 				//로그아웃
-				return "redirect:/member/logout";
+				return "redirect:/";
 			}else {
 				model.addAttribute("errorMsg","존재하지 않는 정보입니다");
 				return "common/error";
@@ -104,7 +106,7 @@ public class MemberController {
 	@GetMapping("/member/modify")
 	public String memberModifyForm(HttpSession session, Model model) {
 		try {
-			String memberId = (String) session.getAttribute("memberId");;
+			String memberId = (String) session.getAttribute("memberId");
 			MemberVO member=mService.selectOneById(memberId);
 			if(member !=null) {
 				model.addAttribute("member", member);
@@ -127,7 +129,7 @@ public class MemberController {
 			int result = mService.modifyMember(member);
 			
 			if(result>0) {
-				return"redirect:/member/mypage";
+				return"redirect:/";
 			}else {
 				model.addAttribute("errorMsg","서비스가 완료되지 않았습니다");
 				return "common/error";
@@ -138,26 +140,43 @@ public class MemberController {
 			return "common/error";
 		}
 	}
+	@GetMapping("/member/modifypw")
+	public String passwordModify(HttpSession session, Model model) {
+		try {
+			String memberId = (String) session.getAttribute("memberId");
+			MemberVO member=mService.selectOneById(memberId);
+			if(member !=null) {
+				model.addAttribute("member", member);
+				return "member/modifyMember";
+			}else {
+				model.addAttribute("errorMsg","존재하지 않는 정보입니다");
+				return "common/error";
+			}
+		} catch (Exception e) {
+			model.addAttribute("errorMsg",e.getMessage());
+			return "common/error";
+		}
+	}
 	//비밀번호 수정
-//	@PostMapping("/member/modifypw")
-//	public String passwordModify(
-//			 @ModelAttribute ModifyPasswordRequest password,
-//			 Model model) {
-//		try {
-//			int result = mService.modifyPassword(password);
-//			if(result>0) {
-//				return"redirect:/member/mypage";
-//			}else {
-//				model.addAttribute("errorMsg","서비스가 완료되지 않았습니다");
-//				return "common/error";
-//			}
-//		} catch (Exception e) {
-//			e.printStackTrace();// 콘솔창에 오류 메시지 나오게 하는 명령문
-//			model.addAttribute("errorMsg",e.getMessage());
-//			return "common/error";
-//	
-//		}
-//	}
+	@PostMapping("/member/modifypw")
+	public String passwordModify(
+			 @ModelAttribute ModifyPasswordRequest password,
+			 Model model) {
+		try {
+			int result = mService.modifyPassword(password);
+			if(result>0) {
+				return"redirect:/";
+			}else {
+				model.addAttribute("errorMsg","서비스가 완료되지 않았습니다");
+				return "common/error";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();// 콘솔창에 오류 메시지 나오게 하는 명령문
+			model.addAttribute("errorMsg",e.getMessage());
+			return "common/error";
+	
+		}
+	}
 	
 //	@GetMapping("/member/findid")
 //	public String memberfindidForm() {
@@ -182,9 +201,6 @@ public class MemberController {
 //		        return "common/error";
 //		    }
 //	}
-	
-	
-	
-	
+
 
 }
