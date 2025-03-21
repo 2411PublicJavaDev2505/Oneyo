@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../resources/css/board/boardInsert.css">
 </head>
 <body>
+
     <!-- 헤더자리 -->
     <jsp:include page ="/WEB-INF/views/include/header.jsp"></jsp:include>    
     <main>
@@ -17,6 +18,7 @@
         <form action="/board/insert" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label>작성자</label>
+                <input class="writer" type="text" >
                 <input class="writer" type="text" value="user01" readonly>
             </div>
             <div class="form-group">
@@ -32,36 +34,37 @@
                 <label>첨부파일</label>
                 <div class="file-upload">
                     <input class="content" type="text" value="10MB 미만의 파일을 업로드 해주세요" readonly>
-                    <button class="cancel">X</button>
+                    <button class="cancel">Ｘ</button>
                     <button class="select">파일 선택</button>                
                 </div>
                 <div class="file-upload">
                     <label></label>
                     <input class="content" type="text" value="10MB 미만의 파일을 업로드 해주세요" readonly>
-                    <button class="cancel">X</button>
+                    <button class="cancel">Ｘ</button>
                     <button class="select">파일 선택</button>
                 </div>
                 <div class="file-upload">
                     <label></label>
                     <input class="content" type="text" value="10MB 미만의 파일을 업로드 해주세요" readonly>
-                    <button class="cancel">X</button>
+                    <button class="cancel">Ｘ</button>
                     <button class="select">파일 선택</button>
                 </div>
                 <div class="file-upload">
                     <label></label>
                     <input class="content" type="text" value="10MB 미만의 파일을 업로드 해주세요" readonly>
-                    <button class="cancel">X</button>
+                    <button class="cancel">Ｘ</button>
                     <button class="select">파일 선택</button>
                 </div>
         
                 <div class="buttons">
                     <button class="insert">등록</button>
-                    <button class="not-insert">취소</button>
+                    <button class="not-insert"><a href="/board/list">취소</a></button>
                 </div>
             </div>            
         </form>
     </main>
     <!-- 푸터자리 -->
-	<jsp:include page ="/WEB-INF/views/include/footer.jsp"></jsp:include>             
+	<jsp:include page ="/WEB-INF/views/include/footer.jsp"></jsp:include>
+           
 </body>
 </html>

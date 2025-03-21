@@ -19,7 +19,7 @@
                     <input type="text" class="search-input" placeholder="검색">
                     <button class="search-btn">🔍</button>
                 </div>
-                <a href="/"> class="login">로그인</a>
+                <a href="/" class="login">로그인</a>
             </nav>
         </div>
     </header>
