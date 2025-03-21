@@ -2,18 +2,20 @@ package com.oneyo.spring.board.controller.dto;
 
 public class BoardAddRequest {
 	private String memberId;
+	private String memberNickname; // 멤버 테이블의 닉네임
 	private String boardTitle;
-	private String baordContent;
+	private String boardContent;
 	
 	public BoardAddRequest() {
 		super();
 	}
-	
-	public BoardAddRequest(String memberId, String boardTitle, String baordContent) {
+
+	public BoardAddRequest(String memberId, String memberNickname, String boardTitle, String boardContent) {
 		super();
 		this.memberId = memberId;
+		this.memberNickname = memberNickname;
 		this.boardTitle = boardTitle;
-		this.baordContent = baordContent;
+		this.boardContent = boardContent;
 	}
 
 	public String getMemberId() {
@@ -24,6 +26,14 @@ public class BoardAddRequest {
 		this.memberId = memberId;
 	}
 
+	public String getMemberNickname() {
+		return memberNickname;
+	}
+
+	public void setMemberNickname(String memberNickname) {
+		this.memberNickname = memberNickname;
+	}
+
 	public String getBoardTitle() {
 		return boardTitle;
 	}
@@ -32,19 +42,18 @@ public class BoardAddRequest {
 		this.boardTitle = boardTitle;
 	}
 
-	public String getBaordContent() {
-		return baordContent;
+	public String getBoardContent() {
+		return boardContent;
 	}
 
-	public void setBaordContent(String baordContent) {
-		this.baordContent = baordContent;
+	public void setBoardContent(String boardContent) {
+		this.boardContent = boardContent;
 	}
 
 	@Override
 	public String toString() {
-		return "BoardAddRequest [memberId=" + memberId + ", boardTitle=" + boardTitle + ", baordContent=" + baordContent
-				+ "]";
+		return "BoardAddRequest [memberId=" + memberId + ", memberNickname=" + memberNickname + ", boardTitle="
+				+ boardTitle + ", boardContent=" + boardContent + "]";
 	}
-	
-	
+
 }

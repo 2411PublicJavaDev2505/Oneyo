@@ -11,19 +11,25 @@
 		<result property="boardCount" 	column="BOARD_COUNT"/>
 		<result property="boardDate" 	column="BOARD_DATE"/>
 		<result property="delYn" 		column="DEL_YN"/>
+		<result property="memberNickname" 		column="MEMBER_NICKNAME"/>
 	</resultMap>
 	<insert id="insertBoard">
-		insert into board values(SEQ_BOARD_NO.nextval, 'user01', 
-		#{boardTitle}, #{boardContent}, default, default, default) 
+		insert into board 
+		 values(SEQ_BOARD_NO.nextval, #{memberId}, #{boardTitle}, #{boardContent}, default, default, default) 
 	</insert>
 	
 	<select id="getTotalCount"  resultType="_int">
 		select count(*) from board where DEL_YN = 'N'
 	</select>
 	<select id="selectAllBoard"  resultType="Board">
-		select * from board where DEL_YN = 'N' 
+		select M.ADMIN_YN, B.BOARD_NO, M.MEMBER_NICKNAME, B.BOARD_TITLE, B.BOARD_COUNT, B.BOARD_DATE, B.DEL_YN	 
+		from board B
+		join member M on B.MEMBER_ID = M.MEMBER_ID 
+		where B.DEL_YN = 'N'
+ 		ORDER BY M.ADMIN_YN DESC, B.BOARD_DATE DESC
 	</select>
 	<select id="selectOneBoard"  resultType="Board">
 		select * from board where DEL_YN = 'N' and BOARD_NO=#{boardNo}
 	</select>
+	
 </mapper>  

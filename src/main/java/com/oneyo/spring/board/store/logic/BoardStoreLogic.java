@@ -2,6 +2,7 @@ package com.oneyo.spring.board.store.logic;
 
 import java.util.List;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
@@ -19,7 +20,10 @@ public class BoardStoreLogic implements BoardStore {
 
 	@Override
 	public List<BoardVO> selectAllBoard(SqlSession session, int currentPage) {
-		return session.selectList("BoardMapper.selectAllBoard");
+		int limit = 10;
+		int offset = (currentPage-1)*limit;
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		return session.selectList("BoardMapper.selectAllBoard", null, rowBounds);
 	}
 
 	@Override

@@ -32,30 +32,38 @@ public class BoardController {
 	}
 	// 게시판 등록
 	@GetMapping("/insert")
-	public String showBoardInsertForm() {
+	public String showBoardInsertForm(HttpSession session, Model model) {
 		return "/board/boardInsert";
 	}
 	@PostMapping("/insert")
 	public String insertBoard(@ModelAttribute BoardAddRequest board,
+			@RequestParam("memberNickname") String memberNickname,
 			HttpSession session, Model model) {
 		try {
+			
 			if(session.getAttribute("memberId")!=null) {
 				board.setMemberId((String)session.getAttribute("memberId"));
+				model.addAttribute("memberNickname",memberNickname);
 			}else {
 				model.addAttribute("errorMsg","로그인이 필요합니다~!");
 				return "common/error";
 			}
 			int result = bService.insertBoard(board);
-			return "redirect:/board/boardList";
+			return "redirect:/board/list";
 		} catch (Exception e) {
 			e.printStackTrace();
+			model.addAttribute("errorMsg",e.getMessage());
 			return "common/error";
 		}
 	}
 	
+	// 게시판 수정
+	// 게시판 삭제
+	
+	
 	// 게시판 전체목록
 	@GetMapping("/list")
-	public String showBoardList(@RequestParam(value="page", defaultValue="1")
+	public String showBoardList(@RequestParam(value="page", defaultValue="1")		
 			int currentPage, Model model) {
 		try {
 			List<BoardVO> bList = bService.printAllBoardList(currentPage);
@@ -68,6 +76,7 @@ public class BoardController {
 			return "/board/boardList";
 		} catch (Exception e) {
 			e.printStackTrace();
+			model.addAttribute("errorMsg",e.getMessage());
 			return "common/error";
 		}
 	}
@@ -77,13 +86,17 @@ public class BoardController {
 	public String showBoardDetail(@PathVariable("boardNo") int boardNo, Model model) {
 		try {
 			BoardVO board = bService.selectOneBoard(boardNo);
+			System.out.println(board);
 			model.addAttribute("board", board);
-			return "/board/boardDetail";
+			return "/board/boardDeteail";
 		} catch (Exception e) {
 			e.printStackTrace();
 			model.addAttribute("errorMsg",e.getMessage());
 			return "common/error";
 		}
 	}
+	
+	// 게시판 검색
+	
 	
 }
