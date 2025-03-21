@@ -5,20 +5,19 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>로그인 페이지</title>
-		<link rel="stylesheet" href="/webapp/resources/css/member/login.css">
+		<link rel="stylesheet" href="../resources/css/member/login.css">
 		</head>
 	<body>	
-			<form action="/member/login" method="get">
-	    	<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
-	
+			<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
+			
 	<main>
         <div class="login-box">
             <h2>로그인</h2>
-                <form action="/member/login" method="get">
+                <form action="/member/login" method="post">
                     <label>아이디 (이메일)</label>
-                    <input type="text" placeholder="아이디 또는 이메일 주소">
+                    <input type="text" name="memberId" placeholder="아이디 또는 이메일 주소">
                     <label>비밀번호</label>
-                    <input type="password" placeholder="비밀번호">
+                    <input type="password" name="memberPw" placeholder="비밀번호">
                     <button class="login-btn">로그인</button>
                     
                     <div class="linkButtons">
@@ -32,7 +31,6 @@
                 </form>
         </div>
     </main>
-    </form>
     	<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
 	
 </body>
