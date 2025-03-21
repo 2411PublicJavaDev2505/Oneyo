@@ -13,16 +13,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.oneyo.spring.member.controller.dto.FindIdRequest;
 import com.oneyo.spring.member.controller.dto.JoinRequest;
 import com.oneyo.spring.member.controller.dto.LoginRequest;
-import com.oneyo.spring.member.controller.dto.ModifyPasswordRequest;
 import com.oneyo.spring.member.domain.MemberVO;
 import com.oneyo.spring.member.service.MemberService;
 import com.oneyo.spring.member.controller.dto.ModifyRequest;
 
 @Controller
 public class MemberController {
+
 	@Autowired
 	private MemberService mService;
 	
@@ -187,6 +186,5 @@ public class MemberController {
 	
 	
 	
-	
-	
+
 }

@@ -6,10 +6,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 	<link rel="stylesheet" href="../resources/css/mypage/myReply.css"> 
-	<link rel="stylesheet" href="../resources/css/footer.css"> 
-	<link rel="stylesheet" href="../resources/css/header.css"> 
 </head>
 <body>
+ 	<jsp:include page ="/WEB-INF/views/include/header.jsp"></jsp:include> 
 	<main class="main">
 	    <div class="myPageMain">
 	    <section class="Info">
@@ -27,9 +26,9 @@
 	<!--       마이 냉장고 기본틀 -->
 			    <div class="myDetail-container">
 			        <div class="myPageMenu">
-			        <button><a href="/">마이냉장고</a></button>
-			        <button><a href="/">내가 쓴글</a></button>
-			        <button><a href="/">나의 댓글</a></button>
+			        <button><a href="/mypage/mypage">마이냉장고</a></button>
+			        <button><a href="/mypage/myBoard">내가 쓴글</a></button>
+			        <button><a href="/mypage/myReply">나의 댓글</a></button>
 			        </div>			        
 			        <div class="search-container">
 			            <form class="search-form"  action="/board/search">
@@ -120,5 +119,6 @@
 			</div>
 	    </div>
 	</main>
+ 		<jsp:include page = "/WEB-INF/views/include/footer.jsp"></jsp:include> 			
 </body>
 </html>
