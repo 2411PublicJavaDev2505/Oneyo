@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../resources/css/board/boardDetail.css">   
 </head>
 <body>
-    <!-- 헤더자리 -->
+    <!-- 헤더 -->
     <jsp:include page ="/WEB-INF/views/include/header.jsp"></jsp:include>
     <main>
         <section class="title">
@@ -15,11 +15,11 @@
         </section>
         <article>
             <div class="board-top">
-                <h3 class="board-title">하우스 청귤 무나해요!!!!</h3>
+                <h3 class="board-title">${board.boardTitle }</h3>
                 <div class="board-info">
-                    <span>user01</span>
-                    <span>2025-03-18</span>
-                    <span>조회 0</span>
+                    <span>${board.memberId }</span>
+                    <span>${board.boardDate }</span>
+                    <span>조회 ${board.boardCount }</span>
                 </div>
             </div>
             <div class="board-main">
@@ -28,7 +28,7 @@
                     <a href="#">삭제</a>
                 </div>
                 <div class="board-content">
-                    선착순 3명! 댓글 달아주세요~
+                     ${board.boardContent }
                 </div>                
                 <div class="image-box">
                     <img src="/upload/sample1.jpg" alt="이미지1">
@@ -57,7 +57,7 @@
             </div>
         </div>
     </main>
-    <!-- 푸터자리 -->
+    <!-- 푸터 -->
 	<jsp:include page ="/WEB-INF/views/include/footer.jsp"></jsp:include>    
 </body>
 </html>

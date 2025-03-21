@@ -1,14 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-	<html>
-		<head>
-			<meta charset="UTF-8">
-			<title>회원정보수정페이지</title>
-		<link rel="stylesheet" href=".../resources/css/member/modifyMember.css">
-		</head>
-		<body>
-			 <main>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원정보수정</title>
+    <link rel="stylesheet" href="../resources/css/member/modifyMember.css">
+</head>
+<body>
+	<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
+    <main>
         <form action="/member/modify" method="post">
 
             <div class="modifymain">
@@ -30,23 +32,20 @@
                 <div class="modify-container">
                     <div class="modifyMember">
                         <h3>회원정보</h3>
-                        <label>아이디 (이메일)</label>
-                        <input type="email" placeholder="아이디(이메일) 입력" class="id-input"> 
-                        <button class="check-button">중복확인</button>
                         <label>닉네임</label>
-                        <input type="text" placeholder="닉네임 입력" class="nickname-input"> 
+                        <input type="text" placeholder="닉네임 입력" class="nickname-input" name="memberNickname"> 
                         <button class="check-button">중복확인</button>
                         <label>이름</label>
-                        <input type="text" placeholder="이름 입력">
+                        <input type="text" placeholder="이름 입력" name="memberName">
                         <label>휴대폰 번호</label>
-                        <input type="text" placeholder="휴대폰 번호 입력">
+                        <input type="text" placeholder="휴대폰 번호 입력" name="memberPhone">
                         <button class="modify-button">저장</button>
                     </div>
         
                     <div class="modifypw">
                         <h3>비밀번호설정</h3>
                         <label>비밀번호</label>
-                        <input type="password" placeholder="비밀번호 입력">
+                        <input type="password" placeholder="비밀번호 입력" name="memberPw">
                         <label>비밀번호(확인)</label>
                         <input type="password" placeholder="비밀번호 확인">
                         <button class="password-button">비밀번호 설정</button>
@@ -57,6 +56,5 @@
             
         </form>
     </main>
-    <jsp:include page = "/WEB-INF/views/include/footer.jsp"></jsp:include> 	
-		</body>
-	</html>
+</body>
+</html>

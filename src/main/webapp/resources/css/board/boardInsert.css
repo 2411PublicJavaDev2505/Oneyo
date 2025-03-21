@@ -6,7 +6,8 @@ body{
     justify-content: center;
 }
 main{
-    width: 1400px;
+    max-width: 1400px;
+    margin: 100px auto;
 }
 .title{
     color: #777134;
