@@ -4,28 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <title>게시판 상세</title>
-    <link rel="stylesheet" href="../resources/css/board/boardDetail.css">   
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board/boardDetail.css">   
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css">   
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css">   
 </head>
 <body>
     <!-- 헤더 -->
     <jsp:include page ="/WEB-INF/views/include/header.jsp"></jsp:include>
     <main>
         <section class="title">
-            <h3 >게시판</h3>
+            <h3><a href="/board/list">게시판</a> </h3>
         </section>
         <article>
             <div class="board-top">
                 <h3 class="board-title">${board.boardTitle }</h3>
-                <div class="board-info">
-                    <span>${board.memberId }</span>
-                    <span>${board.boardDate }</span>
-                    <span>조회 ${board.boardCount }</span>
+                <div class="modify-button"> 
+                    <button type="button" onclick="showUpdateForm(${board.boardNo});">수정</button>
+                    <button type="button" onclick="deleteConfirm(${board.boardNo});">삭제</button>
                 </div>
             </div>
             <div class="board-main">
-                <div class="modify-button"> 
-                    <a href="#">수정</a>
-                    <a href="#">삭제</a>
+                <div class="board-info">
+                    <span>${board.memberNickname }</span>
+                    <span>${board.boardDate }</span>
+                    <span>조회 ${board.boardCount }</span>
                 </div>
                 <div class="board-content">
                      ${board.boardContent }
@@ -58,6 +60,18 @@
         </div>
     </main>
     <!-- 푸터 -->
-	<jsp:include page ="/WEB-INF/views/include/footer.jsp"></jsp:include>    
+	<jsp:include page ="/WEB-INF/views/include/footer.jsp"></jsp:include>
+	<script>
+		function deleteConfirm(boardNo) {
+			var result = confirm("정말로 삭제하시겠습니까?");
+			if(result) {
+				location.href="/board/list";
+			}
+		}
+		function showUpdateForm(boardNo){
+			location.href="/board/update?boardNo="+boardNo;
+		}
+		
+	</script>    
 </body>
 </html>

@@ -4,32 +4,123 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="BoardMapper">
 	<resultMap type="Board" id="boardResultMap">
-		<id 	property="boardNo" 		column="BOARD_NO"/>
-		<result property="memberId" 	column="MEMBER_ID"/>
-		<result property="boardTitle" 	column="BOARD_TITLE"/>
-		<result property="boardContent" column="BOARD_CONTENT"/>
-		<result property="boardCount" 	column="BOARD_COUNT"/>
-		<result property="boardDate" 	column="BOARD_DATE"/>
-		<result property="delYn" 		column="DEL_YN"/>
-		<result property="memberNickname" 		column="MEMBER_NICKNAME"/>
+		<id 	property="boardNo" 			column="BOARD_NO"/>
+		<result property="memberId" 		column="MEMBER_ID"/>
+		<result property="memberNickname" 	column="MEMBER_NICKNAME"/>
+		<result property="boardTitle" 		column="BOARD_TITLE"/>
+		<result property="boardContent" 	column="BOARD_CONTENT"/>
+		<result property="boardCount" 		column="BOARD_COUNT"/>
+		<result property="boardDate" 		column="BOARD_DATE"/>
+		<result property="adminYn" 			column="ADMIN_YN"/>
+		<result property="delYn" 			column="DEL_YN"/>
 	</resultMap>
 	<insert id="insertBoard">
 		insert into board 
 		 values(SEQ_BOARD_NO.nextval, #{memberId}, #{boardTitle}, #{boardContent}, default, default, default) 
 	</insert>
+	<update id="updateBoard">
+		update board set BOARD_TITLE=#{boardTitle}, BOARD_CONTENT=#{boardContent} where BOARD_NO =#{boardNo}
+	</update>	
+	<update id="deleteBoard">
+		update board set DEL_YN = 'Y' where BOARD_NO =#{boardNo}
+	</update>
 	
-	<select id="getTotalCount"  resultType="_int">
-		select count(*) from board where DEL_YN = 'N'
-	</select>
-	<select id="selectAllBoard"  resultType="Board">
-		select M.ADMIN_YN, B.BOARD_NO, M.MEMBER_NICKNAME, B.BOARD_TITLE, B.BOARD_COUNT, B.BOARD_DATE, B.DEL_YN	 
+
+	<select id="selectNoticeBoard" resultType="Board">
+		select B.BOARD_NO, B.MEMBER_ID, M.MEMBER_NICKNAME, B.BOARD_TITLE, B.BOARD_COUNT, B.BOARD_DATE, M.ADMIN_YN, B.DEL_YN	 
 		from board B
 		join member M on B.MEMBER_ID = M.MEMBER_ID 
-		where B.DEL_YN = 'N'
+		where M.ADMIN_YN = 'Y' and B.DEL_YN = 'N'
+ 		ORDER BY M.ADMIN_YN DESC, B.BOARD_DATE DESC	
+	</select>
+	<select id="selectAllBoard"  resultType="Board">
+		select B.BOARD_NO, B.MEMBER_ID, M.MEMBER_NICKNAME, B.BOARD_TITLE, B.BOARD_COUNT, B.BOARD_DATE, M.ADMIN_YN, B.DEL_YN	 
+		from board B
+		join member M on B.MEMBER_ID = M.MEMBER_ID 
+		where M.ADMIN_YN = 'N' and B.DEL_YN = 'N'
  		ORDER BY M.ADMIN_YN DESC, B.BOARD_DATE DESC
 	</select>
 	<select id="selectOneBoard"  resultType="Board">
-		select * from board where DEL_YN = 'N' and BOARD_NO=#{boardNo}
+		select B.BOARD_NO, M.MEMBER_NICKNAME, B.BOARD_TITLE, B.BOARD_CONTENT, B.BOARD_COUNT, B.BOARD_DATE, B.DEL_YN	 
+		from board B
+		join member M on B.MEMBER_ID = M.MEMBER_ID 
+		where B.DEL_YN = 'N' and B.BOARD_NO=#{boardNo}
+ 		ORDER BY B.BOARD_DATE DESC	
+	</select>
+	
+	<select id="NoticeOneByKeyword"  resultType="Board">
+		select B.BOARD_NO, B.MEMBER_ID, M.MEMBER_NICKNAME, B.BOARD_TITLE, B.BOARD_COUNT, B.BOARD_DATE, M.ADMIN_YN, B.DEL_YN	 
+		from board B
+		join member M on B.MEMBER_ID = M.MEMBER_ID 
+ 		<where>
+ 			M.ADMIN_YN = 'Y' and B.DEL_YN = 'N'
+ 			<if test="searchCondition != null and searchCondition == 'title'">
+				and B.BOARD_TITLE like '%'||#{searchKeyword}||'%'
+			</if>
+			<if test="searchCondition != null and searchCondition == 'content'">
+				and B.BOARD_CONTENT like '%'||#{searchKeyword}||'%'
+			</if>
+			<if test="searchCondition != null and searchCondition == 'writer'">
+				and M.MEMBER_NICKNAME like '%'||#{searchKeyword}||'%'
+			</if>
+			<if test="searchCondition == 'all'">
+  				and B.BOARD_TITLE like '%'||#{searchKeyword}||'%' 
+				or B.BOARD_CONTENT like '%'||#{searchKeyword}||'%' 
+				or M.MEMBER_NICKNAME like '%'||#{searchKeyword}||'%'
+       		</if>	
+ 		</where> 
+ 		ORDER BY M.ADMIN_YN DESC, B.BOARD_DATE DESC
+	</select>
+	<select id="selectOneByKeyword"  resultType="Board">
+		select B.BOARD_NO, B.MEMBER_ID, M.MEMBER_NICKNAME, B.BOARD_TITLE, B.BOARD_COUNT, B.BOARD_DATE, M.ADMIN_YN, B.DEL_YN	 
+		from board B
+		join member M on B.MEMBER_ID = M.MEMBER_ID 
+ 		<where>
+ 			M.ADMIN_YN = 'N' and B.DEL_YN = 'N'
+ 			<if test="searchCondition != null and searchCondition == 'title'">
+				and B.BOARD_TITLE like '%'||#{searchKeyword}||'%'
+			</if>
+			<if test="searchCondition != null and searchCondition == 'content'">
+				and B.BOARD_CONTENT like '%'||#{searchKeyword}||'%'
+			</if>
+			<if test="searchCondition != null and searchCondition == 'writer'">
+				and M.MEMBER_NICKNAME like '%'||#{searchKeyword}||'%'
+			</if>
+			<if test="searchCondition == 'all'">
+  				and B.BOARD_TITLE like '%'||#{searchKeyword}||'%' 
+				or B.BOARD_CONTENT like '%'||#{searchKeyword}||'%' 
+				or M.MEMBER_NICKNAME like '%'||#{searchKeyword}||'%'
+       		</if>	
+ 		</where> 
+ 		ORDER BY M.ADMIN_YN DESC, B.BOARD_DATE DESC
+	</select>
+	
+	<select id="getTotalCount"  resultType="_int">
+		select count(*) from board where DEL_YN = 'N'
+	</select>	
+	<select id="getSearchCount"  resultType="_int">
+		select count(*) from board B
+		join member M on B.MEMBER_ID = M.MEMBER_ID 
+		<where>
+			B.DEL_YN = 'N'
+ 			<if test="searchCondition != null and searchCondition == 'title'">
+				and B.BOARD_TITLE like '%'||#{searchKeyword}||'%'
+			</if>
+			<if test="searchCondition != null and searchCondition == 'content'">
+				and B.BOARD_CONTENT like '%'||#{searchKeyword}||'%'
+			</if>
+			<if test="searchCondition != null and searchCondition == 'writer'">
+				and  M.MEMBER_NICKNAME like '%'||#{searchKeyword}||'%'
+			</if>
+			<if test="searchCondition == 'all'">
+  				and (B.BOARD_TITLE like '%'||#{searchKeyword}||'%' or
+				B.BOARD_CONTENT like '%'||#{searchKeyword}||'%' or
+				 M.MEMBER_NICKNAME like '%'||#{searchKeyword}||'%')
+       		</if>	
+ 		</where>		
+	</select>	
+	<select id="getMemberNickname" parameterType="String" resultType="String">
+		select MEMBER_NICKNAME from member where MEMBER_ID = #{memberId} 
 	</select>
 	
 </mapper>  

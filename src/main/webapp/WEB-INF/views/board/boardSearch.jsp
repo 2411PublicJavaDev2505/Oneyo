@@ -25,12 +25,12 @@
             	</form>
                 <form class="board-search-form"  action="/board/search" method="get">
                     <select class="board-search-select"  name="searchCondition" >
-                        <option value="all">전체</option>
-                        <option value="title">제목</option>
-                        <option value="content">내용</option>
-                        <option value="writer">작성자</option>
+                        <option value="all"<c:if test="${searchCondition eq 'all' }">selected</c:if>>전체</option>
+                        <option value="title"<c:if test="${searchCondition eq 'title' }">selected</c:if>>제목</option>
+                        <option value="content"<c:if test="${searchCondition eq 'content' }">selected</c:if>>내용</option>
+                        <option value="writer"<c:if test="${searchCondition eq 'writer' }">selected</c:if>>작성자</option>
                     </select>
-                    <input class="board-search-input" type="text" name="searchKeyword" placeholder="검색어를 입력하세요">
+                    <input class="board-search-input" type="text" name="searchKeyword" value="${searchKeyword } placeholder="검색어를 입력하세요">
                     <button type="submit">검색</button>
                 </form>
             </div>

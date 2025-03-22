@@ -1,12 +1,8 @@
 @charset "UTF-8";
-body{
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-}
-main{
-    width: 1400px;
+
+body main{
+    max-width: 1400px;
+    margin: 100px auto;
 }
 .title{
     color: #777134;
@@ -27,7 +23,7 @@ main{
 }
 .board-info span{
     padding: 0 10px;
-    border-right: 1px solid ;
+    border-right: 1px solid gray;
 }
     .board-info span:last-child{
         border-right: none;
@@ -44,7 +40,7 @@ main{
     justify-content: flex-end;
 	padding: 15px 15px 0px;
 }
-.modify-button a{
+.modify-button button{
     margin: 10px;
     padding: 8px 16px;
     background-color: #b2ac67;
