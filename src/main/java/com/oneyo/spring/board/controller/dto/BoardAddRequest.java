@@ -1,6 +1,7 @@
 package com.oneyo.spring.board.controller.dto;
 
 public class BoardAddRequest {
+	private String boardNo;
 	private String memberId;
 	private String memberNickname; // 멤버 테이블의 닉네임
 	private String boardTitle;
@@ -10,12 +11,22 @@ public class BoardAddRequest {
 		super();
 	}
 
-	public BoardAddRequest(String memberId, String memberNickname, String boardTitle, String boardContent) {
+	public BoardAddRequest(String boardNo, String memberId, String memberNickname, String boardTitle,
+			String boardContent) {
 		super();
+		this.boardNo = boardNo;
 		this.memberId = memberId;
 		this.memberNickname = memberNickname;
 		this.boardTitle = boardTitle;
 		this.boardContent = boardContent;
+	}
+
+	public String getBoardNo() {
+		return boardNo;
+	}
+
+	public void setBoardNo(String boardNo) {
+		this.boardNo = boardNo;
 	}
 
 	public String getMemberId() {
@@ -52,8 +63,10 @@ public class BoardAddRequest {
 
 	@Override
 	public String toString() {
-		return "BoardAddRequest [memberId=" + memberId + ", memberNickname=" + memberNickname + ", boardTitle="
-				+ boardTitle + ", boardContent=" + boardContent + "]";
+		return "BoardAddRequest [boardNo=" + boardNo + ", memberId=" + memberId + ", memberNickname=" + memberNickname
+				+ ", boardTitle=" + boardTitle + ", boardContent=" + boardContent + "]";
 	}
+
+
 
 }

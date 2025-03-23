@@ -68,17 +68,25 @@ body main{
 }
 .reply-info{
     padding: 0 0 5px;
+    display: flex;
+    align-items: center;
 }
     .reply-nickname{
         font-weight: bold;
+		padding-right: 10px;
     }
     .reply-date{
         color: gray;
+        padding-right: 10px;
     }
-    .reply-del{
+    .reply-del {
         color: #777134;
         font-weight: bold;
         text-decoration: none;
+	    background: none;
+	    border: none;    
+		cursor: pointer;
+	    padding: 0;	        
     }
 .reply-insert{
     display: flex;
@@ -91,7 +99,7 @@ body main{
     border: 1px solid #b2ac67;
     margin: 15px 20px;
 }
-.reply-insert a{
+.reply-insert button{
     display: flex;
     align-items: center;
     margin: 10px;

@@ -33,25 +33,25 @@
             <div class="file-group">
                 <label>첨부파일</label>
                 <div class="file-upload">
-                    <input class="content" type="text" value="10MB 미만의 파일을 업로드 해주세요" readonly>
+                    <input class="content" type="file" name="file1" value="10MB 미만의 파일을 업로드 해주세요" readonly>
                     <button class="cancel">Ｘ</button>
                     <button class="select">파일 선택</button>                
                 </div>
                 <div class="file-upload">
                     <label></label>
-                    <input class="content" type="text" value="10MB 미만의 파일을 업로드 해주세요" readonly>
+                    <input class="content" type="file" name="file2" value="10MB 미만의 파일을 업로드 해주세요" readonly>
                     <button class="cancel">Ｘ</button>
                     <button class="select">파일 선택</button>
                 </div>
                 <div class="file-upload">
                     <label></label>
-                    <input class="content" type="text" value="10MB 미만의 파일을 업로드 해주세요" readonly>
+                    <input class="content" type="file" name="file3" value="10MB 미만의 파일을 업로드 해주세요" readonly>
                     <button class="cancel">Ｘ</button>
                     <button class="select">파일 선택</button>
                 </div>
                 <div class="file-upload">
                     <label></label>
-                    <input class="content" type="text" value="10MB 미만의 파일을 업로드 해주세요" readonly>
+                    <input class="content" type="file" name="file4" value="10MB 미만의 파일을 업로드 해주세요" readonly>
                     <button class="cancel">Ｘ</button>
                     <button class="select">파일 선택</button>
                 </div>

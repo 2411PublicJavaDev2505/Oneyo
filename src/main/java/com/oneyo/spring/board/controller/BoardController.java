@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,24 +15,39 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.oneyo.spring.board.controller.dto.BoardAddRequest;
 import com.oneyo.spring.board.controller.dto.BoardUpdateRequest;
 import com.oneyo.spring.board.domain.BoardVO;
+import com.oneyo.spring.board.domain.ReplyVO;
+import com.oneyo.spring.board.service.BFileService;
 import com.oneyo.spring.board.service.BoardService;
+import com.oneyo.spring.board.service.ReplyService;
+import com.oneyo.spring.common.FileUtil;
 import com.oneyo.spring.common.PageUtill;
 
 @Controller
 @RequestMapping("/board")
 public class BoardController {
 
+	@Autowired
 	private BoardService bService;
+	@Autowired
+	private ReplyService rService;
+	@Autowired
+	private BFileService fService;
+	
 	private PageUtill pageUtil;
 	
-	public BoardController(BoardService bService, PageUtill pageUtil) {
+	public BoardController(BoardService bService, ReplyService rService, BFileService fService,
+			PageUtill pageUtil) {
 		this.bService = bService;
+		this.rService = rService;
+		this.fService = fService;
 		this.pageUtil = pageUtil;
 	}
+	
 	// 게시판 등록
 	@GetMapping("/insert")
 	public String showBoardInsertForm(HttpSession session, Model model) {
@@ -47,17 +63,25 @@ public class BoardController {
 	}
 	@PostMapping("/insert")
 	public String insertBoard(@ModelAttribute BoardAddRequest board,
+			@RequestParam("uploadFile")MultipartFile uploadFile,
 			HttpSession session, Model model) {
 		try {
 			String memberId = (String)session.getAttribute("memberId");
+			String boardNo = (String)session.getAttribute("boardNo");
 			
 			if(session.getAttribute("memberId")==null) {
 				model.addAttribute("errorMsg","로그인이 필요합니다~");
 				return "common/error";
 			}
+			
 			board.setMemberId(memberId);
+			board.setBoardNo(boardNo);
 			int result = bService.insertBoard(board);
-			return "redirect:/board/list";
+			
+			// 파일 업로드
+			fService.insertBoardFile(uploadFile, boardNo);
+			
+			return "redirect:/board/detail/" + boardNo;
 		} catch (Exception e) {
 			e.printStackTrace();
 			model.addAttribute("errorMsg",e.getMessage());
@@ -147,7 +171,9 @@ public class BoardController {
 	public String showBoardDetail(@PathVariable("boardNo") int boardNo, Model model) {
 		try {
 			BoardVO board = bService.selectOneBoard(boardNo);
+			List<ReplyVO> reply = rService.getReplyByBoardNo(boardNo); // 댓글 조회
 			model.addAttribute("board", board);
+			model.addAttribute("reply", reply);
 			return "/board/boardDeteail";
 		} catch (Exception e) {
 			e.printStackTrace();
