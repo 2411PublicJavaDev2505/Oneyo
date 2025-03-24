@@ -20,10 +20,10 @@
         <nav class="myInfomation">
             <div class="myPicture"></div>
             <div class="detailInformation">
-                <div>이름 : 일용자</div>
-                <div>닉네임 : 마셰코</div>
-<button class="deleteMember" onclick="location.href='member/delete?memberId=${member.memberId }'">회원탈퇴</button>
-              <button class="updateMember"  onclick="location.href='member/modify?memberId=${member.memberId }'">회원정보수정</button>
+                <div>이름 : ${memberName}</div>
+                <div>닉네임 : ${member.memberNickname}</div>
+<button class="deleteMember" onclick="location.href='member/delete?memberId=${memberId }'">회원탈퇴</button>
+              <button class="updateMember"  onclick="location.href='member/modify?memberId=${memberId }'">회원정보수정</button>
             </div>
         </nav>
         </section>

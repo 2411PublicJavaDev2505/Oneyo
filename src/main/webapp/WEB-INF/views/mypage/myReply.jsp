@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,9 +16,9 @@
 	    <nav class="myInfomation">
 	        <div class="myPicture"></div>
 	        <div class="detailInformation">
-	            <div>이름 : 일용자</div>
-	            <div>닉네임 : 마셰코</div>
-	<button class="deleteMember" onclick="location.href='member/delete?memberId=${member.memberId }'">회원탈퇴</button>
+	            <div>이름 : ${memberName }'</div>
+	            <div>닉네임 :${memberNickname }'</div>
+	<button class="deleteMember" onclick="location.href='member/delete?memberId=${memberId }'">회원탈퇴</button>
               <button class="updateMember"  onclick="location.href='member/modify'">회원정보수정</button>
 	        </div>
 	    </nav>
