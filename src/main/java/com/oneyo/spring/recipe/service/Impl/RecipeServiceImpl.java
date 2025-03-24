@@ -1,6 +1,7 @@
 package com.oneyo.spring.recipe.service.Impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,19 +26,15 @@ public class RecipeServiceImpl implements RecipeService {
 	
 	@Override
 	public int getTotalCount() {
-		// TODO Auto-generated method stub
-		return 0;	
+		int totalCount = rStore.getTotalCount(session);
+		return totalCount;	
 	}
 	@Override
 	public List<RecipeVO> selectListAll(int currentPage) {
-		// TODO Auto-generated method stub
-		return null;
+		List<RecipeVO> rList = rStore.selectListAll(session, currentPage);
+		return rList;
 	}
-	@Override
-	public List<RecipeVO> selectRecipeList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 	@Override
 	public int insertRecipe(RecipeInsertRequest recipe) {
 		// TODO Auto-generated method stub
@@ -45,7 +42,23 @@ public class RecipeServiceImpl implements RecipeService {
 	}
 	@Override
 	public RecipeVO selectOneByNo(int recipeNo) {
-		// TODO Auto-generated method stub
-		return null;
+		RecipeVO recipe = rStore.selectOneByNo(session, recipeNo);
+		return recipe;
+	}
+	@Override
+	public List<RecipeVO> selectSearchList(Map<String, String> paramMap, int currentPage) {
+		List<RecipeVO> searchList = rStore.selectSearchList(session, paramMap, currentPage);
+		return searchList;
+	}
+
+	@Override
+	public int getTotalCount(Map<String, String> paramMap) {
+		int totalCount = rStore.getTotalCount(session, paramMap);
+		return 0;
+	}
+	@Override
+	public List<RecipeVO> selectPersonalList(String memberId, int currentPage) {
+		List<RecipeVO> selectPersonalList = rStore.selectPersonalList(memberId, currentPage);
+		return selectPersonalList;
 	}
 }

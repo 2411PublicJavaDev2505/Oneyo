@@ -14,7 +14,6 @@
 		 <typeAlias type="com.oneyo.spring.myref.controller.dto.MySourceList" alias="sourceList"/>
 		 <typeAlias type="com.oneyo.spring.myref.controller.dto.CategoryList" alias="category"/>
 	</typeAliases>
-
 	<mappers>
 		<mapper resource="mappers/board-mapper.xml" />
 		<mapper resource="mappers/b-file-mapper.xml" />
