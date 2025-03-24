@@ -5,11 +5,7 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="MemberMapper">
-	  <resultMap type="Member" id="loginResultMap">
-	  		<id property="memberId" column="MEMBER_ID"></id>
-	  			<result property="memberPw" column="MEMBER_PW"></result>
-	  			<result property="memberNickname" column="MEMBER_NICKNAME"></result>
-	  	</resultMap>
+	  
 	  	
 	  	<resultMap type="Member" id="memberResultMap">
 	  			<id property="memberId" column="MEMBER_ID"></id>
@@ -24,29 +20,40 @@
 	  	
 	  	<insert id="insertMember">
 	  		INSERT INTO MEMBER 
-	  		VALUES(#{memberId},#{memberPw},#{memberNickname},#{memberName},#{memberBirth},#{memberPhone},DEFAULT,DEFAULT)
+	  		VALUES(#{memberId},#{memberNickname},#{memberPw},#{memberName},#{memberBirth},#{memberPhone},DEFAULT,DEFAULT)
 	  	</insert>
-	  	
+	  	<!--로그인  -->
 	  	<select id="selectOneByLogin"  resultMap="memberResultMap">
   		SELECT * FROM MEMBER WHERE MEMBER_ID = #{memberId} AND MEMBER_PW=#{memberPw}
   	</select>
   	
+  	<!-- 회원정보수정 -->
   	<select id="selectOneById" resultMap="memberResultMap">
   		SELECT * FROM MEMBER WHERE MEMBER_ID =#{memberId}
   	</select>
-  	<select id="findIdbyName" resultMap="memberResultMap">
-  		SELECT * FROM member WHERE MEMBER_Name= #{memberName} AND MEMBER_PHONE = #{memberPhone}
+	<!--아이디찾기-->  	
+	<select id="findIdbyName" resultMap="memberResultMap">
+  		SELECT MEMBER_ID FROM member WHERE MEMBER_Name= #{memberName} AND MEMBER_PHONE = #{memberPhone}
   	</select>
+  	<!-- 중복체크 -->
+  	<select id="duplicateMemberId" resultMap="memberResultMap">
+  		SELECT* FROM member WHERE MEMBER_ID = #{memberId}"
+  	</select>
+  	<select id="duplicateMemberNickname" resultMap="memberResultMap">
+  		SELECT* FROM member WHERE MEMBER_NICKNAME = #{memberNickname}"
+  	</select>
+  	
+  	<!-- 회원정보변경 -->
   	<update id="updateMember">
-  		UPDATE MEMBER SET MEMBER_NICKNAME=#{memberNickname}, member_phone= #{memberPhone} where member_id = #{memberId}
+  		UPDATE MEMBER SET MEMBER_NICKNAME=#{memberNickname},MEMBER_Name= #{memberName}, member_phone= #{memberPhone} where member_id = #{memberId}
+  	</update>
+  	<!-- 비밀번호변경 -->
+	<update id="updatePassword">
+  		UPDATE MEMBER SET MEMBER_PW=#{memberPw} where member_id = #{memberId}
   	</update>
   	
-<!--   	<update id="updatePassword">
-  		UPDATE MEMBER SET MEMBER_PW=#{memberPw} where member_id = #{memberId}
-  	</update> -->
-  	
   	<delete id="deleteMember">
-  	 delete from MEMBER where member_id = #{memberId}
+  	delete from MEMBER WHERE MEMBER_ID =#{memberId}
   	</delete>
   	
   </mapper>

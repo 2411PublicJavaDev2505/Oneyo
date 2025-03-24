@@ -68,10 +68,12 @@ table th{
 }
 /* 더보기(공지사항) */
 .hidden {
-    display: none; } /* 기본적으로 공지사항 숨김 */
+    display: none; 
+} /* 기본적으로 공지사항 숨김 */
 .notice-table {
     width: 100%; 
-    border-collapse: collapse; }
+    border-collapse: collapse; 
+}
 .toggle-btn { 
     background-color: #e2dfbe; 
     cursor: pointer; 

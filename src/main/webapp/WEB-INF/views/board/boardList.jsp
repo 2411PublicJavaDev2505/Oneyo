@@ -25,6 +25,7 @@
             	</form>
                 <form class="board-search-form"  action="/board/search" method="get">
                     <select class="board-search-select"  name="searchCondition" >
+                        <option value="all">전체</option>
                         <option value="title">제목</option>
                         <option value="content">내용</option>
                         <option value="writer">작성자</option>
@@ -48,46 +49,46 @@
                 </thead>
                 <tbody>
                     <!-- 공지사항 --> 
-                    <div class="notice-row">
-                    <c:forEach items="${bList }" var="board" varStatus="i">
-                        <tr class="notice">
-                            <td class="num">${board.boardNo }</td>
-                            <td class="title"><a href="/board/detail/${board.boardNo}"> ${board.boardTitle }</a></td>
-                            <td class="writer">${board.memberId }</td>
-                            <td class="date">${board.boardDate }</td>
-                            <td class="views">${board.boardCount }</td>
-                        </tr>
-                     </c:forEach>                                                
+                    <c:forEach items="${nList }" var="board" varStatus="i">
+                    	<c:if test="${board.adminYn eq 'Y'}">
+	                        <tr class="notice ${i.count >2 ? 'hidden' : ''}">
+	                            <td class="num">공지</td>
+	                            <td class="title"><a href="/board/detail/${board.boardNo}"> ${board.boardTitle }</a></td>
+	                            <td class="writer">${board.memberNickname }</td>
+	                            <td class="date">${board.boardDate }</td>
+	                            <td class="views">${board.boardCount }</td>
+	                        </tr>
+                    	</c:if>
+                     </c:forEach>
                     <!-- 더보기 버튼 --> 
                     <tr class="toggle-btn">
                         <td colspan="5" onclick="toggleNotices()">+ 더보기</td>
                     </tr> 
                     <!-- 일반게시판 --> 
-                    <div class="free-board">
-                    	<c:forEach items="${bList }" var="board" varStatus="i">
+                   	<c:forEach items="${bList }" var="board" varStatus="i">
                         <tr  class="free-board">
                             <td class="num">${board.boardNo }</td>
                             <td class="title"><a href="/board/detail/${board.boardNo}"> ${board.boardTitle }</a></td>
-                            <td class="writer">${board.memberId }</td>
+                            <td class="writer">${board.memberNickname }</td>
                             <td class="date">${board.boardDate }</td>
                             <td class="views">${board.boardCount }</td>
                         </tr>
-						</c:forEach>
-                    </div>
-                    
+					</c:forEach>
                 </tbody>
             </table>
             <!-- 페이지네이션 --> 
             <div class="pagination">
-                <a href="#"> ◁◁ </a>
-                <a href="#"> ◀ </a>                        
-                <a href="#"> 1 </a>                        
-                <a href="#"> 2 </a>                        
-                <a href="#"> 3 </a>                        
-                <a href="#"> 4 </a>                        
-                <a href="#"> 5 </a>                                              
-                <a href="#"> ▶ </a>                        
-                <a href="#"> ▷▷ </a>                    
+				<a href="/board/list?currentPage=1"> ◁◁ </a>
+				<c:if test= "${startNavi ne 1 }">
+					<a href="/board/list?currentPage=${startNavi-1 }" class="prev">◀</a>
+				</c:if>	
+				<c:forEach begin="${startNavi }" end="${endNavi }" var="p">
+					<a href="/board/list?currentPage=${p }">${p }</a>
+				</c:forEach>					
+				<c:if test="${endNavi ne maxPage }">
+					<a href="/board/list?currentPage=${endNavi+1 }" class="next">▶</a>
+				</c:if>    
+	           	<a href="/board/list?currentPage=${maxPage }"> ▷▷ </a>
             </div>
         </section>
     </main>
@@ -96,17 +97,18 @@
 
     <script>
         function toggleNotices() {
-            let hiddenRows = document.querySelectorAll('.notice-row.hidden');
-            let btn = document.querySelector('.toggle-btn');
+            let hiddenRows = document.querySelectorAll('.notice.hidden');
+            let allNotices = document.querySelectorAll('.notice');
+            let btn = document.querySelector('.toggle-btn td');
     
             if (hiddenRows.length > 0) {
                 hiddenRows.forEach(row => row.classList.remove('hidden'));
-                btn.innerHTML = "<td colspan='5'>- 접기</td>";
+                btn.innerText = "- 접기";
             } else {
-                document.querySelectorAll('.notice-row').forEach((row, index) => {
-                    if (index >= 2) row.classList.add('hidden');
-                });
-                btn.innerHTML = "<td colspan='5'>+ 더보기</td>";
+            	allNotices.forEach((row, index)=>{
+           			 if (index >= 2) row.classList.add('hidden');            			
+            	});
+                btn.innerText = "+ 더보기";
             }
         }
     </script>

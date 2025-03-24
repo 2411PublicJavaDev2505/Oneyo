@@ -1,0 +1,26 @@
+package com.oneyo.spring.recipe.store;
+
+import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.session.SqlSession;
+
+import com.oneyo.spring.recipe.controller.dto.RecipeInsertRequest;
+import com.oneyo.spring.recipe.domain.RecipeVO;
+
+public interface RecipeStore {
+
+	List<RecipeVO> selectListAll(SqlSession session, int currentPage);
+
+	int insertRecipe(SqlSession session, RecipeInsertRequest recipe);
+
+	RecipeVO selectOneByNo(SqlSession session, int recipeNo);
+
+	int getTotalCount(SqlSession session);
+
+	List<RecipeVO> selectSearchList(SqlSession session, Map<String, String> paramMap, int currentPage);
+
+	int getTotalCount(SqlSession session, Map<String, String> paramMap);
+
+	List<RecipeVO> selectPersonalList(String memberId, int currentPage);
+}

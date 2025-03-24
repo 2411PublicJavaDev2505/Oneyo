@@ -8,9 +8,7 @@
 		<link rel="stylesheet" href="../resources/css/index.css">
 		</head>
 	<body>	
-			
 	    	<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
-	
 	 <!-- 메인 컨텐츠 -->
     <main class="main-content">
         <div class="recipe-container">
@@ -22,10 +20,8 @@
             <button class="next-btn">▷</button>
         </div>
     </main>
-   
     	<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
-	<script>
-	 
+	<script> 
 	    document.addEventListener('DOMContentLoaded', () => {
 	        const recipeImage = document.querySelector('.recipe-image');
 	        const beforeButton = document.querySelector('.before-btn');

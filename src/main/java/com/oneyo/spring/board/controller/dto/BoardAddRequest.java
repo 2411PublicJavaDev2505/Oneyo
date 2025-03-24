@@ -1,19 +1,38 @@
 package com.oneyo.spring.board.controller.dto;
 
 public class BoardAddRequest {
+	private int boardNo;
 	private String memberId;
+	private String memberNickname; // 멤버 테이블의 닉네임
 	private String boardTitle;
-	private String baordContent;
+	private String boardContent;
+	private String boardFilename;
+	private String boardFileRename;
+	private String boardFilePath;
 	
 	public BoardAddRequest() {
 		super();
 	}
-	
-	public BoardAddRequest(String memberId, String boardTitle, String baordContent) {
+
+	public BoardAddRequest(int boardNo, String memberId, String memberNickname, String boardTitle,
+			String boardContent, String boardFilename, String boardFileRename, String boardFilePath) {
 		super();
+		this.boardNo = boardNo;
 		this.memberId = memberId;
+		this.memberNickname = memberNickname;
 		this.boardTitle = boardTitle;
-		this.baordContent = baordContent;
+		this.boardContent = boardContent;
+		this.boardFilename = boardFilename;
+		this.boardFileRename = boardFileRename;
+		this.boardFilePath = boardFilePath;
+	}
+
+	public int getBoardNo() {
+		return boardNo;
+	}
+
+	public void setBoardNo(int boardNo) {
+		this.boardNo = boardNo;
 	}
 
 	public String getMemberId() {
@@ -24,6 +43,14 @@ public class BoardAddRequest {
 		this.memberId = memberId;
 	}
 
+	public String getMemberNickname() {
+		return memberNickname;
+	}
+
+	public void setMemberNickname(String memberNickname) {
+		this.memberNickname = memberNickname;
+	}
+
 	public String getBoardTitle() {
 		return boardTitle;
 	}
@@ -32,19 +59,45 @@ public class BoardAddRequest {
 		this.boardTitle = boardTitle;
 	}
 
-	public String getBaordContent() {
-		return baordContent;
+	public String getBoardContent() {
+		return boardContent;
 	}
 
-	public void setBaordContent(String baordContent) {
-		this.baordContent = baordContent;
+	public void setBoardContent(String boardContent) {
+		this.boardContent = boardContent;
+	}
+
+	public String getBoardFilename() {
+		return boardFilename;
+	}
+
+	public void setBoardFilename(String boardFilename) {
+		this.boardFilename = boardFilename;
+	}
+
+	public String getBoardFileRename() {
+		return boardFileRename;
+	}
+
+	public void setBoardFileRename(String boardFileRename) {
+		this.boardFileRename = boardFileRename;
+	}
+
+	public String getBoardFilePath() {
+		return boardFilePath;
+	}
+
+	public void setBoardFilePath(String boardFilePath) {
+		this.boardFilePath = boardFilePath;
 	}
 
 	@Override
 	public String toString() {
-		return "BoardAddRequest [memberId=" + memberId + ", boardTitle=" + boardTitle + ", baordContent=" + baordContent
-				+ "]";
+		return "BoardAddRequest [boardNo=" + boardNo + ", memberId=" + memberId + ", memberNickname=" + memberNickname
+				+ ", boardTitle=" + boardTitle + ", boardContent=" + boardContent + ", boardFilename=" + boardFilename
+				+ ", boardFileRename=" + boardFileRename + ", boardFilePath=" + boardFilePath + "]";
 	}
-	
-	
+
+
+
 }

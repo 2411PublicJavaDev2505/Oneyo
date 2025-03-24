@@ -23,7 +23,6 @@
 	            </div>
 	        </div>
 	    </main>
-	
 	    <div class="ingredient-container1">
 	        <div class="ingredient-group1">
 	            <h2>재료</h2>

@@ -20,7 +20,6 @@ public interface MemberStore {
 
 	int modifyMember(SqlSession session, ModifyRequest member);
 
-	
-
+	int modifyPassword(SqlSession session, ModifyPasswordRequest password);
 
 }

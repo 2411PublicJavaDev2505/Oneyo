@@ -1,6 +1,7 @@
 package com.oneyo.spring.member.domain;
 
 public class MemberVO {
+	
 	private String memberId;
 	private String memberNickname;
 	private String memberPw;
