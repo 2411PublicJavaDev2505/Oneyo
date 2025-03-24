@@ -34,7 +34,7 @@ public class RecipeController {
 		this.page = page;
 	}
 	
-	@GetMapping("/RecipeList")
+	@GetMapping("/list")
 	public String ShowRecipeList(
 		@RequestParam(value="page", defaultValue="1") int currentPage,
 		Model model,
@@ -93,7 +93,7 @@ public class RecipeController {
 	@GetMapping("/search")
 	public String showSearchList(
 			@RequestParam("searchKeyword") String searchkeyword,
-			@RequestParam(value="currnetPage", defaultValue="1")int currentPage,
+			@RequestParam(value="currentPage", defaultValue="1")int currentPage,
 			Model model) {
 		try {
 			Map<String, String> paramMap = new HashMap<String, String>();

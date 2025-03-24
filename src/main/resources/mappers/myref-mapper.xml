@@ -5,7 +5,7 @@
   
 <mapper namespace="sourceList">
 <resultMap type="sourceList" id="sourceMap">
-	<id property="memberId"/>
+	<id property="memberId" column="memberId"/>
 
 </resultMap>
 
