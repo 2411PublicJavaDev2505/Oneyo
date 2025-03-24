@@ -1,31 +1,37 @@
 package com.oneyo.spring.board.controller.dto;
 
 public class BoardAddRequest {
-	private String boardNo;
+	private int boardNo;
 	private String memberId;
 	private String memberNickname; // 멤버 테이블의 닉네임
 	private String boardTitle;
 	private String boardContent;
+	private String boardFilename;
+	private String boardFileRename;
+	private String boardFilePath;
 	
 	public BoardAddRequest() {
 		super();
 	}
 
-	public BoardAddRequest(String boardNo, String memberId, String memberNickname, String boardTitle,
-			String boardContent) {
+	public BoardAddRequest(int boardNo, String memberId, String memberNickname, String boardTitle,
+			String boardContent, String boardFilename, String boardFileRename, String boardFilePath) {
 		super();
 		this.boardNo = boardNo;
 		this.memberId = memberId;
 		this.memberNickname = memberNickname;
 		this.boardTitle = boardTitle;
 		this.boardContent = boardContent;
+		this.boardFilename = boardFilename;
+		this.boardFileRename = boardFileRename;
+		this.boardFilePath = boardFilePath;
 	}
 
-	public String getBoardNo() {
+	public int getBoardNo() {
 		return boardNo;
 	}
 
-	public void setBoardNo(String boardNo) {
+	public void setBoardNo(int boardNo) {
 		this.boardNo = boardNo;
 	}
 
@@ -61,10 +67,35 @@ public class BoardAddRequest {
 		this.boardContent = boardContent;
 	}
 
+	public String getBoardFilename() {
+		return boardFilename;
+	}
+
+	public void setBoardFilename(String boardFilename) {
+		this.boardFilename = boardFilename;
+	}
+
+	public String getBoardFileRename() {
+		return boardFileRename;
+	}
+
+	public void setBoardFileRename(String boardFileRename) {
+		this.boardFileRename = boardFileRename;
+	}
+
+	public String getBoardFilePath() {
+		return boardFilePath;
+	}
+
+	public void setBoardFilePath(String boardFilePath) {
+		this.boardFilePath = boardFilePath;
+	}
+
 	@Override
 	public String toString() {
 		return "BoardAddRequest [boardNo=" + boardNo + ", memberId=" + memberId + ", memberNickname=" + memberNickname
-				+ ", boardTitle=" + boardTitle + ", boardContent=" + boardContent + "]";
+				+ ", boardTitle=" + boardTitle + ", boardContent=" + boardContent + ", boardFilename=" + boardFilename
+				+ ", boardFileRename=" + boardFileRename + ", boardFilePath=" + boardFilePath + "]";
 	}
 
 

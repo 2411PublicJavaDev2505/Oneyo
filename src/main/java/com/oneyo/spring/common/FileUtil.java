@@ -20,16 +20,21 @@ public class FileUtil {
 		String folderName = type.equals("board") ? "bUploadFiles":"rUploadFiles";
 		String prefix = type.toLowerCase().substring(0,1);
 		String boardFilename = uploadFile.getOriginalFilename();
-		String boardFileRename = null;
-		String boardFilePath = null;
+		String boardFileRename;
+		String boardFilePath;
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 		String transStr = sdf.format(new Date(System.currentTimeMillis()));
 		String ext = boardFilename.substring(boardFilename.lastIndexOf(".")+1);
-		boardFileRename = transStr + "." +ext;
-		boardFilePath = "/resources/"+folderName+"boardFileRename";
+		boardFileRename = transStr + "." + ext;
+		boardFilePath = "/resources/"+folderName+"/"+boardFileRename;
 		
 		String folderPath = session.getServletContext().getRealPath("/resources/"+folderName);
+		File dir = new File(folderPath); 
+		if (!dir.exists()) { // 디렉토리없을 시 자동생성
+			dir.mkdirs();
+		}
+		
 		String savePath = folderPath+"\\"+boardFileRename;
 		uploadFile.transferTo(new File(savePath));
 		result.put(prefix+"Filename", boardFilename);

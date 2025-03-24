@@ -59,7 +59,7 @@
         
                 <div class="buttons">
                     <button class="insert">수정완료</button>
-                    <button class="not-insert"><a href="/board/detail/${boardNo }">취소</a></button>
+                    <button class="not-insert"><a href="/board/detail/${board.boardNo }">취소</a></button>
                 </div>
             </div>            
         </form>

@@ -35,17 +35,19 @@
                 </div>
                 <div class="board-content">
                      ${board.boardContent }
-                </div>                
+                </div> 
+                <!--               
                 <div class="image-box">
                     <img src="/upload/sample1.jpg" alt="이미지1">
                     <img src="/upload/sample2.jpg" alt="이미지2">
                     <img src="/upload/sample3.jpg" alt="이미지3">
                     <img src="/upload/sample4.jpg" alt="이미지4">
-                </div>                
+                </div>         
+                       
                 <div class="board-file">
                     <h4>첨부파일</h4>
-                    <a href="#"></a>
-                </div>
+                    <a href="../..${bFile.bFilePath }" download>${bFile.bFileName }</a>
+                </div> --> 
             </div>
         </article>
 	<!-- 댓글 영역 -->      
