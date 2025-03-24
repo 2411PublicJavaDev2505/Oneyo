@@ -18,7 +18,6 @@ public class MypageController {
 	@Autowired
 	private MypageService mService;
 	
-	
 	@GetMapping("/mypage")
 	public String showMypageMain(Model model) {	
 		try {
@@ -28,17 +27,6 @@ public class MypageController {
 			// TODO: handle exception
 		}
 		return "mypage/mypage";
-	}
-	
-
-	@GetMapping("/myRefridge")
-	public String showMyRefridge() {
-		try {
-			return "mypage/myRefridge";
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		return "mypage/myRefridge";
 	}
 	
 	@GetMapping("/myBoard")
@@ -51,7 +39,6 @@ public class MypageController {
 		return "mypage/myBoard";
 	}
 	
-
 	@GetMapping("/myReply")
 	public String showMyReply() {
 		try {
@@ -61,6 +48,5 @@ public class MypageController {
 		}
 		return "mypage/myReply";
 	}
-	
 	
 }

@@ -85,9 +85,10 @@ public class MemberController {
 	}
 	
 	//계정삭제
-	@GetMapping("/member/delete")
+	@GetMapping("member/delete")
 	public String memberDelete(Model model
 			,@RequestParam("memberId") String memberId) {
+		System.out.println("Deleting member: " + memberId);
 		try {
 			int result = mService.deleteMember(memberId);
 			if(result > 0) {

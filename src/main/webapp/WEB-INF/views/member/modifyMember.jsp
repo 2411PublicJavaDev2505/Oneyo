@@ -23,7 +23,7 @@
                             <div class="detailinformation">
                             <h4>이름 : ${member.memberName}</h4>
                             <h4>닉네임 : ${member.memberNickname}</h4>
-                            <button class="deleteMember" onclick="location.href='/member/delete?memberId=${member.memberId }'"> 회원탈퇴</a></button>
+                            <button class="deleteMember" onclick="location.href='/member/delete?memberId=${memberId }'"> 회원탈퇴</button>
                             </div>
                         </nav>
                     </section>
