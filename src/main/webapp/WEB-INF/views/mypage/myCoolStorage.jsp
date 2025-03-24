@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-	
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,31 +65,9 @@
 
                         </tr>
                     </thead>
-                                     
-					<%-- <p>cList 크기: ${cList != null ? cList.size() : 0}</p>   --%> 
-					
-         
-
 	                    <tbody>
 	                        <div class="sources-Lists" id="coolStorage">
 	                           	<c:forEach items= "${cList }" var="source">
-		                            <tr  class="sources" id="">
-		                                <td class="num">1</td>
-		                                <td class="source-name">${source.sourceName }</td>
-		                                <td class="due-date">${source.dueDate }</td>
-		                                <td class="count">${source.sourceCount }</td>
-		                                <td class="action">
-		                                    <button><a href="#">수정</a></button>
-		                                    <button><a href="#">삭제</a></button>
-		                                </td>
-		                             </tr>
-	                           	 </c:forEach>
-	                        </div>                        
-	                    </tbody>
-
-	                    <tbody>
-	                        <div class="sources-Lists" id="iceStorage">
-	                           	<c:forEach items= "${iList }" var="source">
 		                            <tr  class="sources">
 		                                <td class="num">1</td>
 		                                <td class="source-name">${source.sourceName }</td>
@@ -98,32 +75,26 @@
 		                                <td class="count">${source.sourceCount }</td>
 		                                <td class="action">
 		                                    <button><a href="#">수정</a></button>
-		                                    <button><a href="#">삭제</a></button>
+		                                    <button><a href="/mypage/delete?=${source.sourcesNo} ">삭제</a></button>
 		                                </td>
 		                             </tr>
 	                           	 </c:forEach>
 	                        </div>                        
-	                    </tbody>
-
-	                 
+	                    </tbody>           
                 </table>
                 
                 <!-- 페이지네이션 --> 
                 <div class="pagination">
-                    <a href="#"> ◁◁ </a>
-                    <a href="#"> ◀ </a>                        
-                    <a href="#"> 1 </a>                        
-                    <a href="#"> 2 </a>                        
-                    <a href="#"> 3 </a>                        
-                    <a href="#"> 4 </a>                        
-                    <a href="#"> 5 </a>                        
-                    <a href="#"> 6 </a>                        
-                    <a href="#"> 7 </a>                        
-                    <a href="#"> 8 </a>                        
-                    <a href="#"> 9 </a>                        
-                    <a href="#"> 10 </a>                        
-                    <a href="#"> ▶ </a>                        
-                    <a href="#"> ▷▷ </a>                    
+					<c:if test="${startNavi ne 1 }">
+						<a href="/total/lease?page=${startNavi -1}" class="prev">&lt;</a>
+					</c:if>
+						<c:forEach begin="${startNavi }" end="${endNavi }" var="p" >
+						<a href="/total/lease?page=${p }">${p }</a>
+						
+						</c:forEach>	
+					<c:if test="${endNavi ne maxPage}">
+						<a href="/total/lease?page=${endNavi +1 }" class="next">&gt;</a>
+					</c:if>                
                 </div>
             </section>
         </div>
@@ -146,6 +117,5 @@
         
     </script> 		
  		
- 		
-</body>
+ 
 </html>

@@ -5,10 +5,47 @@
   
 <mapper namespace="sourceList">
 <resultMap type="sourceList" id="sourceMap">
-	<id property="memberId"/>
-
+	<id 		property="memberId" 	column="MEMBER_ID"/>
+	<result 	property="sourcesNo"	column="SOURCES_NO" />
+	<result 	property="sourceCount"	column="SOURCES_COUNT" />
+	<result 	property="dueDate"	column="DUE_DATE" />
+	<result 	property="storageDate"	column="STORAGE_DATE" />
+	<result 	property="storageCode"	column="STORAGE_CODE" />
+	<result 	property="sourceName"	column="SOURCE_NAME" />
 </resultMap>
 
 
+<select id="selectCoolSourceList" resultMap="sourceMap">
+	SELECT R.MEMBER_ID, R.SOURCES_NO, R.SOURCE_COUNT, R.DUE_DATE, R.STORAGE_DATE, R.STORAGE_CODE, S.SOURCE_NAME
+	FROM REFRIGERATOR R
+	JOIN SOURCES S ON S.SOURCES_NO = R.SOURCES_NO
+	WHERE STORAGE_CODE = 'C'
+</select>
+
+<select id="selectIceSourceList" resultMap="sourceMap">
+	SELECT R.MEMBER_ID, R.SOURCES_NO, R.SOURCE_COUNT, R.DUE_DATE, R.STORAGE_DATE, R.STORAGE_CODE, S.SOURCE_NAME
+	FROM REFRIGERATOR R
+	JOIN SOURCES S ON S.SOURCES_NO = R.SOURCES_NO
+	WHERE STORAGE_CODE = 'I'
+</select>
+
+
+<select id="selectStorageList" resultMap = "sourceMap">
+	SELECT R.MEMBER_ID, R.SOURCES_NO, R.SOURCE_COUNT, R.DUE_DATE, R.STORAGE_DATE, R.STORAGE_CODE, S.SOURCE_NAME
+	FROM REFRIGERATOR R
+	JOIN SOURCES S ON S.SOURCES_NO = R.SOURCES_NO
+  		<where>
+  			<if test="selectStorage == 'I'">
+  				R.STORAGE_CODE = 'I'
+  			</if>
+  			<if test="selectStorage == 'C'">
+  				R.STORAGE_CODE = 'C'
+  			</if>
+  		</where>
+</select>
+
+<select id="getTotalCount" resultType="_int">
+	SELECT COUNT(*) FROM REFRIGERATOR
+</select>
 
 </mapper>

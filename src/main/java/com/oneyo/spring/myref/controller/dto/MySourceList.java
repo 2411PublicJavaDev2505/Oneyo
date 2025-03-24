@@ -9,10 +9,11 @@ public class MySourceList {
 	private Date dueDate;
 	private Date storageDate;
 	private String storageCode;
+	private String sourceName;
 	
 	
 	public MySourceList(String memberId, int sourcesNo, String sourceCount, Date dueDate, Date storageDate,
-			String storageCode) {
+			String storageCode, String sourceName) {
 		super();
 		this.memberId = memberId;
 		this.sourcesNo = sourcesNo;
@@ -20,9 +21,16 @@ public class MySourceList {
 		this.dueDate = dueDate;
 		this.storageDate = storageDate;
 		this.storageCode = storageCode;
+		this.sourceName = sourceName;
 	}
 
 	
+	
+	
+	public String getSourceName() {
+		return sourceName;
+	}
+
 	public String getMemberId() {
 		return memberId;
 	}
@@ -47,9 +55,13 @@ public class MySourceList {
 		return storageCode;
 	}
 
+
 	@Override
 	public String toString() {
 		return "MySourceList [memberId=" + memberId + ", sourcesNo=" + sourcesNo + ", sourceCount=" + sourceCount
-				+ ", dueDate=" + dueDate + ", storageDate=" + storageDate + ", storageCode=" + storageCode + "]";
-	}	
+				+ ", dueDate=" + dueDate + ", storageDate=" + storageDate + ", storageCode=" + storageCode
+				+ ", sourceName=" + sourceName + "]";
+	}
+
+
 }
