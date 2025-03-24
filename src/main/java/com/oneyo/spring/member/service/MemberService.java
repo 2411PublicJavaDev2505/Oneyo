@@ -27,7 +27,6 @@ public interface MemberService {
 	
 	boolean isDuplicateMemberId(String memberId);
 	
-	boolean isDuplicateMemberNickname(String memberNickname);
 	
 	
 	
