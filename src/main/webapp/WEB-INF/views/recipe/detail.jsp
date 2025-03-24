@@ -12,50 +12,6 @@
 	</head>
 	<body>
 	  
-	   <jsp:include page ="/WEB-INF/views/include/header.jsp"></jsp:include> 
-	    <main>
-	        <div class="recipe-card">
-	            <button class="edit-btn">.</button>
-	            <div class="image-placeholder">image</div>
-	            <div class="recipe-info">
-	                <div class="text1">.</div>
-	                <div class="text2">.</div>
-	                <div class="text2"></div>
-	            </div>
-	        </div>
-	    </main>
-	       
-	       <div class="recipe-card">
-	            <button class="edit-btn">수정</button>
-	            <div class="image-placeholder">image</div>
-	            <div class="recipe-info">
-					<div class="text1">${recipe.recipeTitle }</div>
-	                <div class="text2">${recipe.memberNickName }</div>
-	                <div class="text2">조회수 : ${recipe.viewCount }</div>       
-	           </div>
-	        </div>
-	        <div class="ingredient-container">
-	            <div class="ingredient-group">
-	                <h2>재료</h2>
-	                <c:forEach items="${rList }" var="recipe">
-	                <div class="ingredient-box">
-	                    <span class="ingredient_name"></span>
-	                	<span class="ingredient-amount"></span>
-	                </div>
-	                </c:forEach>
-	            </div>
-	        </div>
-	        <div class="recipe">   
-	            <div class="ingredient-group">
-	            	<h2>레시피 상세 내용</h2>
-	                <c:forEach items="${rList }" var="recipe">
-	                <div class="ingredient-box">
-	                	<p>${recipe.stepNo }</p>
-	                    
-	                </div>
-	                </c:forEach>
-	            </div>
-	        </div>
-	        <jsp:include page = "/WEB-INF/views/include/footer.jsp"></jsp:include> 	
+	   
 	</body>
 </html>

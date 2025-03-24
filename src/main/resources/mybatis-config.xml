@@ -11,9 +11,11 @@
 		<typeAlias type="com.oneyo.spring.board.domain.BoardVO" alias="Board"/>
 		<typeAlias type="com.oneyo.spring.member.domain.MemberVO" alias="Member"/>
 		<typeAlias type="com.oneyo.spring.board.domain.ReplyVO" alias="Reply"/>
-		 <typeAlias type="com.oneyo.spring.myref.controller.dto.MySourceList" alias="sourceList"/>
-		 <typeAlias type="com.oneyo.spring.myref.controller.dto.CategoryList" alias="category"/>
+		<typeAlias type="com.oneyo.spring.myref.controller.dto.MySourceList" alias="sourceList"/>
+		<typeAlias type="com.oneyo.spring.myref.controller.dto.CategoryList" alias="category"/>
+		<typeAlias type="com.oneyo.spring.recipe.domain.RecipeVO" alias="Recipe"/>
 	</typeAliases>
+	
 	<mappers>
 		<mapper resource="mappers/board-mapper.xml" />
 		<mapper resource="mappers/b-file-mapper.xml" />

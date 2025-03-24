@@ -1,6 +1,7 @@
 package com.oneyo.spring.recipe.controller.dto;
 
-public class RecipeInsertRequest {
+public class RecipeUpdateRequest {
+	private int recipeNo;
 	private String recipeTitle;
 	private String recipeContent;
 	private String recipeWriter;
@@ -8,6 +9,12 @@ public class RecipeInsertRequest {
 	private String recipeFileRename;
 	private String recipeFilepath;
 	
+	public int getRecipeNo() {
+		return recipeNo;
+	}
+	public void setRecipeNo(int recipeNo) {
+		this.recipeNo = recipeNo;
+	}
 	public String getRecipeTitle() {
 		return recipeTitle;
 	}
@@ -47,11 +54,8 @@ public class RecipeInsertRequest {
 	
 	@Override
 	public String toString() {
-		return "RecipeInsertRequest [recipeTitle=" + recipeTitle + ", recipeContent=" + recipeContent
-				+ ", recipeWriter=" + recipeWriter + ", recipeFilename=" + recipeFilename + ", recipeFileRename="
-				+ recipeFileRename + ", recipeFilepath=" + recipeFilepath + "]";
+		return "RecipeModifyRequest [recipeNo=" + recipeNo + ", recipeTitle=" + recipeTitle + ", recipeContent="
+				+ recipeContent + ", recipeWriter=" + recipeWriter + ", recipeFilename=" + recipeFilename
+				+ ", recipeFileRename=" + recipeFileRename + ", recipeFilepath=" + recipeFilepath + "]";
 	}
-	
-	
-	
 }

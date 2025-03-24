@@ -17,24 +17,8 @@ public class RecipeVO {
 	private Date recipeDate;
 	private Date updateDate;
 	private String memberNickName;
-	private String sourceName;
-	private int stepNo;
-	private String stepContent;
-	private String stepAmount;
-	private int fileNo;
-	private int stepFileNo;
-	
-	private List<Step> steps;
 	
 	public RecipeVO() {}
-	
-	public List<Step> getSteps() {
-		return steps;
-	}
-
-	public void setSteps(List<Step> steps) {
-		this.steps = steps;
-	}
 
 	public String getMemberId() {
 		return memberId;
@@ -116,61 +100,12 @@ public class RecipeVO {
 		this.memberNickName = memberNickName;
 	}
 
-	public String getSourceName() {
-		return sourceName;
-	}
-
-	public void setSourceName(String sourceName) {
-		this.sourceName = sourceName;
-	}
-
-	public int getStepNo() {
-		return stepNo;
-	}
-
-	public void setStepNo(int stepNo) {
-		this.stepNo = stepNo;
-	}
-
-	public String getStepContent() {
-		return stepContent;
-	}
-
-	public void setStepContent(String stepContent) {
-		this.stepContent = stepContent;
-	}
-
-	public String getStepAmount() {
-		return stepAmount;
-	}
-
-	public void setStepAmount(String stepAmount) {
-		this.stepAmount = stepAmount;
-	}
-
-	public int getFileNo() {
-		return fileNo;
-	}
-
-	public void setFileNo(int fileNo) {
-		this.fileNo = fileNo;
-	}
-
-	public int getStepFileNo() {
-		return stepFileNo;
-	}
-
-	public void setStepFileNo(int stepFileNo) {
-		this.stepFileNo = stepFileNo;
-	}
 
 	@Override
 	public String toString() {
 		return "RecipeVO [memberId=" + memberId + ", recipeTitle=" + recipeTitle + ", recipeContentNo="
 				+ recipeContentNo + ", recipeNo=" + recipeNo + ", recipeSourcesNo=" + recipeSourcesNo + ", viewCount="
 				+ viewCount + ", delYn=" + delYn + ", recipeDate=" + recipeDate + ", updateDate=" + updateDate
-				+ ", memberNickName=" + memberNickName + ", sourceName=" + sourceName + ", stepNo=" + stepNo
-				+ ", stepContent=" + stepContent + ", stepAmount=" + stepAmount + ", fileNo=" + fileNo + ", stepFileNo="
-				+ stepFileNo + "]";
+				+ ", memberNickName=" + memberNickName + "]";
 	}
 }
