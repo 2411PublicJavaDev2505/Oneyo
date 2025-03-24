@@ -13,7 +13,7 @@ public class CategoryList {
 		this.secondCategory = secondCategory;
 		this.thirdCategory = thirdCategory;
 	}
-	
+	//제대로 해라잉
 	public String getCategoryNo() {
 		return categoryNo;
 	}
