@@ -20,7 +20,7 @@
         <nav class="myInfomation">
           <div class="myPicture"></div>
             <div class="detailInformation">
-              <div>이름 : 일용자</div>
+              <div>이름 : </div>
               <div>닉네임 : 마셰코</div>
               <button class="deleteMember"><a href="/"></a></button>
               <button class="updateMember"><a href="/"></a></button>
@@ -43,7 +43,7 @@
               	<c:forEach items= "${iList }" var="iceSource">
                 <button><a href="/">${iceSource.sourceName }</a></button>
                 </c:forEach>
-              	<button><a href="/">....</a></button>
+              	<button><a href="/mypage/myIceStorage">....</a></button>
                 <button><a href="/mypage/myIceStorage">등록/수정</a></button>
                 </div>
               </div>
@@ -56,7 +56,7 @@
               	<c:forEach items= "${cList }" var="coolSource">
                 <button><a href="/">${coolSource.sourceName }</a></button>
                 </c:forEach>
-                <button><a href="/">....</a></button>
+                <button><a href="/mypage/myCoolStorage">....</a></button>
                 <button><a href="/mypage/myCoolStorage">등록/수정</a></button>
                 </div>
                 </div>

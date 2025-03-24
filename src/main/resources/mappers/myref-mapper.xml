@@ -44,4 +44,8 @@
   		</where>
 </select>
 
+<select id="getTotalCount" resultType="_int">
+	SELECT COUNT(*) FROM REFRIGERATOR
+</select>
+
 </mapper>
