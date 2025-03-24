@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>레시피 페이지-상세</title>
+		<title>레시피 페이지-등록</title>
 		<link rel="stylesheet" href="../resources/css/recipe/insert.css">
 	</head>
 	<body>
@@ -12,13 +12,13 @@
 	   <jsp:include page ="/WEB-INF/views/include/header.jsp"></jsp:include> 
 	    <main>
 	        <div class="recipe-card">
-	            <button class="edit-btn">수정</button>
+	            <button class="edit-btn"><a href="/recipe/update">수정</a></button>
 	            <div class="image-placeholder">
 	            	<image src="" alt="레시피 사진"/>
 	            </div>
 	            <div class="recipe-info">
-	                <div class="text1">레시피 명</div>
-	                <div class="text2">작성자</div>
+	                <div class="text1">레시피 명: {recipeTitle}</div>
+	                <div class="text2">작성자: {recipeWriter}</div>
 	                <div class="text2">조회수:0</div>
 	            </div>
 	        </div>
@@ -78,7 +78,9 @@
 	                <textarea class="recipe-content" placeholder="레시피 내용을 단계별로 입력해주세요">
 	                </textarea>
 	            </div>
-	            <div class="recipe-image">image</div>
+	            <div class="recipe-image">
+	            	<img src="" alt="레시피 사진"/>
+	            </div>
 	        </div>
 	        <jsp:include page = "/WEB-INF/views/include/footer.jsp"></jsp:include> 	
 	</body>

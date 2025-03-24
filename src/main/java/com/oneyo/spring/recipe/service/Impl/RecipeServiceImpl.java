@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.oneyo.spring.recipe.controller.dto.RecipeInsertRequest;
+import com.oneyo.spring.recipe.controller.dto.RecipeUpdateRequest;
 import com.oneyo.spring.recipe.domain.RecipeVO;
 import com.oneyo.spring.recipe.service.RecipeService;
 import com.oneyo.spring.recipe.store.RecipeStore;
@@ -61,4 +62,8 @@ public class RecipeServiceImpl implements RecipeService {
 		List<RecipeVO> selectPersonalList = rStore.selectPersonalList(memberId, currentPage);
 		return selectPersonalList;
 	}
+
+
+
+
 }
