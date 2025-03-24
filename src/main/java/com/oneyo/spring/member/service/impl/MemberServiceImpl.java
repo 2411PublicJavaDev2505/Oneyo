@@ -58,6 +58,26 @@ public class MemberServiceImpl implements MemberService{
 		return result;
 	}
 
+	@Override
+	public String findMemberId(FindIdRequest request) {
+		String result =mStore.findMemberId(session, request);
+		return result;
+	}
+
+	@Override
+	public boolean isDuplicateMemberId(String memberId) {
+		MemberVO member = mStore.isDuplicateMemberId(session,memberId);
+		return member != null;
+	}
+
+	@Override
+	public boolean isDuplicateMemberNickname(String memberNickname) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	
+
 
 
 	

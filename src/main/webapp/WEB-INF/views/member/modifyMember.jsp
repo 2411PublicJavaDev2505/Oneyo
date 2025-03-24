@@ -23,7 +23,7 @@
                             <div class="detailinformation">
                             <h4>이름 : ${member.memberName}</h4>
                             <h4>닉네임 : ${member.memberNickname}</h4>
-                            <button class="deleteMember" onclick="location.href='/member/delete'">회원탈퇴</button>
+                            <button class="deleteMember" onclick="location.href='/member/delete?memberId=${member.memberId }'"> 회원탈퇴</a></button>
                             </div>
                         </nav>
                     </section>
@@ -35,7 +35,7 @@
                         <h3>회원정보</h3>
                         <label>닉네임</label>
                         <input type="text" placeholder="닉네임 입력" class="nickname-input" name="memberNickname"> 
-                        <button class="check-button">중복확인</button>
+                        <button class="check-button" onclick="location.href='/member/checkDuplicateNickname'">중복확인</button>
                         <label>이름</label>
                         <input type="text" placeholder="이름 입력" name="memberName">
                         <label>휴대폰 번호</label>

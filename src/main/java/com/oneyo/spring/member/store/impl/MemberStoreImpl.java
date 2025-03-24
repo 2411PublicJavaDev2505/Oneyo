@@ -50,6 +50,18 @@ public class MemberStoreImpl implements MemberStore{
 		return result;
 	}
 
+	@Override
+	public String findMemberId(SqlSession session, FindIdRequest request) {
+		String result = session.selectOne("MemberMapper.findIdbyName", request);
+		return result;
+	}
+
+	@Override
+	public MemberVO isDuplicateMemberId(SqlSession session,String memberId) {
+		MemberVO result = session.selectOne("MemberMapper. duplicateMemberId",memberId);
+		return result;
+	}
+
 	
 
 

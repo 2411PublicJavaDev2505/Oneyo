@@ -23,6 +23,10 @@ public interface MemberStore {
 
 	int modifyPassword(SqlSession session, ModifyPasswordRequest password);
 
+	String findMemberId(SqlSession session, FindIdRequest request);
+
+	MemberVO isDuplicateMemberId(SqlSession session,String memberId);
+
 	
 
 

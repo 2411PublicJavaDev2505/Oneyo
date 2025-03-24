@@ -17,8 +17,8 @@
 	        <div class="detailInformation">
 	            <div>이름 : 일용자</div>
 	            <div>닉네임 : 마셰코</div>
-	            <button class="deleteMember"><a href="/"></a></button>
-	            <button class="updateMember"><a href="/"></a></button>
+	<button class="deleteMember" onclick="location.href='member/delete?memberId=${member.memberId }'">회원탈퇴</button>
+              <button class="updateMember"  onclick="location.href='member/modify'">회원정보수정</button>
 	        </div>
 	    </nav>
 	    </section>

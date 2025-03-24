@@ -8,10 +8,10 @@
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
 	</settings>
 	<typeAliases>
-
 		<typeAlias type="com.oneyo.spring.board.domain.BoardVO" alias="Board"/>
 		<typeAlias type="com.oneyo.spring.member.domain.MemberVO" alias="Member"/>
-		 <typeAlias type="com.oneyo.spring.myref.controller.dto.MySourceList" alias="sourceList"/>
+		<typeAlias type="com.oneyo.spring.mypage.domain.MySourceList" alias="MySourceList"/>
+	
 	</typeAliases>
 
 	<mappers>
@@ -19,8 +19,8 @@
 		<mapper resource="mappers/board-mapper.xml" />
 		<mapper resource="mappers/member-mapper.xml" />
 		<mapper resource="mappers/mypage-mapper.xml" />
-		<mapper resource="mappers/myref-mapper.xml" />
-		<mapper resource="mappers/recipe-mapper.xml" />
+<!-- 		<mapper resource="mappers/myref-mapper.xml" />
+		<mapper resource="mappers/recipe-mapper.xml" /> -->
 	</mappers> 
 
 </configuration>

@@ -6,13 +6,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.oneyo.spring.member.controller.dto.FindIdRequest;
 import com.oneyo.spring.member.controller.dto.JoinRequest;
 import com.oneyo.spring.member.controller.dto.LoginRequest;
 import com.oneyo.spring.member.controller.dto.ModifyPasswordRequest;
@@ -83,23 +86,20 @@ public class MemberController {
 	
 	//계정삭제
 	@GetMapping("/member/delete")
-	public String memberDelete(HttpSession session, Model model) {
+	public String memberDelete(Model model
+			,@RequestParam("memberId") String memberId) {
 		try {
-			String memberId = (String) session.getAttribute("memberId");
-			System.out.println(memberId);
 			int result = mService.deleteMember(memberId);
-			
-			if(result>0) {
-				//로그아웃
+			if(result > 0) {
 				return "redirect:/";
 			}else {
-				model.addAttribute("errorMsg","존재하지 않는 정보입니다");
+				model.addAttribute("errorMessage","데이터 삭제에 실패하였습니다.");
 				return "common/error";
 			}
-			
 		} catch (Exception e) {
-			model.addAttribute("errorMsg",e.getMessage());
-			return "error";
+			e.printStackTrace();
+			model.addAttribute("errorMessage",e.getMessage());
+			return "common/error";
 		}
 	}
 	//회원정보수정
@@ -178,29 +178,41 @@ public class MemberController {
 		}
 	}
 	
-//	@GetMapping("/member/findid")
-//	public String memberfindidForm() {
-//		return "member/findId";
-//	}
-//	@PostMapping("/member/findid")
-//	public String memberfindid(
-//			@ModelAttribute FindIdRequest memberId,
-//			HttpSession session,
-//			Model model) {
-//		try {
-//			MemberVO memberId=mService.findid(memberId);
-//			 if (memberId != null) {
-//		            model.addAttribute("memberId", memberId);
-//		            return "member/findIdResult"; // 결과 페이지로 이동
-//		        } else {
-//		            model.addAttribute("errorMsg", "존재하지 않는 정보입니다.");
-//		            return "common/error";
-//		        }
-//		    } catch (Exception e) {
-//		        model.addAttribute("errorMsg", "예기치 않은 오류가 발생했습니다.");
-//		        return "common/error";
-//		    }
-//	}
+	@GetMapping("/member/findid")
+	public String memberFindIdForm() {
+	    return "member/findId";  // 아이디 찾기 폼 페이지로 이동
+	}
 
+	@PostMapping("/member/findid")
+	public String memberFindId(
+	        @ModelAttribute FindIdRequest request, Model model) {
+	    try {
+	        String memberId = mService.findMemberId(request);
+	        
+	        if (memberId != null) {
+	            model.addAttribute("memberId", memberId);
+	            return "member/findIdResult"; // 결과 페이지로 이동
+	        } else {
+	            model.addAttribute("errorMsg", "존재하지 않는 정보입니다.");
+	            return "common/error";
+	        }
+	    } catch (Exception e) {
+	        model.addAttribute("errorMsg", "예기치 않은 오류가 발생했습니다.");
+	        return "common/error";
+	    }
+	}
+
+//	@GetMapping("/member/checkDuplicateId")
+//    public ResponseEntity<Boolean> checkDuplicateId(@RequestParam String memberId) {
+//        boolean isDuplicate = mService.isDuplicateMemberId(memberId);
+//        return ResponseEntity.ok(isDuplicate);
+//    }
+	
+	
+//	@GetMapping("/member/checkDuplicateNickname")
+//    public ResponseEntity<Boolean> checkDuplicateNickName(@RequestParam String memberNickname) {
+//        boolean isDuplicate = mService.isDuplicateMemberNickname(memberNickname);
+//        return ResponseEntity.ok(isDuplicate);
+//    }
 
 }
