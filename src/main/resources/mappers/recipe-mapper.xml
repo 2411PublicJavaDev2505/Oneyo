@@ -14,6 +14,7 @@
 		<result property="updateDate" 		column="UPDATE_DATE"/>
 		<result property="delYn" 			column="DEL_YN"/>
 	</resultMap>
+	
 	<select id="selectListAll" resultType="Recipe">
 		SELECT * FROM RECIPE WHERE RECIPE_YN = 'Y' ORDER BY RECIPE_NO DESC
 	</select>

@@ -159,7 +159,7 @@ public class RecipeController {
 			return "common/error";
 		}
 	}
-	
+	// 삭제 
 	@GetMapping("/delete")
 	public String deleteRecipe(@PathVariable int recipeNo
 			, Model model) {

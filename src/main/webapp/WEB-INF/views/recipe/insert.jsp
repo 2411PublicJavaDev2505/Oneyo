@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>레시피 페이지-상세</title>
+		<title>레시피 페이지-등록</title>
 		<link rel="stylesheet" href="../resources/css/recipe/insert.css">
 	</head>
 	<body>

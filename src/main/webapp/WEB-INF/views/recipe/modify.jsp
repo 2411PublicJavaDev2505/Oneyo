@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>레시피 페이지</title>
+		<title>레시피 페이지 - 수정 및 삭제</title>
 		<link rel="stylesheet" href="../ONEYO/css/modify.css">
 	    <link rel="stylesheet" href="../ONEYO/css/header.css">
 	    <link rel="stylesheet" href="../ONEYO/css/footer.css">

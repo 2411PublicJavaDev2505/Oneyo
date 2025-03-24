@@ -19,6 +19,6 @@
 		, WHERE RECIPE_CONTENT_NO = #{recipeContentNo} 
 	</update>
 	<delete id="deleteRecipeContent">
-		DELETE
+		DELETE RECIPE_CONTENT
 	</delete>
 </mapper>
