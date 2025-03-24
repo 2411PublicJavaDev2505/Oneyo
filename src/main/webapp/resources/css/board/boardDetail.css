@@ -1,12 +1,8 @@
 @charset "UTF-8";
-body{
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-}
-main{
-    width: 1400px;
+
+body main{
+    max-width: 1400px;
+    margin: 100px auto;
 }
 .title{
     color: #777134;
@@ -27,7 +23,7 @@ main{
 }
 .board-info span{
     padding: 0 10px;
-    border-right: 1px solid ;
+    border-right: 1px solid gray;
 }
     .board-info span:last-child{
         border-right: none;
@@ -44,7 +40,7 @@ main{
     justify-content: flex-end;
 	padding: 15px 15px 0px;
 }
-.modify-button a{
+.modify-button button{
     margin: 10px;
     padding: 8px 16px;
     background-color: #b2ac67;
@@ -72,17 +68,25 @@ main{
 }
 .reply-info{
     padding: 0 0 5px;
+    display: flex;
+    align-items: center;
 }
     .reply-nickname{
         font-weight: bold;
+		padding-right: 10px;
     }
     .reply-date{
         color: gray;
+        padding-right: 10px;
     }
-    .reply-del{
+    .reply-del {
         color: #777134;
         font-weight: bold;
         text-decoration: none;
+	    background: none;
+	    border: none;    
+		cursor: pointer;
+	    padding: 0;	        
     }
 .reply-insert{
     display: flex;
@@ -95,7 +99,7 @@ main{
     border: 1px solid #b2ac67;
     margin: 15px 20px;
 }
-.reply-insert a{
+.reply-insert button{
     display: flex;
     align-items: center;
     margin: 10px;

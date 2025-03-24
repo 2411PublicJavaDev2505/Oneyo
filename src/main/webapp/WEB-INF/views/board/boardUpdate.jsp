@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>게시판 등록</title>
+	<title>게시판 수정</title>
     <link rel="stylesheet" href="../resources/css/board/boardInsert.css">
 </head>
 <body>
@@ -16,49 +16,51 @@
         <section class="title">
             <h3 >게시글 등록</h3>
         </section>
-        <form action="/board/insert" method="post" enctype="multipart/form-data">
+        <form action="/board/update" method="post" enctype="multipart/form-data">
+        	<input type="hidden" name="boardNo" value="${board.boardNo }">
             <div class="form-group">
                 <label>작성자</label>
                 <input class="writer" type="text" value="${sessionScope.memberNickname }"  readonly>
             </div>
             <div class="form-group">
                 <label>게시글 제목</label>
-                <input class="content" type="text" name="boardTitle" placeholder="제목을 입력해주세요">    
+                <input class="content" type="text" name="boardTitle" value="${board.boardTitle }">    
             </div>
             <div class="form-group">
                 <label>내용</label>
-                <textarea class="content" name="boardContent"  placeholder="내용을 입력해주세요" rows="5"></textarea>    
+                <textarea class="content" name="boardContent" " rows="5">${board.boardContent }</textarea>    
                 <span>공백포함 최대 1,330자까지 입력가능합니다.</span>
             </div>
             <div class="file-group">
                 <label>첨부파일</label>
                 <div class="file-upload">
-                    <input class="select" type="file" name="multiFile" id="fileup" multiple="multiple"/>                
+                    <input class="content" type="text" value="10MB 미만의 파일을 업로드 해주세요" readonly>
                     <button class="cancel">Ｘ</button>
+                    <button class="select">파일 선택</button>                
                 </div>
-<!--                  <div class="file-upload">
+                <div class="file-upload">
                     <label></label>
-                    <input class="content" type="file" value="10MB 미만의 파일을 업로드 해주세요" readonly>
+                    <input class="content" type="text" value="10MB 미만의 파일을 업로드 해주세요" readonly>
                     <button class="cancel">Ｘ</button>
                     <button class="select">파일 선택</button>
                 </div>
                 <div class="file-upload">
                     <label></label>
-                    <input class="content" type="file"  value="10MB 미만의 파일을 업로드 해주세요" readonly>
+                    <input class="content" type="text" value="10MB 미만의 파일을 업로드 해주세요" readonly>
                     <button class="cancel">Ｘ</button>
                     <button class="select">파일 선택</button>
                 </div>
                 <div class="file-upload">
                     <label></label>
-                    <input class="content" type="file"  value="10MB 미만의 파일을 업로드 해주세요" readonly>
+                    <input class="content" type="text" value="10MB 미만의 파일을 업로드 해주세요" readonly>
                     <button class="cancel">Ｘ</button>
                     <button class="select">파일 선택</button>
-                </div>--> 
+                </div>
         
                 <div class="buttons">
-                    <button class="insert">등록</button>
-                    <button class="not-insert"><a href="/board/list">취소</a></button>
-                </div>  
+                    <button class="insert">수정완료</button>
+                    <button class="not-insert"><a href="/board/detail/${board.boardNo }">취소</a></button>
+                </div>
             </div>            
         </form>
         
