@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>레시피 페이지-상세</title>
+		<title>레시피 페이지-등록</title>
 		<link rel="stylesheet" href="../resources/css/recipe/insert.css">
 	</head>
 	<body>
@@ -12,7 +12,7 @@
 	   <jsp:include page ="/WEB-INF/views/include/header.jsp"></jsp:include> 
 	    <main>
 	        <div class="recipe-card">
-	            <button class="edit-btn">수정</button>
+	            <button class="edit-btn">등록</button>
 	            <div class="image-placeholder">
 	            	<image src="" alt="레시피 사진"/>
 	            </div>
