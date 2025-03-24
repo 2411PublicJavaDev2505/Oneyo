@@ -14,7 +14,7 @@
             <form action="/member/join" method="post">
                 <h2 >기본정보</h2>
                 <label>아이디 (이메일)</label>
-                <input type="email" placeholder="아이디(이메일) 입력" class="id-input" name="memberId" > <button class="check-button">중복확인</button>
+                <input type="email" placeholder="아이디(이메일) 입력" class="id-input" name="memberId" > <button class="check-button" onclick="location.href='/member/checkDuplicateId'">중복확인</button>
                 <label>닉네임</label>
                 <input type="text" placeholder="닉네임 입력" class="nickname-input" name="memberNickname" > <button class="check-button">중복확인</button>
                 <label>비밀번호</label>
@@ -34,7 +34,7 @@
     </main>
     <jsp:include page = "/WEB-INF/views/include/footer.jsp"></jsp:include> 	
 	</body>
-	<script>
+	<!-- <script>
 		document.addEventListener("DOMContentLoaded", function(){
 	        var pwTag = document.querySelector("#MEMBER_PW");
 	        var pwReTag = document.querySelector("#MEMBER_PW_RE");
@@ -50,5 +50,5 @@
 	        });
 		});
 		
-	</script>
+	</script> -->
 </html>

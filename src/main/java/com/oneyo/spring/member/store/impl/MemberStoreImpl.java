@@ -49,8 +49,4 @@ public class MemberStoreImpl implements MemberStore{
 		return result;
 	}
 
-	
-
-
-
 }

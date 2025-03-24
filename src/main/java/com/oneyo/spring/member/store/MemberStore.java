@@ -22,7 +22,4 @@ public interface MemberStore {
 
 	int modifyPassword(SqlSession session, ModifyPasswordRequest password);
 
-	
-
-
 }
