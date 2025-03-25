@@ -14,8 +14,8 @@
 		<typeAlias type="com.oneyo.spring.myref.controller.dto.MySourceList" alias="sourceList"/>
 		<typeAlias type="com.oneyo.spring.myref.controller.dto.CategoryList" alias="category"/>
 		<typeAlias type="com.oneyo.spring.recipe.domain.RecipeVO" alias="Recipe"/>
+		<typeAlias type="com.oneyo.spring.sources.domin.SourcesVO" alias="source"/>
 	</typeAliases>
-	
 	<mappers>
 		<mapper resource="mappers/board-mapper.xml" />
 		<mapper resource="mappers/b-file-mapper.xml" />
@@ -25,6 +25,7 @@
 		<mapper resource="mappers/myref-mapper.xml" />
 		<mapper resource="mappers/recipe-mapper.xml" />
 		<mapper resource="mappers/category-mapper.xml" />
+		<mapper resource="mappers/source-mapper.xml" />
 	</mappers> 
 
 </configuration>
