@@ -21,7 +21,7 @@
             </div>
             <section class="recipe-list">
 	            <c:forEach items="${rList }" var="recipe">
-	                <a href="/recipe/detail?recipeNo=${recipe.recipeNo }" class="recipe">
+	                <a href="/recipe/detail/${recipe.recipeNo }" class="recipe">
 	                    <div class="recipe-style">
 	                        <img src="../resources/img/김치찌개냠냠굿.jpg" alt="요리 썸네일">
 	                        <section class="recipe-inf">

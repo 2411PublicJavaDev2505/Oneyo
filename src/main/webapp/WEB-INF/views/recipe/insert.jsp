@@ -48,29 +48,6 @@
 	                    <input type="text" placeholder="수량">
 	                </div>
 	            </div>
-	            <div class="ingredient-group">
-	                <h2>양념</h2>
-	                <div class="ingredient-box">
-	                    <input type="text" placeholder="재료명">
-	                    <input type="text" placeholder="수량">
-	                </div>
-	                <div class="ingredient-box">
-	                    <input type="text" placeholder="재료명">
-	                    <input type="text" placeholder="수량">
-	                </div>
-	                <div class="ingredient-box">
-	                    <input type="text" placeholder="재료명">
-	                    <input type="text" placeholder="수량">
-	                </div>
-	                <div class="ingredient-box">
-	                    <input type="text" placeholder="재료명">
-	                    <input type="text" placeholder="수량">
-	                </div>
-	                <div class="ingredient-box">
-	                    <input type="text" placeholder="재료명">
-	                    <input type="text" placeholder="수량">
-	                </div>
-	            </div>
 	        </div>
 	        <div class="recipe">
 	            <div class="recipe-number"></div>

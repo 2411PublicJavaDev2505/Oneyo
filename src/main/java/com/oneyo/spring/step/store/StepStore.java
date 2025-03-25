@@ -1,5 +1,13 @@
 package com.oneyo.spring.step.store;
 
-public class StepStore {
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+
+import com.oneyo.spring.step.domain.StepVO;
+
+public interface StepStore {
+
+	List<StepVO> getStepsByNo(SqlSession session, int recipeNo);
 
 }
