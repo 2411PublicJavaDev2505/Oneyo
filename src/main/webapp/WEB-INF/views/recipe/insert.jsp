@@ -12,7 +12,7 @@
 	   <jsp:include page ="/WEB-INF/views/include/header.jsp"></jsp:include> 
 	    <main>
 	        <div class="recipe-card">
-	            <button class="edit-btn"><a href="/recipe/update">수정</a></button>
+	            <button class="edit-btn">등록</button>
 	            <div class="image-placeholder">
 	            	<image src="" alt="레시피 사진"/>
 	            </div>

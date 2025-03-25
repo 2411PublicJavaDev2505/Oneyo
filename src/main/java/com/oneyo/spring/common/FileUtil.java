@@ -42,4 +42,51 @@ public class FileUtil {
 		result.put(prefix+"FilePath", boardFilePath);
 		return result;
 	}
+	
+	public Map<String,String> saveFile1(MultipartFile uploadFile, HttpSession session, String type) throws IllegalStateException, IOException {
+		Map<String, String> result = new HashMap<String, String>();
+		String folderName = type.equals("step") ? "nUploadFiles":"rUploadFiles";
+		String prefix = type.toLowerCase().substring(0,1);
+		String stepFilename = uploadFile.getOriginalFilename();
+		String stepFileRename = null;
+		String stepFilepath = null;
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+		String transStr = sdf.format(new Date(System.currentTimeMillis()));
+		String ext = stepFilename.substring(stepFilename.lastIndexOf(".")+1);
+		
+		stepFileRename = transStr + "." + ext;
+		stepFilepath = "/resources/"+folderName+"/"+stepFileRename;
+		String folderPath = session.getServletContext().getRealPath("/resources/"+folderName);
+		String savePath = folderPath + "\\" + stepFileRename;
+		uploadFile.transferTo(new File(savePath));
+		result.put(prefix+"Filename", stepFilename);
+		result.put(prefix+"FileRename", stepFileRename);
+		result.put(prefix+"Filepath", stepFilepath);
+		return result;
+	}
+	
+	public Map<String,String> saveFile2(MultipartFile uploadFile, HttpSession session, String type) throws IllegalStateException, IOException {
+		Map<String, String> result = new HashMap<String, String>();
+		String folderName = type.equals("sources") ? "nUploadFiles":"rUploadFiles";
+		String prefix = type.toLowerCase().substring(0,1);
+		String sourcesFilename = uploadFile.getOriginalFilename();
+		String sourcesFileRename = null;
+		String sourcesFilepath = null;
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+		String transStr = sdf.format(new Date(System.currentTimeMillis()));
+		String ext = sourcesFilename.substring(sourcesFilename.lastIndexOf(".")+1);
+		
+		sourcesFileRename = transStr + "." + ext;
+		sourcesFilepath = "/resources/"+folderName+"/"+sourcesFileRename;
+		String folderPath = session.getServletContext().getRealPath("/resources/"+folderName);
+		String savePath = folderPath + "\\" + sourcesFileRename;
+		uploadFile.transferTo(new File(savePath));
+		result.put(prefix+"Filename", sourcesFilename);
+		result.put(prefix+"FileRename", sourcesFileRename);
+		result.put(prefix+"Filepath", sourcesFilepath);
+		return result;
+	}
+	
 }

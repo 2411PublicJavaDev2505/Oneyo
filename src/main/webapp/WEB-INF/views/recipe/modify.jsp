@@ -6,8 +6,6 @@
 		<meta charset="UTF-8">
 		<title>레시피 페이지 - 수정 및 삭제</title>
 		<link rel="stylesheet" href="../ONEYO/css/modify.css">
-	    <link rel="stylesheet" href="../ONEYO/css/header.css">
-	    <link rel="stylesheet" href="../ONEYO/css/footer.css">
 	</head>
 	<body>
 	
@@ -32,39 +30,39 @@
 	                <input type="text" placeholder="대분류">
 	                <input type="text" placeholder="중분류">
 	                <input type="text" placeholder="소분류">
-	                <input type="text" placeholder="재료명">
-	                <input type="text" placeholder="수량">
+	                <input type="text" placeholder="재료명" value="${recipe.sourceName1 }">
+	               
 	            </div>
 	            <div class="ingredient-box1">
 	                <input type="text" placeholder="대분류">
 	                <input type="text" placeholder="중분류">
 	                <input type="text" placeholder="소분류">
-	                <input type="text" placeholder="재료명">
-	                <input type="text" placeholder="수량">
+	                <input type="text" placeholder="재료명" value="${recipe.sourceName2 }">
+	               
 	            </div>
 	            <div class="ingredient-box1">
 	                <input type="text" placeholder="대분류">
 	                <input type="text" placeholder="중분류">
 	                <input type="text" placeholder="소분류">
-	                <input type="text" placeholder="재료명">
-	                <input type="text" placeholder="수량">
+	                <input type="text" placeholder="재료명" value="${recipe.sourceName3 }">
+	                
 	            </div>
 	            <div class="ingredient-box1">
 	                <input type="text" placeholder="대분류">
 	                <input type="text" placeholder="중분류">
 	                <input type="text" placeholder="소분류">
-	                <input type="text" placeholder="재료명">
-	                <input type="text" placeholder="수량">
+	                <input type="text" placeholder="재료명" value="${recipe.sourceName4 }">
+	                
 	            </div>
 	            <div class="ingredient-box1">
 	                <input type="text" placeholder="대분류">
 	                <input type="text" placeholder="중분류">
 	                <input type="text" placeholder="소분류">
-	                <input type="text" placeholder="재료명">
-	                <input type="text" placeholder="수량">
+	                <input type="text" placeholder="재료명" value="${recipe.sourceName5 }">
+	             
 	            </div>
 	        </div>
-	        <div class="ingredient-group">
+	        <!-- <div class="ingredient-group">
 	            <h2>양념</h2>
 	            <div class="ingredient-box1">
 	                <input type="text" placeholder="대분류">
@@ -101,23 +99,40 @@
 	                <input type="text" placeholder="재료명">
 	                <input type="text" placeholder="수량">
 	            </div>
-	        </div>
+	        </div> -->
 	    </div>
-	    <div class="recipe1">
-	        <div class="recipe-number1">1</div>
-	        <div class="recipe-info1">
-	            <h2>레시피 상세 내용</h2>
+	    <div class="recipe">   
+	            
+	            <div class="ingredient-group">
+	            	<h2>레시피 상세 내용</h2>
+	            	
+	                <div class="ingredient-box">
+	                	첫번째 :
+	                    <input type="text" placeholder="상세내용을 입력해주세요" value="${recipe.stepContent1 }">
+	                    <input type="text" placeholder="수량을 입력해주세요" value="${recipe.stepAmount1 }">
+	                </div>
+	                <div class="ingredient-box">
+	                	두번째 :
+	                    <input type="text" placeholder="상세내용을 입력해주세요" value="${recipe.stepContent2 }">
+	                    <input type="text" placeholder="수량을 입력해주세요" value="${recipe.stepAmount2 }">
+	                </div>
+	                <div class="ingredient-box">
+	                	세번째 :
+	                    <input type="text" placeholder="상세내용을 입력해주세요" value="${recipe.stepContent3 }">
+	                    <input type="text" placeholder="수량을 입력해주세요" value="${recipe.stepAmount3 }">
+	                </div>
+	                <div class="ingredient-box">
+	                	네번째 :
+	                    <input type="text" placeholder="상세내용을 입력해주세요" value="${recipe.stepContent4 }">
+	                    <input type="text" placeholder="수량을 입력해주세요" value="${recipe.stepAmount4 }">
+	                </div>
+	                <div class="ingredient-box">
+	                	다섯번째 :
+	                    <input type="text" placeholder="상세내용을 입력해주세요" value="${recipe.stepContent5 }">
+	                    <input type="text" placeholder="수량을 입력해주세요" value="${recipe.stepAmount5 }">
+	                </div>
+	            </div>
 	        </div>
-	        <div class="recipe-image1">image</div>
-	    </div>
-	
-	    <div class="recipe1">
-	        <div class="recipe-number1">2</div>
-	        <div class="recipe-info1">
-	            <h2>레시피 상세 내용</h2>
-	        </div>
-	        <div class="recipe-image1">image</div>
-	    </div>
 	
 	    <div class="update">
 	        <button class="edit-btn1">단계 추가하기</button>
@@ -127,3 +142,4 @@
 	   <jsp:include page = "/WEB-INF/views/include/footer.jsp"></jsp:include> 	
 	</body>
 </html>
+

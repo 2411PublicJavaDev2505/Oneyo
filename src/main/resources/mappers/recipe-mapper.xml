@@ -17,6 +17,7 @@
  		<result property="memberNickName" column="MEMBER_NICKNAME" />
  		
  	</resultMap>
+ 	
  	<select id="selectList" resultMap ="recipeResultMap">
  		SELECT 
  			RECIPE.RECIPE_NO, RECIPE.MEMBER_ID, RECIPE.RECIPE_TITLE, RECIPE.VIEW_COUNT, MEMBER.MEMBER_NICKNAME 
@@ -50,4 +51,22 @@
  		ORDER BY RECIPE_NO DESC
  	</select>
  	
- </mapper>
+	<insert id="insertRecipe">
+		INSERT INTO RECIPE (RECIPE_NO, RECIPE_TITLE, RECIPE_CONTENT_NO, MEMBER_ID, RECIPE_DATE, UPDATE_DATE, DEL_YN, VIEW_COUNT, RECIPE_SOURCES_NO)
+    	VALUES (SEQ_RECIPE_NO.NEXTVAL, #{recipeTitle}, #{recipeContentNo}, #{memberId}, SYSDATE, SYSDATE, 'N', 0, #{recipeSourcesNo})
+	</insert>
+	
+	<update id="updateRecipe">
+		UPDATE RECIPE 
+		SET RECIPE TITLE = #{recipeTitle}
+		, RECIPE_CONTENTNO = #{recipeContentNo} 
+		, MEMBERID = #{memberId}
+		, UPDATE_DATE = SYSDATE
+		WHERE RECIPE_NO = #{recipeNo} 
+	</update>
+	<delete id="deleteRecipe">
+		UPDATE RECIPE_TBL
+		SET DEL_YN = 'Y'
+		WHERE RECIPE_NO = #{recipeNo}
+	</delete>
+</mapper>

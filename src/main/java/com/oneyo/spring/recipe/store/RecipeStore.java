@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import com.oneyo.spring.recipe.controller.dto.RecipeInsertRequest;
+import com.oneyo.spring.recipe.controller.dto.RecipeUpdateRequest;
 import com.oneyo.spring.recipe.domain.RecipeVO;
 
 public interface RecipeStore {
@@ -23,4 +24,14 @@ public interface RecipeStore {
 	int getTotalCount(SqlSession session, Map<String, String> paramMap);
 
 	List<RecipeVO> selectPersonalList(String memberId, int currentPage);
+	
+	List<RecipeVO> selectRecipeList(SqlSession session, int currentPage);
+
+	int insertBoard(SqlSession session, RecipeInsertRequest recipe);
+
+	int updateBoard(SqlSession session, RecipeUpdateRequest recipe);
+
+	int deleteBoard(SqlSession session, int recipeNo);
+
+	List<RecipeVO> selectRecipeStep(SqlSession session, int recipeNo);
 }

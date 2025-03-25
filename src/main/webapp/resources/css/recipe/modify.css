@@ -1,107 +1,7 @@
-/* ë ˆì‹œí”¼ ìˆ˜ì • ì‚­ì œ ë¶€ë¶„(2ë²ˆì§¸ ì¥) */
-
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
-header {
-    background-color: #f1eedd;
-    padding: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #fdfbe7;
-    padding: 10px 20px;
-}
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: #c2b280;
-}
-nav {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.nav-links {
-    display: flex;
-    gap: 20px;
-}
-.nav-links a {
-    text-decoration: none;
-    color: #c2b280;
-    font-weight: bold;
-}
-.search-box {
-    border: 1px solid #c2b280;
-    padding: 5px;
-    border-radius: 5px;
-}
+update.css ºÎºĞ
 
 
-main {
-    display: flex;
-    justify-content: center;
-    margin-top: 50px;
-}
-
-.recipe-card {
-    position: relative;
-    width: 400px;
-    padding: 20px;
-    text-align: center;
-    border-radius: 10px;
-}
-
-.image-placeholder {
-    background-color: #fefee5;
-    height: 200px;
-    line-height: 200px;
-    color: black;
-    font-size: 20px;
-    border: 1px solid #c5b583;
-    margin-top: 150px;
-}
-
-.recipe-info {
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-between;
-    font-size: 15px;
-}
-
-.image-placeholder1 {
-    background-color: #fefee5;
-    height: 30px;
-    width: 250px;
-    line-height: 30px;
-    color: black;
-    font-size: 20px;
-    border: 1px solid #c5b583;
-}
-
-.recipe-title-box input {
-    background-color: #fffde7;
-	border-radius: 5px;
-	padding: 5px;
-    width: 200px;
-    text-align: center;
-}
-
-
-
-
-
-
-
-/* ì „ì²´ ì»¨í…Œì´ë„ˆ */
+/*   „ì²  ì»¨í…Œ ´ „ˆ */
 .ingredient-container1 {
     display: flex;
     justify-content: center;
@@ -110,14 +10,14 @@ main {
     margin-bottom: 150px;
 }
 
-/* ì¬ë£Œ & ì–‘ë… ê·¸ë£¹ */
+/*  ¬ë£  &  –‘ … ê·¸ë£¹ */
 .ingredient-group1, .ingredient-group {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-/* ì œëª© ìŠ¤íƒ€ì¼ */
+/*   œëª   Š¤   ¼ */
 .ingredient-group1 h2, .ingredient-group h2 {
     font-size: 1.5em;
     font-weight: bold;
@@ -126,12 +26,12 @@ main {
     margin-right: 570px;
 }
 
-/* ê°œë³„ ì¬ë£Œ ë°•ìŠ¤ */
+/* ê°œë³„  ¬ë£  ë°•ìŠ¤ */
 .ingredient-box1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #fffde7; /* ì—°í•œ ë…¸ë€ìƒ‰ ë°°ê²½ */
+    background-color: #fffde7; /*  —° •œ  …¸   ƒ‰ ë°°ê²½ */
     border: 2px solid #333;
     border-radius: 10px;
     padding: 10px;
@@ -140,7 +40,7 @@ main {
     
 }
 
-/* ì…ë ¥ í•„ë“œ ìŠ¤íƒ€ì¼ */
+/*  …  ¥  •„ “œ  Š¤   ¼ */
 .ingredient-box1 input {
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -154,7 +54,7 @@ main {
 .recipe1 {
     display: flex;
     align-items: center;
-    background-color: #fffde7; /* ì—°í•œ ë…¸ë€ìƒ‰ ë°°ê²½ */
+    background-color: #fffde7; /*  —° •œ  …¸   ƒ‰ ë°°ê²½ */
     padding: 15px;
     margin-bottom: 10px;
     border-radius: 10px;
@@ -162,7 +62,7 @@ main {
     margin-right: 500px;
 }
 
-/* ìˆ«ì ë¶€ë¶„ ìŠ¤íƒ€ì¼ (ì›í˜•) */
+/*  ˆ«  ë¶ ë¶   Š¤   ¼ ( › ˜•) */
 .recipe-number1 {
     width: 40px;
     height: 40px;
@@ -176,26 +76,26 @@ main {
     margin-right: 15px;
 }
 
-/* ë ˆì‹œí”¼ ì œëª© ìŠ¤íƒ€ì¼ */
+/*   ˆ ‹œ ”¼   œëª   Š¤   ¼ */
 .recipe-info1 h2 {
     font-size: 1.5em;
     font-weight: bold;
     margin: 0;
 }
 
-/* ì´ë¯¸ì§€ ì˜ì—­ ìŠ¤íƒ€ì¼ */
+/*  ´ë¯¸ì   ˜ —­  Š¤   ¼ */
 .recipe-image1 {
     width: 100px;
     height: 100px;
-    background-color: #ddd; /* ì„ì‹œ ë°°ê²½ìƒ‰ */
+    background-color: #ddd; /*  „ ‹œ ë°°ê²½ ƒ‰ */
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: auto; /* ì˜¤ë¥¸ìª½ ì •ë ¬ */
+    margin-left: auto; /*  ˜¤ë¥¸ìª½   •  ¬ */
     cursor: pointer;
 }
 
-/* ì¶”ì²œ ë²„íŠ¼ ìŠ¤íƒ€ì¼ */
+/* ì¶”ì²œ ë²„íŠ¼  Š¤   ¼ */
 .update {
     text-align: center;
     margin: 20px 0;
@@ -225,9 +125,3 @@ main {
     cursor: pointer;
     margin-bottom: 150px;
 }
-
-
-
-
-
-

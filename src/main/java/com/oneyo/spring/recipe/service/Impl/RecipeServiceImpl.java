@@ -30,6 +30,14 @@ public class RecipeServiceImpl implements RecipeService {
 		int totalCount = rStore.getTotalCount(session);
 		return totalCount;	
 	}
+	
+	@Override
+	public int getTotalCount(Map<String, String> paramMap) {
+	int totalCount = rStore.getTotalCount(session, paramMap);
+	return totalCount;
+	}
+	
+
 	@Override
 	public List<RecipeVO> selectListAll(int currentPage) {
 		List<RecipeVO> rList = rStore.selectListAll(session, currentPage);
@@ -38,11 +46,18 @@ public class RecipeServiceImpl implements RecipeService {
 	
 	@Override
 	public int insertRecipe(RecipeInsertRequest recipe) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = rStore.insertBoard(session, recipe);
+		return result;
+	}
+
+	@Override
+	public List<RecipeVO> selectRecipeList(int currentPage) {
+		List<RecipeVO> rList = rStore.selectRecipeList(session, currentPage);
+		return rList;
 	}
 	@Override
 	public RecipeVO selectOneByNo(int recipeNo) {
+
 		RecipeVO recipe = rStore.selectOneByNo(session, recipeNo);
 		return recipe;
 	}
@@ -52,10 +67,11 @@ public class RecipeServiceImpl implements RecipeService {
 		return searchList;
 	}
 
-	@Override
-	public int getTotalCount(Map<String, String> paramMap) {
-		int totalCount = rStore.getTotalCount(session, paramMap);
-		return 0;
+
+	public int updateRecipe(RecipeUpdateRequest recipe) {
+		int result = rStore.updateBoard(session, recipe);
+		return result;
+
 	}
 	@Override
 	public List<RecipeVO> selectPersonalList(String memberId, int currentPage) {
@@ -63,7 +79,17 @@ public class RecipeServiceImpl implements RecipeService {
 		return selectPersonalList;
 	}
 
+	@Override
+	public int deleteRecipe(int recipeNo) {
+		int result = rStore.deleteBoard(session, recipeNo);
+		return result;
+	}
 
+	@Override
+	public List<RecipeVO> selectRecipeStep(int recipeNo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 
 }
