@@ -26,5 +26,7 @@
 	</select>
 	<select id="getMemberNickname" parameterType="String" resultType="String">
 		select MEMBER_NICKNAME from member where MEMBER_ID = #{memberId} 
-	</select>	
+	</select>
+	<!-- 마이페이지 본인작성한 댓글 -->
+	
 </mapper>  

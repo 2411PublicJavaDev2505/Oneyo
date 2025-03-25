@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<jsp:include page = "/WEB-INF/views/include/headeradmin.jsp"></jsp:include> 	
 </head>
 <body>
 	<div class="admin-container">

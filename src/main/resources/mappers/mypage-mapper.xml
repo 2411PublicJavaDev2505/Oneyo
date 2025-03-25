@@ -4,10 +4,43 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace ="MypageMapper">
-  
+	<resultMap type="Board" id="myboardResultMap">
+			<id property="memberId" column="MEMBER_ID"></id>
+			<result property="memberNickname" column="MEMBER_NICKNAME"></result>
+			<result property="boardTitle" 		column="BOARD_TITLE"/>
+			<result property="boardContent" 	column="BOARD_CONTENT"/>
+			<result property="boardCount" 		column="BOARD_COUNT"/>
+			<result property="boardDate" 		column="BOARD_DATE"/>
+			
+	</resultMap> 
+	<resultMap type="Reply" id="myreplyResultMap">
+			<id property="memberId" column="MEMBER_ID"></id>
+			<result property="memberNickname" column="MEMBER_NICKNAME"></result>
+			<result	property="replyNo" 		  column="REPLY_NO"/>
+			<result	property="boardNo" 		  column="BOARD_NO"/>
+			<result	property="memberId" 	  column="MEMBER_ID"/>
+			<result	property="memberNickname" column="MEMBER_NICKNAME"/>
+			<result	property="replyContent"   column="REPLY_CONTENT"/>
+			<result	property="replyDate" 	  column="REPLY_DATE"/>
+	</resultMap>
+	
+	<select id="selectBoardList" resultType="Board">
+		select B.BOARD_NO, B.MEMBER_ID, M.MEMBER_NICKNAME, B.BOARD_TITLE, B.BOARD_COUNT, B.BOARD_DATE, M.ADMIN_YN, B.DEL_YN	 
+		from board B
+		join member M on B.MEMBER_ID = M.MEMBER_ID 
+		where M.ADMIN_YN = 'N' and B.DEL_YN = 'N' AND B.MEMBER_ID = #{memberId}
+ 		ORDER BY M.ADMIN_YN DESC, B.BOARD_DATE DESC 
+	</select> 
   	
+  	<select id="getTotalCount"  resultType="_int">
+		select count(*) from board where DEL_YN = 'N'
+	</select>
   
-  
+  	<select id="selectReplyList" resultType="Reply">
+  		select R.REPLY_NO, R.BOARD_NO, R.MEMBER_ID, M.MEMBER_NICKNAME, R.REPLY_CONTENT, R.REPLY_DATE
+		from reply R join member M on R.MEMBER_ID = M.MEMBER_ID 
+		where R.MEMBER_ID = #{memberId} order by REPLY_DATE 
+  	</select>
   
   
   </mapper>
