@@ -43,8 +43,8 @@ public class MemberController {
 			,HttpServletRequest request, HttpServletResponse response) {
 		int result = mService.insertMember(member);
 			if(result >0) {
-				//성공시 메인페이지 (로그인 페이지) 로 이동
-				return "redirect:/";
+				//성공시 로그인 페이지로 이동
+				return "redirect:/member/login";
 				
 			}else {
 				return "common/error";
@@ -64,6 +64,7 @@ public class MemberController {
 			MemberVO member1 = mService.selectOneByLogin(member);
 			if(member1 !=null) {
 				session.setAttribute("memberName", member1.getMemberName());
+				session.setAttribute("memberNickname", member1.getMemberNickname());
 				session.setAttribute("memberId", member1.getMemberId());
 				return "redirect:/";
 			}else {
@@ -85,13 +86,14 @@ public class MemberController {
 	}
 	
 	//계정삭제
-	@GetMapping("/member/delete")
+	@GetMapping("member/delete")
 	public String memberDelete(Model model
 			,@RequestParam("memberId") String memberId) {
+		System.out.println("Deleting member: " + memberId);
 		try {
 			int result = mService.deleteMember(memberId);
 			if(result > 0) {
-				return "redirect:/";
+				return "redirect:/member/logout";
 			}else {
 				model.addAttribute("errorMessage","데이터 삭제에 실패하였습니다.");
 				return "common/error";

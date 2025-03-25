@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,15 +11,16 @@
 <body>
  	<jsp:include page ="/WEB-INF/views/include/header.jsp"></jsp:include> 
 	<main class="main">
+		<form action="/mypage/myreply" method="get">
 	    <div class="myPageMain">
 	    <section class="Info">
 	    <nav class="myInfomation">
 	        <div class="myPicture"></div>
 	        <div class="detailInformation">
-	            <div>이름 : 일용자</div>
-	            <div>닉네임 : 마셰코</div>
-	<button class="deleteMember" onclick="location.href='member/delete?memberId=${member.memberId }'">회원탈퇴</button>
-              <button class="updateMember"  onclick="location.href='member/modify'">회원정보수정</button>
+	            <div>이름 : ${memberName }</div>
+	            <div>닉네임 :${memberNickname }</div>
+				<button class="deleteMember" ><a href="member/delete?memberId=${memberId }">회원탈퇴</a></button>
+              	<button class="updateMember" ><a href="member/modify?memberId=${memberId }">회원정보수정</a></button>
 	        </div>
 	    </nav>
 	    </section>
@@ -26,7 +28,7 @@
 	<!--       마이 냉장고 기본틀 -->
 			    <div class="myDetail-container">
 			        <div class="myPageMenu">
-			        <button><a href="/mypage/mypage">마이냉장고</a></button>
+			        <button><a href="/mypage">마이냉장고</a></button>
 			        <button><a href="/mypage/myBoard">내가 쓴글</a></button>
 			        <button><a href="/mypage/myReply">나의 댓글</a></button>
 			        </div>			        
@@ -56,68 +58,41 @@
 			
 			                    </tr>
 			                </thead>
+			                <div class="board-Lists">
 			                <tbody>
 			                    <!-- 일반게시판 --> 
-			                    <div class="board-Lists">
-			                        <tr  class="sources">
-			                            <td class="num">1</td>
-			                            <td class="board-title"><a href="#">오! 완전 맛있어보임!</a></td>
-			                            <td class="writer">회원10</td>
-			                            <td class="date">2025-05-30</td>
+			                    <c:forEach items="${rList }" var="reply" varStatus="i">
+			                        <tr class="sources">
+			                            <td class="num">${i.count }</td>
+			                            <td class="board-title">${reply.replyContent}</td>
+			                            <td class="writer">${memberNickname}</td>
+			                            <td class="date">${reply.replyDate}</td>
 			                            <td class="delete"><button><a href="#">DEL</a></button></td>
 			                        </tr>
-			                        <tr  class="sources">
-			                            <td class="num">2</td>
-			                            <td class="board-title"><a href="#">요리 너무 잘하시네요^^</a></td>
-			                            <td class="writer">회원10</td>
-			                            <td class="date">2025-05-30</td>
-			                            <td class="delete"><button><a href="#">DEL</a></button></td>
-			                        </tr>
-			                        <tr  class="sources">
-			                            <td class="num">3</td>
-			                            <td class="board-title"><a href="#">개꿀레시피</a></td>
-			                            <td class="writer">회원10</td>
-			                            <td class="date">2025-05-30</td>
-			                            <td class="delete"><button><a href="#">DEL</a></button></td>
-			                        </tr>
-			                        <tr  class="sources">
-			                            <td class="num">4</td>
-			                            <td class="board-title"><a href="#">오늘의 레시피 추천</a></td>
-			                            <td class="writer">회원10</td>
-			                            <td class="date">2025-05-30</td>
-			                            <td class="delete"><button><a href="#">DEL</a></button></td>
-			                        </tr>
-			                        <tr  class="sources">
-			                            <td class="num">5</td>
-			                            <td class="board-title"><a href="#">워매</a></td>
-			                            <td class="writer">회원10</td>
-			                            <td class="date">2025-05-30</td>
-			                            <td class="delete"><button><a href="#">DEL</a></button></td>
-			                        </tr>		
-			                    </div>		                    
+			                    
+			                    </c:forEach> 		                    
 			                </tbody>
+			                </div>
 			            </table>
 			            <!-- 페이지네이션 --> 
 			            <div class="pagination">
-			                <a href="#"> ◁◁ </a>
-			                <a href="#"> ◀ </a>                        
-			                <a href="#"> 1 </a>                        
-			                <a href="#"> 2 </a>                        
-			                <a href="#"> 3 </a>                        
-			                <a href="#"> 4 </a>                        
-			                <a href="#"> 5 </a>                        
-			                <a href="#"> 6 </a>                        
-			                <a href="#"> 7 </a>                        
-			                <a href="#"> 8 </a>                        
-			                <a href="#"> 9 </a>                        
-			                <a href="#"> 10 </a>                        
-			                <a href="#"> ▶ </a>                        
-			                <a href="#"> ▷▷ </a>                    
+			                <a href="/mypage/myreply?currentPage=1"> ◁◁ </a>
+								<c:if test= "${startNavi ne 1 }">
+									<a href="/mypage/myreply?currentPage=${startNavi-1 }" class="prev">◀</a>
+								</c:if>	
+								<c:forEach begin="${startNavi }" end="${endNavi }" var="p">
+									<a href="/mypage/myreply?currentPage=${p }">${p }</a>
+								</c:forEach>					
+								<c:if test="${endNavi ne maxPage }">
+									<a href="/mypage/myreply?currentPage=${endNavi+1 }" class="next">▶</a>
+								</c:if>    
+					           	<a href="/mypage/myreply?currentPage=${maxPage }"> ▷▷ </a>              
 			            </div>
 			        </section>
 			    </div>
 			</div>
 	    </div>
+	    </form>
 	</main>
  		<jsp:include page = "/WEB-INF/views/include/footer.jsp"></jsp:include> 			
 </body>

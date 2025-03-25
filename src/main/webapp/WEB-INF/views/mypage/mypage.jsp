@@ -20,10 +20,10 @@
         <nav class="myInfomation">
           <div class="myPicture"></div>
             <div class="detailInformation">
-              <div>이름 : </div>
-              <div>닉네임 : 마셰코</div>
-             <button class="deleteMember" onclick="location.href='member/delete?memberId=${member.memberId }'">회원탈퇴</button>
-              <button class="updateMember"  onclick="location.href='member/modify?memberId=${member.memberId }'">회원정보수정</button>
+              <div>이름 :${memberName}</div>
+              <div>닉네임 : ${memberNickname}</div>
+             <button class="deleteMember" ><a href="member/delete?memberId=${memberId }">회원탈퇴</a></button>
+              <button class="updateMember" ><a href="member/modify?memberId=${memberId }">회원정보수정</a></button>
             </div>
         </nav>
       </section> 		
@@ -31,7 +31,7 @@
 		<!--  마이페이지 메인화면-->
  		<div class="myDetail-container">
           <div class="myPageMenu">
-            <button><a href="/mypage/mypage">마이냉장고</a></button>
+            <button><a href="/mypage">마이냉장고</a></button>
             <button><a href="/mypage/myBoard">내가 쓴글</a></button>
             <button><a href="/mypage/myReply">나의 댓글</a></button>
           </div>

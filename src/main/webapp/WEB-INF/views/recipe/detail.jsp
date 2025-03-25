@@ -28,7 +28,7 @@
 				<div class="ingredient-group">
 					<h2>재료</h2>
 					<div class="ingredient-box">
-						<span>ㅈㄹ</span>
+						<span>재료</span>
 					</div>
 				</div>
 			</div>

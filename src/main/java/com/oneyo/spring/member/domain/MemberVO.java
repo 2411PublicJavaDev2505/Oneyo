@@ -10,6 +10,10 @@ public class MemberVO {
 	private String memberPhone;
 	private String adminYn;
 	private String delYn;
+
+	public MemberVO() {
+		super();
+	}
 	
 	public MemberVO(String memberId, String memberPw) {
 		super();
@@ -17,7 +21,6 @@ public class MemberVO {
 		this.memberPw = memberPw;
 	}
 	
-
 	public String getMemberId() {
 		return memberId;
 	}
@@ -51,9 +54,4 @@ public class MemberVO {
 	}
 	
 	
-	public MemberVO() {
-		super();
-	}
-	
-
 }

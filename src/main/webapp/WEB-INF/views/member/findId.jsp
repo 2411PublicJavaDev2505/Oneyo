@@ -15,8 +15,9 @@
 	        <div class="login-box">
 	            <h2>아이디 찾기</h2>
 	            <input type="text" placeholder="이름">
-	            <button class="findid-btn">아이디찾기</button>
-	            <a href="/member/join" class="register-link">회원가입</a>
+	            <input type="number" placeholder="전화번호를 입력하세요">
+	            <button class="findid-btn" >아이디찾기</button>
+	            <button class="register-link"><a href="/member/join" >회원가입</a></button>
 	        </div>
 	    </main>
 	    </form>
