@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="StepMapper">
+    <resultMap type="com.oneyo.spring.step.domain.StepVO" id="stepResultMap">
+    	<id property="stepNo" column="STEP_NO"/>
+    	<result property="stepContent" column="STEP_CONTENT"/>
+    	<result property="stepAmount" column="STEP_AMOUNT"/>
+    	<result property="recipeNo" column="RECIPE_NO"/>
+    </resultMap>
+    <select id="getStepsByNo" resultType="com.oneyo.spring.step.domain.StepVO">
+        SELECT 
+        	STEP_NO, STEP_CONTENT, STEP_AMOUNT, RECIPE_NO
+        FROM 
+        	RECIPE_STEP
+        WHERE 
+        	RECIPE_NO = #{recipeNo}
+        ORDER BY STEP_NO ASC
+    </select>
+</mapper>

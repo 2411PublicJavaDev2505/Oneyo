@@ -3,13 +3,13 @@ package com.oneyo.spring.recipe.domain;
 import java.sql.Date;
 import java.util.List;
 
-import com.oneyo.spring.step.domain.StepVO.Step;
+import com.oneyo.spring.member.domain.MemberVO;
+import com.oneyo.spring.step.domain.StepVO;
 
 public class RecipeVO {
 	
 	private String memberId;
 	private String recipeTitle;
-	private int recipeContentNo;
 	private int recipeNo;
 	private int recipeSourcesNo;
 	private int viewCount;
@@ -17,24 +17,18 @@ public class RecipeVO {
 	private Date recipeDate;
 	private Date updateDate;
 	private String memberNickName;
-	private String sourceName;
-	private int stepNo;
-	private String stepContent;
-	private String stepAmount;
-	private int fileNo;
-	private int stepFileNo;
-	
-	private List<Step> steps;
 	
 	public RecipeVO() {}
-	
-	public List<Step> getSteps() {
-		return steps;
-	}
 
-	public void setSteps(List<Step> steps) {
-		this.steps = steps;
-	}
+	private List<StepVO> stepList;  // 추가된 stepList 속성
+
+    public List<StepVO> getStepList() {
+        return stepList;
+    }
+    
+    public void setStepList(List<StepVO> stepList) {
+    	this.stepList = stepList;
+    }
 
 	public String getMemberId() {
 		return memberId;
@@ -50,14 +44,6 @@ public class RecipeVO {
 
 	public void setRecipeTitle(String recipeTitle) {
 		this.recipeTitle = recipeTitle;
-	}
-
-	public int getRecipeContentNo() {
-		return recipeContentNo;
-	}
-
-	public void setRecipeContentNo(int recipeContentNo) {
-		this.recipeContentNo = recipeContentNo;
 	}
 
 	public int getRecipeNo() {
@@ -116,61 +102,13 @@ public class RecipeVO {
 		this.memberNickName = memberNickName;
 	}
 
-	public String getSourceName() {
-		return sourceName;
-	}
 
-	public void setSourceName(String sourceName) {
-		this.sourceName = sourceName;
-	}
-
-	public int getStepNo() {
-		return stepNo;
-	}
-
-	public void setStepNo(int stepNo) {
-		this.stepNo = stepNo;
-	}
-
-	public String getStepContent() {
-		return stepContent;
-	}
-
-	public void setStepContent(String stepContent) {
-		this.stepContent = stepContent;
-	}
-
-	public String getStepAmount() {
-		return stepAmount;
-	}
-
-	public void setStepAmount(String stepAmount) {
-		this.stepAmount = stepAmount;
-	}
-
-	public int getFileNo() {
-		return fileNo;
-	}
-
-	public void setFileNo(int fileNo) {
-		this.fileNo = fileNo;
-	}
-
-	public int getStepFileNo() {
-		return stepFileNo;
-	}
-
-	public void setStepFileNo(int stepFileNo) {
-		this.stepFileNo = stepFileNo;
-	}
 
 	@Override
 	public String toString() {
-		return "RecipeVO [memberId=" + memberId + ", recipeTitle=" + recipeTitle + ", recipeContentNo="
-				+ recipeContentNo + ", recipeNo=" + recipeNo + ", recipeSourcesNo=" + recipeSourcesNo + ", viewCount="
-				+ viewCount + ", delYn=" + delYn + ", recipeDate=" + recipeDate + ", updateDate=" + updateDate
-				+ ", memberNickName=" + memberNickName + ", sourceName=" + sourceName + ", stepNo=" + stepNo
-				+ ", stepContent=" + stepContent + ", stepAmount=" + stepAmount + ", fileNo=" + fileNo + ", stepFileNo="
-				+ stepFileNo + "]";
+		return "RecipeVO [memberId=" + memberId + ", recipeTitle=" + recipeTitle + ", recipeNo=" + recipeNo
+				+ ", recipeSourcesNo=" + recipeSourcesNo + ", viewCount=" + viewCount + ", delYn=" + delYn
+				+ ", recipeDate=" + recipeDate + ", updateDate=" + updateDate + ", memberNickName=" + memberNickName
+				+ ", stepList=" + stepList + "]";
 	}
 }

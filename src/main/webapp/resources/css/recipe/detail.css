@@ -1,50 +1,6 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
-header {
-    background-color: #f1eedd;
-    padding: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #fdfbe7;
-    padding: 10px 20px;
-}
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: #c2b280;
-}
-nav {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
+@charset "UTF-8";
 
-.nav-links {
-    display: flex;
-    gap: 20px;
-}
-.nav-links a {
-    text-decoration: none;
-    color: #c2b280;
-    font-weight: bold;
-}
-.search-box {
-    border: 1px solid #c2b280;
-    padding: 5px;
-    border-radius: 5px;
-}
-
-
-main {
+.main-container{
     display: flex;
     justify-content: center;
     margin-top: 50px;
@@ -101,7 +57,6 @@ main {
 .ingredient-container {
     display: flex;
     justify-content: center;
-    gap: 50px; /* 좌우 간격 */
     padding: 20px;
     margin-bottom: 150px;
 }
@@ -124,7 +79,7 @@ main {
 /* 개별 재료 박스 */
 .ingredient-box {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     background-color: #fffde7; /* 연한 노란색 배경 */
     border: 2px solid #333;
@@ -148,7 +103,7 @@ h2 {
     margin-top: 100px;
 }
 
-.recipe {
+.recipe-step {
     display: flex;
     align-items: center;
     background-color: #fffde7; /* 연한 노란색 배경 */
@@ -160,7 +115,7 @@ h2 {
 }
 
 /* 숫자 부분 스타일 (원형) */
-.recipe-number {
+.step-number {
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -174,7 +129,7 @@ h2 {
 }
 
 /* 레시피 제목 스타일 */
-.recipe-info h2 {
+.step-info h2 {
     font-size: 1.5em;
     font-weight: bold;
     margin: 0;
@@ -191,19 +146,3 @@ h2 {
     margin-left: auto; /* 오른쪽 정렬 */
 }
 
-/* 추천 버튼 스타일 */
-.recommend {
-    text-align: center;
-    margin: 20px 0;
-}
-
-.star {
-    font-size: 24px;
-    color: #d4af37;
-    cursor: pointer;
-}
-
-.recommend p {
-    margin: 5px 0;
-    margin-bottom: 150px;
-}

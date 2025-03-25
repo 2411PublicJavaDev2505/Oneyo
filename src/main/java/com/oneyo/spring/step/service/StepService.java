@@ -1,5 +1,11 @@
 package com.oneyo.spring.step.service;
 
-public class StepService {
+import java.util.List;
+
+import com.oneyo.spring.step.domain.StepVO;
+
+public interface StepService {
+
+	List<StepVO> getStepsByNo(int recipeNo);
 
 }

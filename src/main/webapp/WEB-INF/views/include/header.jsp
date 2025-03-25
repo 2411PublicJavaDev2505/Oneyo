@@ -16,7 +16,7 @@
 	            <nav class="nav-menu">
 	             
 	                <c:if test="${memberId ne null && memberId ne '' }">
-	                	<a href="/">레시피</a>
+	                	<a href="/recipe/list">레시피</a>
 	                	<a href="/board/boardlist">게시판</a>
 						<a href="/mypage/mypage">마이페이지</a><br>
 					<div class="search-container">
@@ -27,7 +27,7 @@
 					</c:if>
 					
 					<c:if test="${memberId eq null || memberId eq '' }">
-					<a href="/recipe">레시피</a>
+					<a href="/recipe/list">레시피</a>
 	                	<a href="/board/boardlist">게시판</a>
 	           <div class="search-container">
 	                    <input type="text" class="search-input" placeholder="검색">

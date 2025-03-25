@@ -14,14 +14,6 @@
  		<result property="viewCount" column="VIEW_COUNT" />
  		<result property="delYn" column="DEL_YN" />
  		<result property="memberNickName" column="MEMBER_NICKNAME" />
- 		<result property="stepNo" column="STEP_NO" />
- 		<result property="stepContent" column="STEP_CONTENT" />
- 		<result property="stepAmount" column="STEP_AMOUNT" />
- 		<result property="fileNo" column="FILE_NO" />
- 		<result property="stepFileNo" column="STEP_FILE_NO" />
- 		<result property="sourceNo" column="SOURCES_NO" />
- 		<result property="sourceName" column="SOURCE_NAME" />
- 		<result property="recipeSourcesNo" column="RECIPE_SOURCES_NO" />
  		
  	</resultMap>
  	<select id="selectList" resultMap ="recipeResultMap">
@@ -35,37 +27,13 @@
  	</select>
  	<select id="selectOneByNo" resultMap="recipeResultMap">
 		SELECT 
-		    RECIPE.RECIPE_NO, 
-		    RECIPE.MEMBER_ID, 
-		    RECIPE.RECIPE_TITLE, 
-		    RECIPE.VIEW_COUNT, 
-		    RECIPE.RECIPE_CONTENT_NO,
-		    RECIPE_STEP.STEP_NO AS RECIPE_STEP_NO, 
-		    RECIPE_STEP.STEP_CONTENT, 
-		    RECIPE_STEP.STEP_AMOUNT, 
-		    SOURCES.SOURCE_NAME, 
-		    MEMBER.MEMBER_NICKNAME, 
-		    RECIPE_FILE.FILE_NO AS RECIPE_FILE_NO,
-		    RECIPE_STEP_IMAGE.STEP_FILE_NO AS STEP_FILE_IMAGE_NO,
-		    RECIPE_STEP_IMAGE.STEP_FILE_PATH
+		    RECIPE.RECIPE_NO, RECIPE.MEMBER_ID, RECIPE.RECIPE_TITLE, RECIPE.VIEW_COUNT, MEMBER.MEMBER_NICKNAME 
 		FROM 
-		    RECIPE 
-		JOIN RECIPE_SOURCES ON 
-		    RECIPE.RECIPE_SOURCES_NO = RECIPE_SOURCES.RECIPE_SOURCES_NO
-		JOIN SOURCES ON 
-		    RECIPE_SOURCES.SOURCES_NO = SOURCES.SOURCES_NO
+		    RECIPE
 		LEFT JOIN MEMBER ON
-		    RECIPE.MEMBER_ID = MEMBER.MEMBER_ID 
-		LEFT JOIN RECIPE_STEP ON
-		    RECIPE.RECIPE_CONTENT_NO = RECIPE_STEP.RECIPE_CONTENT_NO
-		LEFT JOIN RECIPE_STEP_IMAGE ON
-		    RECIPE_STEP.STEP_NO = RECIPE_STEP_IMAGE.STEP_NO
-		LEFT JOIN RECIPE_FILE ON 
-		    RECIPE.RECIPE_NO = RECIPE_FILE.RECIPE_NO  -- RECIPE_FILE
+ 			RECIPE.MEMBER_ID = MEMBER.MEMBER_ID 
 		WHERE 
 		    RECIPE.RECIPE_NO = #{recipeNo}
-		ORDER BY 
-		    RECIPE.RECIPE_NO
  	</select>
  	<select id="getTotalCount" resultType="_int">
  		SELECT COUNT(*) FROM RECIPE

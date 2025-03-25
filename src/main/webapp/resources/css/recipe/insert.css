@@ -124,7 +124,7 @@ main {
 /* 개별 재료 박스 */
 .ingredient-box {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     background-color: #fffde7; /* 연한 노란색 배경 */
     border: 2px solid #333;
