@@ -26,13 +26,12 @@
 		AND DEL_YN = 'Y'
 	</select>  
 	<select id="getTotalCount" resultType="_int">
-		SELECT COUNT(*) FROM RECIPE_TBL
-		WHERE RECIPE_YN = 'Y'
+		SELECT COUNT(*) FROM RECIPE
+    	WHERE DEL_YN = 'Y'
 	</select>
 	<insert id="insertRecipe">
-		INSERT INTO RECIPE
-		VALUES(SEQ_RECIPE_NO.NEXTVAL, #{recipeTitle), #{recipeContentNo}, #{memberId}
-		, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT)
+		INSERT INTO RECIPE (RECIPE_NO, RECIPE_TITLE, RECIPE_CONTENT_NO, MEMBER_ID, RECIPE_DATE, UPDATE_DATE, DEL_YN, VIEW_COUNT, RECIPE_SOURCES_NO)
+    	VALUES (SEQ_RECIPE_NO.NEXTVAL, #{recipeTitle}, #{recipeContentNo}, #{memberId}, SYSDATE, SYSDATE, 'N', 0, #{recipeSourcesNo})
 	</insert>
 	
 	<update id="updateRecipe">
@@ -40,7 +39,7 @@
 		SET RECIPE TITLE = #{recipeTitle}
 		, RECIPE_CONTENTNO = #{recipeContentNo} 
 		, MEMBERID = #{memberId}
-		, UPDATE_DATE = DEFAULT
+		, UPDATE_DATE = SYSDATE
 		WHERE RECIPE_NO = #{recipeNo} 
 	</update>
 	<delete id="deleteRecipe">

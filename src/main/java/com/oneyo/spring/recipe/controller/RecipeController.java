@@ -56,7 +56,7 @@ public class RecipeController {
 			model.addAttribute("rList", rList);
 			return "recipe/RecipeList";
 		}else {
-			model.addAttribute("errorMessage", "�뜲�씠�꽣媛� 議댁옱�븯吏� �븡�뒿�땲�떎.");
+			model.addAttribute("errorMessage", "데이터가 존재하지 않습니다.");
 			return "common/error";
 		}
 	} catch (Exception e) {
@@ -71,16 +71,8 @@ public class RecipeController {
 			@RequestParam("recipeNo")int recipeNo
 			, Model model) {
 		try {
-			System.out.println("여기:"+recipeNo);
 			RecipeVO recipe = rService.selectOneByNo(recipeNo);
 			model.addAttribute("recipe", recipe);
-			
-			System.out.println("여기222222:"+recipeNo);
-			
-			//List<RecipeVO> rList = rService.selectRecipeStep(recipeNo);
-			
-			//List<BookNotice> nList = nService.selectListAll(currentPage);
-			//System.out.println("여기:"+recipe.getRecipeTitle());
 			return "recipe/detail";
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -104,7 +96,7 @@ public class RecipeController {
 			if(session.getAttribute("memberId") != null) {
 				recipe.setRecipeWriter((String)session.getAttribute("memberId"));
 			}else {
-				model.addAttribute("errorMsg","濡쒓렇�씤�씠 �븘�슂�빀�땲�떎~!" );
+				model.addAttribute("errorMsg","로그인이 필요합니다~!" );
 				return "common/error";
 			}
 			
@@ -126,19 +118,16 @@ public class RecipeController {
 	
 	@GetMapping("/update")
 	public String showRecipeModifyForm(@RequestParam("recipeNo") int recipeNo, Model model) {
-	    try {
-	        RecipeVO recipe = rService.selectOneByNo(recipeNo);
-	        if (recipe == null) {
-	            model.addAttribute("errorMsg", "레시피를 찾을 수 없습니다.");
-	            return "common/error";
-	        }
-	        model.addAttribute("recipe", recipe);
-	        return "recipe/update";
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	        model.addAttribute("errorMsg", e.getMessage());
-	        return "common/error";
-	    }
+		try {
+			RecipeVO recipe = rService.selectOneByNo(recipeNo);
+			model.addAttribute("recipe", recipe);
+			return "recipe/modify";
+		} catch(Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			model.addAttribute("errorMsg", e.getMessage());
+			return "common/error";
+		}
 	}
 	
 	@PostMapping("/update")
@@ -148,12 +137,12 @@ public class RecipeController {
 			, Model model) {
 		try {
 			if(session.getAttribute("memberId") == null) {
-				model.addAttribute("errorMsg", "에러메세지");
+				model.addAttribute("errorMsg", "로그인이 필요합니다~!");
 				return "common/error";
 			}
 			String memberId = (String)session.getAttribute("memberId");
 			if(!memberId.equals(recipe.getRecipeWriter())) {
-				model.addAttribute("errorMsg", "에러메세지");
+				model.addAttribute("errorMsg", "존재하지 않는 정보입니다.");
 				return "common/error";
 			}
 			if(reloadFile != null && !reloadFile.getOriginalFilename().isBlank()) {
@@ -170,7 +159,7 @@ public class RecipeController {
 			return "common/error";
 		}
 	}
-	
+	// 삭제 
 	@GetMapping("/delete")
 	public String deleteRecipe(@PathVariable int recipeNo
 			, Model model) {
@@ -184,6 +173,4 @@ public class RecipeController {
 		}
 	}
 }
-
-
 	
