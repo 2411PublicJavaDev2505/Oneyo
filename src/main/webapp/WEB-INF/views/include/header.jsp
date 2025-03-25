@@ -14,7 +14,6 @@
         <div class="header-content">
             <h1 class="logo" ><a href="/">ONEYO</a></h1>
             <nav class="nav-menu">
-                
                 <c:if test="${memberId ne null && memberId ne '' }">
                 	<a href="/">레시피</a>
                 	<a href="/board/boardlist">게시판</a>

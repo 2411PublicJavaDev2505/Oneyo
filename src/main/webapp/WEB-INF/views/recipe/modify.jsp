@@ -5,20 +5,21 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>레시피 페이지 - 수정 및 삭제</title>
-<!-- 		<link rel="stylesheet" href="../ONEYO/css/update.css"> -->
-
+		<link rel="stylesheet" href="../ONEYO/css/modify.css">
 	</head>
 	<body>
 	
 		<jsp:include page ="/WEB-INF/views/include/header.jsp"></jsp:include> 
 	    <main>
 	        <div class="recipe-card">
-	            <div class="image-placeholder">image</div>
+	            <div class="image-placeholder">
+	            	<img src="" alt="레시피 사진"/>
+	            </div>
 	            <div class="recipe-info">
 	                <div class="recipe-title-box">
 	                    <input type="text" placeholder="레시피 명을 입력해주세요">
 	                </div>
-	                <span>작성자: user1</span>
+	                <span>작성자: {recipeWriter}</span>
 	            </div>
 	        </div>
 	    </main>

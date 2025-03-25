@@ -37,7 +37,6 @@ public class FileUtil {
 		result.put(prefix+"Filepath", recipeFilepath);
 		return result;
 	}
-		
 	
 	public Map<String,String> saveFile1(MultipartFile uploadFile, HttpSession session, String type) throws IllegalStateException, IOException {
 		Map<String, String> result = new HashMap<String, String>();
