@@ -214,28 +214,5 @@ public class MyRefController {
 		return "mypage/mypage";
 	}
 	
-	
-	
-	@GetMapping("/myBoard")
-	public String showMyBoard() {
-		try {
-			return "mypage/myBoard";
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		return "mypage/myBoard";
-	}
-	
-
-	@GetMapping("/myReply")
-	public String showMyReply() {
-		try {
-			return "mypage/myReply";
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		return "mypage/myReply";
-	}
-	
 
 }
