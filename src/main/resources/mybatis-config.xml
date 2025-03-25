@@ -9,6 +9,7 @@
 	</settings>
 	<typeAliases>
 		<typeAlias type="com.oneyo.spring.board.domain.BoardVO" alias="Board"/>
+		<typeAlias type="com.oneyo.spring.board.domain.BoardFileVO" alias="BoardFile"/>
 		<typeAlias type="com.oneyo.spring.member.domain.MemberVO" alias="Member"/>
 		<typeAlias type="com.oneyo.spring.board.domain.ReplyVO" alias="Reply"/>
 		 <typeAlias type="com.oneyo.spring.myref.controller.dto.MySourceList" alias="sourceList"/>
@@ -23,6 +24,7 @@
 		<mapper resource="mappers/myref-mapper.xml" />
 		<mapper resource="mappers/recipe-mapper.xml" />
 		<mapper resource="mappers/category-mapper.xml" />
+		<mapper resource="mappers/admin-mapper.xml" />
 	</mappers> 
 
 </configuration>

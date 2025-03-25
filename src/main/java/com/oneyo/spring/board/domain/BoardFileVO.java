@@ -63,6 +63,9 @@ public class BoardFileVO {
 	@Override
 	public String toString() {
 		return "BoardFileVO [bFileNo=" + bFileNo + ", boardNo=" + boardNo + ", bFileName=" + bFileName
-				+ ", bFileRename=" + bFileRename + ", bFilePath=" + bFilePath + "]";
+				+ ", bFileRename=" + bFileRename + ", bFilePath=" + bFilePath + ", getClass()=" + getClass()
+				+ ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
 	}
+
+
 }

@@ -3,9 +3,17 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="BoardFileMapper">
+	<resultMap type="BoardFile" id="boardFileResultMap">
+		<id 	property="bFileNo" 		column="B_FILE_NO"/>
+		<result property="bFileName" 	column="B_FILE_NAME"/>
+		<result property="bFileRename" 	column="B_FILE_RENAME"/>
+		<result property="bFilePath" 	column="B_FILE_PATH"/>
+		<result property="boardNo" 		column="BOARD_NO"/>
+	</resultMap>
 
 	<insert id="insertBoardFile">
-		insert into BOARD_FILE values(seq_B_FILE_NO.nextval, #{boardNo}, #{bFileName}, #{bFileRename}, #{bFilePath})
+		insert into BOARD_FILE (B_FILE_NO, BOARD_NO, B_FILE_NAME, B_FILE_RENAME, B_FILE_PATH)
+		values(seq_B_FILE_NO.nextval, #{bFileName}, #{bFileRename}, #{bFilePath}, #{boardNo})
 	</insert>  
 
 </mapper>  

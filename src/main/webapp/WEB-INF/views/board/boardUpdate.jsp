@@ -20,7 +20,7 @@
         	<input type="hidden" name="boardNo" value="${board.boardNo }">
             <div class="form-group">
                 <label>작성자</label>
-                <input class="writer" type="text" value="${sessionScope.memberNickname }"  readonly>
+                <input class="writer" type="text" value="${board.memberNickname }"  readonly>
             </div>
             <div class="form-group">
                 <label>게시글 제목</label>
