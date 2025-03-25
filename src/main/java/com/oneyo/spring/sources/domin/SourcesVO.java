@@ -3,8 +3,9 @@ package com.oneyo.spring.sources.domin;
 public class SourcesVO {
 	
 	private int sourcesNo;
-	private String sourcesName;
 	private int categoryNo;
+	private String sourcesName;
+	
 	public int getSourcesNo() {
 		return sourcesNo;
 	}

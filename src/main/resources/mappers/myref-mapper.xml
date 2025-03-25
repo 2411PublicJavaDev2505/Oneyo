@@ -7,7 +7,7 @@
 		<id 		property="memberId" 	column="MEMBER_ID"/>
 		<result 	property="sourcesNo"	column="SOURCES_NO" />
 		<result 	property="sourceCount"	column="SOURCES_COUNT" />
-		<result 	property="dueDate"	column="DUE_DATE" />
+		<result 	property="dueDate"		column="DUE_DATE" />
 		<result 	property="storageDate"	column="STORAGE_DATE" />
 		<result 	property="storageCode"	column="STORAGE_CODE" />
 		<result 	property="sourceName"	column="SOURCE_NAME" />
@@ -18,14 +18,14 @@
 		SELECT R.MEMBER_ID, R.SOURCES_NO, R.SOURCE_COUNT, R.DUE_DATE, R.STORAGE_DATE, R.STORAGE_CODE, S.SOURCE_NAME
 		FROM REFRIGERATOR R
 		JOIN SOURCES S ON S.SOURCES_NO = R.SOURCES_NO
-		WHERE STORAGE_CODE = 'C'
+		WHERE STORAGE_CODE = 'C' AND R.MEMBER_ID = #{memberId}
 	</select>
 	
 	<select id="selectIceSourceList" resultMap="sourceMap">
 		SELECT R.MEMBER_ID, R.SOURCES_NO, R.SOURCE_COUNT, R.DUE_DATE, R.STORAGE_DATE, R.STORAGE_CODE, S.SOURCE_NAME
 		FROM REFRIGERATOR R
 		JOIN SOURCES S ON S.SOURCES_NO = R.SOURCES_NO
-		WHERE STORAGE_CODE = 'I'
+		WHERE STORAGE_CODE = 'I' AND R.MEMBER_ID = #{memberId}
 	</select>
 	
 	
@@ -44,6 +44,15 @@
 	</select>
 	
 	<select id="getTotalCount" resultType="_int">
-		SELECT COUNT(*) FROM REFRIGERATOR
+		SELECT COUNT(*) FROM REFRIGERATOR WHERE MEMBER_ID = #{memberId} AND STORAGE_CODE = #{storageCode}
 	</select>
+	
+	<delete id="deleteIceSource">		
+		DELETE FROM REFRIGERATOR WHERE MEMBER_ID = #{memberId} AND SOURCES_NO = #{sourceNo} AND TO_CHAR(DUE_DATE, 'yyyy-mm-dd') = #{dueDate} AND STORAGE_CODE = 'I'
+	</delete>
+	
+	<delete id="deleteCoolSource">		
+		DELETE FROM REFRIGERATOR WHERE MEMBER_ID = #{memberId} AND SOURCES_NO = #{sourceNo} AND TO_CHAR(DUE_DATE, 'yyyy-mm-dd') = #{dueDate} AND STORAGE_CODE = 'C'
+	</delete>
+	
 </mapper>
