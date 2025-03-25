@@ -17,7 +17,8 @@ public class BoardStoreLogic implements BoardStore {
 
 	@Override
 	public int insertBoard(SqlSession session, BoardAddRequest board) {
-		return session.insert("BoardMapper.insertBoard", board);
+		int result = session.insert("BoardMapper.insertBoard", board);
+		return (result>0) ? board.getBoardNo() : 0;
 	}
 
 	@Override

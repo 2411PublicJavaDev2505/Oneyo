@@ -70,9 +70,9 @@ public class BoardController {
 		return "/board/boardInsert";
 	}
 	@PostMapping("/insert")
-	public String insertBoard(@ModelAttribute BoardAddRequest board,
-			@RequestParam("multiFile")List<MultipartFile> multiFile,
-			HttpServletRequest request,
+	public String insertBoard(@ModelAttribute BoardAddRequest board, 
+//			@RequestParam("uploadFile")List<MultipartFile> uploadFile,
+//			@RequestParam("boardNo") int boardNo,
 			HttpSession session, Model model) {
 		try {
 			String memberId = (String)session.getAttribute("memberId");
@@ -82,24 +82,24 @@ public class BoardController {
 			}
 			board.setMemberId(memberId);
 			int result = bService.insertBoard(board);
-			
-			// 파일첨부
-			if(multiFile != null && !multiFile.isEmpty()) {
-				for(MultipartFile file : multiFile) {
-					if(!file.getOriginalFilename().isBlank()) {
-						Map<String, String> fileInfo = fileUtil.saveFile(file, session, "board");
-						System.out.println("파일 저장 결과: " + fileInfo);
-						
-						BoardFileVO boardFile = new BoardFileVO();
-						boardFile.setBoardNo(board.getBoardNo());
-						boardFile.setbFileName(board.getBoardFilename());
-						boardFile.setbFileRename(board.getBoardFileRename());
-						boardFile.setbFilePath(board.getBoardFilePath());
-						
-						int fResult = fService.insertBoardFile(boardFile);
-					}
-				}
-			}
+	        
+//			// 파일첨부
+//			if(result > 0 &&  uploadFile != null && !uploadFile.isEmpty()) {
+//				for(MultipartFile file : uploadFile) {
+//					if(!file.isEmpty()) {
+//						Map<String, String> fileInfo = fileUtil.saveFile(file, session, "board");
+//						System.out.println("파일 저장 결과: " + fileInfo);
+//						
+//						BoardFileVO boardFile = new BoardFileVO();
+//						boardFile.setBoardNo(board.getBoardNo());
+//						boardFile.setbFileName(fileInfo.get("bFileName"));
+//						boardFile.setbFileRename(fileInfo.get("bFileRename"));
+//						boardFile.setbFilePath(fileInfo.get("bFilePath"));
+//						
+//						int fResult = fService.insertBoardFile(boardFile);
+//					}
+//				}
+//			}
 			
 //			// util없이 작성해보기
 //			//받아온 것 출력 확인
@@ -141,7 +141,7 @@ public class BoardController {
 //				e.printStackTrace();
 //			} 
 						
-			return "redirect:/board/detail/" + board.getBoardNo();
+			return "redirect:/board/list";
 		} catch (Exception e) {
 			e.printStackTrace();
 			model.addAttribute("errorMsg",e.getMessage());
@@ -172,7 +172,7 @@ public class BoardController {
 		}
 
 	}
-	@PostMapping("/update/{boardNo}")
+	@PostMapping("/update")
 	public String  updateBoard(Model model, BoardUpdateRequest board) {
 		try {
 			int result = bService.updateBoard(board);

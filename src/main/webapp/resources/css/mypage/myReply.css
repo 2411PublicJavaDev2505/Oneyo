@@ -85,9 +85,6 @@ a:visited {
     background: #773333;
 }
 
-
-
-
 /* 게시판 CSS*/
 
 body{
@@ -209,6 +206,58 @@ table .delete{
 	width: 15%;
 	text-align: center;
 }
+
+/* 관리자 - 회원정보, 재료관리 */
+.adminMenu {
+    display: flex;
+    justify-content: flex-start;
+}
+.adminMenu button {
+    background-color: #feffdc;
+    text-align: center;
+    border: 1px solid #DacF5B;
+    border-radius: 10px;
+    margin: 10px 20px 0 30px;
+    width: 200px;
+    height: 60px;
+    color: #773333;
+}
+
+.adminMenu button a{
+    text-decoration: none;
+    font-size: 20px;
+}
+
+a:visited {
+    background: #773333;
+}
+/* 관리자-회원정보 조회 페이지 */
+table .member-id{
+	width: 30%;
+	text-align: center;
+    padding: 12px;
+}
+table .member-nick{
+	width: 25%;
+    text-align: center;
+}
+
+table .member-name{
+	width: 20%;
+    text-align: center;
+}
+
+table .member-birth{
+	width: 20%;
+	text-align: center;
+}
+table .member-del{
+	width: 5%;
+	text-align: center;
+}
+/* 관리자 끝*/
+
+
 
 /* 페이지네이션 */
 .pagination{

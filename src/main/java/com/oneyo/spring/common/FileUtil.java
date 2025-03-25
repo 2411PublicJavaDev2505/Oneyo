@@ -15,7 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 @Component
 public class FileUtil {
 
-
 	public Map<String, String> saveFile(MultipartFile uploadFile, HttpSession session, String type) throws IllegalStateException, IOException{
 		Map<String, String> result = new HashMap<String, String>();
 		String folderName = type.equals("board") ? "bUploadFiles":"rUploadFiles";

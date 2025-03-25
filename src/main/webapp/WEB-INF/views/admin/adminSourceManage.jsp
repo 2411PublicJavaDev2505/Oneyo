@@ -4,8 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 <jsp:include page = "/WEB-INF/views/include/headeradmin.jsp"></jsp:include> 	
+<title>관리자 재료관리</title>
 </head>
 <body>
 	<div class="admin-container">
@@ -15,7 +15,7 @@
                 <div class="admin-info">
                     <p class="adminMode">관리자로 접속 중입니다.</p>
                     <a href="#"><span>전체회원 정보</span></a>
-                    <a href="#"><span>재료관리</span></a>
+                    <a href="/admin/source"><span>재료관리</span></a>
                     <div class="btn-group">
                         <button class="admin-logout">로그아웃</button>
                         <button class="admin-modify">관리자 정보 수정</button>
