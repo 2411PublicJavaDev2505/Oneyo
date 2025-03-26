@@ -19,8 +19,8 @@
 	        <div class="detailInformation">
 	            <div>이름 : ${memberName }</div>
 	            <div>닉네임 :${memberNickname }</div>
-				<button class="deleteMember" ><a href="member/delete?memberId=${memberId }">회원탈퇴</a></button>
-              	<button class="updateMember" ><a href="member/modify?memberId=${memberId }">회원정보수정</a></button>
+				<button class="deleteMember" ><a href="/member/delete?memberId=${memberId }">회원탈퇴</a></button>
+              	<button class="updateMember" ><a href="/member/modify?memberId=${memberId }">회원정보수정</a></button>
 	        </div>
 	    </nav>
 	    </section>
@@ -78,15 +78,15 @@
 			            <div class="pagination">
 			                <a href="/mypage/myreply?currentPage=1"> ◁◁ </a>
 								<c:if test= "${startNavi ne 1 }">
-									<a href="/mypage/myreply?currentPage=${startNavi-1 }" class="prev">◀</a>
+									<a href="/mypage/myReply?currentPage=${startNavi-1 }" class="prev">◀</a>
 								</c:if>	
 								<c:forEach begin="${startNavi }" end="${endNavi }" var="p">
-									<a href="/mypage/myreply?currentPage=${p }">${p }</a>
+									<a href="/mypage/myReply?currentPage=${p }">${p }</a>
 								</c:forEach>					
 								<c:if test="${endNavi ne maxPage }">
-									<a href="/mypage/myreply?currentPage=${endNavi+1 }" class="next">▶</a>
+									<a href="/mypage/myReply?currentPage=${endNavi+1 }" class="next">▶</a>
 								</c:if>    
-					           	<a href="/mypage/myreply?currentPage=${maxPage }"> ▷▷ </a>              
+					           	<a href="/mypage/myReply?currentPage=${maxPage }"> ▷▷ </a>              
 			            </div>
 			        </section>
 			    </div>

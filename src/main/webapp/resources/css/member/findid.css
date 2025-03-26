@@ -8,7 +8,6 @@ body {
     padding-top: 60px;
 }
 
-/* 로그인 박스 */
 main {
     display: flex;
     justify-content: center;
@@ -55,7 +54,16 @@ main {
     text-decoration: none;
     color: white;
 }
-
+.findpw-link {
+    width: 100%;
+    background-color: #c2b08f;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: right;
+}
 .linkButtons{
     margin-top: 20px;;
 }
@@ -66,7 +74,4 @@ main {
 }
 .register-link{
     text-align: left;
-}
-.findpw-link {
-    text-align: right;
 }

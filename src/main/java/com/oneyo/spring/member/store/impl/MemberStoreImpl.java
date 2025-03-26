@@ -3,6 +3,8 @@ package com.oneyo.spring.member.store.impl;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.oneyo.spring.member.controller.dto.FindIdRequest;
+import com.oneyo.spring.member.controller.dto.FindPwRequest;
 import com.oneyo.spring.member.controller.dto.JoinRequest;
 import com.oneyo.spring.member.controller.dto.LoginRequest;
 import com.oneyo.spring.member.controller.dto.ModifyPasswordRequest;
@@ -46,6 +48,18 @@ public class MemberStoreImpl implements MemberStore{
 	@Override
 	public int modifyPassword(SqlSession session, ModifyPasswordRequest password) {
 		int result= session.update("MemberMapper.updatePassword", password);
+		return result;
+	}
+
+	@Override
+	public String findMemberId(SqlSession session, FindIdRequest request) {
+		String result= session.selectOne("MemberMapper.findMemberId", request);
+		return result;
+	}
+
+	@Override
+	public MemberVO findMemberPw(SqlSession session, FindPwRequest request) {
+		MemberVO result = session.selectOne("MemberMapper.findMemberPw", request);
 		return result;
 	}
 

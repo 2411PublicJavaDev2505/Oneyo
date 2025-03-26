@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.oneyo.spring.common.PageUtillmypage;
+import com.oneyo.spring.common.PageUtill;
 import com.oneyo.spring.mypage.domain.MyBoardVO;
 import com.oneyo.spring.mypage.domain.MyReplyVO;
 import com.oneyo.spring.mypage.domain.MySourceList;
@@ -25,7 +25,7 @@ public class MypageController {
 	@Autowired
 	private MypageService mService;
 	@Autowired
-	private PageUtillmypage pageUtilmypage;
+	private PageUtill pageUtil;
 	@GetMapping("/mypage")
 	public String showMypageMain(Model model) {	
 		try {
@@ -44,7 +44,7 @@ public class MypageController {
 			// 아이디가 작성한 게시글을 가져오기 
 			List<MyBoardVO> mList = mService.selectBoardList(memberId,currentPage);
 			int totalCount = mService.getTotalCount();
-			Map<String, Integer>pageInfo = pageUtilmypage.generatePageInfo(totalCount, currentPage);
+			Map<String, Integer>pageInfo = pageUtil.generatePageInfo(totalCount, currentPage,5);
 			model.addAttribute("maxPage", pageInfo.get("maxPage"));
 			model.addAttribute("startNavi", pageInfo.get("startNavi"));
 			model.addAttribute("endNavi", pageInfo.get("endNavi"));
@@ -66,7 +66,7 @@ public class MypageController {
 			List<MyReplyVO> rList = mService.selectReplyList(memberId,currentPage);
 			System.out.println("rList size: " + rList.size());
 			int totalCount = mService.getTotalCount();
-			Map<String, Integer>pageInfo = pageUtilmypage.generatePageInfo(totalCount, currentPage);
+			Map<String, Integer>pageInfo = pageUtil.generatePageInfo(totalCount, currentPage,5);
 			model.addAttribute("maxPage", pageInfo.get("maxPage"));
 			model.addAttribute("startNavi", pageInfo.get("startNavi"));
 			model.addAttribute("endNavi", pageInfo.get("endNavi"));

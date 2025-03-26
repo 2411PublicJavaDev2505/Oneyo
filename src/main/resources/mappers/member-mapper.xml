@@ -23,7 +23,6 @@
 	  		SELECT * FROM MEMBER WHERE MEMBER_ID = #{memberId} AND MEMBER_PW=#{memberPw} AND DEL_YN='N'
 		  	</select>
 		  	
-		  	<!-- 회원정보수정 -->
 		  	<select id="selectOneById" resultMap="memberResultMap">
 		  		SELECT * FROM MEMBER WHERE MEMBER_ID =#{memberId} AND DEL_YN='N'
 		  	</select>

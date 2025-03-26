@@ -28,7 +28,7 @@
 		select B.BOARD_NO, B.MEMBER_ID, M.MEMBER_NICKNAME, B.BOARD_TITLE, B.BOARD_COUNT, B.BOARD_DATE, M.ADMIN_YN, B.DEL_YN	 
 		from board B
 		join member M on B.MEMBER_ID = M.MEMBER_ID 
-		where M.ADMIN_YN = 'N' and B.DEL_YN = 'N' AND B.MEMBER_ID = #{memberId}
+		where B.DEL_YN = 'N' AND B.MEMBER_ID = #{memberId}
  		ORDER BY M.ADMIN_YN DESC, B.BOARD_DATE DESC 
 	</select> 
   	

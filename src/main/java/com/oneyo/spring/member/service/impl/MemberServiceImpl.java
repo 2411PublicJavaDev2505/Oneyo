@@ -4,6 +4,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.oneyo.spring.member.controller.dto.FindIdRequest;
+import com.oneyo.spring.member.controller.dto.FindPwRequest;
 import com.oneyo.spring.member.controller.dto.JoinRequest;
 import com.oneyo.spring.member.controller.dto.LoginRequest;
 import com.oneyo.spring.member.controller.dto.ModifyPasswordRequest;
@@ -56,4 +58,17 @@ public class MemberServiceImpl implements MemberService{
 		int result= mStore.modifyPassword(session, password);
 		return result;
 	}
+
+	@Override
+	public String findMemberId(FindIdRequest request) {
+		String result = mStore.findMemberId(session, request);
+		return result;
+	}
+
+	@Override
+	public MemberVO findMemberPw(FindPwRequest request) {
+		MemberVO result = mStore.findMemberPw(session, request);
+		return result;
+	}
+
 }

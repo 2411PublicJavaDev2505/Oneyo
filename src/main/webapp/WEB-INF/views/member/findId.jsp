@@ -14,10 +14,12 @@
 		<main>
 	        <div class="login-box">
 	            <h2>아이디 찾기</h2>
-	            <input type="text" placeholder="이름">
-	            <input type="number" placeholder="전화번호를 입력하세요">
-	            <button class="findid-btn" >아이디찾기</button>
-	            <button class="register-link"><a href="/member/join" >회원가입</a></button>
+	            <input type="text" placeholder="이름" name="memberName">
+	            <input type="number" placeholder="전화번호를 입력하세요" name="memberPhone">
+		            <a href="/member/findIdResult" class="getid-link" >아이디찾기 </a>
+	            <div class="linkButtons">
+		            <a href="/member/join" class="register-link">회원가입</a>
+	        	</div>
 	        </div>
 	    </main>
 	    </form>

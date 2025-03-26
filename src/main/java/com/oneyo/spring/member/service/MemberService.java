@@ -1,6 +1,7 @@
 package com.oneyo.spring.member.service;
 
 import com.oneyo.spring.member.controller.dto.FindIdRequest;
+import com.oneyo.spring.member.controller.dto.FindPwRequest;
 import com.oneyo.spring.member.controller.dto.JoinRequest;
 import com.oneyo.spring.member.controller.dto.LoginRequest;
 import com.oneyo.spring.member.controller.dto.ModifyPasswordRequest;
@@ -22,5 +23,9 @@ public interface MemberService {
 	int modifyMember(ModifyRequest member);
 	
 	int modifyPassword(ModifyPasswordRequest password);
+	
+	String findMemberId(FindIdRequest request);
+	
+	MemberVO findMemberPw(FindPwRequest request);
 	
 }

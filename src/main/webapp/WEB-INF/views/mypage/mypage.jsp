@@ -22,8 +22,9 @@
             <div class="detailInformation">
               <div>이름 :${memberName}</div>
               <div>닉네임 : ${memberNickname}</div>
-             <button class="deleteMember" ><a href="member/delete?memberId=${memberId }">회원탈퇴</a></button>
-              <button class="updateMember" ><a href="member/modify?memberId=${memberId }">회원정보수정</a></button>
+              <div>전화번호 : ${memberPhone}</div>
+             <button class="deleteMember" ><a href="/member/delete?memberId=${memberId }">회원탈퇴</a></button>
+              <button class="updateMember" ><a href="/member/modify?memberId=${memberId }">회원정보수정</a></button>
             </div>
         </nav>
       </section> 		
