@@ -12,6 +12,9 @@ public class BoardVO {
 	private Date boardDate;
 	private String adminYn; // 멤버 테이블의 관리자 여부
 	private String delYn;
+	private String boardFilename;
+	private String boardFileRename;
+	private String boardFilepath;
 	
 	public int getBoardNo() {
 		return boardNo;
@@ -21,12 +24,12 @@ public class BoardVO {
 		return memberId;
 	}
 
-	public String getBoardTitle() {
-		return boardTitle;
-	}
-
 	public String getMemberNickname() {
 		return memberNickname;
+	}
+
+	public String getBoardTitle() {
+		return boardTitle;
 	}
 
 	public String getBoardContent() {
@@ -49,11 +52,24 @@ public class BoardVO {
 		return delYn;
 	}
 
+	public String getBoardFilename() {
+		return boardFilename;
+	}
+
+	public String getBoardFileRename() {
+		return boardFileRename;
+	}
+
+	public String getBoardFilepath() {
+		return boardFilepath;
+	}
+
 	@Override
 	public String toString() {
 		return "BoardVO [boardNo=" + boardNo + ", memberId=" + memberId + ", memberNickname=" + memberNickname
 				+ ", boardTitle=" + boardTitle + ", boardContent=" + boardContent + ", boardCount=" + boardCount
-				+ ", boardDate=" + boardDate + ", adminYn=" + adminYn + ", delYn=" + delYn + "]";
+				+ ", boardDate=" + boardDate + ", adminYn=" + adminYn + ", delYn=" + delYn + ", boardFilename="
+				+ boardFilename + ", boardFileRename=" + boardFileRename + ", boardFilepath=" + boardFilepath + "]";
 	}
-
+	
 }

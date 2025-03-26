@@ -6,7 +6,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>관리자-회원관리</title>
-	<link rel="stylesheet" href="../resources/css/mypage/myReply.css"> 
+	<link rel="stylesheet" type="text/css" href="../resources/css/admin/adminMember.css"> 
 </head>
 <body>
 	<!-- 헤더 -->
@@ -32,13 +32,13 @@
 			        <button><a href="#">재료 관리</a></button>
 		        </div>			        
 		        <div class="search-container">
-		            <form class="search-form"  action="/admin/member/search">
-		                <select class="search-select"  name="searchCondition" method="get">
-		                    <option value="total">전체</option>
-		                    <option value="id">아이디</option>
-		                    <option value="nick">닉네임</option>
+		            <form class="search-form"  action="admin/member/search" method="get">
+		                <select class="search-select"  name="searchCondition" >
+		                    <option value="total"<c:if test="${searchCondition eq 'all' }">selected</c:if>>전체</option>
+		                    <option value="id"<c:if test="${searchCondition eq 'id' }">selected</c:if>>아이디</option>
+		                    <option value="nick"<c:if test="${searchCondition eq 'nick' }">selected</c:if>>닉네임</option>
 		                </select>
-		                <input class="search-input" type="text" name="searchKeyword" placeholder="검색어를 입력하세요">
+		                <input class="search-input" type="text" name="searchKeyword" value="${searchKeyword }"  placeholder="검색어를 입력하세요">
 		                <button type="submit">검색</button>
 		            </form>
 		        </div>			
@@ -56,7 +56,7 @@
 			                    </tr>
 			                </thead>
 			                <tbody>
-                    			<c:forEach items="${mList }" var="member" varStatus="i"> 
+                    			<c:forEach items="${searchList }" var="member" varStatus="i"> 
 			                        <tr class="sources">
 			                            <td class="member-id">${member.memberId}</td>
 			                            <td class="member-nick">${member.memberNickname }</a></td>
@@ -69,17 +69,17 @@
 			            </table>
 			            <!-- 페이지네이션 --> 
 			            <div class="pagination">
-							<a href="/admin/member?currentPage=1"> ◁◁ </a>
+							<a href="/admin/member/search?searchCondition=${searchCondition }&searchKeyword=${searchKeyword }&currentPage=1"> ◁◁ </a>
 							<c:if test= "${startNavi ne 1 }">
-								<a href="/admin/member?currentPage=${startNavi-1 }" class="prev">◀</a>
+								<a href="/admin/member/search?searchCondition=${searchCondition }&searchKeyword=${searchKeyword }&currentPage=${startNavi-1 }" class="prev">◀</a>
 							</c:if>	
 							<c:forEach begin="${startNavi }" end="${endNavi }" var="p">
-								<a href="/admin/member?currentPage=${p }">${p }</a>
+								<a href="/admin/member/search?searchCondition=${searchCondition }&searchKeyword=${searchKeyword }&currentPage=${p }">${p }</a>
 							</c:forEach>					
 							<c:if test="${endNavi ne maxPage }">
-								<a href="/admin/member?currentPage=${endNavi+1 }" class="next">▶</a>
+								<a href="/admin/member/search?searchCondition=${searchCondition }&searchKeyword=${searchKeyword }&currentPage=${endNavi+1 }" class="next">▶</a>
 							</c:if>    
-				           	<a href="/admin/member?currentPage=${maxPage }"> ▷▷ </a>
+				           	<a href="/admin/member/search?searchCondition=${searchCondition }&searchKeyword=${searchKeyword }&currentPage=${maxPage }"> ▷▷ </a>
 			            </div>
 			        </section>
 			    </div>

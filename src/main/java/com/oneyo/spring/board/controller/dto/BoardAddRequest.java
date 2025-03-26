@@ -8,14 +8,14 @@ public class BoardAddRequest {
 	private String boardContent;
 	private String boardFilename;
 	private String boardFileRename;
-	private String boardFilePath;
+	private String boardFilepath;
 	
 	public BoardAddRequest() {
 		super();
 	}
 
 	public BoardAddRequest(int boardNo, String memberId, String memberNickname, String boardTitle,
-			String boardContent, String boardFilename, String boardFileRename, String boardFilePath) {
+			String boardContent, String boardFilename, String boardFileRename, String boardFilepath) {
 		super();
 		this.boardNo = boardNo;
 		this.memberId = memberId;
@@ -24,7 +24,7 @@ public class BoardAddRequest {
 		this.boardContent = boardContent;
 		this.boardFilename = boardFilename;
 		this.boardFileRename = boardFileRename;
-		this.boardFilePath = boardFilePath;
+		this.boardFilepath = boardFilepath;
 	}
 
 	public int getBoardNo() {
@@ -83,19 +83,19 @@ public class BoardAddRequest {
 		this.boardFileRename = boardFileRename;
 	}
 
-	public String getBoardFilePath() {
-		return boardFilePath;
+	public String getBoardFilepath() {
+		return boardFilepath;
 	}
 
-	public void setBoardFilePath(String boardFilePath) {
-		this.boardFilePath = boardFilePath;
+	public void setBoardFilepath(String boardFilepath) {
+		this.boardFilepath = boardFilepath;
 	}
 
 	@Override
 	public String toString() {
 		return "BoardAddRequest [boardNo=" + boardNo + ", memberId=" + memberId + ", memberNickname=" + memberNickname
 				+ ", boardTitle=" + boardTitle + ", boardContent=" + boardContent + ", boardFilename=" + boardFilename
-				+ ", boardFileRename=" + boardFileRename + ", boardFilePath=" + boardFilePath + "]";
+				+ ", boardFileRename=" + boardFileRename + ", boardFilepath=" + boardFilepath + "]";
 	}
 
 
