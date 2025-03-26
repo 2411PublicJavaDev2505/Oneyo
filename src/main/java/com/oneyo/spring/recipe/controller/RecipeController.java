@@ -81,6 +81,8 @@ public class RecipeController {
             return "common/error";
         }
     }
+    
+  
 
     @GetMapping("/detail/{recipeNo}")
     public String RecipeDetail(@PathVariable int recipeNo, Model model) {

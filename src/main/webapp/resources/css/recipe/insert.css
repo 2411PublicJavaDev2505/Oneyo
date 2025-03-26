@@ -56,6 +56,7 @@ main {
     padding: 20px;
     text-align: center;
     border-radius: 10px;
+   
 }
 
 .edit-btn {
@@ -97,23 +98,23 @@ main {
 }
 
 
-/* 전체 컨테이너 */
+
 .ingredient-container {
     display: flex;
     justify-content: center;
-    gap: 50px; /* 좌우 간격 */
+    gap: 50px; 
     padding: 20px;
     margin-bottom: 150px;
 }
 
-/* 재료 & 양념 그룹 */
+
 .ingredient-group {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-/* 제목 스타일 */
+
 .ingredient-group h2 {
     font-size: 1.5em;
     font-weight: bold;
@@ -121,12 +122,12 @@ main {
     margin-right: 230px;
 }
 
-/* 개별 재료 박스 */
+
 .ingredient-box {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #fffde7; /* 연한 노란색 배경 */
+    background-color: #fffde7; 
     border: 2px solid #333;
     border-radius: 10px;
     padding: 10px;
@@ -134,7 +135,7 @@ main {
     margin-bottom: 10px;
 }
 
-/* 입력 필드 스타일 */
+
 .ingredient-box input {
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -151,7 +152,7 @@ h2 {
 .recipe {
     display: flex;
     align-items: center;
-    background-color: #fffde7; /* 연한 노란색 배경 */
+    background-color: #fffde7; 
     padding: 15px;
     margin-bottom: 10px;
     border-radius: 10px;
@@ -159,7 +160,7 @@ h2 {
     margin-right: 500px;
 }
 
-/* 숫자 부분 스타일 (원형) */
+
 .recipe-number {
     width: 40px;
     height: 40px;
@@ -173,25 +174,25 @@ h2 {
     margin-right: 15px;
 }
 
-/* 레시피 제목 스타일 */
+
 .recipe-info h2 {
     font-size: 1.5em;
     font-weight: bold;
     margin: 0;
 }
 
-/* 이미지 영역 스타일 */
+
 .recipe-image {
     width: 100px;
     height: 100px;
-    background-color: #ddd; /* 임시 배경색 */
+    background-color: #ddd; 
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: auto; /* 오른쪽 정렬 */
+    margin-left: auto; 
 }
 
-/* 추천 버튼 스타일 */
+
 .recommend {
     text-align: center;
     margin: 20px 0;
