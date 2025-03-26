@@ -27,9 +27,9 @@
 			<div class="ingredient-container">
 				<div class="ingredient-group">
 					<h2>재료</h2>
-					<c:forEach items="${recipe.sourceList }" var="source">
+					<c:forEach items="${sourceList }" var="source">
 					<div class="ingredient-box">
-						<span>${source.sourceName }</span>
+						<span>${source.sourcesName }</span>
 					</div>
 					</c:forEach>
 				</div>

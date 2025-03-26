@@ -37,6 +37,30 @@
 		WHERE 
 		    RECIPE.RECIPE_NO = #{recipeNo}
  	</select>
+ 	<select id="selectPersonalList" resultMap ="recipeResultMap">
+ 		SELECT 
+	         DISTINCT RECIPE_TITLE, MEMBER_NICKNAME, VIEW_COUNT, R.RECIPE_NO
+	    FROM 
+	        MEMBER M
+	    JOIN 
+	        REFRIGERATOR FR
+	    ON 
+	        FR.MEMBER_ID = M.MEMBER_ID
+	    JOIN
+	        SOURCES S
+	    ON
+	        FR.SOURCES_NO = S.SOURCES_NO
+	    JOIN 
+	        RECIPE_SOURCES RS
+	    ON 
+	        RS.SOURCES_NO = S.SOURCES_NO
+	    JOIN 
+	        RECIPE R
+	    ON
+	        R.RECIPE_NO = RS.RECIPE_NO
+	    WHERE 
+	        M.MEMBER_ID = #{memberId} AND FR.SOURCES_NO = S.SOURCES_NO 
+ 	</select>
  	<select id="getTotalCount" resultType="_int">
  		SELECT COUNT(*) FROM RECIPE
  	</select>

@@ -90,6 +90,7 @@ public class RecipeController {
             RecipeVO recipe = rService.selectOneByNo(recipeNo);
             List<StepVO> stepList = sService.getStepsByNo(recipeNo);
             List<SourcesVO>sourceList = sourceService.getSourcesByrecipeNo(recipeNo);
+            System.out.println(sourceList);
             recipe.setStepList(stepList);
             model.addAttribute("recipe", recipe);
             model.addAttribute("stepList", stepList);
@@ -126,38 +127,35 @@ public class RecipeController {
         }
     }
     
-    @GetMapping("/insert")
-    public String insertRecipe() {
-		return "recipe/insert";
+    @PostMapping("/insert")
+    public String insertRecipe(@ModelAttribute RecipeInsertRequest recipeInsertRequest, Model model) {
+        try {
+            // 1. 레시피 정보를 RecipeVO로 변환
+            RecipeVO recipe = new RecipeVO();
+            recipe.setRecipeTitle(recipeInsertRequest.getRecipeTitle());
+            recipe.setMemberNickName(recipeInsertRequest.getMemberNickName());
+
+            // 2. 레시피 저장 (서비스 호출)
+            rService.insertRecipe(recipe);
+
+            // 3. 단계 및 재료 리스트 저장
+            for (StepVO step : recipeInsertRequest.getStepList()) {
+                step.setRecipeNo(recipe.getRecipeNo()); // recipeNo를 설정
+                sService.insertStep(step);
+            }
+
+            for (SourcesVO source : recipeInsertRequest.getSourceList()) {
+                source.setRecipeNo(recipe.getRecipeNo()); // recipeNo를 설정
+                sourceService.insertSource(source);
+            }
+
+            return "redirect:/recipe/detail/" + recipe.getRecipeNo();  // 저장 후 상세 페이지로 리다이렉트
+        } catch (Exception e) {
+            e.printStackTrace();
+            model.addAttribute("errorMessage", e.getMessage());
+            return "common/error";  // 오류 발생 시 에러 페이지로 리다이렉트
+        }
     }
-	@PostMapping("/insert")
-	public String insertRecipe(@ModelAttribute RecipeInsertRequest recipe
-			, @RequestParam("uploadFile") MultipartFile uploadFile
-			, HttpSession session
-			, Model model) {
-		try {
-			if(session.getAttribute("memberId") != null) {
-				recipe.setRecipeWriter((String)session.getAttribute("memberId"));
-			}else {
-				model.addAttribute("errorMsg","로그인이 필요합니다~!" );
-				return "common/error";
-			}
-			
-			if(uploadFile != null && !uploadFile.isEmpty()) {
-				Map<String, String> fileInfo = file.saveFile(uploadFile, session, "recipe");
-				recipe.setRecipeFilename(fileInfo.get("rFilename"));
-				recipe.setRecipeFileRename(fileInfo.get("rFileRename"));
-				recipe.setRecipeFilepath(fileInfo.get("rFilepath"));
-			} 
-			int result = rService.insertRecipe(recipe);
-			return "redirect:/recipe/RecipeList";
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-			model.addAttribute("errorMsg", e.getMessage());
-			return "common/error";
-		}
-	}
 	
 	@GetMapping("/update")
 	public String showRecipeModifyForm(@RequestParam("recipeNo") int recipeNo, Model model) {

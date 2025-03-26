@@ -20,4 +20,6 @@ public interface StepStore {
 	int deleteStep(SqlSession session, int stepNo);
 
 	List<StepVO> getStepsByNo(SqlSession session, int recipeNo);
+
+	void insertStep(SqlSession session, StepVO step);
 }

@@ -1,13 +1,34 @@
 package com.oneyo.spring.recipe.controller.dto;
 
+import java.util.List;
+
+import com.oneyo.spring.sources.domin.SourcesVO;
+import com.oneyo.spring.step.domain.StepVO;
+
 public class RecipeInsertRequest {
 	private String recipeTitle;
 	private String recipeContent;
-	private String recipeWriter;
+	private String memberNickName;
 	private String recipeFilename;
 	private String recipeFileRename;
 	private String recipeFilepath;
 	
+	private List<SourcesVO> sourceList;  // 재료 목록
+    private List<StepVO> stepList;   // 단계 목록
+
+    
+	public List<SourcesVO> getSourceList() {
+		return sourceList;
+	}
+	public void setSourceList(List<SourcesVO> sourceList) {
+		this.sourceList = sourceList;
+	}
+	public List<StepVO> getStepList() {
+		return stepList;
+	}
+	public void setStepList(List<StepVO> stepList) {
+		this.stepList = stepList;
+	}
 	public String getRecipeTitle() {
 		return recipeTitle;
 	}
@@ -20,11 +41,11 @@ public class RecipeInsertRequest {
 	public void setRecipeContent(String recipeContent) {
 		this.recipeContent = recipeContent;
 	}
-	public String getRecipeWriter() {
-		return recipeWriter;
+	public String getMemberNickName() {
+		return memberNickName;
 	}
-	public void setRecipeWriter(String recipeWriter) {
-		this.recipeWriter = recipeWriter;
+	public void setMemberNickName(String memberNickName) {
+		this.memberNickName = memberNickName;
 	}
 	public String getRecipeFilename() {
 		return recipeFilename;
@@ -44,14 +65,11 @@ public class RecipeInsertRequest {
 	public void setRecipeFilepath(String recipeFilepath) {
 		this.recipeFilepath = recipeFilepath;
 	}
-	
 	@Override
 	public String toString() {
 		return "RecipeInsertRequest [recipeTitle=" + recipeTitle + ", recipeContent=" + recipeContent
-				+ ", recipeWriter=" + recipeWriter + ", recipeFilename=" + recipeFilename + ", recipeFileRename="
-				+ recipeFileRename + ", recipeFilepath=" + recipeFilepath + "]";
+				+ ", memberNickName=" + memberNickName + ", recipeFilename=" + recipeFilename + ", recipeFileRename="
+				+ recipeFileRename + ", recipeFilepath=" + recipeFilepath + ", sourceList=" + sourceList + ", stepList="
+				+ stepList + "]";
 	}
-	
-	
-	
 }

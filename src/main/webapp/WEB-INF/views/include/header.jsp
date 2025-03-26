@@ -20,7 +20,7 @@
 						<a href="/mypage/mypage">마이페이지</a><br>
 					<div class="search-container">
 	                    <input type="text" class="search-input" placeholder="검색">
-	                    <button class="search-btn">🔍</button>
+	                    <button class="search-btn" >🔍</button>
 	                </div>
 						<a href="/member/logout">로그아웃</a>
 					</c:if>

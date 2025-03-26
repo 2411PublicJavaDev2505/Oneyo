@@ -20,4 +20,6 @@ public interface SourcesService {
 
 	List<SourcesVO> getSourcesByrecipeNo(int recipeNo);
 
+	void insertSource(SourcesVO source);
+
 }

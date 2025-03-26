@@ -23,7 +23,7 @@
 	            <c:forEach items="${rList }" var="recipe">
 	                <a href="/recipe/detail/${recipe.recipeNo }" class="recipe">
 	                    <div class="recipe-style">
-	                        <img src="../resources/img/김치찌개냠냠굿.jpg" alt="요리 썸네일">
+	                        <img src="/Oneyo/src/main/webapp/resources/img/김치찌개냠냠굿.jpg" alt="요리 썸네일">
 	                        <section class="recipe-inf">
 	                            <p class="recipe-name">${recipe.recipeTitle }</p>
 								<span class="recipe-writer">${recipe.memberNickName }</span>
@@ -34,11 +34,17 @@
 	            </c:forEach>
 			</section>
 			<div class="pagination">
-                <a href="#">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <a href="#">4</a>
-                <a href="#">5</a>
+				<a href="/board/list?currentPage=1"> ◁◁ </a>
+				<c:if test= "${startNavi ne 1 }">
+					<a href="/board/list?currentPage=${startNavi-1 }" class="prev">◀</a>
+				</c:if>	
+				<c:forEach begin="${startNavi }" end="${endNavi }" var="p">
+					<a href="/board/list?currentPage=${p }">${p }</a>
+				</c:forEach>					
+				<c:if test="${endNavi ne maxPage }">
+					<a href="/board/list?currentPage=${endNavi+1 }" class="next">▶</a>
+				</c:if>    
+	           	<a href="/board/list?currentPage=${maxPage }"> ▷▷ </a>
             </div>
 		</main>
 	</div>

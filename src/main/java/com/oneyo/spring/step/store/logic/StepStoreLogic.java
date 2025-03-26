@@ -41,6 +41,10 @@ public class StepStoreLogic implements StepStore{
 		int result = session.update("RecipeContentMapper.deleteStep", stepNo);
 		return result;
 	}
-
+	@Override
+	public void insertStep(SqlSession session, StepVO step) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

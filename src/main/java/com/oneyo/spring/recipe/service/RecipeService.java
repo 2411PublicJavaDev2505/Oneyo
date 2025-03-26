@@ -10,7 +10,6 @@ import com.oneyo.spring.recipe.domain.RecipeVO;
 public interface RecipeService {
 
 	int getTotalCount();
-
 	
 	List<RecipeVO> selectListAll(int currentPage);
 
@@ -18,8 +17,6 @@ public interface RecipeService {
 
 	RecipeVO selectOneByNo(int recipeNo);
 	
-	int insertRecipe(RecipeInsertRequest recipe);
-
 	List<RecipeVO> selectSearchList(Map<String, String> paramMap, int currentPage);
 
 	int getTotalCount(Map<String, String> paramMap);
@@ -29,8 +26,7 @@ public interface RecipeService {
 
 	List<RecipeVO> selectRecipeStep(int recipeNo);
 
-
 	int updateRecipe(RecipeUpdateRequest recipe);
 
-
+	public void insertRecipe(RecipeVO recipe);
 }

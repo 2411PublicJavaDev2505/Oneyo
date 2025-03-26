@@ -53,33 +53,18 @@ span {
     font-size: 12px;
 }
 /*페이지 네이션*/
-.pagination {
+.pagination{
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-top: 30px;
+	margin-top: 25px;
 	gap: 5px;
 }
-.pagination a {
+.pagination a{
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: 4px 7px;
-	border: 1px solid #95975c;
-	color: rgb(119, 118, 98);
+	padding: 8px 12px;
+	color: #777134;
 	text-decoration: none;
-	min-width: 35px;
-	height: 35px;
-}
-.pagination a:hover {
-	background-color: #faf9d8;
-}
-.pagination .active {
-	background-color: #cacc98;
-	color: #fff;
-	border-color: rgb(239, 240, 196);
-}
-.pagination .prev, 
-.pagination .next {
-	padding: 8px 15px;
 }
