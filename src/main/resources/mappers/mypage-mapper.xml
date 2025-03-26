@@ -31,16 +31,51 @@
 		where B.DEL_YN = 'N' AND B.MEMBER_ID = #{memberId}
  		ORDER BY M.ADMIN_YN DESC, B.BOARD_DATE DESC 
 	</select> 
-  	
-  	<select id="getTotalCount"  resultType="_int">
-		select count(*) from board where DEL_YN = 'N'
-	</select>
-  
+  	  	  
   	<select id="selectReplyList" resultType="Reply">
   		select R.REPLY_NO, R.BOARD_NO, R.MEMBER_ID, M.MEMBER_NICKNAME, R.REPLY_CONTENT, R.REPLY_DATE
 		from reply R join member M on R.MEMBER_ID = M.MEMBER_ID 
 		where R.MEMBER_ID = #{memberId} order by REPLY_DATE 
   	</select>
-  
+  	<select id="selectOneByKeyword"  resultType="Board">
+		select B.BOARD_NO, B.MEMBER_ID, M.MEMBER_NICKNAME, B.BOARD_TITLE, B.BOARD_COUNT, B.BOARD_DATE, M.ADMIN_YN, B.DEL_YN	 
+		from board B
+		join member M on B.MEMBER_ID = M.MEMBER_ID 
+ 		<where>
+ 			<if test="searchCondition != null and searchCondition == 'title'">
+				B.BOARD_TITLE like '%'||#{searchKeyword}||'%'
+			</if>
+			<if test="searchCondition != null and searchCondition == 'content'">
+				B.BOARD_CONTENT like '%'||#{searchKeyword}||'%'
+			</if>
+			<if test="searchCondition == 'all'">
+  				B.BOARD_TITLE like '%'||#{searchKeyword}||'%' 
+				or B.BOARD_CONTENT like '%'||#{searchKeyword}||'%' 
+       		</if>	
+			<!-- and M.ADMIN_YN = 'N' -->
+			and B.DEL_YN = 'N'
+ 		</where> 
+ 		ORDER BY M.ADMIN_YN DESC, B.BOARD_DATE DESC
+	</select>
+	<select id="getTotalCount"  resultType="_int">
+		select count(*) from board where DEL_YN = 'N'
+	</select>	
+	<select id="getSearchCount"  resultType="_int">
+		select count(*) from board B
+		join member M on B.MEMBER_ID = M.MEMBER_ID 
+		<where>
+ 			<if test="searchCondition != null and searchCondition == 'title'">
+				B.BOARD_TITLE like '%'||#{searchKeyword}||'%'
+			</if>
+			<if test="searchCondition != null and searchCondition == 'content'">
+				B.BOARD_CONTENT like '%'||#{searchKeyword}||'%'
+			</if>
+			<if test="searchCondition == 'all'">
+  				B.BOARD_TITLE like '%'||#{searchKeyword}||'%' or
+				B.BOARD_CONTENT like '%'||#{searchKeyword}||'%'
+       		</if>	
+       		and B.DEL_YN = 'N'
+ 		</where>		
+	</select>	
   
   </mapper>

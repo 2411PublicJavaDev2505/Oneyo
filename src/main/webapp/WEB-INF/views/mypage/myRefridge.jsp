@@ -7,12 +7,20 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>나의냉장고~~~</title>
 	<link rel="stylesheet" href="../resources/css/mypage/myRefridge.css"> 
 </head>
 <body>
 		<!--  헤더-->
- 		<jsp:include page ="/WEB-INF/views/include/header.jsp"></jsp:include> 
+ 		<!--  헤더-->
+ 		<c:choose>
+		    <c:when test="${sessionScope.member1.memberId eq 'ADMIN01'}">
+		        <jsp:include page="/WEB-INF/views/include/headeradmin.jsp"></jsp:include>
+		    </c:when>
+		    <c:otherwise>
+		        <jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
+		    </c:otherwise>
+		</c:choose> 
  		
    <main class="main">
         <div class="myPageMain">
@@ -22,8 +30,15 @@
             <div class="detailInformation">
                 <div>이름 : ${memberName}</div>
                 <div>닉네임 : ${member.memberNickname}</div>
-<button class="deleteMember" onclick="location.href='member/delete?memberId=${memberId }'">회원탈퇴</button>
-              <button class="updateMember"  onclick="location.href='member/modify?memberId=${memberId }'">회원정보수정</button>
+			  <c:choose>
+				    <c:when test="${sessionScope.member1.memberId eq 'ADMIN01'}">
+				        <button class="deleteMember" ><a href="/admin/member">회원관리</a></button>
+				    </c:when>
+				    <c:otherwise>
+				        <button class="deleteMember" ><a href="/member/delete?memberId=${memberId }">회원탈퇴</a></button>
+				    </c:otherwise>
+				</c:choose>
+              <button class="updateMember" ><a href="/member/modify?memberId=${memberId }">회원정보수정</a></button>
             </div>
         </nav>
         </section>
@@ -31,7 +46,7 @@
     <!--       마이 냉장고 기본틀 -->
         <div class="myDetail-container">
             <div class="myPageMenu">
-            <button><a href="/mypage">마이냉장고</a></button>
+            <button><a href="/mypage/mypage">마이냉장고</a></button>
             <button><a href="/mypage/myBoard">내가 쓴글</a></button>
             <button><a href="/mypage/myReply">나의 댓글</a></button>
             </div>

@@ -32,36 +32,46 @@
     </main>
     	<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
 	<script> 
-	    document.addEventListener('DOMContentLoaded', () => {
-	        const recipeImage = document.querySelector('.recipe-image');
-	        const beforeButton = document.querySelector('.before-btn');
-	        const nextButton = document.querySelector('.next-btn');
-	
-	        const images = [
-	            { src: '../resources/img/pasta.jpg', alt: '양송이 크림 파스타', recipe: '양송이 크림 파스타' },
-	            { src: '../resources/img/salad.jpg', alt: '샐러드 파스타', recipe: '신선한 샐러드 파스타' },
-	            { src: '../resources/img/steak.jpg', alt: '불고기 덮밥', recipe: '불고기 덮밥' }
-	        ];
-	
-	        let currentImageIndex = 0;
-	
-	        function updateImage(index) {
-	            const newImage = images[index];
-	            recipeImage.src = newImage.src;
-	            recipeImage.alt = newImage.alt;
-	            recipeImage.dataset.recipe = newImage.recipe;
-	        }
-	
-	        beforeButton.addEventListener('click', () => {
-	            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-	            updateImage(currentImageIndex);
-	        });
-	
-	        nextButton.addEventListener('click', () => {
-	            currentImageIndex = (currentImageIndex + 1) % images.length;
-	            updateImage(currentImageIndex);
-	        });
+	document.addEventListener('DOMContentLoaded', () => {
+	    const recipeImage = document.querySelector('.recipe-image');
+	    const recipeText = document.querySelector('.recipe-container p');
+	    const beforeButton = document.querySelector('.before-btn');
+	    const nextButton = document.querySelector('.next-btn');
+
+	    const images = [
+	        '../resources/img/양송이 크림 파스타.jpg',
+	        '../resources/img/새우라멘.jpg',
+	        '../resources/img/불고기덮밥.jpg'
+	    ];
+
+	    let currentImageIndex = 0;
+
+	    function extractRecipeName(src) {
+	        return src.split('/').pop().split('.')[0];
+	    }
+
+	    function updateImage(index) {
+	        const newImageSrc = images[index];
+	        recipeImage.src = newImageSrc;
+	        recipeImage.alt = extractRecipeName(newImageSrc);
+	        recipeImage.dataset.recipe = extractRecipeName(newImageSrc);
+	        recipeText.textContent = extractRecipeName(newImageSrc);
+	    }
+
+	    beforeButton.addEventListener('click', () => {
+	        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+	        updateImage(currentImageIndex);
 	    });
+
+	    nextButton.addEventListener('click', () => {
+	        currentImageIndex = (currentImageIndex + 1) % images.length;
+	        updateImage(currentImageIndex);
+	    });
+
+	    updateImage(currentImageIndex);
+	});
+
+
 	</script>
 </body>
 </html>
