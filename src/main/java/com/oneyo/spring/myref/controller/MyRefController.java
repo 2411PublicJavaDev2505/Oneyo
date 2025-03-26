@@ -19,6 +19,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.oneyo.spring.common.PageUtill;
 import com.oneyo.spring.member.controller.dto.LoginRequest;
+import com.oneyo.spring.member.domain.MemberVO;
+import com.oneyo.spring.member.service.MemberService;
+import com.oneyo.spring.mypage.service.MypageService;
 import com.oneyo.spring.myref.controller.dto.CategoryList;
 import com.oneyo.spring.myref.controller.dto.CheckLoginRequest;
 import com.oneyo.spring.myref.controller.dto.DeleteSource;
@@ -32,6 +35,7 @@ import com.oneyo.spring.myref.service.MyRefService;
 @RequestMapping("/mypage")
 public class MyRefController {
 	private MyRefService mService;
+	private MemberService mBService;
 	private PageUtill pageUtil;
 	
 	@Autowired
@@ -39,27 +43,30 @@ public class MyRefController {
 		this.mService = mService;
 		this.pageUtil = pageUtil;
 	}
-	
+
 	// 마이페이지 전체 출력
 	@GetMapping("/mypage")
 	public String showMypageMain(Model model,
 			@RequestParam(value="page", defaultValue="1") int currentPage,
 			HttpSession session) {	
 		try {
-			
 			// 로그인 붙이고 회원 체크 분기처리할때 사용할거임
 			CheckLoginRequest login = null;
+			System.out.println("이름은?"+session.getAttribute("memberId"));
 			if(session.getAttribute("memberId")!= null) {
 				login = new CheckLoginRequest();
 				login.setMemberId((String)session.getAttribute("memberId"));
-				login.setMemberPw((String)session.getAttribute("memberPw"));
+//				login.setMemberPw((String)session.getAttribute("memberPw"));
+//				String memberId = login.getMemberId();
+//				String memberPw = login.getMemberPw();
 //				System.out.println((String)session.getAttribute("memberId"));
+				System.out.println(login);
 		}
+			
 			List<MySourceList> cList = mService.selectCoolSourceList(currentPage, login);
-			List<MySourceList> iList = mService.selectIceSourceList(currentPage, login);		
-							
-//			System.out.println(cList);
-//			System.out.println(iList);
+			List<MySourceList> iList = mService.selectIceSourceList(currentPage, login);
+			System.out.println(cList);
+			System.out.println(iList);
 			
 			if(!cList.isEmpty() && !iList.isEmpty()) {
 				model.addAttribute("cList", cList);
@@ -83,7 +90,6 @@ public class MyRefController {
 			HttpSession session) {
 		try {
 			CheckLoginRequest login = null;
-			
 			if(session.getAttribute("memberId")!= null) {
 				login = new CheckLoginRequest();
 				login.setMemberId((String)session.getAttribute("memberId"));

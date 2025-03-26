@@ -18,6 +18,8 @@ public class CheckLoginRequest {
 	
 	
 
+
+
 	public CheckLoginRequest(String memberId) {
 		super();
 		this.memberId = memberId;

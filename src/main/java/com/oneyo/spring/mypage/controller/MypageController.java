@@ -26,15 +26,16 @@ public class MypageController {
 	private MypageService mService;
 	@Autowired
 	private PageUtill pageUtil;
-	@GetMapping("/mypage")
-	public String showMypageMain(Model model) {	
-		try {
-			List<MySourceList> mList = mService.selectSourceList();
-			return "/mypage";
-		} catch (Exception e) {
-		}
-		return "mypage/mypage";
-	}
+	
+//	@GetMapping("/mypage")
+//	public String showMypageMain(Model model) {	
+//		try {
+//			List<MySourceList> mList = mService.selectSourceList();
+//			return "/mypage";
+//		} catch (Exception e) {
+//		}
+//		return "mypage/mypage";
+//	}
 	@GetMapping("/mypage/myBoard")
 	public String showMyBoard(@RequestParam(value="currentPage", defaultValue="1")		
 	int currentPage, Model model,HttpSession session) {
