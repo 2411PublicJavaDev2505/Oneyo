@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.oneyo.spring.admin.controller.dto.MemberListRequest;
 import com.oneyo.spring.admin.store.AdminStore;
 import com.oneyo.spring.member.domain.MemberVO;
+import com.oneyo.spring.myref.controller.dto.CategoryList;
 
 @Repository
 public class AdminStoreLogic implements AdminStore {
@@ -43,6 +44,17 @@ public class AdminStoreLogic implements AdminStore {
 	@Override // 페이지네이션(검색)
 	public int getSearchCount(SqlSession session, Map<String, String> paramMap) {
 		return session.selectOne("AdminMapper.getSearchCount", paramMap);
+	}
+
+
+	@Override
+	public int updateCategory(SqlSession session, CategoryList cList) {
+			return session.update("AdminMapper.updateCategory", cList);
+	}
+
+	@Override
+	public int insertCategory(SqlSession session, CategoryList cList) {
+			return session.insert("AdminMapper.insertCategory", cList);
 	}
 
 }

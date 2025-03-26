@@ -11,6 +11,7 @@ import com.oneyo.spring.admin.controller.dto.MemberListRequest;
 import com.oneyo.spring.admin.service.AdminService;
 import com.oneyo.spring.admin.store.AdminStore;
 import com.oneyo.spring.member.domain.MemberVO;
+import com.oneyo.spring.myref.controller.dto.CategoryList;
 
 @Service
 public class AdminServiceImpl implements AdminService{
@@ -50,4 +51,20 @@ public class AdminServiceImpl implements AdminService{
 		return aStore.getSearchCount(session,paramMap);
 	}
 
+	
+	/**
+	 * 일단 기다려보셈 이것도
+	 */
+	@Override
+	public int insertCategory(CategoryList cList) {
+		return aStore.insertCategory(session, cList);
+		
+	}
+
+	@Override
+	public int updateCategory(CategoryList cList) {
+		return aStore.updateCategory(session, cList);
+	}
+	
+	
 }

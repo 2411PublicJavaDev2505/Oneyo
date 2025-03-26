@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.oneyo.spring.admin.controller.dto.MemberListRequest;
 import com.oneyo.spring.member.domain.MemberVO;
+import com.oneyo.spring.myref.controller.dto.CategoryList;
 
 public interface AdminService {
 
@@ -42,5 +43,14 @@ public interface AdminService {
 	 * @return int
 	 */
 	int getSearchCount(Map<String, String> paramMap);
+	
+	/**
+	 * 카테고리 등록할건데 일단 시험용임
+	 * @param categoryDept
+	 * @param insertCategory
+	 * @return
+	 */
+    int insertCategory(CategoryList cList);
+    int updateCategory(CategoryList cList);
 
 }

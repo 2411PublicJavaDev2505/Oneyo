@@ -29,7 +29,7 @@
 		    <div class="myDetail-container">
 		        <div class="adminMenu">
 			        <button><a href="/admin/member">전체 회원 정보</a></button>
-			        <button><a href="#">재료 관리</a></button>
+			        <button><a href="/admin/category/insert">재료 관리</a></button>
 		        </div>			        
 		        <div class="search-container">
 		            <form class="search-form"  action="/admin/member/search">

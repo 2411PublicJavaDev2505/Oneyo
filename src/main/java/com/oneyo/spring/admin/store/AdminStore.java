@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.oneyo.spring.admin.controller.dto.MemberListRequest;
 import com.oneyo.spring.member.domain.MemberVO;
+import com.oneyo.spring.myref.controller.dto.CategoryList;
 
 public interface AdminStore {
 
@@ -44,5 +45,10 @@ public interface AdminStore {
 	 * @return int
 	 */
 	int getSearchCount(SqlSession session, Map<String, String> paramMap);
+
+
+	int updateCategory(SqlSession session, CategoryList cList);
+
+	int insertCategory(SqlSession session, CategoryList cList);
 
 }
