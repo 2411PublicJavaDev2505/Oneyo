@@ -44,7 +44,7 @@ public class MypageController {
 			// 아이디가 작성한 게시글을 가져오기 
 			List<MyBoardVO> mList = mService.selectBoardList(memberId,currentPage);
 			int totalCount = mService.getTotalCount();
-			Map<String, Integer>pageInfo = pageUtil.generatePageInfo(totalCount, currentPage, 5);
+			Map<String, Integer>pageInfo = pageUtil.generatePageInfo(totalCount, currentPage,5);
 			model.addAttribute("maxPage", pageInfo.get("maxPage"));
 			model.addAttribute("startNavi", pageInfo.get("startNavi"));
 			model.addAttribute("endNavi", pageInfo.get("endNavi"));

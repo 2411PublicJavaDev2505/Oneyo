@@ -47,46 +47,40 @@
                <div class="modifypw">
                    <h3>비밀번호설정</h3>
                    <label>새로운 비밀번호</label>
-                   <input type="password" placeholder="새 비밀번호 입력" name="newPassword">
+                   <input type="password" placeholder="새 비밀번호 입력" name="memberPw" id="MEMBER_PW">
                    <label>새 비밀번호 확인</label>
-                   <input type="password" placeholder="새 비밀번호 확인" name="newPasswordRe">
-                   <button class="password-button">비밀번호 설정</button>
+                   <input type="password" placeholder="새 비밀번호 확인"  id="MEMBER_PW_RE">
+                   <button class="password-button" id="signup-button">비밀번호 설정</button>
                </div>
            </div>
           </div>
             </form>
-      			<!-- <form action="/member/modifypw" method="post">
-                    <div class="modifypw">
-                        <h3>비밀번호설정</h3>
-                        <label>비밀번호</label>
-                        <input type="password" placeholder="비밀번호 입력" name="memberPw">
-                        <label>비밀번호(확인)</label>
-                        <input type="password" placeholder="비밀번호 확인" name="memberPwRe">
-                        <button class="password-button">비밀번호 설정</button>
-                    </div>
-                </div>
-            </div>
-
-               -->
+      			
        
     </main>
-    <!-- <script>
+    <script>
 		document.addEventListener("DOMContentLoaded", function(){
-	        var pwTag = document.querySelector("#MEMBER_PW");
-	        var pwReTag = document.querySelector("#MEMBER_PW_RE");
-	        var msgTag = document.createElement("div");
-	        pwReTag.parentNode.insertBefore(msgTag, pwReTag.nextSibling);
-	        
-			document.querySelector("#password-button").addEventListener("click", function(event){
-				if(pwTag.value.trim() !== pwReTag.value.trim()){
-	                msgTag.innerText = "비밀번호가 일치하지 않습니다";
-	                event.preventDefault();
-	                return false;
-	            }
-	        });
+		    var pwTag = document.querySelector("#MEMBER_PW");
+		    var pwReTag = document.querySelector("#MEMBER_PW_RE");
+	
+		    if (!pwTag) {
+		        console.error("비밀번호 입력 필드를 찾을 수 없습니다. id='MEMBER_PW'가 있는지 확인하세요.");
+		        return;
+		    }
+	
+		    var msgTag = document.createElement("div");
+		    pwReTag.parentNode.insertBefore(msgTag, pwReTag.nextSibling);
+	
+		    document.querySelector("#signup-button").addEventListener("click", function(event){
+		        if (pwTag.value.trim() !== pwReTag.value.trim()) {
+		            msgTag.innerText = "비밀번호가 일치하지 않습니다";
+		            msgTag.style.color = "red";
+		            event.preventDefault(); // 폼 제출 방지
+		        }
+		    });
 		});
 		
-	</script> -->
+	</script>
 	</body>
 	
 </html>

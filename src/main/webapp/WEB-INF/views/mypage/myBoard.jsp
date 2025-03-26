@@ -21,9 +21,9 @@
 			            <div class="myPicture"></div>
 			            <div class="detailInformation">
 			                <div>이름 :  ${memberName}</div>
-			                <div>닉네임 : ${memberNickname}</div>
-			 			  <button class="deleteMember" ><a href="member/delete?memberId=${memberId }">회원탈퇴</a></button>
-		              	  <button class="updateMember" ><a href="member/modify?memberId=${memberId }">회원정보수정</a></button>
+			                <div>닉네임 : ${sessionScope.memberNickname}</div>
+			 			  <button class="deleteMember" ><a href="/member/delete?memberId=${memberId }">회원탈퇴</a></button>
+		              	  <button class="updateMember" ><a href="/member/modify?memberId=${memberId }">회원정보수정</a></button>
 			            </div>
 			        </nav>
 			        </section>
@@ -47,8 +47,6 @@
 			                    <button type="submit">검색</button>
 			                </form>
 			            </div>
-			    	<!-- 재료 등록 페이지 부분-->
-			        <!-- <div className="selectform"> -->
 			
 			        <div>
 					            <section class="my-sources">
@@ -68,7 +66,7 @@
 						                        <div class="board-Lists">
 						                            <tr class="sources">
 						                                <td class="num">${i.count }</td>
-						                                <td class="board-title"><a href="/board/detail?boardTitle=${board.boardTitle}">${board.boardTitle }</a></td>
+						                                <td class="board-title"><a href="<c:url value='/board/detail?boardNo=${board.boardNo}' />">${board.boardTitle }</a></td>
 						                                <td class="writer">${board.memberNickname}</td>
 						                                <td class="date">${board.boardDate}</td>
 						                                <td class="count">${board.boardCount}</td>
@@ -80,17 +78,17 @@
 					                
 					                <!-- 페이지네이션 --> 
 					        <div class="pagination">
-								<a href="/mypage/myboard?currentPage=1"> ◁◁ </a>
-								<c:if test= "${startNavi ne 1 }">
-									<a href="/mypage/myboard?currentPage=${startNavi-1 }" class="prev">◀</a>
+								<a href="/mypage/myBoard?currentPage=1"> ◁◁ </a>
+								<c:if test= "${startNavi ne 1}">
+									<a href="/mypage/myBoard?currentPage=${startNavi-1}" class="prev">◀</a>
 								</c:if>	
-								<c:forEach begin="${startNavi }" end="${endNavi }" var="p">
-									<a href="/mypage/myboard?currentPage=${p }">${p }</a>
+								<c:forEach begin="${startNavi}" end="${endNavi }" var="p">
+									<a href="/mypage/myBoard?currentPage=${p}">${p}</a>
 								</c:forEach>					
-								<c:if test="${endNavi ne maxPage }">
-									<a href="/mypage/myboard?currentPage=${endNavi+1 }" class="next">▶</a>
+								<c:if test="${endNavi ne maxPage}">
+									<a href="/mypage/myBoard?currentPage=${endNavi+1}" class="next">▶</a>
 								</c:if>    
-					           	<a href="/mypage/myboard?currentPage=${maxPage }"> ▷▷ </a>
+					           	<a href="/mypage/myBoard?currentPage=${maxPage}"> ▷▷ </a>
 				            </div>
 					    </section>
 			        </div>

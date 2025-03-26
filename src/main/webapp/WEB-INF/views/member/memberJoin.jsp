@@ -34,7 +34,6 @@
 
     </main>
     <jsp:include page = "/WEB-INF/views/include/footer.jsp"></jsp:include> 	
-	</body>
 	<script>
 		document.addEventListener("DOMContentLoaded", function(){
 		    var pwTag = document.querySelector("#MEMBER_PW");
@@ -58,4 +57,5 @@
 		});
 		
 	</script>
+	</body>
 </html>
