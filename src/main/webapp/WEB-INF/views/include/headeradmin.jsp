@@ -16,7 +16,7 @@
 	                <c:if test="${memberId ne null && memberId ne '' }">
 	                	<a href="/recipe/list">레시피</a>
 	                	<a href="/board/list">게시판</a>
-						<a href="/mypage">마이페이지</a><br>
+						<a href="/mypage/mypage">마이페이지</a><br>
 					<div class="search-container">
 	                    <input type="text" class="search-input" placeholder="검색">
 	                    <button class="search-btn">🔍</button>
