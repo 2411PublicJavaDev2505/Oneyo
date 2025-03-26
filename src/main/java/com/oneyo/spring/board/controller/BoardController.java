@@ -1,5 +1,6 @@
 package com.oneyo.spring.board.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -172,8 +173,9 @@ public class BoardController {
 		try {
 			List<BoardVO> nList = bService.printNoticeList();
 			List<BoardVO> bList = bService.printAllBoardList(currentPage);
-			int totlaCount = bService.getTotalCount();
-			Map<String, Integer>pageInfo = pageUtil.generatePageInfo(totlaCount, currentPage);
+			int totalCount = bService.getTotalCount();
+			System.out.println(totalCount);
+			Map<String, Integer>pageInfo = pageUtil.generatePageInfo(totalCount, currentPage);
 			model.addAttribute("maxPage", pageInfo.get("maxPage"));
 			model.addAttribute("startNavi", pageInfo.get("startNavi"));
 			model.addAttribute("endNavi", pageInfo.get("endNavi"));
@@ -191,17 +193,20 @@ public class BoardController {
 	@GetMapping("/detail/{boardNo}")
 	public String showBoardDetail(@PathVariable("boardNo") int boardNo, Model model
 				, HttpSession session) {
+		String memberId = (String)session.getAttribute("memberId");
+		model.addAttribute("memberId", memberId); //로그인한 사용자 id
 		try {
-			if(session.getAttribute("memberId") == null) {
+			if(memberId == null) {
 				model.addAttribute("errorMsg","로그인이 필요합니다.");
 				return "common/error";
 			}
-			
-			BoardVO board = bService.selectOneBoard(boardNo);		
+			BoardVO board = bService.selectOneBoard(boardNo);	
 			List<ReplyVO> reply = rService.getReplyByBoardNo(boardNo); // 댓글 조회
 			Integer count = bService.boardCountUpdate(boardNo); // 조회수 카운트
+			
 			model.addAttribute("board", board);
 			model.addAttribute("reply", reply);
+			model.addAttribute("bWriter", board.getMemberId()); // 작성자 id
 			return "/board/boardDeteail";
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -221,14 +226,13 @@ public class BoardController {
 			Map<String, String> paramMap = new HashMap<String, String>();
 			paramMap.put("searchCondition", searchCondition);
 			paramMap.put("searchKeyword", searchKeyword);
-//			List<BoardVO> searchNList = bService.NoticeOneByKeyword(paramMap); // 공지사항
-			List<BoardVO> searchBList = bService.selectOneByKeyword(paramMap, currentPage); //일반게시판
+			List<BoardVO> searchBList = bService.selectOneByKeyword(paramMap, currentPage); 
 			int searchCount = bService.getTotalCount(paramMap);
-			Map<String, Integer>pageInfo = pageUtil.generatePageInfo(searchCount, currentPage);
+			Map<String, Integer>pageInfo = pageUtil.generatePageInfo(searchCount, currentPage, 10);
 			model.addAttribute("maxPage", pageInfo.get("maxPage"));
 			model.addAttribute("startNavi", pageInfo.get("startNavi"));
 			model.addAttribute("endNavi", pageInfo.get("endNavi"));
-//			model.addAttribute("searchList", searchNList);
+			model.addAttribute("search", paramMap);
 			model.addAttribute("searchBList", searchBList);
 			return "board/boardSearch";
 		} catch (Exception e) {

@@ -32,37 +32,21 @@
                 <textarea class="content" name="boardContent" " rows="5">${board.boardContent }</textarea>    
                 <span>공백포함 최대 1,330자까지 입력가능합니다.</span>
             </div>
+            <c:if test="${not empty board.boardFilename}">
             <div class="board-file">
-                <h4>첨부파일</h4>
+                <label>첨부파일</label>
 				<input type="hidden" name="boardFilename" value="${board.boardFilename }">
 				<input type="hidden" name="boardFileRename" value="${board.boardFileRename }">					
 				<input type="hidden" name="boardFilepath" value="${board.boardFilepath }">                
                 <a href="../..${board.boardFilepath }" download>${board.boardFilename }</a>
             </div>             
+            </c:if>    
             <div class="file-group">
                 <label>첨부파일</label>
                 <div class="file-upload">
                     <input class="content" type="file" name="reloadFile" id="fileup" readonly>
-                    <button class="cancel">Ｘ</button>
+                    <button class="cancel" type="reset">Ｘ</button>
                 </div>
- <!--                  <div class="file-upload">
-                    <label></label>
-                    <input class="content" type="text" value="10MB 미만의 파일을 업로드 해주세요" readonly>
-                    <button class="cancel">Ｘ</button>
-                    <button class="select">파일 선택</button>
-                </div>
-                <div class="file-upload">
-                    <label></label>
-                    <input class="content" type="text" value="10MB 미만의 파일을 업로드 해주세요" readonly>
-                    <button class="cancel">Ｘ</button>
-                    <button class="select">파일 선택</button>
-                </div>
-                <div class="file-upload">
-                    <label></label>
-                    <input class="content" type="text" value="10MB 미만의 파일을 업로드 해주세요" readonly>
-                    <button class="cancel">Ｘ</button>
-                    <button class="select">파일 선택</button>
-                </div>  -->
         
                 <div class="buttons">
                     <button class="insert">수정완료</button>

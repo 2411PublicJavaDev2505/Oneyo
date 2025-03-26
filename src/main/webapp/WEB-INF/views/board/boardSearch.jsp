@@ -25,12 +25,12 @@
             	</form>
                 <form class="board-search-form"  action="/board/search" method="get">
                     <select class="board-search-select"  name="searchCondition" >
-                        <option value="all"<c:if test="${searchCondition eq 'all' }">selected</c:if>>전체</option>
-                        <option value="title"<c:if test="${searchCondition eq 'title' }">selected</c:if>>제목</option>
-                        <option value="content"<c:if test="${searchCondition eq 'content' }">selected</c:if>>내용</option>
-                        <option value="writer"<c:if test="${searchCondition eq 'writer' }">selected</c:if>>작성자</option>
+                        <option value="all"<c:if test="${search.searchCondition eq 'all' }">selected</c:if>>전체</option>
+                        <option value="title"<c:if test="${search.searchCondition eq 'title' }">selected</c:if>>제목</option>
+                        <option value="content"<c:if test="${search.searchCondition eq 'content' }">selected</c:if>>내용</option>
+                        <option value="writer"<c:if test="${search.searchCondition eq 'writer' }">selected</c:if>>작성자</option>
                     </select>
-                    <input class="board-search-input" type="text" name="searchKeyword" value="${searchKeyword }" placeholder="검색어를 입력하세요">
+                    <input class="board-search-input" type="text" name="searchKeyword" value="${search.searchKeyword }" placeholder="검색어를 입력하세요">
                     <button type="submit">검색</button>
                 </form>
             </div>
@@ -48,26 +48,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- 공지사항  -->
-                    <c:forEach items="${searchBList }" var="board" varStatus="i">
-                    	<c:if test="${board.adminYn eq 'Y'}">
-	                        <tr class="notice ${i.count >2 ? 'hidden' : ''}">
-	                            <td class="num">공지</td>
-	                            <td class="title"><a href="/board/detail/${board.boardNo}"> ${board.boardTitle }</a></td>
-	                            <td class="writer">${board.memberNickname }</td>
-	                            <td class="date">${board.boardDate }</td>
-	                            <td class="views">${board.boardCount }</td>
-	                        </tr>
-                    	</c:if>  
-                     </c:forEach>
-                    <!-- 더보기 버튼  -->
-                    <tr class="toggle-btn">
-                        <td colspan="5" onclick="toggleNotices()">+ 더보기</td>
-                    </tr> 
-                    <!-- 일반게시판  --> 
+                    <!-- 게시판  --> 
                    	<c:forEach items="${searchBList }" var="board" varStatus="i">
                         <tr  class="free-board">
-                            <td class="num">${board.boardNo }</td>
+                        <c:if test="${board.adminYn eq 'Y'}">
+                        	<td class="num">공지</td>
+                        </c:if>
+                        <c:if test="${board.adminYn eq 'N'}">
+                        	<td class="num">${board.boardNo }</td>
+                        </c:if>
                             <td class="title"><a href="/board/detail/${board.boardNo}"> ${board.boardTitle }</a></td>
                             <td class="writer">${board.memberNickname }</td>
                             <td class="date">${board.boardDate }</td>
@@ -78,17 +67,17 @@
             </table>
             <!-- 페이지네이션 --> 
             <div class="pagination">
-				<a href="/board/search?searchCondition=${searchCondition }&searchKeyword=${searchKeyword }&currentPage=1"> ◁◁ </a>
+				<a href="/board/search?searchCondition=${search.searchCondition }&searchKeyword=${search.searchKeyword }&currentPage=1"> ◁◁ </a>
 				<c:if test= "${startNavi ne 1 }">
-					<a href="/board/search?searchCondition=${searchCondition }&searchKeyword=${searchKeyword }&currentPage=${startNavi-1 }" class="prev">◀</a>
+					<a href="/board/search?searchCondition=${search.searchCondition }&searchKeyword=${search.searchKeyword }&currentPage=${startNavi-1 }" class="prev">◀</a>
 				</c:if>	
 				<c:forEach begin="${startNavi }" end="${endNavi }" var="p">
-					<a href="/board/search?searchCondition=${searchCondition }&searchKeyword=${searchKeyword }&currentPage=${p }">${p }</a>
+					<a href="/board/search?searchCondition=${search.searchCondition }&searchKeyword=${search.searchKeyword }&currentPage=${p }">${p }</a>
 				</c:forEach>					
 				<c:if test="${endNavi ne maxPage }">
-					<a href="/board/search?searchCondition=${searchCondition }&searchKeyword=${searchKeyword }&currentPage=${endNavi+1 }" class="next">▶</a>
+					<a href="/board/search?searchCondition=${search.searchCondition }&searchKeyword=${search.searchKeyword }&currentPage=${endNavi+1 }" class="next">▶</a>
 				</c:if>    
-	           	<a href="/board/search?searchCondition=${searchCondition }&searchKeyword=${searchKeyword }&currentPage=${maxPage }"> ▷▷ </a>
+	           	<a href="/board/search?searchCondition=${search.searchCondition }&searchKeyword=${search.searchKeyword }&currentPage=${maxPage }"> ▷▷ </a>
             </div>
         </section>
     </main>

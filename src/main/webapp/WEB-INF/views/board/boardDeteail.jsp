@@ -20,13 +20,13 @@
             <div class="board-top">
                 <h3 class="board-title">${board.boardTitle }</h3>
                 <div class="modify-button"> 
-                
+                <c:if test="${not empty sessionScope.memberId and sessionScope.memberId eq bWriter}">
                     <button type="button" onclick="showUpdateForm(${board.boardNo});">수정</button>
                     <form action="/board/delete" id="deleteForm" method="get">
                     	<input type="hidden" name="boardNo" value="${board.boardNo }">
 	                    <button type="button" onclick="deleteConfirm(${board.boardNo});">삭제</button>
                     </form>
-                    
+                </c:if>
                 </div>
             </div>
             <div class="board-main">
@@ -51,22 +51,26 @@
                 <div class="reply-info">
                     <span class="reply-nickname">${reply.memberNickname }</span>
                     <span class="reply-date">${reply.replyDate }</span>
+               		<c:if test="${sessionScope.memberId eq reply.memberId}">                    
                     <form action="/replyDelete" method="get">
 	                    <input type="hidden" name="boardNo" value="${board.boardNo}">
 	                    <input type="hidden" name="replyNo" value="${reply.replyNo }">
 	                    <button class="reply-del" type="submit">삭제</button>
                     </form>
+                    </c:if>
                 </div>
                 <span class="reply-content">${reply.replyContent }</span>
             </c:forEach>
             </div> 
-            <!-- 댓글 입력 -->
+            <!-- 댓글 입력 (공지사항은 입력불가) -->
+         
             <form class="reply-insert" action="${pageContext.request.contextPath}/replyInsert" method="post">
             	<input type="hidden" name="boardNo"  value="${board.boardNo }">
             	<input type="hidden" name="memberId"  value="${sessionScope.memberId }">
                 <textarea name="replyContent"  placeholder="댓글 입력"></textarea>
                 <button type="submit">댓글 등록</button>
             </form>
+      
         </div>
     </main>
     <!-- 푸터 -->

@@ -19,7 +19,7 @@
 	</resultMap>
 	
 	<insert id="insertBoard">
-		insert into board 
+		insert into board
 		 values(SEQ_BOARD_NO.nextval, #{memberId}, #{boardTitle}, #{boardContent}, 
 		 default, default, default, #{boardFilename}, #{boardFileRename}, #{boardFilepath} ) 
 	</insert>
@@ -53,40 +53,16 @@
 		where M.ADMIN_YN = 'N' and B.DEL_YN = 'N'
  		ORDER BY M.ADMIN_YN DESC, B.BOARD_DATE DESC
 	</select>
+	<!-- 상세 조회(detail) -->
 	<select id="selectOneBoard"  resultType="Board">
-		select B.BOARD_NO, M.MEMBER_NICKNAME, B.BOARD_TITLE, B.BOARD_CONTENT, B.BOARD_COUNT, B.BOARD_DATE, B.DEL_YN, B.BOARD_FILENAME, B.BOARD_FILE_RENAME, B.BOARD_FILEPATH	 
+		select B.BOARD_NO, B.MEMBER_ID, M.MEMBER_NICKNAME, B.BOARD_TITLE, B.BOARD_CONTENT, B.BOARD_COUNT, B.BOARD_DATE, B.DEL_YN, B.BOARD_FILENAME, B.BOARD_FILE_RENAME, B.BOARD_FILEPATH	 
 		from board B
 		join member M on B.MEMBER_ID = M.MEMBER_ID 
 		where B.DEL_YN = 'N' and B.BOARD_NO=#{boardNo}
  		ORDER BY B.BOARD_DATE DESC	
 	</select>
 	
-		<!-- 공지사항 검색 
-	<select id="NoticeOneByKeyword"  resultType="Board">
-		select B.BOARD_NO, B.MEMBER_ID, M.MEMBER_NICKNAME, B.BOARD_TITLE, B.BOARD_COUNT, B.BOARD_DATE, M.ADMIN_YN, B.DEL_YN	 
-		from board B
-		join member M on B.MEMBER_ID = M.MEMBER_ID 
- 		<where>
- 			M.ADMIN_YN = 'Y' and B.DEL_YN = 'N'
- 			<if test="searchCondition != null and searchCondition == 'title'">
-				B.BOARD_TITLE like '%'||#{searchKeyword}||'%'
-			</if>
-			<if test="searchCondition != null and searchCondition == 'content'">
-				B.BOARD_CONTENT like '%'||#{searchKeyword}||'%'
-			</if>
-			<if test="searchCondition != null and searchCondition == 'writer'">
-				M.MEMBER_NICKNAME like '%'||#{searchKeyword}||'%'
-			</if>
-			<if test="searchCondition == 'all'">
-  				B.BOARD_TITLE like '%'||#{searchKeyword}||'%' 
-				or B.BOARD_CONTENT like '%'||#{searchKeyword}||'%' 
-				or M.MEMBER_NICKNAME like '%'||#{searchKeyword}||'%'
-       		</if>	
-       		and M.ADMIN_YN = 'Y' and B.DEL_YN = 'N'
- 		</where> 
- 		ORDER BY M.ADMIN_YN DESC, B.BOARD_DATE DESC
-	</select> -->
-	<!-- 일반게시판 검색 -->	
+	<!-- 게시판 검색 -->	
 	<select id="selectOneByKeyword"  resultType="Board">
 		select B.BOARD_NO, B.MEMBER_ID, M.MEMBER_NICKNAME, B.BOARD_TITLE, B.BOARD_COUNT, B.BOARD_DATE, M.ADMIN_YN, B.DEL_YN	 
 		from board B
@@ -106,7 +82,6 @@
 				or B.BOARD_CONTENT like '%'||#{searchKeyword}||'%' 
 				or M.MEMBER_NICKNAME like '%'||#{searchKeyword}||'%'
        		</if>	
-			<!-- and M.ADMIN_YN = 'N' -->
 			and B.DEL_YN = 'N'
  		</where> 
  		ORDER BY M.ADMIN_YN DESC, B.BOARD_DATE DESC
