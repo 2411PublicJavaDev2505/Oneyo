@@ -45,9 +45,8 @@ public class RecipeServiceImpl implements RecipeService {
 	}
 	
 	@Override
-	public int insertRecipe(RecipeInsertRequest recipe) {
-		int result = rStore.insertBoard(session, recipe);
-		return result;
+	public void insertRecipe(RecipeVO recipe) {
+		rStore.insertRecipe(session, recipe);
 	}
 
 	@Override
@@ -71,11 +70,11 @@ public class RecipeServiceImpl implements RecipeService {
 	public int updateRecipe(RecipeUpdateRequest recipe) {
 		int result = rStore.updateBoard(session, recipe);
 		return result;
-
 	}
+	
 	@Override
 	public List<RecipeVO> selectPersonalList(String memberId, int currentPage) {
-		List<RecipeVO> selectPersonalList = rStore.selectPersonalList(memberId, currentPage);
+		List<RecipeVO> selectPersonalList = rStore.selectPersonalList(session, memberId, currentPage);
 		return selectPersonalList;
 	}
 
@@ -87,7 +86,6 @@ public class RecipeServiceImpl implements RecipeService {
 
 	@Override
 	public List<RecipeVO> selectRecipeStep(int recipeNo) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

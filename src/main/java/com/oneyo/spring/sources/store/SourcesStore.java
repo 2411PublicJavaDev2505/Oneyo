@@ -21,4 +21,6 @@ public interface SourcesStore {
 
 	List<SourcesVO> getSourcesByrecipeNo(SqlSession session, int recipeNo);
 
+	void insertSource(SqlSession session, SourcesVO source);
+
 }

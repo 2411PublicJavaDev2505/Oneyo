@@ -47,9 +47,14 @@ public class SourcesServiceImpl implements SourcesService {
 	
 	@Override
 	public List<SourcesVO> getSourcesByrecipeNo(int recipeNo) {
-		List<SourcesVO> sourcesForRecipe = sStore.getSourcesByrecipeNo(session, recipeNo);
-		for(SourcesVO sources : sourcesForRecipe) {}
-		return sourcesForRecipe;
+		List<SourcesVO> sourceList = sStore.getSourcesByrecipeNo(session, recipeNo);
+		return sourceList;
 	}
 
+
+	@Override
+	public void insertSource(SourcesVO source) {
+		// TODO Auto-generated method stub
+		
+	}
 }

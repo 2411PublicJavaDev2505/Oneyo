@@ -13,7 +13,7 @@ public interface RecipeStore {
 
 	List<RecipeVO> selectListAll(SqlSession session, int currentPage);
 
-	int insertRecipe(SqlSession session, RecipeInsertRequest recipe);
+	int insertRecipe(SqlSession session, RecipeVO recipe);
 
 	RecipeVO selectOneByNo(SqlSession session, int recipeNo);
 
@@ -23,7 +23,7 @@ public interface RecipeStore {
 
 	int getTotalCount(SqlSession session, Map<String, String> paramMap);
 
-	List<RecipeVO> selectPersonalList(String memberId, int currentPage);
+	List<RecipeVO> selectPersonalList(SqlSession session, String memberId, int currentPage);
 	
 	List<RecipeVO> selectRecipeList(SqlSession session, int currentPage);
 
@@ -34,4 +34,6 @@ public interface RecipeStore {
 	int deleteBoard(SqlSession session, int recipeNo);
 
 	List<RecipeVO> selectRecipeStep(SqlSession session, int recipeNo);
+
+	int insertRecipe(SqlSession session, RecipeInsertRequest recipe);
 }

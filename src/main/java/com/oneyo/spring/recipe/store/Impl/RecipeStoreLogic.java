@@ -64,16 +64,14 @@ public class RecipeStoreLogic implements RecipeStore{
 		return totalCount;
 	}
 	@Override
-	public List<RecipeVO> selectPersonalList(String memberId, int currentPage) {
-		
-		return null;
+	public List<RecipeVO> selectPersonalList(SqlSession session, String memberId, int currentPage) {
+		int limit = 8;
+		int offset = (currentPage -1)*limit;
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		List<RecipeVO> rList = session.selectList("RecipeMapper.selectPersonalList", memberId, rowBounds);
+		return rList;
 	}
 	
-	@Override
-	public int insertBoard(SqlSession session, RecipeInsertRequest recipe) {
-		int result = session.insert("RecipeMapper.insertRecipe", recipe);
-		return result;
-	}
 	@Override
 	public int updateBoard(SqlSession session, RecipeUpdateRequest recipe) {
 		int result = session.update("RecipeMapper.updateRecipe", recipe);
@@ -89,4 +87,15 @@ public class RecipeStoreLogic implements RecipeStore{
 		List<RecipeVO> rList = session.selectList("RecipeMapper.selectRecipeStep", recipeNo);
 		return rList;
 	}
+	@Override
+	public int insertBoard(SqlSession session, RecipeInsertRequest recipe) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public int insertRecipe(SqlSession session, RecipeVO recipe) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
 }
