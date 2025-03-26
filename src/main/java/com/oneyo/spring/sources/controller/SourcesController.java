@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.oneyo.spring.board.controller.dto.BoardAddRequest;
+import com.oneyo.spring.board.domain.BoardVO;
 import com.oneyo.spring.common.FileUtil;
 import com.oneyo.spring.common.PageUtill;
 import com.oneyo.spring.sources.controller.dto.SourcesInsertRequest;
@@ -71,59 +73,78 @@ public class SourcesController {
 		}
 	}
 	
+	
 	@GetMapping("/update/{sourcesNo}")
-	public String showSourcesModifyForm(@PathVariable int sourcesNo, Model model) {
+	public String showSourcesModifyForm(HttpSession session, Model model
+			,@RequestParam("sourcesNo")int sourcesNo) {
 		try {
+			String memberId = (String)session.getAttribute("memberId");
+			if(memberId == null) {
+				model.addAttribute("errorMsg","로그인이 필요합니다~!");
+				return "common/error";
+			}
 			SourcesVO sources = sService.selectSourcesByNo(sourcesNo);
-			model.addAttribute("sources", sources);
-			return "sources/update";
-		} catch(Exception e) {
-			//TODO: handle exception
+			model.addAttribute("sources",sources);
+			String memberNickname = sService.getMemberNickname(memberId);
+			session.setAttribute("memberNickname", memberNickname);
+			
+			return "/sources/sourcesUpdate";			
+		} catch (Exception e) {
 			e.printStackTrace();
-			model.addAttribute("errorMsg", e.getMessage());
+			model.addAttribute("errorMsg",e.getMessage());
 			return "common/error";
 		}
+
 	}
 	
 	@PostMapping("/update")
-	public String updateSources(@ModelAttribute SourcesUpdateRequest sources
-			, @RequestParam("reloadFile") MultipartFile reloadFile
-			, HttpSession session
-			, Model model) {
+	public String  updateSources(Model model, SourcesInsertRequest sources, HttpSession session
+				,@RequestParam("reloadFile")MultipartFile reloadFile) {
 		try {
 			if(session.getAttribute("memberId") == null) {
-				model.addAttribute("errorMsg", "�α����� �ʿ��մϴ�~!");
+				model.addAttribute("errorMsg","로그인이 필요합니다.");
 				return "common/error";
 			}
-			String memberId = (String)session.getAttribute("memberId");
-			if(!memberId.equals(sources.getSourcesWriter())) {
-				model.addAttribute("errorMsg", "�������� �ʴ� �����Դϴ�.");
-				return "common/error";
-			}
+//			String memberId = (String)session.getAttribute("memberId");
+//			if(!memberId.equals(board.getMemberId())) {
+//				model.addAttribute("errorMsg","자신이 작성한 글만 수정할 수 있습니다.");
+//				return "common/error";
+//			}
+			// 업로드된 파일 있는지 체크
 			if(reloadFile != null && !reloadFile.getOriginalFilename().isBlank()) {
-				Map<String, String> fileInfo = file.saveFile2(reloadFile, session, "sources");
+				Map<String, String> fileInfo = file.saveFile(reloadFile, session, "sources");
 				sources.setSourcesFilename(fileInfo.get("sFilename"));
-				sources.setSourcesFileRename(fileInfo.get("sFilename"));
-				sources.setSourcesFilepath(fileInfo.get("sFilename"));
-			}
+				sources.setSourcesFileRename(fileInfo.get("sFileRename"));
+				sources.setSourcesFilepath(fileInfo.get("sFilepath"));
+			}			
+			
 			int result = sService.updateSources(sources);
-			return "redirect:/sources/detail/"+sources.getSourcesNo();
+			if(result > 0) {
+				model.addAttribute("sources", sources.getSourcesWriter());
+				model.addAttribute("sourcesNo", sources.getSourcesNo());
+				return "redirect:/sources/detail/{sourcesNo}";
+			}else {
+				model.addAttribute("errorMsg","데이터 수정에 실패하였습니다.");
+				return "common/error";
+			}
+		}catch (IllegalArgumentException  e) {
+	        model.addAttribute("errorMsg", e.getMessage());
+	        return "sources/sourcesUpdate";
 		} catch (Exception e) {
 			e.printStackTrace();
-			model.addAttribute("errorMsg", e.getMessage());
+			model.addAttribute("errorMsg",e.getMessage());
 			return "common/error";
 		}
 	}
 	// ���� 
-	@GetMapping("/delete")
-	public String deleteSources(@PathVariable int sourcesNo
-			, Model model) {
+	public String deleteNotice(
+			@RequestParam("sourcesNo") int sourcesNo, Model model) {
 		try {
 			int result = sService.deleteSources(sourcesNo);
-			return "redirect:/recipe/list";
+			return "redirect:/sources/list";
 		} catch (Exception e) {
 			e.printStackTrace();
-			model.addAttribute("errorMsg", e.getMessage());
+			model.addAttribute("errorMsg",e.getMessage());
 			return "common/error";
 		}
 	}

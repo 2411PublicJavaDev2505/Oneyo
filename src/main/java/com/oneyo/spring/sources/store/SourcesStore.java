@@ -13,7 +13,6 @@ public interface SourcesStore {
 
 	int insertSources(SqlSession session, SourcesInsertRequest sources);
 
-	int updateSources(SqlSession session, SourcesUpdateRequest sources);
 
 	int deleteSources(SqlSession session, int sourcesNo);
 
@@ -22,5 +21,10 @@ public interface SourcesStore {
 	List<SourcesVO> getSourcesByrecipeNo(SqlSession session, int recipeNo);
 
 	void insertSource(SqlSession session, SourcesVO source);
+	
+	int updateSources(SqlSession session, SourcesInsertRequest sources);
+
+
+	int updateSources(SqlSession session, SourcesUpdateRequest sources);
 
 }

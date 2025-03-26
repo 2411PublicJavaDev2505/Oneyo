@@ -159,16 +159,22 @@ public class RecipeController {
 	
 	@GetMapping("/update")
 	public String showRecipeModifyForm(@RequestParam("recipeNo") int recipeNo, Model model) {
-		try {
-			RecipeVO recipe = rService.selectOneByNo(recipeNo);
-			model.addAttribute("recipe", recipe);
-			return "recipe/modify";
-		} catch(Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-			model.addAttribute("errorMsg", e.getMessage());
-			return "common/error";
-		}
+	    try {
+	        RecipeVO recipe = rService.selectOneByNo(recipeNo);
+	        
+//	        List<StepVO> stepList = sService.getStepsByNo(recipeNo);
+//	        List<SourcesVO> sourceList = sourceService.getSourcesByrecipeNo(recipeNo);
+
+	        model.addAttribute("recipe", recipe);
+//	        model.addAttribute("stepList", stepList);
+//	        model.addAttribute("sourceList", sourceList);
+	        
+	        return "recipe/modify";
+	    } catch(Exception e) {
+	        e.printStackTrace();
+	        model.addAttribute("errorMsg", e.getMessage());
+	        return "common/error";
+	    }
 	}
 	
 	@PostMapping("/update")

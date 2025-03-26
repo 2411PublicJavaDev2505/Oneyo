@@ -5,11 +5,11 @@ public class SourcesInsertRequest {
 	private String firstCategory;
 	private String secondCategory;
 	private String thirdCategory;
+	private String sourcesNo;
 	private String sourcesName;
 	private String sourcesFilename;
 	private String sourcesFileRename;
 	private String sourcesFilepath;
-	
 	
 	public String getSourcesWriter() {
 		return sourcesWriter;
@@ -34,6 +34,12 @@ public class SourcesInsertRequest {
 	}
 	public void setThirdCategory(String thirdCategory) {
 		this.thirdCategory = thirdCategory;
+	}
+	public String getSourcesNo() {
+		return sourcesNo;
+	}
+	public void setSourcesNo(String sourcesNo) {
+		this.sourcesNo = sourcesNo;
 	}
 	public String getSourcesName() {
 		return sourcesName;
@@ -62,9 +68,9 @@ public class SourcesInsertRequest {
 	@Override
 	public String toString() {
 		return "SourcesInsertRequest [sourcesWriter=" + sourcesWriter + ", firstCategory=" + firstCategory
-				+ ", secondCategory=" + secondCategory + ", thirdCategory=" + thirdCategory + ", sourcesName="
-				+ sourcesName + ", sourcesFilename=" + sourcesFilename + ", sourcesFileRename=" + sourcesFileRename
-				+ ", sourcesFilepath=" + sourcesFilepath + "]";
+				+ ", secondCategory=" + secondCategory + ", thirdCategory=" + thirdCategory + ", sourcesNo=" + sourcesNo
+				+ ", sourcesName=" + sourcesName + ", sourcesFilename=" + sourcesFilename + ", sourcesFileRename="
+				+ sourcesFileRename + ", sourcesFilepath=" + sourcesFilepath + "]";
 	}
 }
 	

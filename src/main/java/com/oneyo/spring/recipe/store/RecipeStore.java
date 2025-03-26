@@ -36,4 +36,5 @@ public interface RecipeStore {
 	List<RecipeVO> selectRecipeStep(SqlSession session, int recipeNo);
 
 	int insertRecipe(SqlSession session, RecipeInsertRequest recipe);
+	RecipeVO selectRecipeByNo(SqlSession session, int recipeNo);
 }

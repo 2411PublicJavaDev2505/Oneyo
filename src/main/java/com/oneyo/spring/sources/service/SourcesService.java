@@ -20,6 +20,12 @@ public interface SourcesService {
 
 	List<SourcesVO> getSourcesByrecipeNo(int recipeNo);
 
+	String getMemberNickname(String memberId);
+
 	void insertSource(SourcesVO source);
+
+	int updateSources(SourcesInsertRequest sources);
+
+	
 
 }

@@ -27,6 +27,7 @@ public class RecipeStoreLogic implements RecipeStore{
 	@Override
 	public RecipeVO selectOneByNo(SqlSession session, int recipeNo) {
 		RecipeVO recipe = session.selectOne("RecipeMapper.selectOneByNo", recipeNo);
+		System.out.println(recipe);
 		return recipe;
 	}
 	
@@ -98,4 +99,8 @@ public class RecipeStoreLogic implements RecipeStore{
 		return 0;
 	}
 	
+	public RecipeVO selectRecipeByNo(SqlSession session, int recipeNo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

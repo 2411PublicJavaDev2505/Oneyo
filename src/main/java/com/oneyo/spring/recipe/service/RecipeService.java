@@ -11,6 +11,7 @@ public interface RecipeService {
 
 	int getTotalCount();
 	
+
 	List<RecipeVO> selectListAll(int currentPage);
 
 	List<RecipeVO> selectRecipeList(int currentPage);
@@ -22,6 +23,7 @@ public interface RecipeService {
 	int getTotalCount(Map<String, String> paramMap);
 
 	List<RecipeVO> selectPersonalList(String memberId, int currentPage);
+	
 	int deleteRecipe(int recipeNo);
 
 	List<RecipeVO> selectRecipeStep(int recipeNo);

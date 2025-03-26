@@ -17,10 +17,10 @@ public class RecipeVO {
 	private Date recipeDate;
 	private Date updateDate;
 	private String memberNickName;
+	private List<StepVO> stepList;  // 추가된 stepList 속성
 	
 	public RecipeVO() {}
 
-	private List<StepVO> stepList;  // 추가된 stepList 속성
 
 	public List<StepVO> getStepList() {
 		return stepList;

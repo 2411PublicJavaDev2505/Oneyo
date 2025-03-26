@@ -41,6 +41,11 @@ public class SourcesStoreLogic implements SourcesStore{
 		List<SourcesVO> sourceList = session.selectList("RecipeSourceMapper.getSourcesByrecipeNo", recipeNo);
 		return sourceList;
 	}
+	@Override
+	public int updateSources(SqlSession session, SourcesInsertRequest sources) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 	@Override
 	public void insertSource(SqlSession session, SourcesVO source) {

@@ -64,17 +64,12 @@ public class MyRefController {
 		}
 			
 			List<MySourceList> cList = mService.selectCoolSourceList(currentPage, login);
-<<<<<<< HEAD
 			List<MySourceList> iList = mService.selectIceSourceList(currentPage, login);	
 
 							
 //			System.out.println(cList);
 //			System.out.println(iList);
-=======
-			List<MySourceList> iList = mService.selectIceSourceList(currentPage, login);
-			System.out.println(cList);
-			System.out.println(iList);
->>>>>>> branch 'master' of https://github.com/2411PublicJavaDev2505/Oneyo.git
+
 			
 			if(!cList.isEmpty() && !iList.isEmpty()) {
 				model.addAttribute("cList", cList);

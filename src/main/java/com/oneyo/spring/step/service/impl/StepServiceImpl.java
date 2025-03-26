@@ -18,30 +18,18 @@ import com.oneyo.spring.step.store.StepStore;
 @Service
 public class StepServiceImpl implements StepService {
 
-	private StepStore sStore;
 	private RecipeStore rStore;
+	private StepStore sStore;
 	private SourcesStore sourceStore;
 	private SqlSession session;
 	
 	@Autowired
 	public StepServiceImpl(StepStore sStore, RecipeStore rStore, SqlSession session) {
+		this.rStore = rStore;
 		this.sStore = sStore;
 		this.session = session;
 	}
-	@Override
-	public List<StepVO> getStepsByNo(int recipeNo) {
-		List<StepVO> stepListByRecipeNo = sStore.getStepsByNo(session, recipeNo);
-		for(StepVO step : stepListByRecipeNo) {
-		}
-		return stepListByRecipeNo;
-	}
 	
-	@Override
-	public StepVO selectStepByNo(int stepNo) {
-		StepVO step = sStore.selectStepByNo(session, stepNo);
-		return step;
-	}
-
 	@Override
 	public int insertStep(StepInsertRequest step) {
 		int result = sStore.insertStep(session, step);
@@ -72,9 +60,63 @@ public class StepServiceImpl implements StepService {
 	        sourceStore.insertSource(session, source);  // SourcesStore에서 insert 처리
 	    }
 	}
+
+
+	public StepVO selectStepByNo(int stepNo) {
+		StepVO step = sStore.selectStepByNo(session, stepNo);
+		return step;
+	}
+
+	@Override
+	public RecipeVO selectRecipeByNo(int recipeNo) {
+		RecipeVO recipe = rStore.selectRecipeByNo(session, recipeNo);
+		return recipe;
+	}
+
+	@Override
+	public List<StepVO> getStepsByNo(int recipeNo) {
+		List<StepVO> stepListByRecipeNo = sStore.getStepsByNo(session, recipeNo);
+		for(StepVO step : stepListByRecipeNo) {
+		}
+		return stepListByRecipeNo;
+	}
+
+	@Override
+	public List<SourcesVO> getSourcesByRecipeNo(int recipeNo) {
+		List<SourcesVO> sourcesListByRecipeNo = sStore.getSourcesByRecipeNo(session, recipeNo);
+		for(SourcesVO sources : sourcesListByRecipeNo) {	
+		}
+		return sourcesListByRecipeNo;
+	}
+
+	@Override
+	public List<StepVO> getStepsByRecipeNo(int recipeNo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	@Override
 	public void insertStep(StepVO step) {
 		// TODO Auto-generated method stub
 		
 	}
+
+	
+
+
+
+	
+
+	
+
+	
+	
+
+	
+
+	
+
+	
+	
+
 }
