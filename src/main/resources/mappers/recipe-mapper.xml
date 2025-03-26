@@ -5,16 +5,16 @@
 
  <mapper namespace="RecipeMapper">
  	<resultMap type="com.oneyo.spring.recipe.domain.RecipeVO" id="recipeResultMap">
- 		<id property="recipeNo" column="RECIPE_NO"/>
- 		<result property="memberId" column="MEMBER_ID" />
- 		<result property="recipeTitle" column="RECIPE_TITLE" />
- 		<result property="recipeContentNo" column="RECIPE_CONTENT_NO" />
- 		<result property="recipeSourcesNo" column="RECIPE_SOURCES_NO" />
- 		<result property="recipeDate" column="RECIPE_DATE" />
- 		<result property="updateDate" column="UPDATE_DATE" />
- 		<result property="viewCount" column="VIEW_COUNT" />
- 		<result property="delYn" column="DEL_YN" />
- 		<result property="memberNickName" column="MEMBER_NICKNAME" />
+ 		<id 	property="recipeNo" 		column="RECIPE_NO"/>
+ 		<result property="memberId" 		column="MEMBER_ID" />
+ 		<result property="recipeTitle" 		column="RECIPE_TITLE" />
+ 		<result property="recipeContentNo" 	column="RECIPE_CONTENT_NO" />
+ 		<result property="recipeSourcesNo" 	column="RECIPE_SOURCES_NO" />
+ 		<result property="recipeDate" 		column="RECIPE_DATE" />
+ 		<result property="updateDate" 		column="UPDATE_DATE" />
+ 		<result property="viewCount" 		column="VIEW_COUNT" />
+ 		<result property="delYn" 			column="DEL_YN" />
+ 		<result property="memberNickName" 	column="MEMBER_NICKNAME" />
  		
  	</resultMap>
  	

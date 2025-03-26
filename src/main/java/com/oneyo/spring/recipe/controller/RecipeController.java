@@ -77,6 +77,8 @@ public class RecipeController {
             return "common/error";
         }
     }
+    
+  
 
     @GetMapping("/detail/{recipeNo}")
     public String RecipeDetail(@PathVariable int recipeNo,Model model) {
@@ -135,12 +137,12 @@ public class RecipeController {
 				return "common/error";
 			}
 			
-			if(uploadFile != null && !uploadFile.getOriginalFilename().isBlank()) {
+			if(uploadFile != null && !uploadFile.isEmpty()) {
 				Map<String, String> fileInfo = file.saveFile(uploadFile, session, "recipe");
 				recipe.setRecipeFilename(fileInfo.get("rFilename"));
 				recipe.setRecipeFileRename(fileInfo.get("rFileRename"));
 				recipe.setRecipeFilepath(fileInfo.get("rFilepath"));
-			}
+			} 
 			int result = rService.insertRecipe(recipe);
 			return "redirect:/recipe/RecipeList";
 		} catch (Exception e) {
@@ -196,15 +198,14 @@ public class RecipeController {
 	}
 	// 삭제 
 	@GetMapping("/delete")
-	public String deleteRecipe(@PathVariable int recipeNo
-			, Model model) {
-		try {
-			int result = rService.deleteRecipe(recipeNo);
-			return "redirect:/recipe/list";
-		} catch (Exception e) {
-			e.printStackTrace();
-			model.addAttribute("errorMsg", e.getMessage());
-			return "common/error";
-		}
+	public String deleteRecipe(@RequestParam("recipeNo") int recipeNo, Model model) {
+	    try {
+	        int result = rService.deleteRecipe(recipeNo); // 삭제 서비스 호출
+	        return "redirect:/recipe/list";  // 삭제 후 목록 페이지로 리다이렉트
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        model.addAttribute("errorMsg", e.getMessage());
+	        return "common/error";
+	    }
 	}
 }
