@@ -6,7 +6,6 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import com.oneyo.spring.board.controller.dto.BoardAddRequest;
-import com.oneyo.spring.board.controller.dto.BoardUpdateRequest;
 import com.oneyo.spring.board.domain.BoardVO;
 
 public interface BoardStore {
@@ -23,7 +22,7 @@ public interface BoardStore {
 	 * @param session,board
 	 * @return int
 	 */
-	int updateBoard(SqlSession session, BoardUpdateRequest board);
+	int updateBoard(SqlSession session, BoardAddRequest board);
 
 	/**
 	 * 게시글 삭제
@@ -31,6 +30,14 @@ public interface BoardStore {
 	 * @return int
 	 */
 	int deleteBoard(SqlSession session, int boardNo);
+
+	/**
+	 * 조회수 카운트
+	 * @param session
+	 * @param boardNo
+	 * @return
+	 */
+	Integer boardCountUpdate(SqlSession session, int boardNo);
 
 	/**
 	 * 공지사항 목록
@@ -57,7 +64,7 @@ public interface BoardStore {
 	 * @param session, paramMap
 	 * @return List
 	 */
-	List<BoardVO> NoticeOneByKeyword(SqlSession session, Map<String, String> paramMap);
+//	List<BoardVO> NoticeOneByKeyword(SqlSession session, Map<String, String> paramMap);
 
 	/**
 	 * 일반게시판 검색 조회

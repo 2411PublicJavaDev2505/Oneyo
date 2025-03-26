@@ -14,10 +14,45 @@
 		<result property="delYn" 		  column="DEL_YN"></result>	 
 	</resultMap>
 	
+	<!-- 회원 전체 조회 -->
 	<select id="selectAllMember" resultMap="adminResultMap">
 		select * from member where DEL_YN ='N' and ADMIN_YN='N'
 	</select>
 	<select id="selectListCount" resultType="_int">
 		select count (*) from member where DEL_YN ='N' and ADMIN_YN='N'
+	</select>
+	
+	<!-- 회원 검색 -->
+		<select id="selectOneByKeyword" resultMap="adminResultMap">
+		select * from member 
+		<where>
+			<if test="searchCondition == 'total'">
+				MEMBER_ID like '%'||#{searchKeyword}||'%' or
+				MEMBER_NICKNAME like '%'||#{searchKeyword}||'%'
+			</if>
+			<if test="searchCondition == 'id'">
+				MEMBER_ID like '%'||#{searchKeyword}||'%'
+			</if>
+			<if test="searchCondition == 'nick'">
+				MEMBER_NICKNAME like '%'||#{searchKeyword}||'%'
+			</if>
+			and DEL_YN ='N' and ADMIN_YN='N'
+		</where>
+	</select>
+	<select id="getSearchCount" resultType="_int">
+		select count (*) from member 
+		<where>
+			<if test="searchCondition == 'total'">
+				MEMBER_ID like '%'||#{searchKeyword}||'%' or
+				MEMBER_NICKNAME like '%'||#{searchKeyword}||'%' 
+			</if>
+			<if test="searchCondition == 'id'">
+				MEMBER_ID like '%'||#{searchKeyword}||'%'
+			</if>
+			<if test="searchCondition == 'nick'">
+				MEMBER_NICKNAME like '%'||#{searchKeyword}||'%'
+			</if>
+			and DEL_YN ='N' and ADMIN_YN='N'
+		</where>
 	</select>
 </mapper>

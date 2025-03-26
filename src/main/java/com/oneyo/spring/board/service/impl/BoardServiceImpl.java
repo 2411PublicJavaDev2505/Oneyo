@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.oneyo.spring.board.controller.dto.BoardAddRequest;
-import com.oneyo.spring.board.controller.dto.BoardUpdateRequest;
 import com.oneyo.spring.board.domain.BoardVO;
 import com.oneyo.spring.board.service.BoardService;
 import com.oneyo.spring.board.store.BoardStore;
@@ -31,13 +30,18 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public int updateBoard(BoardUpdateRequest board) {
+	public int updateBoard(BoardAddRequest board) {
 		return bStore.updateBoard(session, board);
 	}
 
 	@Override
 	public int deleteBoard(int boardNo) {
 		return bStore.deleteBoard(session, boardNo);
+	}
+
+	@Override
+	public Integer boardCountUpdate(int boardNo) {
+		return bStore.boardCountUpdate(session, boardNo);
 	}
 
 	@Override
@@ -55,10 +59,10 @@ public class BoardServiceImpl implements BoardService {
 		return bStore.selectOneBoard(session, boardNo);
 	}
 
-	@Override
-	public List<BoardVO> NoticeOneByKeyword(Map<String, String> paramMap) {
-		return bStore.NoticeOneByKeyword(session, paramMap);
-	}
+//	@Override
+//	public List<BoardVO> NoticeOneByKeyword(Map<String, String> paramMap) {
+//		return bStore.NoticeOneByKeyword(session, paramMap);
+//	}
 
 	@Override
 	public List<BoardVO> selectOneByKeyword(Map<String, String> paramMap, int currentPage) {

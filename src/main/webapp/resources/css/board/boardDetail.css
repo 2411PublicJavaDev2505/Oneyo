@@ -4,8 +4,10 @@ body main{
     max-width: 1400px;
     margin: 100px auto;
 }
-.title{
-    color: #777134;
+
+.title a {
+    color: #777134;	
+	text-decoration: none; 
 }
 
 /* 제목 영역 */
@@ -47,7 +49,8 @@ body main{
 	color: #fff;
 	border: none;
 	border-radius: 4px;
-    text-decoration: none;    
+    text-decoration: none;
+	cursor: pointer;	
 }/* 내용 - 텍스트 */
 .board-content{
     padding: 30px 20px;
@@ -57,20 +60,23 @@ body main{
 /* 댓글 영역 */
 .reply-area{
     background-color: #FEFEF3;
-    border-top: 1px dashed #b2ac67;
-    
 }
 .reply-road{
     display: flex;
     flex-direction: column;
     border-bottom: 1px dashed #b2ac67;
-    padding: 10px 20px;
+    padding: 0 20px 20px;
 }
 .reply-info{
-    padding: 0 0 5px;
+    padding: 10px 0 5px;
     display: flex;
     align-items: center;
+    border-top: 1px dashed #b2ac67;    
 }
+.reply-info firstchild{
+    border-top: none;    
+}
+
     .reply-nickname{
         font-weight: bold;
 		padding-right: 10px;
@@ -88,6 +94,9 @@ body main{
 		cursor: pointer;
 	    padding: 0;	        
     }
+.reply-content{
+	margin-bottom: 10px;
+}    
 .reply-insert{
     display: flex;
 }    

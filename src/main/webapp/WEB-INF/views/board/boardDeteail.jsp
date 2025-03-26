@@ -20,11 +20,13 @@
             <div class="board-top">
                 <h3 class="board-title">${board.boardTitle }</h3>
                 <div class="modify-button"> 
+                
                     <button type="button" onclick="showUpdateForm(${board.boardNo});">수정</button>
                     <form action="/board/delete" id="deleteForm" method="get">
                     	<input type="hidden" name="boardNo" value="${board.boardNo }">
 	                    <button type="button" onclick="deleteConfirm(${board.boardNo});">삭제</button>
                     </form>
+                    
                 </div>
             </div>
             <div class="board-main">
@@ -36,18 +38,10 @@
                 <div class="board-content">
                      ${board.boardContent }
                 </div> 
-                <!--               
-                <div class="image-box">
-                    <img src="/upload/sample1.jpg" alt="이미지1">
-                    <img src="/upload/sample2.jpg" alt="이미지2">
-                    <img src="/upload/sample3.jpg" alt="이미지3">
-                    <img src="/upload/sample4.jpg" alt="이미지4">
-                </div>         
-                       
                 <div class="board-file">
                     <h4>첨부파일</h4>
-                    <a href="../..${bFile.bFilePath }" download>${bFile.bFileName }</a>
-                </div> --> 
+                    <a href="../..${board.boardFilepath }" download>${board.boardFilename }</a>
+                </div> 
             </div>
         </article>
 	<!-- 댓글 영역 -->      
