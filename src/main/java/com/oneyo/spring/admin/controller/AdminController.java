@@ -20,6 +20,9 @@ import com.oneyo.spring.admin.service.AdminService;
 import com.oneyo.spring.board.domain.BoardVO;
 import com.oneyo.spring.common.PageUtill;
 import com.oneyo.spring.member.domain.MemberVO;
+import com.oneyo.spring.member.service.MemberService;
+import com.oneyo.spring.myref.controller.dto.CategoryList;
+import com.oneyo.spring.myref.service.MyRefService;
 
 @Controller // 관리자페이지
 @RequestMapping("/admin")
@@ -29,10 +32,14 @@ public class AdminController {
 	private AdminService aService;
 	@Autowired
 	private PageUtill pageUtil;
+	private MyRefService mService;
+
 	
 	@Autowired
-	public AdminController(AdminService aService) {
+	public AdminController(AdminService aService, MyRefService mService) {
 		this.aService = aService;
+		this.mService = mService;
+
 	}
 	
 	// 관리자 회원관리(회원 삭제)	
@@ -108,9 +115,56 @@ public class AdminController {
 	
 	// 카테고리 등록
 	@GetMapping("/category/insert")
-	public String showCategoryForm() {
-		return "admin/category/insert";
+	public String showCategoryForm(Model model) {
+		List<CategoryList> cList = mService.getCategoryList();
+		
+		model.addAttribute("cList",cList);
+		
+		
+		return "admin/categoryInsert";
 	}
+	
+	
+	
+	@PostMapping("/category/insertOrUpdate")
+	public String insertOrUpdateCategory(
+	    @RequestParam("actionType") String actionType,
+	    @RequestParam(value = "categoryNo", required = false, defaultValue = "0") int categoryNo,
+	    @RequestParam("hiddenFirstCategory") String firstCategory,
+	    @RequestParam("hiddenSecondCategory") String secondCategory,
+	    @RequestParam(value = "hiddenThirdCategory", required = false) String thirdCategory,
+	    Model model) {
+
+	    try {
+	        int result = 0;
+	        String cateNo = Integer.toString(categoryNo);
+	        CategoryList cList = new CategoryList(cateNo, firstCategory, secondCategory, thirdCategory);
+	        
+	        if ("insert".equals(actionType)) {
+	            result = aService.insertCategory(cList);
+	        } else if ("update".equals(actionType)) {
+	            if (categoryNo == 0) {
+	                model.addAttribute("errorMsg", "수정하려면 categoryNo가 필요합니다.");
+	                return "common/error";
+	            }
+	            result = aService.updateCategory(cList);
+	        }
+
+	        if (result > 0) {
+	            return "redirect:/category/insert";
+	        } else {
+	            model.addAttribute("errorMsg", "카테고리 등록/수정 실패");
+	            return "common/error";
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        model.addAttribute("errorMsg", e.getMessage());
+	        return "common/error";
+	    }
+	}
+	
+	
+	
 	
 //	@PostMapping("/category/insert")
 //	public String insertCategory(Model model) {

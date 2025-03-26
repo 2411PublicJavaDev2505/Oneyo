@@ -52,7 +52,6 @@ public class MyRefController {
 		try {
 			// 로그인 붙이고 회원 체크 분기처리할때 사용할거임
 			CheckLoginRequest login = null;
-			System.out.println("이름은?"+session.getAttribute("memberId"));
 			if(session.getAttribute("memberId")!= null) {
 				login = new CheckLoginRequest();
 				login.setMemberId((String)session.getAttribute("memberId"));
@@ -60,13 +59,12 @@ public class MyRefController {
 //				String memberId = login.getMemberId();
 //				String memberPw = login.getMemberPw();
 //				System.out.println((String)session.getAttribute("memberId"));
-				System.out.println(login);
+
 		}
 			
 			List<MySourceList> cList = mService.selectCoolSourceList(currentPage, login);
 			List<MySourceList> iList = mService.selectIceSourceList(currentPage, login);
-			System.out.println(cList);
-			System.out.println(iList);
+
 			
 			if(!cList.isEmpty() && !iList.isEmpty()) {
 				model.addAttribute("cList", cList);

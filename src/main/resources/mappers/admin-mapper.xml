@@ -55,4 +55,18 @@
 			and DEL_YN ='N' and ADMIN_YN='N'
 		</where>
 	</select>
+	
+	<update id="updateCategory">
+	    UPDATE category_table
+	    SET FIRST_CATEGORY = #{firstCategory}, 
+	        SECOND_CATEGORY = #{secondCategory}, 
+	        THIRD_CATEGORY = #{thirdCategory}
+	    WHERE CATEGORY_NO = #{categoryNo};
+	</update>
+	
+	<insert id="insertCategory" useGeneratedKeys="true" keyProperty="categoryNo">
+	    INSERT INTO CATEGORY (CATEGORY_NO, FIRST_CATEGORY, SECOND_CATEGORY, THIRD_CATEGORY)
+	    VALUES (category_seq.NEXTVAL, #{firstCategory}, #{secondCategory}, #{thirdCategory});
+	</insert>	
+		
 </mapper>

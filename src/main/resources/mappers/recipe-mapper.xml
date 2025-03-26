@@ -18,6 +18,31 @@
  		
  	</resultMap>
  	
+<select id="selectPersonalList" resultMap ="recipeResultMap">
+ 		SELECT 
+	        RECIPE_TITLE 
+	    FROM 
+	        MEMBER M
+	    JOIN 
+	        REFRIGERATOR FR
+	    ON 
+	        FR.MEMBER_ID = M.MEMBER_ID
+	    JOIN
+	        SOURCES S
+	    ON
+	        FR.SOURCES_NO = S.SOURCES_NO
+	    JOIN 
+	        RECIPE_SOURCES RS
+	    ON 
+	        RS.SOURCES_NO = S.SOURCES_NO
+	    JOIN 
+	        RECIPE R
+	    ON
+	        R.RECIPE_NO = RS.RECIPE_NO
+	    WHERE 
+	        M.MEMBER_ID = #{memberId}
+ 	</select> 	
+ 	
  	<select id="selectList" resultMap ="recipeResultMap">
  		SELECT 
  			RECIPE.RECIPE_NO, RECIPE.MEMBER_ID, RECIPE.RECIPE_TITLE, RECIPE.VIEW_COUNT, MEMBER.MEMBER_NICKNAME 
