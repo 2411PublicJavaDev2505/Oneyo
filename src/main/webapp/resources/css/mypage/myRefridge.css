@@ -42,11 +42,15 @@
 }
 
 .detailInformation button {
-    width:20%;
-    height: 10%;
-    margin: 10px;
+    width:80%;
+    margin-top: 25px;
     border-radius: 10px;
-    background-color: #B2AC67; 
+    background-color:#c2b480; 
+}
+
+.detailInformation button a {
+   text-decoration: none;
+   color: white; 
 }
 
 
@@ -57,7 +61,6 @@
     margin: 0 100px;
     width: 1000px;
     height: 600px;
-
 }
 
 .myPageMenu {

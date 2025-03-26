@@ -12,8 +12,14 @@
 </head>
 <body>
 		<!--  헤더-->
- 		<jsp:include page ="/WEB-INF/views/include/header.jsp"></jsp:include> 
- 		
+ 		<c:choose>
+		    <c:when test="${sessionScope.member1.memberId eq 'ADMIN01'}">
+		        <jsp:include page="/WEB-INF/views/include/headeradmin.jsp"></jsp:include>
+		    </c:when>
+		    <c:otherwise>
+		        <jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
+		    </c:otherwise>
+		</c:choose>
     <main class="main">
 		<div class="myPageMain">
       <section class="Info">
@@ -23,7 +29,14 @@
               <div>이름 :${memberName}</div>
               <div>닉네임 : ${memberNickname}</div>
               <div>전화번호 : ${memberPhone}</div>
-             <button class="deleteMember" ><a href="/member/delete?memberId=${memberId }">회원탈퇴</a></button>
+              <c:choose>
+				    <c:when test="${sessionScope.member1.memberId eq 'ADMIN01'}">
+				        <button class="deleteMember" ><a href="/admin/member">회원관리</a></button>
+				    </c:when>
+				    <c:otherwise>
+				        <button class="deleteMember" ><a href="/member/delete?memberId=${memberId }">회원탈퇴</a></button>
+				    </c:otherwise>
+				</c:choose>
               <button class="updateMember" ><a href="/member/modify?memberId=${memberId }">회원정보수정</a></button>
             </div>
         </nav>

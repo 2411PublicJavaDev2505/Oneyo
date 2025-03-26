@@ -5,15 +5,21 @@
 <html>
 	<head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>myBoard</title>
 		<link rel="stylesheet" href="../resources/css/mypage/myBoard.css"> 
 	
 	</head>
 	<body>
-	
-	 
-	 	<jsp:include page ="/WEB-INF/views/include/header.jsp"></jsp:include> 
-	    <main class="main">
+	<!--  헤더-->
+ 		<c:choose>
+		    <c:when test="${sessionScope.member1.memberId eq 'ADMIN01'}">
+		        <jsp:include page="/WEB-INF/views/include/headeradmin.jsp"></jsp:include>
+		    </c:when>
+		    <c:otherwise>
+		        <jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
+		    </c:otherwise>
+		</c:choose>
+	  <main class="main">
 	    	<form action="/mypage/myboard" method="get">
 	        <div class="myPageMain">
 			        <section class="Info">
@@ -22,7 +28,14 @@
 			            <div class="detailInformation">
 			                <div>이름 :  ${memberName}</div>
 			                <div>닉네임 : ${sessionScope.memberNickname}</div>
-			 			  <button class="deleteMember" ><a href="/member/delete?memberId=${memberId }">회원탈퇴</a></button>
+			 			  <c:choose>
+						    <c:when test="${sessionScope.member1.memberId eq 'ADMIN01'}">
+						        <button class="deleteMember" ><a href="/admin/member">회원관리</a></button>
+						    </c:when>
+						    <c:otherwise>
+						        <button class="deleteMember" ><a href="/member/delete?memberId=${memberId }">회원탈퇴</a></button>
+						    </c:otherwise>
+						  </c:choose>
 		              	  <button class="updateMember" ><a href="/member/modify?memberId=${memberId }">회원정보수정</a></button>
 			            </div>
 			        </nav>
@@ -43,7 +56,7 @@
 			                        <option value="content">내용</option>
 			                        <option value="writer">작성자</option>
 			                    </select>
-			                    <input class="search-input" type="text" name="searchKeyword" placeholder="검색어를 입력하세요">
+			                    <input class="search-input" type="text" name="searchKeyword" placeholder="검색어를 입력하세요" value="${searchKeyword}">
 			                    <button type="submit">검색</button>
 			                </form>
 			            </div>
@@ -66,7 +79,7 @@
 						                        <div class="board-Lists">
 						                            <tr class="sources">
 						                                <td class="num">${i.count }</td>
-						                                <td class="board-title"><a href="<c:url value='/board/detail?boardNo=${board.boardNo}' />">${board.boardTitle }</a></td>
+						                                <td class="board-title"><a href="<c:url value='/board/detail/${board.boardNo}'/>">${board.boardTitle }</a></td>
 						                                <td class="writer">${board.memberNickname}</td>
 						                                <td class="date">${board.boardDate}</td>
 						                                <td class="count">${board.boardCount}</td>

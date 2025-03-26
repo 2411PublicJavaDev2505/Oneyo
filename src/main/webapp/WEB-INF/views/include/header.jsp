@@ -34,6 +34,8 @@
 	                </div>
 	                <a href="/member/login" class="login">로그인</a>
 					</c:if>
+					
+					
 	            </nav>
 	        </div>
 	    </header>

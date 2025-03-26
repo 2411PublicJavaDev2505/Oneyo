@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.oneyo.spring.board.domain.BoardVO;
 import com.oneyo.spring.common.PageUtill;
 import com.oneyo.spring.mypage.domain.MyBoardVO;
 import com.oneyo.spring.mypage.domain.MyReplyVO;
@@ -44,8 +45,8 @@ public class MypageController {
 			String memberId = (String) session.getAttribute("memberId");
 			// 아이디가 작성한 게시글을 가져오기 
 			List<MyBoardVO> mList = mService.selectBoardList(memberId,currentPage);
-			int totalCount = mService.getTotalCount();
-			Map<String, Integer>pageInfo = pageUtil.generatePageInfo(totalCount, currentPage,5);
+			int totalCount = mService.getTotalCount(memberId);
+			Map<String, Integer>pageInfo = pageUtil.generatePageInfo(totalCount, currentPage,7);
 			model.addAttribute("maxPage", pageInfo.get("maxPage"));
 			model.addAttribute("startNavi", pageInfo.get("startNavi"));
 			model.addAttribute("endNavi", pageInfo.get("endNavi"));
@@ -57,6 +58,30 @@ public class MypageController {
 			return "mypage/myBoard";
 		}
 	}
+	@GetMapping("/mypage/myBoardSearch")
+	public String showSearchMBoardList(
+			@RequestParam("searchCondition") String searchCondition,
+			@RequestParam("searchKeyword") String searchKeyword,
+			@RequestParam(value="currentPage", defaultValue="1") int currentPage
+			, Model model) {
+		try {
+			Map<String, String> paramMap = new HashMap<String, String>();
+			paramMap.put("searchCondition", searchCondition);
+			paramMap.put("searchKeyword", searchKeyword);
+			List<BoardVO> searchBList = mService.selectOneByKeyword(paramMap, currentPage); //일반게시판
+			int searchCount = mService.getTotalCount(paramMap);
+			Map<String, Integer>pageInfo = pageUtil.generatePageInfo(searchCount, currentPage);
+			model.addAttribute("maxPage", pageInfo.get("maxPage"));
+			model.addAttribute("startNavi", pageInfo.get("startNavi"));
+			model.addAttribute("endNavi", pageInfo.get("endNavi"));
+			model.addAttribute("searchBList", searchBList);
+			return "mypage/myBoardSearch";
+		} catch (Exception e) {
+			e.printStackTrace();
+			model.addAttribute("errorMsg",e.getMessage());
+			return "common/error";
+		}
+	}
 	@GetMapping("/mypage/myReply")
 	public String showMyReply(@RequestParam(value="currentPage", defaultValue="1")		
 	int currentPage, Model model,HttpSession session) {
@@ -66,8 +91,8 @@ public class MypageController {
 			// 아이디가 작성한 댓글 가져오기 
 			List<MyReplyVO> rList = mService.selectReplyList(memberId,currentPage);
 			System.out.println("rList size: " + rList.size());
-			int totalCount = mService.getTotalCount();
-			Map<String, Integer>pageInfo = pageUtil.generatePageInfo(totalCount, currentPage, 5);
+			int totalCount = mService.getTotalCount(memberId);
+			Map<String, Integer>pageInfo = pageUtil.generatePageInfo(totalCount, currentPage, 7);
 			model.addAttribute("maxPage", pageInfo.get("maxPage"));
 			model.addAttribute("startNavi", pageInfo.get("startNavi"));
 			model.addAttribute("endNavi", pageInfo.get("endNavi"));

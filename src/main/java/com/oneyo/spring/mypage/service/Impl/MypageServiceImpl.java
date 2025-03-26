@@ -1,11 +1,13 @@
 package com.oneyo.spring.mypage.service.Impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.oneyo.spring.board.domain.BoardVO;
 import com.oneyo.spring.member.store.MemberStore;
 import com.oneyo.spring.mypage.domain.MyBoardVO;
 import com.oneyo.spring.mypage.domain.MyReplyVO;
@@ -33,13 +35,23 @@ public class MypageServiceImpl implements MypageService{
 	}
 	
 	@Override
-	public int getTotalCount() {
-		return mStore.getTotalCount(session);
+	public int getTotalCount(String memberId) {
+		return mStore.getTotalCount(session,memberId);
 	}
 	@Override
 	public List<MyReplyVO> selectReplyList(String memberId, int currentPage) {
 		List<MyReplyVO> rList = mStore.selectReplyList(session, memberId, currentPage);
 		return rList;
+	}
+	@Override
+	public List<BoardVO> selectOneByKeyword(Map<String, String> paramMap, int currentPage) {
+		List<BoardVO> BList = mStore.selectOneByKeyword(session, paramMap, currentPage);
+		return BList;
+	}
+	@Override
+	public int getTotalCount(Map<String, String> paramMap) {
+		int result= mStore.getTotalCount(session,paramMap);
+		return result;
 	}
 	
 
