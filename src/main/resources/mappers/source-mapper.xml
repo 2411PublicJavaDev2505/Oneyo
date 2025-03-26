@@ -11,7 +11,6 @@
 	<result 	property="sourcesName"	column="SOURCE_NAME" />
 </resultMap>
 
-
 <select id="getSourceList" resultMap="sourceMap">
 	SELECT * FROM SOURCES
 </select>

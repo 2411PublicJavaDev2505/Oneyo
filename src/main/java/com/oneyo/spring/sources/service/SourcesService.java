@@ -1,5 +1,7 @@
 package com.oneyo.spring.sources.service;
 
+import java.util.List;
+
 import com.oneyo.spring.sources.controller.dto.SourcesInsertRequest;
 import com.oneyo.spring.sources.controller.dto.SourcesUpdateRequest;
 import com.oneyo.spring.sources.domin.SourcesVO;
@@ -15,5 +17,7 @@ public interface SourcesService {
 	int deleteSources(int sourcesNo);
 
 	SourcesVO selectSourcesByNo(int sourcesNo);
+
+	List<SourcesVO> getSourcesByrecipeNo(int recipeNo);
 
 }

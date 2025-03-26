@@ -16,35 +16,39 @@
 			<div class="recipe-card">
 				<button class="edit-btn">수정</button>
 				<div class="image-placeholder">
-					<image src="" alt="등록된 사진이 없습니다."/>
+					<img src="" alt="등록된 사진이 없습니다."/>
 				</div>
 				<div class="recipe-info">
 					<div class="text1">${recipe.recipeTitle }</div>
 					<div class="text2">${recipe.memberNickName }</div>
-					<div class="text2">${recipe.viewCount }</div>
+					<div class="text2">조회수 : ${recipe.viewCount }</div>
 				</div>
 			</div>
 			<div class="ingredient-container">
 				<div class="ingredient-group">
 					<h2>재료</h2>
+					<c:forEach items="${recipe.sourceList }" var="source">
 					<div class="ingredient-box">
-						<span>재료</span>
+						<span>${source.sourceName }</span>
 					</div>
+					</c:forEach>
 				</div>
 			</div>
-			<c:forEach items="${recipe.stepList }" var="step">
-				<div class="recipe-step">
-					<div class="step-number">
-						<p>${step.stepNo }</p>
-					</div>
-						<div class="step-info">
-							<span>${step.stepContent }</span>
-						</div>
-					<div class="recipe-image">
-						<image src="" alt="등록된 사진이 없습니다."/>
-					</div>
-				</div>
-			</c:forEach>
+			<div class="recipe-step">
+			    <c:forEach items="${recipe.stepList}" var="step">
+			        <div class="step-container">
+			            <div class="step-number">
+			                <p>${step.stepNo }</p>
+			            </div>
+			            <div class="step-info">
+			                <span>${step.stepContent }</span>
+			            </div>
+			            <div class="recipe-image">
+			                <img src="" alt="등록된 사진이 없습니다.">
+			            </div>
+			        </div>
+			    </c:forEach>
+			</div>
 		</main>
 		<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
 	</body>

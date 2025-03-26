@@ -26,6 +26,7 @@
 		<mapper resource="mappers/mypage-mapper.xml" />
 		<mapper resource="mappers/myref-mapper.xml" />
 		<mapper resource="mappers/recipe-mapper.xml" />
+		<mapper resource="mappers/recipe-sources-mapper.xml" />
 		<mapper resource="mappers/category-mapper.xml" />
 		<mapper resource="mappers/source-mapper.xml" />
 		<mapper resource="mappers/step-mapper.xml"/>

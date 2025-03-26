@@ -60,7 +60,7 @@ public class RecipeStoreLogic implements RecipeStore{
 	
 	@Override
 	public int getTotalCount(SqlSession session, Map<String, String> paramMap) {
-		int totalCount = session.selectOne("RecipeMapper.getTotalCoutn", paramMap);
+		int totalCount = session.selectOne("RecipeMapper.getTotalCount", paramMap);
 		return totalCount;
 	}
 	@Override
@@ -89,5 +89,4 @@ public class RecipeStoreLogic implements RecipeStore{
 		List<RecipeVO> rList = session.selectList("RecipeMapper.selectRecipeStep", recipeNo);
 		return rList;
 	}
-
 }

@@ -9,6 +9,7 @@
 		<result property="stepContent" 		column="STEP_CONTENT"/>
 		<result property="stepAmount" 		column="STEP_AMOUNT"/>
 	</resultMap>
+	
 	<resultMap type="Sources" id="sourcesResult">
 		<id 	property="sourcesNo" 		column="SOURCES_NO"/>
 		<result property="sourcesName" 		column="SOURCES_NAME"/>
@@ -17,45 +18,43 @@
 		<result property="secondCategory" 	column="SECOND_CATEGORY"/>
 		<result property="thirdCategory"	column="THIRD_CATEGORY"/>
 	</resultMap>
+	
 	<select id="selectSourceByNo" resultMap="sourcesResult">
-    SELECT * FROM SOURCES
-    WHERE SOURCES_NO = #{sourcesNo}
+	    SELECT * FROM SOURCES
+	    WHERE SOURCES_NO = #{sourcesNo}
 	</select>
 	<select id="selectStepByNo" resultMap="stepResult">
 	    SELECT * FROM RECIPE_CONTENT
 	    WHERE RECIPE_CONTENT_NO = #{recipeContentNo}
 	</select>
-	
 	<insert id="insertStep">
-    INSERT INTO RECIPE_CONTENT (RECIPE_CONTENT_NO, STEP_CONTENT, STEP_AMOUNT, STEP_FILE_NO, STEP_FILE_PATH)
-    VALUES (SEQ_RECIPE_CONTENT_NO.NEXTVAL, #{stepContent}, #{stepAmount}, #{stepFileNo}, #{stepFilePath})
+	    INSERT INTO RECIPE_CONTENT (RECIPE_CONTENT_NO, STEP_CONTENT, STEP_AMOUNT, STEP_FILE_NO, STEP_FILE_PATH)
+	    VALUES (SEQ_RECIPE_CONTENT_NO.NEXTVAL, #{stepContent}, #{stepAmount}, #{stepFileNo}, #{stepFilePath})
 	</insert>
 	<insert id="insertSources">
 	    INSERT INTO SOURCES (SOURCES_NO, SOURCES_NAME, CATEGORY_NO)
 	    VALUES (SEQ_SOURCES_NO.NEXTVAL, #{sourcesName}, #{categoryNo})
 	</insert>
-	
 	<update id="updateStep">
-    UPDATE RECIPE_CONTENT
-    SET STEP_CONTENT = #{stepContent},
-        STEP_AMOUNT = #{stepAmount},
-        STEP_FILE_NO = #{stepFileNo},
-        STEP_FILE_PATH = #{stepFilePath}
-    WHERE RECIPE_CONTENT_NO = #{recipeContentNo}
+	    UPDATE RECIPE_CONTENT
+	    SET STEP_CONTENT = #{stepContent},
+	        STEP_AMOUNT = #{stepAmount},
+	        STEP_FILE_NO = #{stepFileNo},
+	        STEP_FILE_PATH = #{stepFilePath}
+	    WHERE RECIPE_CONTENT_NO = #{recipeContentNo}
 	</update>
 	<update id="updateSource">
-    UPDATE SOURCES
-    SET SOURCES_NAME = #{sourcesName},
-        CATEGORY_NO = #{categoryNo}
-    WHERE SOURCES_NO = #{sourcesNo}
+	    UPDATE SOURCES
+	    SET SOURCES_NAME = #{sourcesName},
+	        CATEGORY_NO = #{categoryNo}
+	    WHERE SOURCES_NO = #{sourcesNo}
 	</update>
-	
 	<delete id="deleteStep">
-    DELETE FROM RECIPE_CONTENT
-    WHERE RECIPE_CONTENT_NO = #{recipeContentNo}
+	    DELETE FROM RECIPE_CONTENT
+	    WHERE RECIPE_CONTENT_NO = #{recipeContentNo}
 	</delete>
 	<delete id="deleteSource">
-    DELETE FROM SOURCES
-    WHERE SOURCES_NO = #{sourcesNo}
+	    DELETE FROM SOURCES
+	    WHERE SOURCES_NO = #{sourcesNo}
 	</delete>
 </mapper>

@@ -1,4 +1,6 @@
 package com.oneyo.spring.sources.service.impl;
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,6 +43,13 @@ public class SourcesServiceImpl implements SourcesService {
 	public int deleteSources(int sourcesNo) {
 		int result = sStore.deleteSources(session, sourcesNo);
 		return result;
+	}
+	
+	@Override
+	public List<SourcesVO> getSourcesByrecipeNo(int recipeNo) {
+		List<SourcesVO> sourcesForRecipe = sStore.getSourcesByrecipeNo(session, recipeNo);
+		for(SourcesVO sources : sourcesForRecipe) {}
+		return sourcesForRecipe;
 	}
 
 }
