@@ -9,6 +9,7 @@
     	<result property="stepAmount" column="STEP_AMOUNT"/>
     	<result property="recipeNo" column="RECIPE_NO"/>
     </resultMap>
+    
     <select id="getStepsByNo" resultType="com.oneyo.spring.step.domain.StepVO">
         SELECT 
         	STEP_NO, STEP_CONTENT, STEP_AMOUNT, RECIPE_NO

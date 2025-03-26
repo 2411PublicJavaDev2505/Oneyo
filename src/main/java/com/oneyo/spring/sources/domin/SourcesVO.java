@@ -9,9 +9,18 @@ public class SourcesVO {
 		private String firstCategory;
 		private String secondCategory;
 		private String thirdCategory;
+		private int recipeNo;
 		
 		public SourcesVO() {}
 		
+		public int getRecipeNo() {
+			return recipeNo;
+		}
+
+		public void setRecipeNo(int recipeNo) {
+			this.recipeNo = recipeNo;
+		}
+
 		public int getSourcesNo() {
 			return sourcesNo;
 		}
@@ -57,9 +66,9 @@ public class SourcesVO {
 
 		@Override
 		public String toString() {
-			return "Sources [sourcesNo=" + sourcesNo + ", sourcesName=" + sourcesName + ", categoryNo=" + categoryNo
+			return "SourcesVO [sourcesNo=" + sourcesNo + ", sourcesName=" + sourcesName + ", categoryNo=" + categoryNo
 					+ ", firstCategory=" + firstCategory + ", secondCategory=" + secondCategory + ", thirdCategory="
-					+ thirdCategory + "]";
+					+ thirdCategory + ", recipeNo=" + recipeNo + "]";
 		}
 	}
 

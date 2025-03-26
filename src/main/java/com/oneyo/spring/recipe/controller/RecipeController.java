@@ -25,6 +25,8 @@ import com.oneyo.spring.recipe.controller.dto.RecipeInsertRequest;
 import com.oneyo.spring.recipe.controller.dto.RecipeUpdateRequest;
 import com.oneyo.spring.recipe.domain.RecipeVO;
 import com.oneyo.spring.recipe.service.RecipeService;
+import com.oneyo.spring.sources.domin.SourcesVO;
+import com.oneyo.spring.sources.service.SourcesService;
 import com.oneyo.spring.step.domain.StepVO;
 import com.oneyo.spring.step.service.StepService;
 
@@ -35,13 +37,15 @@ public class RecipeController {
 		
     private RecipeService rService;
     private StepService sService;
+    private SourcesService sourceService;
     private PageUtill page;
     private FileUtil file;
 
     @Autowired
-    public RecipeController(RecipeService rService, StepService sService, PageUtill page, FileUtil file) {
+    public RecipeController(RecipeService rService, StepService sService, SourcesService sourceService, PageUtill page, FileUtil file) {
         this.rService = rService;
         this.sService = sService;
+        this.sourceService = sourceService;
         this.page = page;
         this.file = file;
     }
@@ -79,13 +83,15 @@ public class RecipeController {
     }
 
     @GetMapping("/detail/{recipeNo}")
-    public String RecipeDetail(@PathVariable int recipeNo,Model model) {
+    public String RecipeDetail(@PathVariable int recipeNo, Model model) {
         try {
             RecipeVO recipe = rService.selectOneByNo(recipeNo);
             List<StepVO> stepList = sService.getStepsByNo(recipeNo);
+            List<SourcesVO>sourceList = sourceService.getSourcesByrecipeNo(recipeNo);
             recipe.setStepList(stepList);
             model.addAttribute("recipe", recipe);
             model.addAttribute("stepList", stepList);
+            model.addAttribute("sourceList", sourceList);
             return "recipe/detail";
         } catch (Exception e) {
             e.printStackTrace();
@@ -135,12 +141,12 @@ public class RecipeController {
 				return "common/error";
 			}
 			
-			if(uploadFile != null && !uploadFile.getOriginalFilename().isBlank()) {
+			if(uploadFile != null && !uploadFile.isEmpty()) {
 				Map<String, String> fileInfo = file.saveFile(uploadFile, session, "recipe");
 				recipe.setRecipeFilename(fileInfo.get("rFilename"));
 				recipe.setRecipeFileRename(fileInfo.get("rFileRename"));
 				recipe.setRecipeFilepath(fileInfo.get("rFilepath"));
-			}
+			} 
 			int result = rService.insertRecipe(recipe);
 			return "redirect:/recipe/RecipeList";
 		} catch (Exception e) {
@@ -196,15 +202,14 @@ public class RecipeController {
 	}
 	// 삭제 
 	@GetMapping("/delete")
-	public String deleteRecipe(@PathVariable int recipeNo
-			, Model model) {
-		try {
-			int result = rService.deleteRecipe(recipeNo);
-			return "redirect:/recipe/list";
-		} catch (Exception e) {
-			e.printStackTrace();
-			model.addAttribute("errorMsg", e.getMessage());
-			return "common/error";
-		}
+	public String deleteRecipe(@RequestParam("recipeNo") int recipeNo, Model model) {
+	    try {
+	        int result = rService.deleteRecipe(recipeNo); // 삭제 서비스 호출
+	        return "redirect:/recipe/list";  // 삭제 후 목록 페이지로 리다이렉트
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        model.addAttribute("errorMsg", e.getMessage());
+	        return "common/error";
+	    }
 	}
 }

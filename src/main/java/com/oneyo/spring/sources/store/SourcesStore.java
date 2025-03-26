@@ -1,4 +1,6 @@
 package com.oneyo.spring.sources.store;
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.oneyo.spring.sources.controller.dto.SourcesInsertRequest;
@@ -16,5 +18,7 @@ public interface SourcesStore {
 	int deleteSources(SqlSession session, int sourcesNo);
 
 	SourcesVO selectSourcesByNo(SqlSession session, int sourcesNo);
+
+	List<SourcesVO> getSourcesByrecipeNo(SqlSession session, int recipeNo);
 
 }

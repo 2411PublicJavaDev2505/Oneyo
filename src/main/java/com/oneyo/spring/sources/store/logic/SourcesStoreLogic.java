@@ -1,5 +1,7 @@
 package com.oneyo.spring.sources.store.logic;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
@@ -34,5 +36,9 @@ public class SourcesStoreLogic implements SourcesStore{
 		int result = session.update("RecipeContentMapper.deleteSources", sourcesNo);
 		return result;
 	}
-
+	@Override
+	public List<SourcesVO> getSourcesByrecipeNo(SqlSession session, int recipeNo) {
+		List<SourcesVO> sourceList = session.selectList("RecipeSourceMapper.getSourcesByrecipeNo", recipeNo);
+		return sourceList;
+	}
 }

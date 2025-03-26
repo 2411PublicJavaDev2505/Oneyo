@@ -26,7 +26,6 @@ public class StepServiceImpl implements StepService {
 	public List<StepVO> getStepsByNo(int recipeNo) {
 		List<StepVO> stepListByRecipeNo = sStore.getStepsByNo(session, recipeNo);
 		for(StepVO step : stepListByRecipeNo) {
-//            System.out.println("Step Content: " + step.getStepContent());  // stepContent 출력
 		}
 		return stepListByRecipeNo;
 	}
