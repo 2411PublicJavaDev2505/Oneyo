@@ -10,11 +10,11 @@ public interface MypageService {
 
 	List<MySourceList> selectSourceList();
 
-	int getTotalCount();
-
 	List<MyBoardVO> selectBoardList(String memberId, int currentPage);
 
 	List<MyReplyVO> selectReplyList(String memberId, int currentPage);
+
+	int getTotalCount(String memberId);
 
 	
 

@@ -43,7 +43,7 @@ public class MypageController {
 			String memberId = (String) session.getAttribute("memberId");
 			// 아이디가 작성한 게시글을 가져오기 
 			List<MyBoardVO> mList = mService.selectBoardList(memberId,currentPage);
-			int totalCount = mService.getTotalCount();
+			int totalCount = mService.getTotalCount(memberId);
 			Map<String, Integer>pageInfo = pageUtil.generatePageInfo(totalCount, currentPage,5);
 			model.addAttribute("maxPage", pageInfo.get("maxPage"));
 			model.addAttribute("startNavi", pageInfo.get("startNavi"));
@@ -65,7 +65,7 @@ public class MypageController {
 			// 아이디가 작성한 댓글 가져오기 
 			List<MyReplyVO> rList = mService.selectReplyList(memberId,currentPage);
 			System.out.println("rList size: " + rList.size());
-			int totalCount = mService.getTotalCount();
+			int totalCount = mService.getTotalCount(memberId);
 			Map<String, Integer>pageInfo = pageUtil.generatePageInfo(totalCount, currentPage, 5);
 			model.addAttribute("maxPage", pageInfo.get("maxPage"));
 			model.addAttribute("startNavi", pageInfo.get("startNavi"));

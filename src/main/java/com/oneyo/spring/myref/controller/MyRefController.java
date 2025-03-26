@@ -56,7 +56,8 @@ public class MyRefController {
 //				System.out.println((String)session.getAttribute("memberId"));
 		}
 			List<MySourceList> cList = mService.selectCoolSourceList(currentPage, login);
-			List<MySourceList> iList = mService.selectIceSourceList(currentPage, login);		
+			List<MySourceList> iList = mService.selectIceSourceList(currentPage, login);	
+
 							
 //			System.out.println(cList);
 //			System.out.println(iList);

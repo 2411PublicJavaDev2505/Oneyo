@@ -33,13 +33,13 @@ public class MypageServiceImpl implements MypageService{
 	}
 	
 	@Override
-	public int getTotalCount() {
-		return mStore.getTotalCount(session);
-	}
-	@Override
 	public List<MyReplyVO> selectReplyList(String memberId, int currentPage) {
 		List<MyReplyVO> rList = mStore.selectReplyList(session, memberId, currentPage);
 		return rList;
+	}
+	@Override
+	public int getTotalCount(String memberId) {
+		return mStore.getTotalCount(session);
 	}
 	
 
