@@ -34,4 +34,6 @@ public interface RecipeStore {
 	int deleteBoard(SqlSession session, int recipeNo);
 
 	List<RecipeVO> selectRecipeStep(SqlSession session, int recipeNo);
+
+	RecipeVO selectRecipeByNo(SqlSession session, int recipeNo);
 }

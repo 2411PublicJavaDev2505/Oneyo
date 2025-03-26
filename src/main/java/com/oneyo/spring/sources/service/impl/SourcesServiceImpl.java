@@ -35,21 +35,37 @@ public class SourcesServiceImpl implements SourcesService {
 		return result;
 	}
 	@Override
-	public int updateSources(SourcesUpdateRequest sources) {
-		int result = sStore.updateSources(session, sources);
-		return result;
-	}
-	@Override
 	public int deleteSources(int sourcesNo) {
 		int result = sStore.deleteSources(session, sourcesNo);
 		return result;
 	}
 	
 	@Override
+	public int updateSources(SourcesUpdateRequest sources) {
+		int result = sStore.updateSources(session, sources);
+		return result;
+	}
+
+
+	@Override
+	public int updateSources(SourcesInsertRequest sources) {
+		int result = sStore.updateSources(session, sources);
+		return result;
+	}
+
+
+	@Override
 	public List<SourcesVO> getSourcesByrecipeNo(int recipeNo) {
 		List<SourcesVO> sourcesForRecipe = sStore.getSourcesByrecipeNo(session, recipeNo);
 		for(SourcesVO sources : sourcesForRecipe) {}
 		return sourcesForRecipe;
+	}
+
+
+	@Override
+	public String getMemberNickname(String memberId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
