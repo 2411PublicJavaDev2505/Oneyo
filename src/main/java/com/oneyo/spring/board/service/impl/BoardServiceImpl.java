@@ -59,11 +59,6 @@ public class BoardServiceImpl implements BoardService {
 		return bStore.selectOneBoard(session, boardNo);
 	}
 
-//	@Override
-//	public List<BoardVO> NoticeOneByKeyword(Map<String, String> paramMap) {
-//		return bStore.NoticeOneByKeyword(session, paramMap);
-//	}
-
 	@Override
 	public List<BoardVO> selectOneByKeyword(Map<String, String> paramMap, int currentPage) {
 		return bStore.selectOneByKeyword(session, paramMap, currentPage);

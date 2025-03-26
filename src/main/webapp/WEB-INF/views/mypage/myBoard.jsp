@@ -66,7 +66,7 @@
 						                        <div class="board-Lists">
 						                            <tr class="sources">
 						                                <td class="num">${i.count }</td>
-						                                <td class="board-title"><a href="<c:url value='/board/detail?boardNo=${board.boardNo}' />">${board.boardTitle }</a></td>
+						                                <td class="board-title"><a href="<c:url value='/board/detail/${board.boardNo}' />">${board.boardTitle }</a></td>
 						                                <td class="writer">${board.memberNickname}</td>
 						                                <td class="date">${board.boardDate}</td>
 						                                <td class="count">${board.boardCount}</td>

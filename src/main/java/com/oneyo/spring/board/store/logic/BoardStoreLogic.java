@@ -17,7 +17,7 @@ public class BoardStoreLogic implements BoardStore {
 	@Override // 게시글 등록
 	public int insertBoard(SqlSession session, BoardAddRequest board) {
 		int result = session.insert("BoardMapper.insertBoard", board);
-		return (result>0) ? board.getBoardNo() : 0;
+		return result;
 	}
 
 	@Override // 게시글 수정
@@ -52,11 +52,6 @@ public class BoardStoreLogic implements BoardStore {
 	public BoardVO selectOneBoard(SqlSession session, int boardNo) {
 		return session.selectOne("BoardMapper.selectOneBoard", boardNo);
 	}
-
-//	@Override // 공지사항 검색
-//	public List<BoardVO> NoticeOneByKeyword(SqlSession session, Map<String, String> paramMap) {
-//		return session.selectList("BoardMapper.NoticeOneByKeyword", paramMap);
-//	}
 
 	@Override // 일반게시글 검색
 	public List<BoardVO> selectOneByKeyword(SqlSession session, Map<String, String> paramMap, int currentPage) {

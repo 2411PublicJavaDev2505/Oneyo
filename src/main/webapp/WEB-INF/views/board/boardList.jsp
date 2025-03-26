@@ -83,7 +83,7 @@
 					<a href="/board/list?currentPage=${startNavi-1 }" class="prev">◀</a>
 				</c:if>	
 				<c:forEach begin="${startNavi }" end="${endNavi }" var="p">
-					<a href="/board/list?currentPage=${p }">${p }</a>
+					<a class="pNum" href="/board/list?currentPage=${p }">${p }</a>
 				</c:forEach>					
 				<c:if test="${endNavi ne maxPage }">
 					<a href="/board/list?currentPage=${endNavi+1 }" class="next">▶</a>

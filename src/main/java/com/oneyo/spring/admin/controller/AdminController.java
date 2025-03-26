@@ -60,7 +60,7 @@ public class AdminController {
 		try {
 			List<MemberVO> mList = aService.selectAllMember(currentPage);
 			int totalCount = aService.selectListCount();
-			Map<String, Integer> pageInfo = pageUtil.generatePageInfo(totalCount, currentPage);
+			Map<String, Integer> pageInfo = pageUtil.generatePageInfo(totalCount, currentPage, 7);
 			if(!mList.isEmpty()) {
 				model.addAttribute("maxPage", pageInfo.get("maxPage"));
 				model.addAttribute("startNavi", pageInfo.get("startNavi"));

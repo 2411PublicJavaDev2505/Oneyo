@@ -19,6 +19,7 @@
 	<delete id="deleteReply">
 		delete from reply where REPLY_NO = #{replyNo}
 	</delete>
+	<!-- 게시글 상세페이지에서 댓글 조회 -->
 	<select id="getReplyByBoardNo" resultType="Reply">
 		select R.REPLY_NO, R.BOARD_NO, R.MEMBER_ID, M.MEMBER_NICKNAME, R.REPLY_CONTENT, R.REPLY_DATE
 		from reply R join member M on R.MEMBER_ID = M.MEMBER_ID 
@@ -27,6 +28,6 @@
 	<select id="getMemberNickname" parameterType="String" resultType="String">
 		select MEMBER_NICKNAME from member where MEMBER_ID = #{memberId} 
 	</select>
-	<!-- 마이페이지 본인작성한 댓글 -->
+	
 	
 </mapper>  

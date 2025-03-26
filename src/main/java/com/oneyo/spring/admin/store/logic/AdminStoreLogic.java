@@ -21,7 +21,7 @@ public class AdminStoreLogic implements AdminStore {
 
 	@Override //회원 전체목록 조회
 	public List<MemberVO> selectAllMember(SqlSession session, int currentPage) {
-		int limit = 10;
+		int limit = 7;
 		int offset = (currentPage-1)*limit;
 		RowBounds rowBounds = new RowBounds(offset, limit);
 		return session.selectList("AdminMapper.selectAllMember", null, rowBounds);
