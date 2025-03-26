@@ -6,9 +6,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>oneyo-header</title>
-		<link rel ="stylesheet" href="../resources/css/header.css">
-		<link rel ="stylesheet" href="../resources/css/admin/headeradmin.css">
-		
+		<link rel ="stylesheet" href="../resources/css/header.css">		
 	</head>
 	<body>
 	    <header class="header">

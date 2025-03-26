@@ -10,15 +10,14 @@
 		<link rel="stylesheet" href="../resources/css/index.css">
 		</head>
 	<body>	
-		    <c:choose>
+		     <c:choose>
 			    <c:when test="${sessionScope.member1.memberId eq 'ADMIN01'}">
 			        <jsp:include page="/WEB-INF/views/include/headeradmin.jsp"></jsp:include>
 			    </c:when>
 			    <c:otherwise>
-			        <jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
+			       <jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
 			    </c:otherwise>
 			</c:choose>
-	    	
 	 <!-- 메인 컨텐츠 -->
     <main class="main-content">
         <div class="recipe-container">

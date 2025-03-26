@@ -11,14 +11,16 @@
 	</head>
 	<body>
 	<!--  헤더-->
- 		<c:choose>
-		    <c:when test="${sessionScope.member1.memberId eq 'ADMIN01'}">
-		        <jsp:include page="/WEB-INF/views/include/headeradmin.jsp"></jsp:include>
-		    </c:when>
-		    <c:otherwise>
-		        <jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
-		    </c:otherwise>
-		</c:choose>
+ 		
+		     <c:choose>
+			    <c:when test="${sessionScope.member1.memberId eq 'ADMIN01'}">
+			        <jsp:include page="/WEB-INF/views/include/headeradmin.jsp"></jsp:include>
+			    </c:when>
+			    <c:otherwise>
+			       <jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
+			    </c:otherwise>
+			</c:choose>
+		    
 	  <main class="main">
 	    	<form action="/mypage/myboard" method="get">
 	        <div class="myPageMain">
@@ -79,12 +81,8 @@
 						                        <div class="board-Lists">
 						                            <tr class="sources">
 						                                <td class="num">${i.count }</td>
-<<<<<<< HEAD
 						                                <td class="board-title"><a href="<c:url value='/board/detail/${board.boardNo}' />">${board.boardTitle }</a></td>
-=======
 						                                <td class="board-title"><a href="<c:url value='/board/detail/${board.boardNo}'/>">${board.boardTitle }</a></td>
->>>>>>> refs/remotes/origin/sollee
-						                                <td class="writer">${board.memberNickname}</td>
 						                                <td class="date">${board.boardDate}</td>
 						                                <td class="count">${board.boardCount}</td>
 						                            </tr>
