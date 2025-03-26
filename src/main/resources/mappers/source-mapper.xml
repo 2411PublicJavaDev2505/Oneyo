@@ -16,5 +16,4 @@
 	SELECT * FROM SOURCES
 </select>
 
-
 </mapper>

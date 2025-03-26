@@ -5,7 +5,21 @@ public class CategoryList {
 	private String firstCategory;
 	private String secondCategory;
 	private String thirdCategory;
+	private String sourcesNo;
+	private String sourceName;
 	
+	
+	
+	public CategoryList(String categoryNo, String firstCategory, String secondCategory, String thirdCategory,
+			String sourcesNo, String sourceName) {
+		super();
+		this.categoryNo = categoryNo;
+		this.firstCategory = firstCategory;
+		this.secondCategory = secondCategory;
+		this.thirdCategory = thirdCategory;
+		this.sourcesNo = sourcesNo;
+		this.sourceName = sourceName;
+	}
 	public CategoryList(String categoryNo, String firstCategory, String secondCategory, String thirdCategory) {
 		super();
 		this.categoryNo = categoryNo;
@@ -13,7 +27,15 @@ public class CategoryList {
 		this.secondCategory = secondCategory;
 		this.thirdCategory = thirdCategory;
 	}
-	//제대로 해라잉
+	
+	
+	public String getSourcesNo() {
+		return sourcesNo;
+	}
+	public String getSourceName() {
+		return sourceName;
+	}
+
 	public String getCategoryNo() {
 		return categoryNo;
 	}
@@ -29,14 +51,14 @@ public class CategoryList {
 	public String getThirdCategory() {
 		return thirdCategory;
 	}
-
+	
+	
 	@Override
 	public String toString() {
 		return "CategoryList [categoryNo=" + categoryNo + ", firstCategory=" + firstCategory + ", secondCategory="
-				+ secondCategory + ", thirdCategory=" + thirdCategory + "]";
+				+ secondCategory + ", thirdCategory=" + thirdCategory + ", sourcesNo=" + sourcesNo + ", sourceName="
+				+ sourceName + "]";
 	}
-
-	
 
 	
 	

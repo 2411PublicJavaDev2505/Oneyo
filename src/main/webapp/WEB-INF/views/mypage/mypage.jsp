@@ -31,7 +31,7 @@
 		<!--  마이페이지 메인화면-->
  		<div class="myDetail-container">
           <div class="myPageMenu">
-            <button><a href="/mypage">마이냉장고</a></button>
+            <button><a href="/mypage/mypage">마이냉장고</a></button>
             <button><a href="/mypage/myBoard">내가 쓴글</a></button>
             <button><a href="/mypage/myReply">나의 댓글</a></button>
           </div>

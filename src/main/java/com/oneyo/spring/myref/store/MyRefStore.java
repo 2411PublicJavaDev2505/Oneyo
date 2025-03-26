@@ -10,6 +10,8 @@ import com.oneyo.spring.myref.controller.dto.CategoryList;
 import com.oneyo.spring.myref.controller.dto.CheckLoginRequest;
 import com.oneyo.spring.myref.controller.dto.DeleteSource;
 import com.oneyo.spring.myref.controller.dto.MySourceList;
+import com.oneyo.spring.myref.controller.dto.SearchSourceRequest;
+import com.oneyo.spring.myref.controller.dto.SourceAddRequest;
 
 public interface MyRefStore {
 	
@@ -34,5 +36,13 @@ public interface MyRefStore {
 	int deleteIceSource(SqlSession session, DeleteSource dSource);
 
 	int deleteCoolSource(SqlSession session, DeleteSource dSource);
+
+	int addSource(SqlSession session, SourceAddRequest addSource);
+
+	int getSearchCount(SqlSession session, SearchSourceRequest searchList);
+
+	List<MySourceList> searchSourceList(SqlSession session, int currentPage, SearchSourceRequest searchList);
+
+	int findDuplicated(SqlSession session, SourceAddRequest addSource);
 
 }

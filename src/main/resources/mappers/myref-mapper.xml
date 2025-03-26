@@ -14,45 +14,89 @@
 	</resultMap>
 	
 	
-	<select id="selectCoolSourceList" resultMap="sourceMap">
-		SELECT R.MEMBER_ID, R.SOURCES_NO, R.SOURCE_COUNT, R.DUE_DATE, R.STORAGE_DATE, R.STORAGE_CODE, S.SOURCE_NAME
-		FROM REFRIGERATOR R
-		JOIN SOURCES S ON S.SOURCES_NO = R.SOURCES_NO
-		WHERE STORAGE_CODE = 'C' AND R.MEMBER_ID = #{memberId}
-	</select>
-	
-	<select id="selectIceSourceList" resultMap="sourceMap">
-		SELECT R.MEMBER_ID, R.SOURCES_NO, R.SOURCE_COUNT, R.DUE_DATE, R.STORAGE_DATE, R.STORAGE_CODE, S.SOURCE_NAME
-		FROM REFRIGERATOR R
-		JOIN SOURCES S ON S.SOURCES_NO = R.SOURCES_NO
-		WHERE STORAGE_CODE = 'I' AND R.MEMBER_ID = #{memberId}
-	</select>
-	
-	
-	<select id="selectStorageList" resultMap = "sourceMap">
-		SELECT R.MEMBER_ID, R.SOURCES_NO, R.SOURCE_COUNT, R.DUE_DATE, R.STORAGE_DATE, R.STORAGE_CODE, S.SOURCE_NAME
-		FROM REFRIGERATOR R
-		JOIN SOURCES S ON S.SOURCES_NO = R.SOURCES_NO
-	  		<where>
-	  			<if test="selectStorage == 'I'">
-	  				R.STORAGE_CODE = 'I'
-	  			</if>
-	  			<if test="selectStorage == 'C'">
-	  				R.STORAGE_CODE = 'C'
-	  			</if>
-	  		</where>
-	</select>
-	
-	<select id="getTotalCount" resultType="_int">
-		SELECT COUNT(*) FROM REFRIGERATOR WHERE MEMBER_ID = #{memberId} AND STORAGE_CODE = #{storageCode}
-	</select>
-	
-	<delete id="deleteIceSource">		
-		DELETE FROM REFRIGERATOR WHERE MEMBER_ID = #{memberId} AND SOURCES_NO = #{sourceNo} AND TO_CHAR(DUE_DATE, 'yyyy-mm-dd') = #{dueDate} AND STORAGE_CODE = 'I'
-	</delete>
-	
-	<delete id="deleteCoolSource">		
-		DELETE FROM REFRIGERATOR WHERE MEMBER_ID = #{memberId} AND SOURCES_NO = #{sourceNo} AND TO_CHAR(DUE_DATE, 'yyyy-mm-dd') = #{dueDate} AND STORAGE_CODE = 'C'
-	</delete>
+<select id="selectCoolSourceList" resultMap="sourceMap">
+	SELECT R.MEMBER_ID, R.SOURCES_NO, R.SOURCE_COUNT, R.DUE_DATE, R.STORAGE_DATE, R.STORAGE_CODE, S.SOURCE_NAME
+	FROM REFRIGERATOR R
+	JOIN SOURCES S ON S.SOURCES_NO = R.SOURCES_NO
+	WHERE STORAGE_CODE = 'C' AND R.MEMBER_ID = #{memberId}
+	ORDER BY DUE_DATE ASC
+</select>
+
+<select id="selectIceSourceList" resultMap="sourceMap">
+	SELECT R.MEMBER_ID, R.SOURCES_NO, R.SOURCE_COUNT, R.DUE_DATE, R.STORAGE_DATE, R.STORAGE_CODE, S.SOURCE_NAME
+	FROM REFRIGERATOR R
+	JOIN SOURCES S ON S.SOURCES_NO = R.SOURCES_NO
+	WHERE STORAGE_CODE = 'I' AND R.MEMBER_ID = #{memberId}
+	ORDER BY DUE_DATE ASC
+</select>
+
+
+<select id="selectStorageList" resultMap = "sourceMap">
+	SELECT R.MEMBER_ID, R.SOURCES_NO, R.SOURCE_COUNT, R.DUE_DATE, R.STORAGE_DATE, R.STORAGE_CODE, S.SOURCE_NAME
+	FROM REFRIGERATOR R
+	JOIN SOURCES S ON S.SOURCES_NO = R.SOURCES_NO
+  		<where>
+  			<if test="selectStorage == 'I'">
+  				R.STORAGE_CODE = 'I'
+  			</if>
+  			<if test="selectStorage == 'C'">
+  				R.STORAGE_CODE = 'C'
+  			</if>
+  		</where>
+</select>
+
+<select id="searchSourceList" resultMap = "sourceMap">
+	SELECT R.MEMBER_ID, R.SOURCES_NO, R.SOURCE_COUNT, R.DUE_DATE, R.STORAGE_DATE, R.STORAGE_CODE, S.SOURCE_NAME 
+	FROM REFRIGERATOR R
+	JOIN SOURCES S ON R.SOURCES_NO = S.SOURCES_NO
+	WHERE S.SOURCE_NAME LIKE '%'||#{searchKeyword}||'%' 
+	AND R.MEMBER_ID = #{memberId}
+</select>
+
+
+<select id="getTotalCount" resultType="_int">
+	SELECT COUNT(*) FROM REFRIGERATOR WHERE MEMBER_ID = #{memberId} AND STORAGE_CODE = #{storageCode}
+</select>
+
+<select id="getSearchCount" resultType="_int">
+	SELECT COUNT(*)  
+	FROM REFRIGERATOR  
+	WHERE SOURCES_NO IN (SELECT SOURCES_NO FROM SOURCES WHERE SOURCE_NAME LIKE '%'||#{searchKeyword}||'%' )  
+	AND MEMBER_ID = #{memberId}
+</select>
+
+<delete id="deleteIceSource">		
+	DELETE FROM REFRIGERATOR WHERE MEMBER_ID = #{memberId} AND SOURCES_NO = #{sourceNo} AND TO_CHAR(DUE_DATE, 'yyyy-mm-dd') = #{dueDate} AND STORAGE_CODE = 'I'
+</delete>
+
+<delete id="deleteCoolSource">		
+	DELETE FROM REFRIGERATOR WHERE MEMBER_ID = #{memberId} AND SOURCES_NO = #{sourceNo} AND TO_CHAR(DUE_DATE, 'yyyy-mm-dd') = #{dueDate} AND STORAGE_CODE = 'C'
+</delete>
+
+
+<insert id="addSource">
+	INSERT INTO REFRIGERATOR(MEMBER_ID, SOURCES_NO, SOURCE_COUNT, DUE_DATE, STORAGE_DATE, STORAGE_CODE)
+	SELECT #{memberId}, SOURCES_NO, #{sourceCount}, #{dueDate}, SYSDATE, #{storageCode}
+	FROM (
+	        SELECT SOURCES_NO
+	        FROM SOURCES S
+	        WHERE CATEGORY_NO = (
+	                SELECT CATEGORY_NO
+	                FROM CATEGORY C
+	                WHERE c.first_category = #{firstCategory} AND c.second_category = #{secondCategory} AND c.third_category = #{thirdCategory}
+	                )
+	        AND SOURCE_NAME = #{sourceName}
+	) C	
+</insert>
+
+
+<select id="findDuplicated" resultType="_int">
+	SELECT COUNT(*)
+	FROM REFRIGERATOR R
+	JOIN SOURCES S ON R.SOURCES_NO = S.SOURCES_NO
+	WHERE R.MEMBER_ID = 'ADMIN01'
+	GROUP BY R.DUE_DATE, R.SOURCES_NO, S.SOURCE_NAME
+	HAVING COUNT(*) > 1
+</select>
 	
 </mapper>

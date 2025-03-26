@@ -35,9 +35,9 @@
             <button><a href="/mypage/myReply">나의 댓글</a></button>
             </div>
 
-    <!-- 		재료 등록 페이지 부분-->
+    <!-- 		재료 검색 페이지 부분-->
         <div class="search-container">
-	        <form class="search-form"  action="/">
+	        <form class="search-form"  action="/mypage/search" method="post">
 	            <input class="search-input" type="text" name="searchKeyword" placeholder="재료명을 입력하세요">
 	            <button type="submit">검색</button>
 	        </form>
@@ -47,42 +47,20 @@
 		<div class="modal">
 			<div class="modal_popup">
 				<h3>재료 추가</h3>
-<%-- 				수정 전
-				<table>
-					<tr>
-						<th>카테고리</th>
-						<th>재료명</th>
-						<th>중량</th>
-					</tr>
-					<tr>
-						<td>
-							<select class="category">
-							<c:forEach items= "${categoryList }" var="cateList">
-								<option>"${cateList.firstCategory } >> ${cateList.secondCategory }"</option>
-							</c:forEach>
-							</select>
-						</td>
-						
-						<td>
-							<select >
-								<option></option>
-							</select>
-						</td>			
-								
-						<td><input type="number">g</td>
-					</tr>
-				</table> --%>
 				<form action="/mypage/myIceStorage" method="post">
 						<input type="hidden" id="firstChoice" name="firstCategory" value="">
 						<input type="hidden" id="secondChoice" name="secondCategory" value="">
 						<input type="hidden" id="thirdChoice" name="thirdCategory" value="">
+						<input type="hidden" id="sourceChoice" name="sourceName" value="">
+						<input type="hidden" id="countChoice" name="sourceCount" value="">
+						<input type="hidden" id="dueDateChoice" name="dueDate" value="">
 							<table>
 							    <tr>
 							        <th>대분류</th>
 							        <th>중분류</th>
 							        <th>소분류</th>
 							        <th>재료명</th>
-							        <th>중량</th>
+							        <th>중량 (100g 단위)</th>
 							        <th>유통기한</th>
 							    </tr>
 							    <tr>
@@ -102,23 +80,23 @@
 							        </td>
 							
 							        <td>
-							            <select id="thirdCategory" name="thirdCategory">
+							            <select id="thirdCategory" >
 							                <option value="">-- 선택 --</option>
 							            </select>
 							        </td>
 							        
 							        <td>
-							            <select id="">
+							            <select id="sourceName">
 							                <option value="">-- 선택 --</option>
 							            </select>
 							        </td>
 							        
 							        <td>
-										<input type="number">g
+										<input id="sourceCount" type="number" value="">g
 							        </td>
 							        
 							        <td>
-										<input type="date">
+										<input id="dueDate" type="date" value="">
 							        </td>
 							    </tr>
 							</table>			
@@ -147,7 +125,7 @@
                             <th class="num">보관</th>
                             <th class="source-name">재료명</th>
                             <th class="due-date">유통기한</th>
-                            <th class="count">수량</th>
+                            <th class="count">중량</th>
                             <th class="action">수정/삭제</th>
                         </tr>
                     </thead>
@@ -162,8 +140,19 @@
 		                                <td class="due-date" value="${source.dueDate }">${source.dueDate }</td>
 		                                <td class="count">${source.sourceCount }</td>
 		                                <td class="action">
-		                                    <button><a href="#">수정</a></button>
-		                                    <button><a href="/mypage/delete?sourcesNo=${source.sourcesNo }&dueDate=${source.dueDate}&storageCode=I">삭제</a></button>
+		                                        <button type="button" class="edit-btn"
+											        data-source-no="${source.sourcesNo}"
+											        data-source-name="${source.sourceName}"
+											        data-source-count="${source.sourceCount}"
+											        data-due-date="${source.dueDate}">
+											        수정
+											    </button>
+		                                    <form action="/mypage/delete" id="deleteForm" method="get">
+		                                    	<input type="hidden" name="sourcesNo" value="${source.sourcesNo}">
+		                                    	<input type="hidden" name="dueDate" value="${source.dueDate }">
+		                                    	<input type="hidden" name="storageCode" value="${source.storageCode }">
+		                                    <button type="button" onclick="deleteConfirm(${source.sourcesNo},${source.dueDate});">삭제</button>
+		                                    </form>
 		                                </td>
 		                             </tr>
 	                           	 </c:forEach>
@@ -193,7 +182,12 @@
 
  	
       <script>
-    
+    	function deleteConfirm(sourcesNo, dueDate, storageCode) {
+    		var result = confirm("삭제할거임?");
+    		if(result) {
+    			document.getElementById('deleteForm').submit();
+    		}
+    	}
       
         
         const modal = document.querySelector('.modal');
@@ -221,7 +215,8 @@
                 {
                     firstCategory: "${cateList.firstCategory}",
                     secondCategory: "${cateList.secondCategory}",
-                    thirdCategory: "${cateList.thirdCategory}"
+                    thirdCategory: "${cateList.thirdCategory}",
+                    sourceName: "${cateList.sourceName}"
                 },
             </c:forEach>
         ];
@@ -230,12 +225,23 @@
         const firstSelect = document.getElementById("firstCategory");
         const secondSelect = document.getElementById("secondCategory");
         const thirdSelect = document.getElementById("thirdCategory");
+        const sourceSelect = document.getElementById("sourceName");
+        const countInsert = document.getElementById("sourceCount");
+        const dueDateInsert = document.getElementById("dueDate");
 
 	    // hidden input 요소 가져오기
 	    const firstChoice = document.getElementById("firstChoice");
 	    const secondChoice = document.getElementById("secondChoice");
 	    const thirdChoice = document.getElementById("thirdChoice");
+	    const sourceChoice = document.getElementById("sourceChoice");
+	    const sourceCount = document.getElementById("countChoice");
+	    const dueDate = document.getElementById("dueDateChoice");
         
+
+	    
+	    
+	    
+	    
 	 // 첫 번째 카테고리 선택 시
 	    firstSelect.addEventListener("change", function () {
 	        const selectedFirst = this.value;
@@ -279,9 +285,92 @@
         
 	 // 세 번째 카테고리 선택 시
 	    thirdSelect.addEventListener("change", function () {
-	        thirdChoice.value = this.value; // hidden input에 값 설정
+	        const selectedFirst = firstSelect.value;
+	        const selectedSecond = secondSelect.value;
+	        const selectedThird = this.value; 
+	        thirdChoice.value = selectedThird;// hidden input에 값 설정
+	        
+	        // sourceName(재료명) 초기화
+	        sourceSelect.innerHTML = '<option value="">-- 선택 --</option>';
+	        
+	        const sources = [...new Set(categoryData
+	                .filter(item => item.firstCategory === selectedFirst && item.secondCategory === selectedSecond && item.thirdCategory === selectedThird)
+	                .map(item => item.sourceName))];
+
+	            sources.forEach(source => {
+	                const option = document.createElement("option");
+	                option.value = source;
+	                option.textContent = source;
+	                sourceSelect.appendChild(option);
+	            }); 	        
 	    });
+	 
+	 
+	    sourceSelect.addEventListener("change", function () {
+	        sourceChoice.value = this.value; // hidden input에 값 설정
+	    });
+	    
+	    
         
+	    // 재료 수량 입력하는거 나중에 변동 제한 둘거임 100g으로
+	    countInsert.addEventListener("change", function () {
+	    	const countSource = this.value;
+	    	sourceCount.value = countSource;
+	    })
+	    // 유통기한 선택
+	    dueDateInsert.addEventListener("change", function () {
+	    	const insertDueDate = this.value;
+	    	dueDate.value = insertDueDate;
+	    })
+
+	    
+	    
+	    // 수정 버튼 클릭 이벤트
+			document.querySelectorAll(".edit-btn").forEach(btn => {
+	    	btn.addEventListener("click", function () {
+        // 현재 선택한 데이터 가져오기
+		        const sourceNo = this.getAttribute("data-source-no");
+		        const sourceName = this.getAttribute("data-source-name");
+		        const sourceCount = this.getAttribute("data-source-count");
+		        const dueDate = this.getAttribute("data-due-date");
+
+        // 모달 열기
+        document.querySelector(".modal").style.display = "block";
+
+        	// 기존 데이터 입력
+	        document.getElementById("sourceChoice").value = sourceName; // 숨김 input
+	        document.getElementById("countChoice").value = sourceCount; 
+	        document.getElementById("dueDateChoice").value = dueDate; 
+
+	        // 입력 필드 채우기
+	        document.getElementById("sourceName").innerHTML = `<option value="${sourceName}" selected>${sourceName}</option>`;
+	        document.getElementById("sourceCount").value = sourceCount;
+	        document.getElementById("dueDate").value = dueDate;
+
+	        // 카테고리 선택 비활성화
+	        document.getElementById("firstCategory").setAttribute("disabled", true);
+	        document.getElementById("secondCategory").setAttribute("disabled", true);
+	        document.getElementById("thirdCategory").setAttribute("disabled", true);
+	        document.getElementById("sourceName").setAttribute("disabled", true);
+	
+	        // form의 action 변경 (수정 API 호출)
+	        document.querySelector(".modal form").setAttribute("action", "/mypage/updateSource?sourcesNo=" + sourceNo);
+	    });
+	});
+
+	// 모달 닫기 버튼
+		document.querySelector(".close_btn").addEventListener("click", function () {
+	    document.querySelector(".modal").style.display = "none";
+	
+	    // 폼 리셋 및 비활성화 해제
+	    document.querySelector(".modal form").reset();
+	    document.getElementById("firstCategory").removeAttribute("readonly");
+	    document.getElementById("secondCategory").removeAttribute("disabled");
+	    document.getElementById("thirdCategory").removeAttribute("disabled");
+	    document.getElementById("sourceName").removeAttribute("disabled");
+	});
+	    
+	    
 
 		</script>
 	

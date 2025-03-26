@@ -12,22 +12,26 @@ import com.oneyo.spring.myref.controller.dto.CategoryList;
 import com.oneyo.spring.myref.controller.dto.CheckLoginRequest;
 import com.oneyo.spring.myref.controller.dto.DeleteSource;
 import com.oneyo.spring.myref.controller.dto.MySourceList;
+import com.oneyo.spring.myref.controller.dto.SearchSourceRequest;
+import com.oneyo.spring.myref.controller.dto.SourceAddRequest;
 import com.oneyo.spring.myref.store.MyRefStore;
 
 @Repository
 public class MyRefStoreImpl implements MyRefStore{
 
+	// 단순 전체 냉장고 리스트 출력
 	@Override
 	public List<MySourceList> selectCoolSourceList(SqlSession session) {
 		List<MySourceList> cList = session.selectList("sourceList.selectCoolSourceList");
 		return cList;
 	}
-	
+	// 단순 전체 냉동고 리스트 출력
 	@Override
 	public List<MySourceList> selectIceSourceList(SqlSession session) {
 		List<MySourceList> iList = session.selectList("sourceList.selectIceSourceList");
 		return iList;
 	}
+	
 	
 	@Override
 	public List<MySourceList> selectCoolSourceList(SqlSession session, CheckLoginRequest login) {
@@ -48,6 +52,15 @@ public class MyRefStoreImpl implements MyRefStore{
 		List<MySourceList> selectStorage = session.selectList("sourceList.selectStorageList", paramMap);
 //		System.out.println(selectStorage);
 		return selectStorage;
+	}
+	
+	@Override
+	public List<MySourceList> searchSourceList(SqlSession session, int currentPage, SearchSourceRequest searchList) {
+		int limit = 5;
+		int offset = (currentPage -1) * limit;
+		RowBounds rowbounds = new RowBounds(offset, limit);
+		List<MySourceList> sList = session.selectList("sourceList.searchSourceList", searchList, rowbounds);
+		return sList;
 	}
 
 	@Override
@@ -94,13 +107,30 @@ public class MyRefStoreImpl implements MyRefStore{
 
 	@Override
 	public int deleteCoolSource(SqlSession session, DeleteSource dSource) {
-		System.out.println(dSource.getMemberId());
-		System.out.println(dSource.getSourceNo());
-		System.out.println(dSource.getDueDate());
 		int result = session.delete("sourceList.deleteCoolSource", dSource);
-		System.out.println(result);
 		return result;
 	}
+
+	@Override
+	public int addSource(SqlSession session, SourceAddRequest addSource) {
+		System.out.println(addSource.getDueDate());
+		int result = session.insert("sourceList.addSource", addSource);
+		return result;
+	}
+
+	@Override
+	public int getSearchCount(SqlSession session, SearchSourceRequest searchList) {
+		int result = session.selectOne("sourceList.getSearchCount", searchList);
+		return result;
+	}
+	@Override
+	public int findDuplicated(SqlSession session, SourceAddRequest addSource) {
+		int duplication = session.selectOne("sourceList.findDuplicated", addSource);
+		System.out.println("중복 : " + duplication);
+		return duplication;
+	}
+
+
 
 
 

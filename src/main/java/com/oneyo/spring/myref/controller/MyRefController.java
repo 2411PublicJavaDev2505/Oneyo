@@ -23,6 +23,8 @@ import com.oneyo.spring.myref.controller.dto.CategoryList;
 import com.oneyo.spring.myref.controller.dto.CheckLoginRequest;
 import com.oneyo.spring.myref.controller.dto.DeleteSource;
 import com.oneyo.spring.myref.controller.dto.MySourceList;
+import com.oneyo.spring.myref.controller.dto.SearchSourceRequest;
+import com.oneyo.spring.myref.controller.dto.SourceAddRequest;
 import com.oneyo.spring.myref.service.MyRefService;
 
 
@@ -38,7 +40,7 @@ public class MyRefController {
 		this.pageUtil = pageUtil;
 	}
 	
-
+	// 마이페이지 전체 출력
 	@GetMapping("/mypage")
 	public String showMypageMain(Model model,
 			@RequestParam(value="page", defaultValue="1") int currentPage,
@@ -74,6 +76,7 @@ public class MyRefController {
 	}
 	
 	
+	// 냉동고 재료 리스트 출력
 	@GetMapping("/myIceStorage")
 	public String showMyIceStorage(Model model, 
 			@RequestParam(value="page", defaultValue="1") int currentPage,
@@ -112,29 +115,16 @@ public class MyRefController {
 		}
 		return "mypage/myIceStorage";
 	}
-	
-	@PostMapping("/myIceStorage")
-	public String insertMyIceStorage(Model model, 
-			@RequestParam(value="page", defaultValue="1") int currentPage,
-			@RequestParam("firstCategory") String firstCategory,
-			@RequestParam("secondCategory") String secondCategory,
-			@RequestParam("thirdCategory") String thirdCategory,			
-			HttpSession session) {
-		
-//		System.out.println(firstCategory);
-//		System.out.println(secondCategory);
-		System.out.println(thirdCategory);
-		return "mypage/myIceStorage";
-	}
-	
-	
-	
+
+
+
+
+	// 냉장고 재료 리스트
 	@GetMapping("/myCoolStorage")
 	public String showMyCoolStorage(Model model,
 			@RequestParam(value="page", defaultValue="1") int currentPage,
 			HttpSession session) {
 		try {
-
 			CheckLoginRequest login = null;
 			
 			if(session.getAttribute("memberId")!= null) {
@@ -143,7 +133,6 @@ public class MyRefController {
 				login.setMemberPw((String)session.getAttribute("memberPw"));			
 				login.setStorageCode("C");
 			}
-
 			int totalCount = mService.getTotalCount(login);
 			Map<String, Integer> pageInfo = new PageUtill().generatePageInfo(totalCount, currentPage, 5);
 			List<MySourceList> cList = mService.selectCoolSourceList(currentPage, login);
@@ -167,8 +156,90 @@ public class MyRefController {
 		}
 		return "mypage/myCoolStorage";
 	}
+
+
+	// 재료 검색 리스트
+	@PostMapping("/search")
+	public String searchSource(Model model,
+			HttpSession session,
+			@RequestParam("searchKeyword") String searchKeyword,
+			@RequestParam(value="page", defaultValue="1") int currentPage) {	
+			String memberId = (String)session.getAttribute("memberId");
+			if(memberId != null) {
+			SearchSourceRequest searchList = new SearchSourceRequest(memberId, searchKeyword);
+			int searchCount = mService.getSearchCount(searchList);
+			System.out.println(searchCount);
+			Map<String, Integer> pageInfo = new PageUtill().generatePageInfo(searchCount, currentPage, 5);
+			
+			List<MySourceList>sList = mService.searchSourceList(currentPage, searchList);
+			System.out.println(sList);
+			if(sList != null) {
+					model.addAttribute("maxPage", pageInfo.get("maxPage"));
+					model.addAttribute("startNavi", pageInfo.get("startNavi"));
+					model.addAttribute("endNavi", pageInfo.get("endNavi"));
+					model.addAttribute("sList", sList);		
+					model.addAttribute("searchKeyword", searchKeyword);		
+					return "mypage/search";
+				}return "common/error";
+			} return "common/error";
+	}
 	
 	
+	// 냉장고 재료 추가
+	@PostMapping("/myCoolStorage")
+	public String insertMyCoolStorage(Model model, 
+			@RequestParam(value="page", defaultValue="1") int currentPage,
+			@RequestParam("firstCategory") String firstCategory,
+			@RequestParam("secondCategory") String secondCategory,
+			@RequestParam("thirdCategory") String thirdCategory,
+			@RequestParam("sourceName") String sourceName,
+			@RequestParam("sourceCount") String sourceCount,
+			@RequestParam("dueDate") Date dueDate,
+			HttpSession session) {
+		String memberId = (String)session.getAttribute("memberId");
+		String storageDate = "SYSDATE";
+		String storageCode = "C";		
+		
+		SourceAddRequest addSource = new SourceAddRequest(memberId, firstCategory, secondCategory, thirdCategory, sourceCount, sourceName, dueDate, storageDate, storageCode);
+		int duplication = mService.findDuplicated(addSource);
+		System.out.println(duplication);
+		
+		if(addSource != null) {
+			int result = mService.addSource(addSource);
+			if(result > 0) {
+				return "redirect:/mypage/myCoolStorage";
+			} return "common/error";
+		}	return "mypage/myCoolStorage";
+	}	
+	
+
+	// 냉동고 재료 추가
+	@PostMapping("/myIceStorage")
+	public String insertMyIceStorage(Model model, 
+			@RequestParam(value="page", defaultValue="1") int currentPage,
+			@RequestParam("firstCategory") String firstCategory,
+			@RequestParam("secondCategory") String secondCategory,
+			@RequestParam("thirdCategory") String thirdCategory,
+			@RequestParam("sourceName") String sourceName,
+			@RequestParam("sourceCount") String sourceCount,
+			@RequestParam("dueDate") Date dueDate,
+			HttpSession session) {
+		String memberId = (String)session.getAttribute("memberId");
+		String storageDate = "SYSDATE";
+		String storageCode = "I";		
+//		System.out.println(dueDate);
+		SourceAddRequest addSource = new SourceAddRequest(memberId, firstCategory, secondCategory, thirdCategory, sourceCount, sourceName, dueDate, storageDate, storageCode);
+		if(addSource != null) {
+			int result = mService.addSource(addSource);
+			if(result > 0) {
+				return "redirect:/mypage/myIceStorage";
+			} return "common/error";
+		}	return "mypage/myIceStorage";
+	}
+	
+	
+	
+	// 재료삭제 (냉장, 냉동 통합)
 	@GetMapping("/delete")
 	public String deleteSources(Model model,
 			HttpSession session,
@@ -193,26 +264,41 @@ public class MyRefController {
 					System.out.println("storageCode =" + storageCode);
 					result = mService.deleteIceSource(dIceSource);
 					if(result > 0) {
-						return "/mypage/mypage";
+						return "redirect:/mypage/mypage";
 					}
-				}else if(storageCode.equals("C")){
+				}else if(storageCode.equals("C")) {
 					DeleteSource dCoolSource = new DeleteSource(memberId, sourcesNo, dueDate, storageCode);					
 					System.out.println("mamberID =" + memberId);
 					System.out.println("sourcesNo =" + sourcesNo);
 					System.out.println("dueDate =" + dueDate);
 					System.out.println("storageCode =" + storageCode);
-					result = mService.deleteIceSource(dCoolSource);		
+					result = mService.deleteCoolSource(dCoolSource);		
 					if(result > 0) {
-						return "/mypage/mypage";
+						if(storageCode.equals("I")) {
+							return "redirect:/mypage/myIceStorage";							
+						}else {
+							return "redirect:/mypage/myCoolStorage";		
+						}
 					}
 				}
 			}	
-			return "mypage/mypage";
+			return "redirect:/mypage/mypage";
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		return "mypage/mypage";
+		return "common/error";
 	}
 	
-
+	//재료 수정
+	@PostMapping("/updateSource")
+	public String updateSource(@RequestParam("sourcesNo") int sourcesNo,
+	                           @RequestParam("sourceCount") int sourceCount,
+	                           @RequestParam("dueDate") String dueDate) {
+	    // 서비스 호출하여 DB 업데이트
+	    //sourceService.updateSource(sourcesNo, sourceCount, dueDate);
+		
+	    return "redirect:/mypage";
+	}
+	
+	
 }

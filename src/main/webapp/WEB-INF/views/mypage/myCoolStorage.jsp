@@ -37,7 +37,7 @@
 
     <!-- 		재료 등록 페이지 부분-->
         <div class="search-container">
-	        <form class="search-form"  action="/#">
+	        <form class="search-form"  action="/mypage/search" method="post">
 	            <input class="search-input" type="text" name="searchKeyword" placeholder="재료명을 입력하세요">
 	            <button type="submit">검색</button>
 	        </form>
@@ -47,79 +47,62 @@
 		<div class="modal">
 			<div class="modal_popup">
 				<h3>재료 추가</h3>
-<%-- 				수정 전
-				<table>
-					<tr>
-						<th>카테고리</th>
-						<th>재료명</th>
-						<th>중량</th>
-					</tr>
-					<tr>
-						<td>
-							<select class="category">
-							<c:forEach items= "${categoryList }" var="cateList">
-								<option>"${cateList.firstCategory } >> ${cateList.secondCategory }"</option>
-							</c:forEach>
-							</select>
-						</td>
-						
-						<td>
-							<select >
-								<option></option>
-							</select>
-						</td>			
-								
-						<td><input type="number">g</td>
-					</tr>
-				</table> --%>
-				<table>
-				    <tr>
-				        <th>대분류</th>
-				        <th>중분류</th>
-				        <th>소분류</th>
-				        <th>재료명</th>
-				        <th>중량</th>
-				        <th>유통기한</th>
-				    </tr>
-				    <tr>
-				        <td>
-				            <select id="firstCategory">
-				                <option value="">-- 선택 --</option>
-				                <c:forEach items="${categoryList}" var="cateList">
-				                    <option value="${cateList.firstCategory}">${cateList.firstCategory}</option>
-				                </c:forEach>
-				            </select>
-				        </td>
-				
-				        <td>
-				            <select id="secondCategory">
-				                <option value="">-- 선택 --</option>
-				            </select>
-				        </td>
-				
-				        <td>
-				            <select id="thirdCategory">
-				                <option value="">-- 선택 --</option>
-				            </select>
-				        </td>
-				        
-				        <td>
-				            <select id="">
-				                <option value="">-- 선택 --</option>
-				            </select>
-				        </td>
-				        
-				        <td>
-							<input type="number">g
-				        </td>
-				        
-				        <td>
-							<input type="date">
-				        </td>
-				    </tr>
-				</table>			
-
-				<button type="button" class="insert_btn">저장</button>
+				<form action="/mypage/myCoolStorage" method="post">
+						<input type="hidden" id="firstChoice" name="firstCategory" value="">
+						<input type="hidden" id="secondChoice" name="secondCategory" value="">
+						<input type="hidden" id="thirdChoice" name="thirdCategory" value="">
+						<input type="hidden" id="sourceChoice" name="sourceName" value="">
+						<input type="hidden" id="countChoice" name="sourceCount" value="">
+						<input type="hidden" id="dueDateChoice" name="dueDate" value="">
+							<table>
+							    <tr>
+							        <th>대분류</th>
+							        <th>중분류</th>
+							        <th>소분류</th>
+							        <th>재료명</th>
+							        <th>중량 (100g 단위)</th>
+							        <th>유통기한</th>
+							    </tr>
+							    <tr>
+							        <td>
+							            <select id="firstCategory">
+							                <option value="">-- 선택 --</option>
+							                <c:forEach items="${categoryList}" var="cateList">
+							                    <option value="${cateList.firstCategory}">${cateList.firstCategory}</option>
+							                </c:forEach>
+							            </select>
+							        </td>
+							
+							        <td>
+							            <select id="secondCategory">
+							                <option value="">-- 선택 --</option>
+							            </select>
+							        </td>
+							
+							        <td>
+							            <select id="thirdCategory" >
+							                <option value="">-- 선택 --</option>
+							            </select>
+							        </td>
+							        
+							        <td>
+							            <select id="sourceName">
+							                <option value="">-- 선택 --</option>
+							            </select>
+							        </td>
+							        
+							        <td>
+										<input id="sourceCount" type="number" value="">g
+							        </td>
+							        
+							        <td>
+										<input id="dueDate" type="date" value="">
+							        </td>
+							    </tr>
+							</table>			
+						<!-- form 태그로 감싸서 카테고리 값 가져오기 input hidden -->
+						<button type="submit" class="insert_btn">저장</button>
+					</form>
 				<button type="button" class="close_btn">닫기</button>
 			</div>
 		</div>
@@ -142,7 +125,7 @@
                             <th class="num">보관</th>
                             <th class="source-name">재료명</th>
                             <th class="due-date">유통기한</th>
-                            <th class="count">수량</th>
+                            <th class="count">중량</th>
                             <th class="action">수정/삭제</th>
                         </tr>
                     </thead>
@@ -151,14 +134,19 @@
 	                           	<c:forEach items= "${cList }" var="source">
 		                            <tr  class="sources">
 		                                <td class="num">
-											<c:if test="${source.storageCode eq 'C' }">냉장</c:if>
-										</td>
+		                                	<c:if test="${source.storageCode eq 'C' }">냉동</c:if>
+		                                	</td>
 		                                <td class="source-name">${source.sourceName }</td>
-		                                <td class="due-date">${source.dueDate }</td>
+		                                <td class="due-date" value="${source.dueDate }">${source.dueDate }</td>
 		                                <td class="count">${source.sourceCount }</td>
 		                                <td class="action">
 		                                    <button><a href="#">수정</a></button>
-		                                    <button><a href="/mypage/delete?sourcesNo=${source.sourcesNo }&dueDate=${source.dueDate}&storageCode=C">삭제</a></button>
+		                                    <form action="/mypage/delete" id="deleteForm" method="get">
+		                                    	<input type="hidden" name="sourcesNo" value="${source.sourcesNo}">
+		                                    	<input type="hidden" name="dueDate" value="${source.dueDate }">
+		                                    	<input type="hidden" name="storageCode" value="${source.storageCode }">
+		                                    <button type="button" onclick="deleteConfirm(${source.sourcesNo},${source.dueDate});">삭제</button>
+		                                    </form>		                                    
 		                                </td>
 		                             </tr>
 	                           	 </c:forEach>
@@ -177,7 +165,7 @@
 							</c:forEach>	
 						<c:if test="${endNavi ne maxPage}">
 							<a href="/mypage/myCoolStorage?page=${endNavi +1 }" class="next">&gt;</a>
-						</c:if>                    
+						</c:if>              
                 </div>
             </section>
         </div>
@@ -185,13 +173,17 @@
         </div>
     </main>
  		<jsp:include page = "/WEB-INF/views/include/footer.jsp"></jsp:include> 	 		
- 		
+
  	
-    <script>
-    
-<%--         function insertPop() {
-		window.open("<%=request.getContextPath()%>/insertSource.jsp", "insertSource",  "width=640, height=400")
-        } --%>
+      <script> 
+      
+	  	function deleteConfirm(sourcesNo, dueDate, storageCode) {
+			var result = confirm("삭제할거임?");
+			if(result) {
+				document.getElementById('deleteForm').submit();
+			}
+		}      
+      
         
         const modal = document.querySelector('.modal');
         const modalOpen = document.querySelector('.modal_btn');
@@ -208,15 +200,18 @@
             modal.classList.remove('on');
         });        
        
-        
-        // gpt 꺼임
+
+
+
+       	 // gpt 꺼임
         // categoryList 데이터를 JS 객체로 변환
         const categoryData = [
             <c:forEach items="${categoryList}" var="cateList">
                 {
                     firstCategory: "${cateList.firstCategory}",
                     secondCategory: "${cateList.secondCategory}",
-                    thirdCategory: "${cateList.thirdCategory}"
+                    thirdCategory: "${cateList.thirdCategory}",
+                    sourceName: "${cateList.sourceName}"
                 },
             </c:forEach>
         ];
@@ -225,49 +220,110 @@
         const firstSelect = document.getElementById("firstCategory");
         const secondSelect = document.getElementById("secondCategory");
         const thirdSelect = document.getElementById("thirdCategory");
+        const sourceSelect = document.getElementById("sourceName");
+        const countInsert = document.getElementById("sourceCount");
+        const dueDateInsert = document.getElementById("dueDate");
 
-        // 첫 번째 카테고리 변경 시
-        firstSelect.addEventListener("change", function () {
-            const selectedFirst = this.value;
-            secondSelect.innerHTML = '<option value="">-- 선택 --</option>'; // 초기화
-            thirdSelect.innerHTML = '<option value="">-- 선택 --</option>'; // 초기화
-
-            // 선택된 firstCategory에 해당하는 secondCategory 추가
-            const secondCategories = [...new Set(categoryData
-                .filter(item => item.firstCategory === selectedFirst)
-                .map(item => item.secondCategory))];
-
-            secondCategories.forEach(category => {
-                const option = document.createElement("option");
-                option.value = category;
-                option.textContent = category;
-                secondSelect.appendChild(option);
-            });
-        });
-
-        // 두 번째 카테고리 변경 시
-        secondSelect.addEventListener("change", function () {
-            const selectedFirst = firstSelect.value;
-            const selectedSecond = this.value;
-            thirdSelect.innerHTML = '<option value="">-- 선택 --</option>'; // 초기화
-
-            // 선택된 firstCategory + secondCategory에 해당하는 thirdCategory 추가
-            const thirdCategories = [...new Set(categoryData
-                .filter(item => item.firstCategory === selectedFirst && item.secondCategory === selectedSecond)
-                .map(item => item.thirdCategory))];
-
-            thirdCategories.forEach(category => {
-                const option = document.createElement("option");
-                option.value = category;
-                option.textContent = category;
-                thirdSelect.appendChild(option);
-            });
-        });        
-        
+	    // hidden input 요소 가져오기
+	    const firstChoice = document.getElementById("firstChoice");
+	    const secondChoice = document.getElementById("secondChoice");
+	    const thirdChoice = document.getElementById("thirdChoice");
+	    const sourceChoice = document.getElementById("sourceChoice");
+	    const sourceCount = document.getElementById("countChoice");
+	    const dueDate = document.getElementById("dueDateChoice");
         
 
+	    
+	    
+	    
+	    
+	 // 첫 번째 카테고리 선택 시
+	    firstSelect.addEventListener("change", function () {
+	        const selectedFirst = this.value;
+	        firstChoice.value = selectedFirst; // hidden input에 값 설정
+
+	        secondSelect.innerHTML = '<option value="">-- 선택 --</option>';
+	        thirdSelect.innerHTML = '<option value="">-- 선택 --</option>';
+
+	        const secondCategories = [...new Set(categoryData
+	            .filter(item => item.firstCategory === selectedFirst)
+	            .map(item => item.secondCategory))];
+
+	        secondCategories.forEach(category => {
+	            const option = document.createElement("option");
+	            option.value = category;
+	            option.textContent = category;
+	            secondSelect.appendChild(option);
+	        });
+	    });
+
+	 // 두 번째 카테고리 선택 시
+	    secondSelect.addEventListener("change", function () {
+	        const selectedFirst = firstSelect.value;
+	        const selectedSecond = this.value;
+	        secondChoice.value = selectedSecond; // hidden input에 값 설정
+	        
+
+	        thirdSelect.innerHTML = '<option value="">-- 선택 --</option>';
+
+	        const thirdCategories = [...new Set(categoryData
+	            .filter(item => item.firstCategory === selectedFirst && item.secondCategory === selectedSecond)
+	            .map(item => item.thirdCategory))];
+
+	        thirdCategories.forEach(category => {
+	            const option = document.createElement("option");
+	            option.value = category;
+	            option.textContent = category;
+	            thirdSelect.appendChild(option);
+	        });
+	    });
         
-    </script> 		
- 		
- 
+	 // 세 번째 카테고리 선택 시
+	    thirdSelect.addEventListener("change", function () {
+	        const selectedFirst = firstSelect.value;
+	        const selectedSecond = secondSelect.value;
+	        const selectedThird = this.value; 
+	        thirdChoice.value = selectedThird;// hidden input에 값 설정
+	        
+	        // sourceName(재료명) 초기화
+	        sourceSelect.innerHTML = '<option value="">-- 선택 --</option>';
+	        
+	        const sources = [...new Set(categoryData
+	                .filter(item => item.firstCategory === selectedFirst && item.secondCategory === selectedSecond && item.thirdCategory === selectedThird)
+	                .map(item => item.sourceName))];
+
+	            sources.forEach(source => {
+	                const option = document.createElement("option");
+	                option.value = source;
+	                option.textContent = source;
+	                sourceSelect.appendChild(option);
+	            }); 	        
+	    });
+	 
+	 
+	    sourceSelect.addEventListener("change", function () {
+	        sourceChoice.value = this.value; // hidden input에 값 설정
+	    });
+	    
+	    
+        
+	    // 재료 수량 입력하는거 나중에 변동 제한 둘거임 100g으로
+	    countInsert.addEventListener("change", function () {
+	    	const countSource = this.value;
+	    	sourceCount.value = countSource;
+	    })
+	    // 유통기한 선택
+	    dueDateInsert.addEventListener("change", function () {
+	    	const insertDueDate = this.value;
+	    	dueDate.value = insertDueDate;
+	    })
+
+	    
+	    
+	    
+
+		</script>
+	
+ 	</body>
+
 </html>

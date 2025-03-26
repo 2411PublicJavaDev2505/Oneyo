@@ -11,6 +11,8 @@ import com.oneyo.spring.myref.controller.dto.CategoryList;
 import com.oneyo.spring.myref.controller.dto.CheckLoginRequest;
 import com.oneyo.spring.myref.controller.dto.DeleteSource;
 import com.oneyo.spring.myref.controller.dto.MySourceList;
+import com.oneyo.spring.myref.controller.dto.SearchSourceRequest;
+import com.oneyo.spring.myref.controller.dto.SourceAddRequest;
 import com.oneyo.spring.myref.service.MyRefService;
 import com.oneyo.spring.myref.store.MyRefStore;
 
@@ -102,6 +104,30 @@ public class MyRefServiceImpl implements MyRefService{
 	}
 
 
+	@Override
+	public int addSource(SourceAddRequest addSource) {
+		int result = mStore.addSource(session, addSource);
+		return result;
+	}
 
 
+	@Override
+	public int getSearchCount(SearchSourceRequest searchList) {
+		int result = mStore.getSearchCount(session, searchList);
+		return result;
+	}
+
+
+	@Override
+	public List<MySourceList> searchSourceList(int currentPage, SearchSourceRequest searchList) {
+		List<MySourceList> sList = mStore.searchSourceList(session, currentPage, searchList);
+		return sList;
+	}
+
+
+	@Override
+	public int findDuplicated(SourceAddRequest addSource) {
+		int duplication = mStore.findDuplicated(session, addSource);
+		return duplication;
+	}
 }

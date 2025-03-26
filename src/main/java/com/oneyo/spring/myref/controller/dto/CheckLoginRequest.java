@@ -15,6 +15,14 @@ public class CheckLoginRequest {
 		this.storageCode = storageCode;
 	}
 
+	
+	
+
+	public CheckLoginRequest(String memberId) {
+		super();
+		this.memberId = memberId;
+	}
+
 
 	public void setMemberId(String memberId) {
 		this.memberId = memberId;

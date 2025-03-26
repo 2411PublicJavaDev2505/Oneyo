@@ -10,11 +10,15 @@
 	<result 	property="firstCategory"	column="FIRST_CATEGORY" />
 	<result 	property="secondCategory"	column="SECOND_CATEGORY" />
 	<result 	property="thirdCategory"	column="THIRD_CATEGORY" />
+	<result 	property="sourcesNo"	column="SOURCES_NO" />
+	<result 	property="sourceName"	column="SOURCE_NAME" />
 </resultMap>
 
 
 <select id="getCategoryList" resultMap="categoryMap">
-	SELECT * FROM CATEGORY
+	SELECT C.CATEGORY_NO, C.FIRST_CATEGORY, C.SECOND_CATEGORY, C.THIRD_CATEGORY, S.SOURCES_NO, S.SOURCE_NAME  
+	FROM CATEGORY C
+	LEFT OUTER JOIN SOURCES S ON S.CATEGORY_NO = C.CATEGORY_NO
 </select>
 
 
