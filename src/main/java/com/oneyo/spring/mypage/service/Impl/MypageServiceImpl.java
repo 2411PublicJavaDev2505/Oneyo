@@ -53,6 +53,11 @@ public class MypageServiceImpl implements MypageService{
 		int result= mStore.getTotalCount(session,paramMap);
 		return result;
 	}
+	@Override
+	public int deleteReply(int replyNo) {
+		int result= mStore.deleteReply(session, replyNo);
+		return result;
+	}
 	
 
 

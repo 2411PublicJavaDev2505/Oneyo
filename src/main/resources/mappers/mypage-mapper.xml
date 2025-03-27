@@ -76,6 +76,9 @@
        		</if>	
        		and B.DEL_YN = 'N'
  		</where>		
-	</select>	
+	</select>
+	<delete id="deleteRelply" >
+		DELETE FROM reply WHERE reply_no = #{replyNo}
+	</delete>	
   
   </mapper>

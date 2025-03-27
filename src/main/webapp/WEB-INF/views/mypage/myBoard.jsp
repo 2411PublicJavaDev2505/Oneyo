@@ -24,7 +24,7 @@
 	  <main class="main">
 	    	<form action="/mypage/myboard" method="get">
 	        <div class="myPageMain">
-			        <section class="Info">
+			      <section class="Info">
 			        <nav class="myInfomation">
 			            <div class="myPicture"></div>
 			            <div class="detailInformation">
@@ -35,7 +35,7 @@
 						        <button class="deleteMember" ><a href="/admin/member">회원관리</a></button>
 						    </c:when>
 						    <c:otherwise>
-						        <button class="deleteMember" ><a href="/member/delete?memberId=${memberId }">회원탈퇴</a></button>
+						        <button class="deleteMember" onclick="confirmDelete('${memberId}')"><a href="/member/delete?memberId=${memberId }">회원탈퇴</a></button>
 						    </c:otherwise>
 						  </c:choose>
 		              	  <button class="updateMember" ><a href="/member/modify?memberId=${memberId }">회원정보수정</a></button>
@@ -59,7 +59,7 @@
 			                        <option value="writer">작성자</option>
 			                    </select>
 			                    <input class="search-input" type="text" name="searchKeyword" placeholder="검색어를 입력하세요" value="${searchKeyword}">
-			                    <button type="submit">검색</button>
+			                    <button type="submit" class="search-reply">검색</button>
 			                </form>
 			            </div>
 			
@@ -82,7 +82,7 @@
 						                            <tr class="sources">
 						                                <td class="num">${i.count }</td>
 						                                <td class="board-title"><a href="<c:url value='/board/detail/${board.boardNo}' />">${board.boardTitle }</a></td>
-						                                <td class="board-title"><a href="<c:url value='/board/detail/${board.boardNo}'/>">${board.boardTitle }</a></td>
+						                                <td class="writer">${board.memberNickname}</td>
 						                                <td class="date">${board.boardDate}</td>
 						                                <td class="count">${board.boardCount}</td>
 						                            </tr>
@@ -111,6 +111,17 @@
 		    </div>
 	       </form>
 	    </main>
-	 		<jsp:include page = "/WEB-INF/views/include/footer.jsp"></jsp:include> 			    
+	 		<jsp:include page = "/WEB-INF/views/include/footer.jsp"></jsp:include>
+ 		<script>
+ 		//회원탈퇴 버튼 클릭시 팝업
+			function confirmDelete(memberId) {
+			    if (confirm("정말 탈퇴하시겠습니까?")) {
+			        window.location.href = "/member/delete?memberId=" + memberId;
+			    }else {
+			        // 취소를 누르면 아무 작업도 하지 않음 (기존 화면 유지)
+			        return false;
+			    }
+			}
+		</script> 			    
 	</body>
 </html>

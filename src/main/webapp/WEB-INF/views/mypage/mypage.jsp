@@ -35,7 +35,7 @@
 				        <button class="deleteMember" ><a href="/admin/member">회원관리</a></button>
 				    </c:when>
 				    <c:otherwise>
-				        <button class="deleteMember" ><a href="/member/delete?memberId=${memberId }">회원탈퇴</a></button>
+				        <button class="deleteMember" onclick="confirmDelete('${memberId}')"><a href="/member/delete?memberId=${memberId }">회원탈퇴</a></button>
 				    </c:otherwise>
 				</c:choose>
               <button class="updateMember" ><a href="/member/modify?memberId=${memberId }">회원정보수정</a></button>
@@ -81,9 +81,15 @@
 		</div>
     </main>
  		<jsp:include page = "/WEB-INF/views/include/footer.jsp"></jsp:include> 	 		
- 		
- 		
- 		
- 		
-</body>
+	 	<script>
+			function confirmDelete(memberId) {
+			    if (confirm("정말 탈퇴하시겠습니까?")) {
+			        window.location.href = "/member/delete?memberId=" + memberId;
+			    }else {
+			        // 취소를 누르면 아무 작업도 하지 않음 (기존 화면 유지)
+			        return false;
+			    }
+			}
+		</script>	
+	</body>
 </html>

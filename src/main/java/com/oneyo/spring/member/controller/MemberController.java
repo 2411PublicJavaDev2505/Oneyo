@@ -144,7 +144,7 @@ public class MemberController {
             int result = mService.modifyMember(member);
             
             if (result > 0) {
-                return "redirect:/mypage";  
+                return "redirect:/mypage/mypage";  
             } else {
                 model.addAttribute("errorMsg", "회원 정보 수정에 실패했습니다.");
                 return "common/error";
@@ -185,7 +185,7 @@ public class MemberController {
             int result = mService.modifyPassword(password);
 
             if (result > 0) {
-                return "redirect:/mypage";  
+                return "redirect:/mypage/mypage";  
             } else {
                 model.addAttribute("errorMsg", "비밀번호 변경에 실패했습니다.");
                 return "common/error";

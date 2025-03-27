@@ -17,10 +17,10 @@
 	                <c:if test="${memberId ne null && memberId ne '' }">
 	                	<a href="/recipe/list">레시피</a>
 	                	<a href="/board/list">게시판</a>
-						<a href="/mypage">마이페이지</a><br>
-					<div class="search-container">
-	                    <input type="text" class="search-input" placeholder="검색">
-	                    <button class="search-btn" >🔍</button>
+						<a href="/mypage/mypage">마이페이지</a><br>
+					<div class="hsearch-container">
+	                    <input type="text" class="hsearch-input" placeholder="검색">
+	                    <button class="hsearch-btn" >🔍</button>
 	                </div>
 						<a href="/member/logout">로그아웃</a>
 					</c:if>
@@ -28,14 +28,12 @@
 					<c:if test="${memberId eq null || memberId eq '' }">
 						<a href="/recipe/list">레시피</a>
 	                	<a href="/board/list">게시판</a>
-	           		<div class="search-container">
-	                    <input type="text" class="search-input" placeholder="검색">
-	                    <button class="search-btn">🔍</button>
+	           		<div class="hsearch-container">
+	                    <input type="text" class="hsearch-input" placeholder="검색">
+	                    <button class="hsearch-btn" ><a href="/recipe/list">🔍</a></button>
 	                </div>
 	                <a href="/member/login" class="login">로그인</a>
 					</c:if>
-					
-					
 	            </nav>
 	        </div>
 	    </header>

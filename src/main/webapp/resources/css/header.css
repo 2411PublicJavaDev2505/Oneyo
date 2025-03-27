@@ -56,7 +56,7 @@
 }
 
 /* 검색창 스타일 */
-.search-container {
+.hsearch-container {
     display: flex;
     align-items: center;
     background: white;
@@ -65,7 +65,7 @@
     border: 1px solid #b1a36a;
 }
 
-.search-input {
+.hsearch-input{
     border: none;
     outline: none;
     font-size: 14px;
@@ -74,7 +74,7 @@
     background: transparent;
 }
 
-.search-btn {
+.hsearch-btn {
     background: none;
     border: none;
     font-size: 18px;

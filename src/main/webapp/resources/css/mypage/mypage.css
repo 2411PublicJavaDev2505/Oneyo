@@ -47,6 +47,8 @@
     margin-top: 25px;
     border-radius: 10px;
     background-color:#c2b480; 
+    padding: 8px 16px;
+    border: none;
 }
 
 .detailInformation button a {
