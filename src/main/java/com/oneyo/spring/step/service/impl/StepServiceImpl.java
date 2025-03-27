@@ -5,6 +5,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.oneyo.spring.recipe.controller.dto.RecipeInsertRequest;
 import com.oneyo.spring.recipe.domain.RecipeVO;
 import com.oneyo.spring.recipe.store.RecipeStore;
 import com.oneyo.spring.sources.domin.SourcesVO;
@@ -29,12 +30,6 @@ public class StepServiceImpl implements StepService {
 		this.sStore = sStore;
 		this.session = session;
 	}
-	
-	@Override
-	public int insertStep(StepInsertRequest step) {
-		int result = sStore.insertStep(session, step);
-		return result;
-	}
 
 	@Override
 	public int updateStep(StepUpdateRequest step) {
@@ -47,20 +42,6 @@ public class StepServiceImpl implements StepService {
 		int result = sStore.deleteStep(session, stepNo);
 		return result;
 	}
-	@Override
-	public void insertStep(RecipeVO recipe) {
-		// 1. 레시피 저장
-	    rStore.insertRecipe(session, recipe);  // RecipeStore에서 insert 처리
-	    // 2. 단계 및 레시피 내용 처리
-	    for (StepVO step : recipe.getStepList()) {
-	        sStore.insertStep(session, step);  // StepStore에서 insert 처리
-	    }
-	    // 3. 재료 처리
-	    for (SourcesVO source : recipe.getSourceList()) {
-	        sourceStore.insertSource(session, source);  // SourcesStore에서 insert 처리
-	    }
-	}
-
 
 	public StepVO selectStepByNo(int stepNo) {
 		StepVO step = sStore.selectStepByNo(session, stepNo);
@@ -95,28 +76,5 @@ public class StepServiceImpl implements StepService {
 		return null;
 	}
 
-	@Override
-	public void insertStep(StepVO step) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
-
-
-
-	
-
-	
-
-	
-	
-
-	
-
-	
-
-	
-	
 
 }

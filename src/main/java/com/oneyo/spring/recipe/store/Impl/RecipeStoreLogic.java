@@ -11,10 +11,13 @@ import com.oneyo.spring.recipe.controller.dto.RecipeInsertRequest;
 import com.oneyo.spring.recipe.controller.dto.RecipeUpdateRequest;
 import com.oneyo.spring.recipe.domain.RecipeVO;
 import com.oneyo.spring.recipe.store.RecipeStore;
+import com.oneyo.spring.sources.domin.SourcesVO;
+import com.oneyo.spring.step.domain.StepVO;
 
 
 @Repository
 public class RecipeStoreLogic implements RecipeStore{
+	
 	
 	@Override
 	public List<RecipeVO>selectListAll(SqlSession session, int currentPage) {
@@ -35,11 +38,6 @@ public class RecipeStoreLogic implements RecipeStore{
 	public int getTotalCount(SqlSession session) {
 		int totalCount = session.selectOne("RecipeMapper.getTotalCount");
 		return totalCount;
-	}
-	@Override
-	public int insertRecipe(SqlSession session, RecipeInsertRequest recipe) {
-		int result = session.insert("RecipeMapper.insertRecipe", recipe);
-		return result;
 	}
 	
 	@Override
@@ -88,19 +86,36 @@ public class RecipeStoreLogic implements RecipeStore{
 		List<RecipeVO> rList = session.selectList("RecipeMapper.selectRecipeStep", recipeNo);
 		return rList;
 	}
-	@Override
-	public int insertBoard(SqlSession session, RecipeInsertRequest recipe) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	@Override
-	public int insertRecipe(SqlSession session, RecipeVO recipe) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
+
 	public RecipeVO selectRecipeByNo(SqlSession session, int recipeNo) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	@Override
+	public int insertRecipe(SqlSession session, RecipeInsertRequest recipeRequest) {
+	    int result = session.insert("RecipeMapper.insertRecipe", recipeRequest);
+	    if (result > 0) {
+	        int recipeNo = recipeRequest.getRecipeNo(); // 생성된 레시피 번호 가져오기
+
+	        // 레시피 단계 삽입
+	        for (StepVO step : recipeRequest.getStepList()) {
+	            step.setRecipeNo(recipeNo);
+	            session.insert("StepMapper.insertStep", step);
+	        }
+
+	        // 레시피 재료 삽입
+	        for (SourcesVO source : recipeRequest.getSourceList()) {
+	            source.setRecipeNo(recipeNo);
+	            Integer sourcesNo = session.selectOne("RecipeSourceMapper.getSourcesNoByName", source.getSourcesName());
+	            if (sourcesNo != null) {
+	                source.setSourcesNo(sourcesNo); // sourcesNo가 null이 아닐 때만 설정
+	                session.insert("RecipeSourceMapper.insertRecipeSources", source); // 올바른 파라미터 전달
+	            } else {
+	                // sourcesNo가 없을 경우 처리 로직 추가 가능 (예: 새로운 재료 삽입 등)
+	            }
+	        }
+	        return result;
+	    }
+	    return 0; // 실패 시 0 반환
 	}
 }

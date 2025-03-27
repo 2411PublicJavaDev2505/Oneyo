@@ -88,5 +88,26 @@ public class FileUtil {
 		result.put(prefix+"Filepath", sourcesFilepath);
 		return result;
 	}
-	
+	public Map<String,String> saveRecipeFile(MultipartFile uploadFile, HttpSession session, String type) throws IllegalStateException, IOException {
+		Map<String, String> result = new HashMap<String, String>();
+		String folderName = type.equals("Recipe") ? "nUploadFiles":"rUploadFiles";
+		String prefix = type.toLowerCase().substring(0,1);
+		String recipeFilename = uploadFile.getOriginalFilename();
+		String recipeFileRename = null;
+		String recipeFilepath = null;
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+		String transStr = sdf.format(new Date(System.currentTimeMillis()));
+		String ext = recipeFilename.substring(recipeFilename.lastIndexOf(".")+1);
+		
+		recipeFileRename = transStr + "." + ext;
+		recipeFilepath = "/recipe/"+recipeFilename+"/"+recipeFileRename;
+		String folderPath = session.getServletContext().getRealPath("/resources/"+folderName);
+		String savePath = folderPath + "\\" + recipeFileRename;
+		uploadFile.transferTo(new File(savePath));
+		result.put(prefix+"Filename", recipeFilename);
+		result.put(prefix+"FileRename", recipeFileRename);
+		result.put(prefix+"Filepath", recipeFilepath);
+		return result;
+	}
 }

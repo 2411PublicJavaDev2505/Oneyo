@@ -16,7 +16,13 @@
  		<result property="delYn" 			column="DEL_YN" />
  		<result property="memberNickName" 	column="MEMBER_NICKNAME" />
  		
+ 		
  	</resultMap>
+ 	
+ 	<insert id="insertRecipe" parameterType="com.oneyo.spring.recipe.domain.RecipeVO" useGeneratedKeys="true" keyProperty="recipeNo">
+	    INSERT INTO Recipe (RECIPE_NO, RECIPE_TITLE, MEMBER_ID, recipe_filename, recipe_filerename, recipe_filepath)
+	    VALUES (RECIPE_SEQ.NEXTVAL, #{recipeTitle}, #{memberId}, #{recipeFilename}, #{recipeFileRename}, #{recipeFilePath})
+	</insert>
  	
  	<select id="selectList" resultMap ="recipeResultMap">
  		SELECT 
@@ -75,11 +81,6 @@
  		ORDER BY RECIPE_NO DESC
  	</select>
  	
-	<insert id="insertRecipe">
-		INSERT INTO RECIPE (RECIPE_NO, RECIPE_TITLE, RECIPE_CONTENT_NO, MEMBER_ID, RECIPE_DATE, UPDATE_DATE, DEL_YN, VIEW_COUNT, RECIPE_SOURCES_NO)
-    	VALUES (SEQ_RECIPE_NO.NEXTVAL, #{recipeTitle}, #{recipeContentNo}, #{memberId}, SYSDATE, SYSDATE, 'N', 0, #{recipeSourcesNo})
-	</insert>
-	
 	<update id="updateRecipe">
 		UPDATE RECIPE 
 		SET RECIPE TITLE = #{recipeTitle}

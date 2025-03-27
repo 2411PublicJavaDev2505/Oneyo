@@ -17,10 +17,10 @@ public class RecipeVO {
 	private Date recipeDate;
 	private Date updateDate;
 	private String memberNickName;
-	private List<StepVO> stepList;  // 추가된 stepList 속성
+	private List<StepVO> stepList;
+	private List<SourcesVO> sourceList;
 	
 	public RecipeVO() {}
-
 
 	public List<StepVO> getStepList() {
 		return stepList;
@@ -28,9 +28,7 @@ public class RecipeVO {
 	public void setStepList(List<StepVO> stepList) {
 		this.stepList = stepList;
 	}
-	
-	private List<SourcesVO> sourceList;
-	
+
 	public List<SourcesVO> getSourceList() {
 		return sourceList;
 	}
@@ -106,9 +104,9 @@ public class RecipeVO {
 	@Override
 	public String toString() {
 		return "RecipeVO [memberId=" + memberId + ", recipeTitle=" + recipeTitle + ", recipeNo=" + recipeNo
-				+", viewCount=" + viewCount + ", delYn=" + delYn
-				+ ", recipeDate=" + recipeDate + ", updateDate=" + updateDate + ", memberNickName=" + memberNickName
-				+ ", stepList=" + stepList + "]";
+				+ ", viewCount=" + viewCount + ", delYn=" + delYn + ", recipeDate=" + recipeDate + ", updateDate="
+				+ updateDate + ", memberNickName=" + memberNickName + ", stepList="
+				+ stepList + ", sourceList=" + sourceList + "]";
 	}
 }
 

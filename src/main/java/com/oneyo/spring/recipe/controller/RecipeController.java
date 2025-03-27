@@ -127,35 +127,41 @@ public class RecipeController {
         }
     }
     
-    @PostMapping("/insert")
-    public String insertRecipe(@ModelAttribute RecipeInsertRequest recipeInsertRequest, Model model) {
-        try {
-            // 1. 레시피 정보를 RecipeVO로 변환
-            RecipeVO recipe = new RecipeVO();
-            recipe.setRecipeTitle(recipeInsertRequest.getRecipeTitle());
-            recipe.setMemberNickName(recipeInsertRequest.getMemberNickName());
+	    @GetMapping("/insert")
+	    public String showInsertRecipeForm() {
+	        return "recipe/insert";
+	    }
+        @PostMapping("/insert")
+        public String insertRecipe(@ModelAttribute RecipeInsertRequest recipeRequest,
+                                   @RequestParam("uploadFile") MultipartFile uploadFile,
+                                   HttpSession session, Model model) {
+            try {
+                // 세션에서 사용자 확인
+                if (session.getAttribute("memberId") != null) {
+                    recipeRequest.setMemberNickName((String) session.getAttribute("memberId"));
+                } else {
+                    model.addAttribute("errorMsg", "로그인이 필요합니다!");
+                    return "common/error";
+                }
 
-            // 2. 레시피 저장 (서비스 호출)
-            rService.insertRecipe(recipe);
+                // 파일 업로드 처리
+                if (uploadFile != null && !uploadFile.getOriginalFilename().isBlank()) {
+                    Map<String, String> fileInfo = file.saveRecipeFile(uploadFile, session, "recipe");
+                    recipeRequest.setRecipeFilename(fileInfo.get("rFilename"));
+                    recipeRequest.setRecipeFileRename(fileInfo.get("rFileRename"));
+                    recipeRequest.setRecipeFilepath(fileInfo.get("rFilepath"));
+                }
 
-            // 3. 단계 및 재료 리스트 저장
-            for (StepVO step : recipeInsertRequest.getStepList()) {
-                step.setRecipeNo(recipe.getRecipeNo()); // recipeNo를 설정
-                sService.insertStep(step);
+                // 서비스 호출
+                int result = rService.insertRecipe(recipeRequest);
+
+                return "redirect:/recipe/list";
+            } catch (Exception e) {
+                e.printStackTrace();
+                model.addAttribute("errorMsg", e.getMessage());
+                return "common/error";
             }
-
-            for (SourcesVO source : recipeInsertRequest.getSourceList()) {
-                source.setRecipeNo(recipe.getRecipeNo()); // recipeNo를 설정
-                sourceService.insertSource(source);
-            }
-
-            return "redirect:/recipe/detail/" + recipe.getRecipeNo();  // 저장 후 상세 페이지로 리다이렉트
-        } catch (Exception e) {
-            e.printStackTrace();
-            model.addAttribute("errorMessage", e.getMessage());
-            return "common/error";  // 오류 발생 시 에러 페이지로 리다이렉트
         }
-    }
 	
 	@GetMapping("/update")
 	public String showRecipeModifyForm(@RequestParam("recipeNo") int recipeNo, Model model) {

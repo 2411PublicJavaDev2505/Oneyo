@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.oneyo.spring.recipe.controller.dto.RecipeInsertRequest;
 import com.oneyo.spring.recipe.controller.dto.RecipeUpdateRequest;
@@ -42,11 +43,6 @@ public class RecipeServiceImpl implements RecipeService {
 	public List<RecipeVO> selectListAll(int currentPage) {
 		List<RecipeVO> rList = rStore.selectListAll(session, currentPage);
 		return rList;
-	}
-	
-	@Override
-	public void insertRecipe(RecipeVO recipe) {
-		rStore.insertRecipe(session, recipe);
 	}
 
 	@Override
@@ -88,6 +84,10 @@ public class RecipeServiceImpl implements RecipeService {
 	public List<RecipeVO> selectRecipeStep(int recipeNo) {
 		return null;
 	}
-
+	@Transactional
+    @Override
+    public int insertRecipe(RecipeInsertRequest recipeRequest) {
+        return rStore.insertRecipe(session, recipeRequest);
+    }
 
 }

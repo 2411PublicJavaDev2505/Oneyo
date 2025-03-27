@@ -36,41 +36,6 @@ public class StepController {
 	}
 	
 	
-	@GetMapping("/insert")
-	public String InsertStep() {
-		return "step/insert";
-		
-	}
-	
-	@PostMapping("/insert")
-	public String insertStep(@ModelAttribute StepInsertRequest step
-			, @RequestParam("uploadFile") MultipartFile uploadFile
-			, HttpSession session
-			, Model model) {
-		try {
-			if(session.getAttribute("memberId") != null) {
-				step.setStepWriter((String)session.getAttribute("memberId"));
-			}else {
-				model.addAttribute("errorMsg", "�α����� �ʿ��մϴ�~!");
-				return "common/error";
-			}
-			
-			if(uploadFile != null && !uploadFile.getOriginalFilename().isBlank()) {
-				Map<String, String> fileInfo = file.saveFile1(uploadFile, session, "step");
-				step.setStepFilename(fileInfo.get("sFilename"));
-				step.setStepFileRename(fileInfo.get("sFileRename"));
-				step.setStepFilepath(fileInfo.get("sFilepath"));
-			}
-			int result = sService.insertStep(step);
-			return "redirect:/step/StepList";
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-			model.addAttribute("errorMsg", e.getMessage());
-			return "common/error";
-		}
-	}
-	
 	@GetMapping("/update/{recipeNo}")
     public String showStepModifyForm(@PathVariable int recipeNo, Model model) {
         try {

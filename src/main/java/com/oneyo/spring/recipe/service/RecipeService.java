@@ -30,5 +30,5 @@ public interface RecipeService {
 
 	int updateRecipe(RecipeUpdateRequest recipe);
 
-	public void insertRecipe(RecipeVO recipe);
+	int insertRecipe(RecipeInsertRequest recipeRequest);
 }

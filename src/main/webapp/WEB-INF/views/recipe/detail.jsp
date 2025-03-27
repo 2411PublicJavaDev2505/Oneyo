@@ -14,7 +14,11 @@
 		<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
 		<main class="main-container">
 			<div class="recipe-card">
-				<button class="edit-btn">수정</button>
+				<c:if test="${memberId eq recipe.memberId}">
+					<a href="/recipe/update">
+						<button class="edit-btn" >수정</button>
+					</a>
+				</c:if>
 				<div class="image-placeholder">
 					<img src="" alt="등록된 사진이 없습니다."/>
 				</div>
