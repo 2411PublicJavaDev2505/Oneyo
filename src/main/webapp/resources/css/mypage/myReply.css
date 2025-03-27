@@ -46,7 +46,9 @@
     width:80%;
     margin-top: 25px;
     border-radius: 10px;
-    background-color:#c2b480; 
+    background-color:#c2b480;
+    padding: 8px 16px; 
+    border: none;
 }
 
 .detailInformation button a {
@@ -105,16 +107,18 @@ main{
     }
 
 /* 버튼 */
-button{
-   padding: 8px 16px;
+
+.write-button{
+    display: flex;
+    justify-content: left;
+}
+
+.delete-myReply ,.search-reply{
+	padding: 8px 16px;
 	background-color: #b2ac67;
 	color: #fff;
 	border: none;
 	border-radius: 4px;
-}
-.write-button{
-    display: flex;
-    justify-content: left;
 }
 /* 검색폼 스타일*/
 
@@ -169,19 +173,6 @@ table td{
     background-color: #e2dfbe;	    
     border-bottom: 1px solid #fff;
 }
-/* 더보기(공지사항) */
-.hidden {
-    display: none; } /* 기본적으로 공지사항 숨김 */
-.notice-table {
-    width: 100%; 
-    border-collapse: collapse; }
-.toggle-btn { 
-    background-color: #e2dfbe; 
-    cursor: pointer; 
-    text-align: center;     
-}
-/* 더보기 끝 */
-
 .sources-Lists{
     background-color: #fffef4;	    
     border-bottom: 1px solid #e2dfbe;
@@ -197,7 +188,7 @@ table .board-title{
     text-align: center;
 }
 
-table .date{
+table .writer{
 	width: 10%;
     text-align: center;
 }

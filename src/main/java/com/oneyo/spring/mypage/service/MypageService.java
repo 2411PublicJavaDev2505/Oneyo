@@ -22,4 +22,6 @@ public interface MypageService {
 
 	int getTotalCount(Map<String, String> paramMap);
 
+	int deleteReply(int replyNo);
+
 }

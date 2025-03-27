@@ -33,7 +33,7 @@
 				        <button class="deleteMember" ><a href="/admin/member">회원관리</a></button>
 				    </c:when>
 				    <c:otherwise>
-				        <button class="deleteMember" ><a href="/member/delete?memberId=${memberId }">회원탈퇴</a></button>
+				  		<button class="deleteMember" onclick="confirmDelete('${memberId}')"><a href="/member/delete?memberId=${memberId }">회원탈퇴</a></button>
 				    </c:otherwise>
 				</c:choose>
               <button class="updateMember" ><a href="/member/modify?memberId=${memberId }">회원정보수정</a></button>
@@ -190,7 +190,16 @@
 
  	
       <script> 
-      
+      		//회원탈퇴 여부 물어보기
+		function confirmDelete(memberId) {
+		    if (confirm("정말 탈퇴하시겠습니까?")) {
+		        window.location.href = "/member/delete?memberId=" + memberId;
+		    }else {
+		        // 취소를 누르면 아무 작업도 하지 않음 (기존 화면 유지)
+		        return false;
+		    }
+		}
+     		
 	  	function deleteConfirm(sourcesNo, dueDate, storageCode) {
 			var result = confirm("삭제할거임?");
 			if(result) {
@@ -213,11 +222,6 @@
             //'on' class 제거
             modal.classList.remove('on');
         });        
-       
-
-
-
-       	 // gpt 꺼임
         // categoryList 데이터를 JS 객체로 변환
         const categoryData = [
             <c:forEach items="${categoryList}" var="cateList">
@@ -245,13 +249,7 @@
 	    const sourceChoice = document.getElementById("sourceChoice");
 	    const sourceCount = document.getElementById("countChoice");
 	    const dueDate = document.getElementById("dueDateChoice");
-        
-
-	    
-	    
-	    
-	    
-	 // 첫 번째 카테고리 선택 시
+        // 첫 번째 카테고리 선택 시
 	    firstSelect.addEventListener("change", function () {
 	        const selectedFirst = this.value;
 	        firstChoice.value = selectedFirst; // hidden input에 값 설정

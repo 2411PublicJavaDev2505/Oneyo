@@ -55,6 +55,11 @@ public class MypageStoreLogic implements MypageStore{
 	public int getTotalCount(SqlSession session, Map<String, String> paramMap) {
 		return session.selectOne("MypageMapper.getSearchCount",paramMap);
 	}
+
+	@Override
+	public int deleteReply(SqlSession session, int replyNo) {
+		return session.delete("MypageMapper.deleteReply",replyNo);
+	}
 	
 	
 

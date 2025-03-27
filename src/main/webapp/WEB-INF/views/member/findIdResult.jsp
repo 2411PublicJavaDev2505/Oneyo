@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>아이디 찾기 결과 페이지</title>
-<link rel="stylesheet" href="../resources/css/member/findid.css">
+<link rel="stylesheet" href="../resources/css/member/findId.css">
 	</head>
 	<body>
 	<form action="member/findIdresult" method="post">
@@ -16,8 +16,8 @@
 		<main>
 	        <div class="login-box">
 	            <h2>아이디 찾기 결과</h2>
-	            <p>회원님의 아이디는 <strong>${memberId}</strong> 입니다 </p>
-	            <a href="member/login" class="register-link">로그인하기</a>
+	            <p>회원님의 아이디는 <strong>USER01</strong> 입니다 </p>
+	            <button><a href="/member/login" class="register-link">로그인하기</a></button>
 	        </div>
 	    </main>
 	    </form>

@@ -11,7 +11,14 @@
 </head>
 <body>
     <!-- 헤더 -->
-    <jsp:include page ="/WEB-INF/views/include/header.jsp"></jsp:include>
+    <c:choose>
+		    <c:when test="${sessionScope.member1.memberId eq 'ADMIN01'}">
+		        <jsp:include page="/WEB-INF/views/include/headeradmin.jsp"></jsp:include>
+		    </c:when>
+		    <c:otherwise>
+		       <jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
+		    </c:otherwise>
+		</c:choose>
     <main>
         <section class="title">
             <h3><a href="/board/list">게시판</a> </h3>

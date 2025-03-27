@@ -9,15 +9,14 @@
 	<link rel="stylesheet" href="../resources/css/mypage/myReply.css"> 
 </head>
 <body>
- 	
-		        <c:choose>
-			    <c:when test="${sessionScope.member1.memberId eq 'ADMIN01'}">
-			        <jsp:include page="/WEB-INF/views/include/headeradmin.jsp"></jsp:include>
-			    </c:when>
-			    <c:otherwise>
-			       <jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
-			    </c:otherwise>
-			</c:choose>
+    <c:choose>
+	    <c:when test="${sessionScope.member1.memberId eq 'ADMIN01'}">
+	        <jsp:include page="/WEB-INF/views/include/headeradmin.jsp"></jsp:include>
+	    </c:when>
+	    <c:otherwise>
+	       <jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
+	    </c:otherwise>
+	</c:choose>
 		    
 	<main class="main">
 		<form action="/mypage/myreply" method="get">
@@ -33,11 +32,11 @@
 				        <button class="deleteMember" ><a href="/admin/member">회원관리</a></button>
 				    </c:when>
 				    <c:otherwise>
-				        <button class="deleteMember" ><a href="/member/delete?memberId=${memberId }">회원탈퇴</a></button>
-				    </c:otherwise>
-				</c:choose>
-              <button class="updateMember" ><a href="/member/modify?memberId=${memberId }">회원정보수정</a></button>
-	        </div>
+			        <button class="deleteMember" onclick="confirmDeleteMember('${memberId}')"><a href="/member/delete?memberId=${memberId }">회원탈퇴</a></button>
+			    </c:otherwise>
+			  </c:choose>
+             	  <button class="updateMember" ><a href="/member/modify?memberId=${memberId }">회원정보수정</a></button>
+            </div>
 	    </nav>
 	    </section>
 	
@@ -55,7 +54,7 @@
 			                    <option value="content">내용</option>
 			                </select>
 			                <input class="search-input" type="text" name="searchKeyword" placeholder="검색어를 입력하세요">
-			                <button type="submit">검색</button>
+			                <button type="submit" class="search-reply">검색</button>
 			            </form>
 			        </div>			
 			<!-- 재료 등록 페이지 부분-->
@@ -80,10 +79,11 @@
 			                    <c:forEach items="${rList }" var="reply" varStatus="i">
 			                        <tr class="sources">
 			                            <td class="num">${i.count }</td>
-			                            <td class="board-title">${reply.replyContent}</td>
+			                            <td class="board-title"><a href="<c:url value='/board/detail/${board.boardNo}'/>">${reply.replyContent}</a></td>
 			                            <td class="writer">${memberNickname}</td>
 			                            <td class="date">${reply.replyDate}</td>
-			                            <td class="delete"><button><a href="#">DEL</a></button></td>
+			                            <td class="delete"><button class="delete-myReply" onclick="confirmDeleteReply(${reply.replyNo}, ${board.boardNo})">
+			                            		DEL</button></td>
 			                        </tr>
 			                    
 			                    </c:forEach> 		                    
@@ -110,6 +110,24 @@
 	    </div>
 	    </form>
 	</main>
- 		<jsp:include page = "/WEB-INF/views/include/footer.jsp"></jsp:include> 			
+ 		<jsp:include page = "/WEB-INF/views/include/footer.jsp"></jsp:include>
+ 	<script>
+ 	function confirmDeleteReply(replyNo, boardNo) {
+ 	    if (confirm("정말 이 댓글을 삭제하시겠습니까?")) {
+ 	        window.location.href = "/mypage/deletemyReply?replyNo=" + replyNo + "&boardNo=" + boardNo;
+ 	    }else {
+	        return false;
+	    }
+ 	}
+ 	
+ 	function confirmDeleteMember(memberId) {
+	    if (confirm("정말 탈퇴하시겠습니까?")) {
+	        window.location.href = "/member/delete?memberId=" + memberId;
+	    }else {
+	        // 취소를 누르면 아무 작업도 하지 않음 (기존 화면 유지)
+	        return false;
+	    }
+	}
+ 	</script> 			
 </body>
 </html>

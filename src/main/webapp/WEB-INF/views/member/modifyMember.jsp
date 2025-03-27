@@ -23,7 +23,7 @@
                             <div class="detailinformation">
                             <h4>이름 : ${member.memberName}</h4>
                             <h4>닉네임 : ${member.memberNickname}</h4>
-                            <button class="deleteMember" onclick="location.href='/member/delete?memberId=${memberId }'"> 회원탈퇴</button>
+				        <button class="deleteMember" onclick="confirmDelete('${memberId}')"><a href="/member/delete?memberId=${memberId }">회원탈퇴</a></button>
                             </div>
                         </nav>
                     </section>
@@ -79,7 +79,14 @@
 		        }
 		    });
 		});
-		
+		function confirmDelete(memberId) {
+		    if (confirm("정말 탈퇴하시겠습니까?")) {
+		        window.location.href = "/member/delete?memberId=" + memberId;
+		    }else {
+		        // 취소를 누르면 아무 작업도 하지 않음 (기존 화면 유지)
+		        return false;
+		    }
+		}
 	</script>
 	</body>
 	

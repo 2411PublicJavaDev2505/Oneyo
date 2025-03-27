@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +11,14 @@
 <body>
 
     <!-- 헤더자리 -->
-    <jsp:include page ="/WEB-INF/views/include/header.jsp"></jsp:include>    
+    <c:choose>
+		    <c:when test="${sessionScope.member1.memberId eq 'ADMIN01'}">
+		        <jsp:include page="/WEB-INF/views/include/headeradmin.jsp"></jsp:include>
+		    </c:when>
+		    <c:otherwise>
+		       <jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
+		    </c:otherwise>
+		</c:choose>    
     <main>
     
         <section class="title">

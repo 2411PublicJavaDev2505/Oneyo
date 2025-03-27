@@ -103,6 +103,17 @@ public class MypageController {
 			return "mypage/myReply";
 		}
 	}
+	
+	@GetMapping("/mypage/deletemyReply")
+    public String deleteReply(@RequestParam("replyNo") int replyNo, @RequestParam("boardNo") int boardNo) {
+        int result = mService.deleteReply(replyNo);
+        
+        if (result > 0) {
+            return "redirect:/board/detail?boardNo=" + boardNo;  // 게시글 상세 페이지로 이동
+        } else {
+            return "common/error";  // 삭제 실패 시 에러 페이지로 이동
+        }
+    }
 
 
 
