@@ -8,11 +8,12 @@
     	<result property="stepContent" column="STEP_CONTENT"/>
     	<result property="stepAmount" column="STEP_AMOUNT"/>
     	<result property="recipeNo" column="RECIPE_NO"/>
+    	<result property="fileName" column="STEP_FILENAME"/>
     </resultMap>
     
     <select id="getStepsByNo" resultType="com.oneyo.spring.step.domain.StepVO">
         SELECT 
-        	STEP_NO, STEP_CONTENT, STEP_AMOUNT, RECIPE_NO
+        	STEP_NO, STEP_CONTENT, STEP_AMOUNT, RECIPE_NO, STEP_FILENAME
         FROM 
         	RECIPE_STEP
         WHERE 

@@ -15,6 +15,7 @@
  		<result property="viewCount" 		column="VIEW_COUNT" />
  		<result property="delYn" 			column="DEL_YN" />
  		<result property="memberNickName" 	column="MEMBER_NICKNAME" />
+ 		<result property="fileName" 	column="RECIPE_FILENAME" />
  		
  		
  	</resultMap>
@@ -30,7 +31,7 @@
  	</select>
  	<select id="selectOneByNo" resultMap="recipeResultMap">
 		SELECT 
-		    RECIPE.RECIPE_NO, RECIPE.MEMBER_ID, RECIPE.RECIPE_TITLE, RECIPE.VIEW_COUNT, MEMBER.MEMBER_NICKNAME 
+		    RECIPE.RECIPE_NO, RECIPE.MEMBER_ID, RECIPE.RECIPE_TITLE, RECIPE.VIEW_COUNT, MEMBER.MEMBER_NICKNAME, RECIPE_FILENAME 
 		FROM 
 		    RECIPE
 		LEFT JOIN MEMBER ON

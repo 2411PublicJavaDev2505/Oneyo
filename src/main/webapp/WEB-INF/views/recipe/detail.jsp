@@ -27,7 +27,7 @@
 					</a>
 				</c:if>
 				<div class="image-placeholder">
-					<img src="" alt="등록된 사진이 없습니다."/>
+					<img src="${pageContext.request.contextPath}/resources/img/${recipe.fileName }" alt="등록된 사진이 없습니다."/>
 				</div>
 				<div class="recipe-info">
 					<div class="text1">${recipe.recipeTitle }</div>
@@ -55,7 +55,7 @@
 			                <span>${step.stepContent }</span>
 			            </div>
 			            <div class="recipe-image">
-			                <img src="" alt="등록된 사진이 없습니다.">
+			                <img src="${pageContext.request.contextPath}/resources/img/${step.fileName }" alt="등록된 사진이 없습니다.">
 			            </div>
 			        </div>
 			    </c:forEach>

@@ -5,6 +5,7 @@ public class StepVO {
 		private int stepNo;
 	    private String stepContent;
 	    private String stepAmount;
+	    private String fileName;
 	    
 	    public void StepVO() {}
 
@@ -32,15 +33,17 @@ public class StepVO {
 			this.stepAmount = stepAmount;
 		}
 
-		@Override
-		public String toString() {
-			return "StepVO [stepNo=" + stepNo + ", stepContent=" + stepContent + ", stepAmount=" + stepAmount + "]";
+		public String getFileName() {
+			return fileName;
 		}
 
-		public void setRecipeNo(int recipeNo) {
-			// TODO Auto-generated method stub
-			
+		public void setFileName(String fileName) {
+			this.fileName = fileName;
 		}
-	    
-		
+
+		@Override
+		public String toString() {
+			return "StepVO [stepNo=" + stepNo + ", stepContent=" + stepContent + ", stepAmount=" + stepAmount
+					+ ", fileName=" + fileName + "]";
+		}
 }

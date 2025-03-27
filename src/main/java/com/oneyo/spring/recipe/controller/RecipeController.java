@@ -99,6 +99,7 @@ public class RecipeController {
             model.addAttribute("recipe", recipe);
             model.addAttribute("stepList", stepList);
             model.addAttribute("sourceList", sourceList);
+            System.out.println(recipe.getFileName());
             return "recipe/detail";
         } catch (Exception e) {
             e.printStackTrace();

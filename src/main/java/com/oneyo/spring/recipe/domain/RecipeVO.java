@@ -3,7 +3,6 @@ package com.oneyo.spring.recipe.domain;
 import java.sql.Date;
 import java.util.List;
 
-import com.oneyo.spring.member.domain.MemberVO;
 import com.oneyo.spring.sources.domin.SourcesVO;
 import com.oneyo.spring.step.domain.StepVO;
 
@@ -17,6 +16,7 @@ public class RecipeVO {
 	private Date recipeDate;
 	private Date updateDate;
 	private String memberNickName;
+	private String fileName;
 	private List<StepVO> stepList;
 	private List<SourcesVO> sourceList;
 	
@@ -42,6 +42,14 @@ public class RecipeVO {
 		this.sourceList = sourceList;
 	}
 	
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
 	public String getMemberId() {
 		return memberId;
 	}
@@ -111,7 +119,7 @@ public class RecipeVO {
 	public String toString() {
 		return "RecipeVO [memberId=" + memberId + ", recipeTitle=" + recipeTitle + ", recipeNo=" + recipeNo
 				+ ", viewCount=" + viewCount + ", delYn=" + delYn + ", recipeDate=" + recipeDate + ", updateDate="
-				+ updateDate + ", memberNickName=" + memberNickName + ", stepList="
+				+ updateDate + ", memberNickName=" + memberNickName + ", fileName=" + fileName + ", stepList="
 				+ stepList + ", sourceList=" + sourceList + "]";
 	}
 }
