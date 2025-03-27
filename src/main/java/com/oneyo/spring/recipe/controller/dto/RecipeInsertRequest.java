@@ -6,6 +6,7 @@ import com.oneyo.spring.sources.domin.SourcesVO;
 import com.oneyo.spring.step.domain.StepVO;
 
 public class RecipeInsertRequest {
+	private int recipeNo;
 	private String recipeTitle;
 	private String recipeContent;
 	private String memberNickName;
@@ -65,11 +66,17 @@ public class RecipeInsertRequest {
 	public void setRecipeFilepath(String recipeFilepath) {
 		this.recipeFilepath = recipeFilepath;
 	}
+	public int getRecipeNo() {
+		return recipeNo;
+	}
+	public void setRecipeNo(int recipeNo) {
+		this.recipeNo = recipeNo;
+	}
 	@Override
 	public String toString() {
-		return "RecipeInsertRequest [recipeTitle=" + recipeTitle + ", recipeContent=" + recipeContent
-				+ ", memberNickName=" + memberNickName + ", recipeFilename=" + recipeFilename + ", recipeFileRename="
-				+ recipeFileRename + ", recipeFilepath=" + recipeFilepath + ", sourceList=" + sourceList + ", stepList="
-				+ stepList + "]";
+		return "RecipeInsertRequest [recipeNo=" + recipeNo + ", recipeTitle=" + recipeTitle + ", recipeContent="
+				+ recipeContent + ", memberNickName=" + memberNickName + ", recipeFilename=" + recipeFilename
+				+ ", recipeFileRename=" + recipeFileRename + ", recipeFilepath=" + recipeFilepath + ", sourceList="
+				+ sourceList + ", stepList=" + stepList + "]";
 	}
 }

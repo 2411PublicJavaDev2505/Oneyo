@@ -195,9 +195,10 @@ public class RecipeController {
         } catch (Exception e) {
             e.printStackTrace();
             model.addAttribute("errorMessage", e.getMessage());
-            return "recipe/RecipeList";  // 오류 발생 시 에러 페이지로 리다이렉트
         }
-    }
+            return "recipe/RecipeList";}
+        // 오류 발생 시 에러 페이지로 리다이렉트
+	        
 	
 	@GetMapping("/update")
 	public String showRecipeModifyForm(@RequestParam("recipeNo") int recipeNo, Model model) {

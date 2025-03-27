@@ -44,6 +44,7 @@
 									</select><br>
 								</div>
 							</div>
+<<<<<<< HEAD
 
 							
 						</div>
@@ -82,6 +83,41 @@
 					            <div class="step-info">
 					                <input type="text" name="stepInfo3" placeholder="레시피를 입력하세요" ></input>
 					                <input type="text" name="stepAmount3" placeholder="수량" >g</input>
+=======
+						</div>
+						<input type="hidden" id="firstChoice" name="firstSource" value="">
+						<input type="hidden" id="secondChoice" name="secondSource" value="">
+						<input type="hidden" id="thirdChoice" name="thirdSource" value="">						
+						<div class="recipe-step">
+					        <div class="step-container">
+					            <div class="step-number">
+					                <p>1</p>
+					            </div>
+					            <div class="step-info">
+					                <input type="text" name="stepInfo1" placeholder="레시피를 입력하세요" ></input>
+					            </div>
+					            <div class="recipe-image">
+					                <img src="" alt="등록된 사진이 없습니다.">
+					            </div>
+					        </div>
+					        <div class="step-container">
+					            <div class="step-number">
+					                <p>2</p>
+					            </div>
+					            <div class="step-info">
+					                <input type="text" name="stepInfo2" placeholder="레시피를 입력하세요" ></input>
+					            </div>
+					            <div class="recipe-image">
+					                <img src="" alt="등록된 사진이 없습니다.">
+					            </div>
+					        </div>
+					        <div class="step-container">
+					            <div class="step-number">
+					                <p>3</p>
+					            </div>
+					            <div class="step-info">
+					                <input type="text" name="stepInfo3" placeholder="레시피를 입력하세요" ></input>
+>>>>>>> refs/remotes/origin/kangu
 					            </div>
 					            <div class="recipe-image">
 					                <img src="" alt="등록된 사진이 없습니다.">

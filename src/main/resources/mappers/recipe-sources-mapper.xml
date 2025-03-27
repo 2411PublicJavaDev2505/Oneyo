@@ -18,7 +18,7 @@
         SOURCE_NAME
     FROM 
         SOURCES
-    JOIN 
+    JOIN
         RECIPE_SOURCES 
     ON
         RECIPE_SOURCES.SOURCES_NO = SOURCES.SOURCES_NO
@@ -26,13 +26,13 @@
         RECIPE_SOURCES.RECIPE_NO = #{recipeNo}
 </select>
 <insert id="insertSources">
-	INSERT INTO SOURCES (RECIPE_NO, SOURCES_NO, SOURCES_NAME, FIRST_CATEGORY, SECOND_CATEGORY, THIRD_CATEGORY)
+	INSERT INTO SOURCES (RECIPE_NO, SOURCES_NO, SOURCE_NAME, FIRST_CATEGORY, SECOND_CATEGORY, THIRD_CATEGORY)
 	VALUES (SEQ_SOURCES_NO.NEXTVAL, #{sourcesNo}, #{sourcesName}, #{firstCategory}, #{secondCategory}, #{thirdCategory})
 </insert>
 <update id="updateSources">
 	UPDATE SOURCES
 	SET SOURCES_NO = #{sourcesNo} 
-	, SOURCES_NAME = #{sourcesName}
+	, SOURCE_NAME = #{sourcesName}
 	, FIRST_CATEGORY = #{firstCategory}
 	, SECOND_CATEGORY = #{secondCategory}
 	, THIRD_CATEGORY = #{thirdCategory}

@@ -15,14 +15,10 @@ public interface StepService {
 	
 	StepVO selectStepByNo(int stepNo);
 
-	int insertStep(StepInsertRequest step);
-
 	int updateStep(StepUpdateRequest step);
 
 	int deleteStep(int stepNo);
 
-	void insertStep(RecipeVO recipe);
-	
 	RecipeVO selectRecipeByNo(int recipeNo);
 
 	List<StepVO> getStepsByRecipeNo(int recipeNo);
@@ -30,7 +26,6 @@ public interface StepService {
 	List<SourcesVO> getSourcesByRecipeNo(int recipeNo);
 
 
-	void insertStep(StepVO step);
 
 	int addStep(List<AddStepRequest> aList);
 

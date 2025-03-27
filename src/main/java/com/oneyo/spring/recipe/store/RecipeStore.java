@@ -13,8 +13,6 @@ public interface RecipeStore {
 
 	List<RecipeVO> selectListAll(SqlSession session, int currentPage);
 
-	int insertRecipe(SqlSession session, RecipeVO recipe);
-
 	RecipeVO selectOneByNo(SqlSession session, int recipeNo);
 
 	int getTotalCount(SqlSession session);
@@ -27,18 +25,17 @@ public interface RecipeStore {
 	
 	List<RecipeVO> selectRecipeList(SqlSession session, int currentPage);
 
-	int insertBoard(SqlSession session, RecipeInsertRequest recipe);
-
 	int updateBoard(SqlSession session, RecipeUpdateRequest recipe);
 
 	int deleteBoard(SqlSession session, int recipeNo);
 
 	List<RecipeVO> selectRecipeStep(SqlSession session, int recipeNo);
 
-	int insertRecipe(SqlSession session, RecipeInsertRequest recipe);
 	RecipeVO selectRecipeByNo(SqlSession session, int recipeNo);
 
 	Integer countViewUpdate(SqlSession session, int recipeNo);
 	
 	int selectCurrentSeq(SqlSession session);
+	
+	int insertRecipe(SqlSession session, RecipeVO recipeVO);
 }

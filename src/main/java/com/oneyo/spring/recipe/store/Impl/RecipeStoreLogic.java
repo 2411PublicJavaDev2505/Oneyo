@@ -11,10 +11,13 @@ import com.oneyo.spring.recipe.controller.dto.RecipeInsertRequest;
 import com.oneyo.spring.recipe.controller.dto.RecipeUpdateRequest;
 import com.oneyo.spring.recipe.domain.RecipeVO;
 import com.oneyo.spring.recipe.store.RecipeStore;
+import com.oneyo.spring.sources.domin.SourcesVO;
+import com.oneyo.spring.step.domain.StepVO;
 
 
 @Repository
 public class RecipeStoreLogic implements RecipeStore{
+	
 	
 	@Override
 	public List<RecipeVO>selectListAll(SqlSession session, int currentPage) {
@@ -35,11 +38,6 @@ public class RecipeStoreLogic implements RecipeStore{
 	public int getTotalCount(SqlSession session) {
 		int totalCount = session.selectOne("RecipeMapper.getTotalCount");
 		return totalCount;
-	}
-	@Override
-	public int insertRecipe(SqlSession session, RecipeInsertRequest recipe) {
-		int result = session.insert("RecipeMapper.insertRecipe", recipe);
-		return result;
 	}
 	
 	@Override
@@ -89,16 +87,11 @@ public class RecipeStoreLogic implements RecipeStore{
 		return rList;
 	}
 	@Override
-	public int insertBoard(SqlSession session, RecipeInsertRequest recipe) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	@Override
 	public int insertRecipe(SqlSession session, RecipeVO recipe) {
 		int getRecipeNo = session.insert("RecipeMapper.insertRecipe", recipe);
 		return getRecipeNo;
 	}
-	
+
 	public RecipeVO selectRecipeByNo(SqlSession session, int recipeNo) {
 		// TODO Auto-generated method stub
 		return null;
@@ -112,4 +105,5 @@ public class RecipeStoreLogic implements RecipeStore{
 		int currentSeq = session.selectOne("RecipeMapper.selectCurval");
 		return currentSeq;
 	}
+	
 }
