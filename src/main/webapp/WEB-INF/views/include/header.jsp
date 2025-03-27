@@ -18,12 +18,12 @@
 	                	<a href="/recipe/list">레시피</a>
 	                	<a href="/board/list">게시판</a>
 						<a href="/mypage/mypage">마이페이지</a><br>
-				<form action="/recipe/search" method="get">
 					<div class="hsearch-container">
+				<form action="/recipe/search" method="get">
 	                    <input type="text" class="hsearch-input" placeholder="검색" name="searchKeyword">
 	                    <button class="hsearch-btn" ><a href="/recipe/search">🔍</a></button>
-	                </div>
 				</form>	
+	                </div>
 	                
 						<a href="/member/logout">로그아웃</a>
 					</c:if>
@@ -31,12 +31,13 @@
 					<c:if test="${memberId eq null || memberId eq '' }">
 						<a href="/recipe/list">레시피</a>
 	                	<a href="/board/list">게시판</a>
-	           		<form action="/recipe/search" method="get">
+	           			<a href="/mypage/mypage">마이페이지</a><br>
 					<div class="hsearch-container">
+				<form action="/recipe/search" method="get">
 	                    <input type="text" class="hsearch-input" placeholder="검색" name="searchKeyword">
 	                    <button class="hsearch-btn" ><a href="/recipe/search">🔍</a></button>
-	                </div>
 				</form>	
+	                </div>
 	                <a href="/member/login" class="login">로그인</a>
 					</c:if>
 	            </nav>
