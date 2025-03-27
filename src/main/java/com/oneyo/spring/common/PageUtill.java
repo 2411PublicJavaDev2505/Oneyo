@@ -12,9 +12,9 @@ public class PageUtill {
 		int boardLimit = 10;
 		int maxPage = 0;
 		if(totalCount % boardLimit != 0) {
-			maxPage = totalCount / boardLimit;
+			maxPage = totalCount / boardLimit +1;
 		}else {
-			maxPage = totalCount / boardLimit+1;
+			maxPage = totalCount / boardLimit;
 		}
 		int naviLimit = 5;
 		// page: 1~5, startNavi->1,endNavi->5

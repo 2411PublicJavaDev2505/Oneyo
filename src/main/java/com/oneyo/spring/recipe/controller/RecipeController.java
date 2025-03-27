@@ -67,6 +67,7 @@ public class RecipeController {
                 rList = rService.selectListAll(currentPage);
             }
             int totalCount = rService.getTotalCount();
+            System.out.println(totalCount);
             Map<String, Integer> pageInfo = page.generatePageInfo(totalCount, currentPage);
             if (!rList.isEmpty()) {
                 model.addAttribute("maxPage", pageInfo.get("maxPage"));

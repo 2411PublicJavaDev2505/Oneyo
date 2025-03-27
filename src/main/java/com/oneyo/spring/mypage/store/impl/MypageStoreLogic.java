@@ -24,7 +24,8 @@ public class MypageStoreLogic implements MypageStore{
 
 	@Override
 	public int getTotalCount(SqlSession session, String memberId) {
-		return session.selectOne("MypageMapper.getTotalCount",memberId);
+		int result = session.selectOne("MypageMapper.getTotalreplyCount",memberId);
+		return result;
 	}
 
 	@Override
@@ -59,6 +60,14 @@ public class MypageStoreLogic implements MypageStore{
 	@Override
 	public int deleteReply(SqlSession session, int replyNo) {
 		return session.delete("MypageMapper.deleteReply",replyNo);
+	}
+
+	@Override
+	public int getTotalBoardCount(SqlSession session, String memberId) {
+		System.out.println(memberId);
+		int result = session.selectOne("BoardMapper.getTotalCount",memberId);
+		System.out.println(result);
+		return result;
 	}
 	
 	

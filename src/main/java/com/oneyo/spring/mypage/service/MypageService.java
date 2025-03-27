@@ -24,4 +24,6 @@ public interface MypageService {
 
 	int deleteReply(int replyNo);
 
+	int getTotalBoardCount(String memberId);
+
 }

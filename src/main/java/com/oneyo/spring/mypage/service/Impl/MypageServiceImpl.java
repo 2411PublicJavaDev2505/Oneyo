@@ -58,6 +58,11 @@ public class MypageServiceImpl implements MypageService{
 		int result= mStore.deleteReply(session, replyNo);
 		return result;
 	}
+	@Override
+	public int getTotalBoardCount(String memberId) {
+		System.out.println(memberId);
+		return mStore.getTotalBoardCount(session,memberId);
+	}
 	
 
 
