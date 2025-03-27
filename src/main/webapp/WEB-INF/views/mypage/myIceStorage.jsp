@@ -199,7 +199,7 @@
  	
       <script>
     	function deleteConfirm(sourcesNo, dueDate, storageCode) {
-    		var result = confirm("삭제할거임?");
+    		var result = confirm("정말 삭제하십니까?");
     		if(result) {
     			document.getElementById('deleteForm').submit();
     		}

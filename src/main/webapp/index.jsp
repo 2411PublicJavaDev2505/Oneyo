@@ -24,7 +24,7 @@
             <h2>오늘의 추천 레시피</h2>
             <p>양송이 크림 파스타</p>
             <button class="before-btn"> ◁ </button>
-            <img src="../resources/img/pasta.jpg" alt="양송이 크림 파스타" class="recipe-image" data-recipe="양송이 크림 파스타">
+            <a href="/recipe/detail/10"><img src="../resources/img/pasta.jpg" alt="양송이 크림 파스타" class="recipe-image" data-recipe="양송이 크림 파스타"></a>
             
             <button class="next-btn">▷</button>
         </div>
