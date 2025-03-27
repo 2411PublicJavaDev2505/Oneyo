@@ -70,13 +70,11 @@ public class MyRefController {
 //			System.out.println(iList);
 
 			
-			if(!cList.isEmpty() && !iList.isEmpty()) {
+			
 				model.addAttribute("cList", cList);
 				model.addAttribute("iList", iList);
 				return "mypage/mypage";			
-			}else {
-				return "common/error";
-			}
+		
 				
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -272,7 +270,7 @@ public class MyRefController {
 					System.out.println("storageCode =" + storageCode);
 					result = mService.deleteIceSource(dIceSource);
 					if(result > 0) {
-						return "redirect:/mypage/mypage";
+						return "redirect:/mypage/myIceStorage";
 					}
 				}else if(storageCode.equals("C")) {
 					DeleteSource dCoolSource = new DeleteSource(memberId, sourcesNo, dueDate, storageCode);					
