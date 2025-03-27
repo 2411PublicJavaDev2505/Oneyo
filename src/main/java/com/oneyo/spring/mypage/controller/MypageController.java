@@ -43,10 +43,12 @@ public class MypageController {
 		try {
 			// 로그인한 세션에서 아이디 가져오기 
 			String memberId = (String) session.getAttribute("memberId");
+			System.out.println(memberId);
 			// 아이디가 작성한 게시글을 가져오기 
 			List<MyBoardVO> mList = mService.selectBoardList(memberId,currentPage);
-			int totalCount = mService.getTotalCount(memberId);
-
+			System.out.println(mList);
+			int totalCount = mService.getTotalBoardCount(memberId);
+			System.out.println(totalCount);
 			Map<String, Integer>pageInfo = pageUtil.generatePageInfo(totalCount, currentPage,7);
 			model.addAttribute("maxPage", pageInfo.get("maxPage"));
 			model.addAttribute("startNavi", pageInfo.get("startNavi"));
@@ -88,11 +90,10 @@ public class MypageController {
 	int currentPage, Model model,HttpSession session) {
 		try {
 			// 로그인한 세션에서 아이디 가져오기
-			String memberId = (String) session.getAttribute("memberId");
+			String memberId = (String) session.getAttribute("memberId");			
 			// 아이디가 작성한 댓글 가져오기 
 			List<MyReplyVO> rList = mService.selectReplyList(memberId,currentPage);
-			System.out.println("rList size: " + rList.size());
-			int totalCount = mService.getTotalCount(memberId);
+			int totalCount = mService.getTotalCount(memberId);	
 			Map<String, Integer>pageInfo = pageUtil.generatePageInfo(totalCount, currentPage, 7);
 			model.addAttribute("maxPage", pageInfo.get("maxPage"));
 			model.addAttribute("startNavi", pageInfo.get("startNavi"));

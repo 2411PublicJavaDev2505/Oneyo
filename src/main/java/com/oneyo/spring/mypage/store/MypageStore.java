@@ -25,5 +25,7 @@ public interface MypageStore {
 	int getTotalCount(SqlSession session, Map<String, String> paramMap);
 
 	int deleteReply(SqlSession session, int replyNo);
+	
+	public int getTotalBoardCount(SqlSession session, String memberId);
 
 }
