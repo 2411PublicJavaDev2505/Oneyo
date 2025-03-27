@@ -5,6 +5,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.oneyo.spring.sources.controller.dto.SourceList;
 import com.oneyo.spring.sources.controller.dto.SourcesInsertRequest;
 import com.oneyo.spring.sources.controller.dto.SourcesUpdateRequest;
 import com.oneyo.spring.sources.domin.SourcesVO;
@@ -72,6 +73,13 @@ public class SourcesServiceImpl implements SourcesService {
 	public String getMemberNickname(String memberId) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+	@Override
+	public List<SourceList> getSourceList() {
+		List<SourceList> sList = sStore.getSourceList(session); 
+		return sList;
 	}
 
 }

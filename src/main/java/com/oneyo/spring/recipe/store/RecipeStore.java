@@ -37,4 +37,6 @@ public interface RecipeStore {
 
 	int insertRecipe(SqlSession session, RecipeInsertRequest recipe);
 	RecipeVO selectRecipeByNo(SqlSession session, int recipeNo);
+
+	int selectCurrentSeq(SqlSession session);
 }

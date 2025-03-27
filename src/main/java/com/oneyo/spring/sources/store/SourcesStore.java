@@ -3,6 +3,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.oneyo.spring.sources.controller.dto.SourceList;
 import com.oneyo.spring.sources.controller.dto.SourcesInsertRequest;
 import com.oneyo.spring.sources.controller.dto.SourcesUpdateRequest;
 import com.oneyo.spring.sources.domin.SourcesVO;
@@ -26,5 +27,8 @@ public interface SourcesStore {
 
 
 	int updateSources(SqlSession session, SourcesUpdateRequest sources);
+
+
+	List<SourceList> getSourceList(SqlSession session);
 
 }

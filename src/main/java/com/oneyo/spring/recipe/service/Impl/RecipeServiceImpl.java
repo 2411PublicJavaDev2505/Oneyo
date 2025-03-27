@@ -45,8 +45,10 @@ public class RecipeServiceImpl implements RecipeService {
 	}
 	
 	@Override
-	public void insertRecipe(RecipeVO recipe) {
-		rStore.insertRecipe(session, recipe);
+
+	public int insertRecipe(RecipeVO recipe) {
+		int getRecipeNo = rStore.insertRecipe(session, recipe);
+		return getRecipeNo;
 	}
 
 	@Override
@@ -87,6 +89,12 @@ public class RecipeServiceImpl implements RecipeService {
 	@Override
 	public List<RecipeVO> selectRecipeStep(int recipeNo) {
 		return null;
+	}
+
+	@Override
+	public int currentSeq() {
+		int currentSeq = rStore.selectCurrentSeq(session);
+		return currentSeq;
 	}
 
 

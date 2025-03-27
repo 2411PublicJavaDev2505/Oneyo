@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.oneyo.spring.recipe.domain.RecipeVO;
 import com.oneyo.spring.sources.domin.SourcesVO;
+import com.oneyo.spring.step.controller.dto.AddStepRequest;
 import com.oneyo.spring.step.controller.dto.StepInsertRequest;
 import com.oneyo.spring.step.controller.dto.StepUpdateRequest;
 import com.oneyo.spring.step.domain.StepVO;
@@ -30,4 +31,8 @@ public interface StepService {
 
 
 	void insertStep(StepVO step);
+
+	int addStep(List<AddStepRequest> aList);
+
+
 }

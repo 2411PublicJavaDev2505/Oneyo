@@ -95,12 +95,17 @@ public class RecipeStoreLogic implements RecipeStore{
 	}
 	@Override
 	public int insertRecipe(SqlSession session, RecipeVO recipe) {
-		// TODO Auto-generated method stub
-		return 0;
+		int getRecipeNo = session.insert("RecipeMapper.insertRecipe", recipe);
+		return getRecipeNo;
 	}
 	
 	public RecipeVO selectRecipeByNo(SqlSession session, int recipeNo) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	@Override
+	public int selectCurrentSeq(SqlSession session) {
+		int currentSeq = session.selectOne("RecipeMapper.selectCurval");
+		return currentSeq;
 	}
 }

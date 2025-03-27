@@ -75,9 +75,9 @@
  		ORDER BY RECIPE_NO DESC
  	</select>
  	
-	<insert id="insertRecipe">
-		INSERT INTO RECIPE (RECIPE_NO, RECIPE_TITLE, RECIPE_CONTENT_NO, MEMBER_ID, RECIPE_DATE, UPDATE_DATE, DEL_YN, VIEW_COUNT, RECIPE_SOURCES_NO)
-    	VALUES (SEQ_RECIPE_NO.NEXTVAL, #{recipeTitle}, #{recipeContentNo}, #{memberId}, SYSDATE, SYSDATE, 'N', 0, #{recipeSourcesNo})
+    <insert id="insertRecipe">
+		INSERT INTO RECIPE (RECIPE_NO, MEMBER_ID, RECIPE_TITLE)
+    	VALUES (SEQ_RECIPE_NO.NEXTVAL,  #{memberId}, #{recipeTitle})
 	</insert>
 	
 	<update id="updateRecipe">
@@ -93,4 +93,9 @@
 		SET DEL_YN = 'Y'
 		WHERE RECIPE_NO = #{recipeNo}
 	</delete>
+	
+ 	<select id="selectCurval" resultType="_int">
+		SELECT SEQ_RECIPE_NO.CURRVAL FROM DUAL
+	</select> 
+	
 </mapper>

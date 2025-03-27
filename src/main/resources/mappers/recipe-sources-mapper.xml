@@ -7,7 +7,7 @@
 <resultMap type="source" id="recipeSourcesMap">
 	<result property="recipeNo" 		column="RECIPE_NO"/>
 	<result property="sourcesNo" 		column="SOURCES_NO"/>
-	<result property="sourcesName" 		column="SOURCES_NAME"/>
+	<result property="sourcesName" 		column="SOURCE_NAME"/>
 	<result property="categoryNo" 		column="CATEGORY_NO"/>
 	<result property="firstCategory"	column="FIRST_CATEGORY"/>
 	<result property="secondCategory" 	column="SECOND_CATEGORY"/>

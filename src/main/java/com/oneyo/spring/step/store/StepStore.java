@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.oneyo.spring.sources.domin.SourcesVO;
+import com.oneyo.spring.step.controller.dto.AddStepRequest;
 import com.oneyo.spring.step.controller.dto.StepInsertRequest;
 import com.oneyo.spring.step.controller.dto.StepUpdateRequest;
 import com.oneyo.spring.step.domain.StepVO;
@@ -27,4 +28,7 @@ public interface StepStore {
 	List<SourcesVO> getSourcesByRecipeNo(SqlSession session, int recipeNo);
 
 	void insertStep(SqlSession session, StepVO step);
+
+	int addStep(SqlSession session, List<AddStepRequest> aList);
+
 }

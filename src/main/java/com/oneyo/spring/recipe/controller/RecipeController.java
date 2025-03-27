@@ -1,5 +1,6 @@
 package com.oneyo.spring.recipe.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,8 +26,10 @@ import com.oneyo.spring.recipe.controller.dto.RecipeInsertRequest;
 import com.oneyo.spring.recipe.controller.dto.RecipeUpdateRequest;
 import com.oneyo.spring.recipe.domain.RecipeVO;
 import com.oneyo.spring.recipe.service.RecipeService;
+import com.oneyo.spring.sources.controller.dto.SourceList;
 import com.oneyo.spring.sources.domin.SourcesVO;
 import com.oneyo.spring.sources.service.SourcesService;
+import com.oneyo.spring.step.controller.dto.AddStepRequest;
 import com.oneyo.spring.step.domain.StepVO;
 import com.oneyo.spring.step.service.StepService;
 
@@ -127,33 +130,71 @@ public class RecipeController {
         }
     }
     
+    @GetMapping("/insert")
+    public String insertRecipe(Model model,
+    		HttpSession session) {
+    	try {
+    		String memberId = (String)session.getAttribute("memberId");
+    		
+    		System.out.println(memberId);
+    		if(memberId != null) {
+    			session.setAttribute("memberId", memberId);
+    			List<SourceList>sList = sourceService.getSourceList();
+    			System.out.println(sList);
+    			session.setAttribute("sList", sList);
+    			return "recipe/insert";
+    		}    		
+		} catch (Exception e) {
+			// TODO: handle exception
+		}return "common/error";
+    }
+    
+    
     @PostMapping("/insert")
-    public String insertRecipe(@ModelAttribute RecipeInsertRequest recipeInsertRequest, Model model) {
+    public String insertRecipe(@ModelAttribute RecipeInsertRequest recipeInsertRequest, 
+    		Model model,
+    		HttpSession session,
+    		@RequestParam("firstSource") String firstSource,
+    		@RequestParam("secondSource") String secondSource,
+    		@RequestParam("thirdSource") String thirdSource,
+    		@RequestParam("stepInfo1") String stepInfo1,
+    		@RequestParam("stepInfo2") String stepInfo2,
+    		@RequestParam("stepInfo3") String stepInfo3,
+    		@RequestParam("stepAmount1") String stepAmount1,
+    		@RequestParam("stepAmount2") String stepAmount2,
+    		@RequestParam("stepAmount3") String stepAmount3,
+    		@RequestParam(value="page", defaultValue="1") int currentPage,
+    		@RequestParam(value = "recipeTitle", required = false) String recipeTitle    		
+    		) {
         try {
-            // 1. 레시피 정보를 RecipeVO로 변환
-            RecipeVO recipe = new RecipeVO();
-            recipe.setRecipeTitle(recipeInsertRequest.getRecipeTitle());
-            recipe.setMemberNickName(recipeInsertRequest.getMemberNickName());
-
-            // 2. 레시피 저장 (서비스 호출)
-            rService.insertRecipe(recipe);
-
-            // 3. 단계 및 재료 리스트 저장
-            for (StepVO step : recipeInsertRequest.getStepList()) {
-                step.setRecipeNo(recipe.getRecipeNo()); // recipeNo를 설정
-                sService.insertStep(step);
-            }
-
-            for (SourcesVO source : recipeInsertRequest.getSourceList()) {
-                source.setRecipeNo(recipe.getRecipeNo()); // recipeNo를 설정
-                sourceService.insertSource(source);
-            }
-
-            return "redirect:/recipe/detail/" + recipe.getRecipeNo();  // 저장 후 상세 페이지로 리다이렉트
+//        	String memberId = (String)session.getAttribute("memberId");
+//        	RecipeVO pRecipe = new RecipeVO(memberId, recipeTitle);
+//        	int insert = rService.insertRecipe(pRecipe); 
+        	
+//        	if(insert > 0) {
+//        		int curval = rService.currentSeq();
+//        		AddStepRequest addStep1 = new AddStepRequest(1, stepInfo1, stepAmount1, insert);
+//        		AddStepRequest addStep2 = new AddStepRequest(2, stepInfo2, stepAmount2, insert);
+//        		AddStepRequest addStep3 = new AddStepRequest(3, stepInfo3, stepAmount3, insert);
+//        		
+//        		List<AddStepRequest> aList = new ArrayList<AddStepRequest>();
+//        		aList.add(addStep1);
+//        		aList.add(addStep2);
+//        		aList.add(addStep3);
+//        		int addStepresult = sService.addStep(aList);
+//        		if(addStepresult > 1) {
+//        		
+//        		}
+//        	return "recipe/list";	
+            List<RecipeVO> rList;rList = rService.selectListAll(currentPage);
+            model.addAttribute("rList", rList);
+            model.addAttribute("rList",rList);
+//        	}			
+    			return "recipe/RecipeList";			
         } catch (Exception e) {
             e.printStackTrace();
             model.addAttribute("errorMessage", e.getMessage());
-            return "common/error";  // 오류 발생 시 에러 페이지로 리다이렉트
+            return "recipe/RecipeList";  // 오류 발생 시 에러 페이지로 리다이렉트
         }
     }
 	

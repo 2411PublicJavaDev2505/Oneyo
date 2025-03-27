@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.oneyo.spring.sources.controller.dto.SourceList;
 import com.oneyo.spring.sources.controller.dto.SourcesInsertRequest;
 import com.oneyo.spring.sources.controller.dto.SourcesUpdateRequest;
 import com.oneyo.spring.sources.domin.SourcesVO;
@@ -51,5 +52,11 @@ public class SourcesStoreLogic implements SourcesStore{
 	public void insertSource(SqlSession session, SourcesVO source) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public List<SourceList> getSourceList(SqlSession session) {
+		List<SourceList> sList = session.selectList("source.getSourceList");
+		return sList;
 	}
 }
