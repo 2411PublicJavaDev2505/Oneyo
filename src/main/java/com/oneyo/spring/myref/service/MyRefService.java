@@ -42,5 +42,5 @@ public interface MyRefService {
 
 	List<MySourceList> searchSourceList(int currentPage, SearchSourceRequest searchList);
 
-	int findDuplicated(SourceAddRequest addSource);
+	//int findDuplicated(SourceAddRequest addSource);
 }

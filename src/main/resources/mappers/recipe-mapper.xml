@@ -18,12 +18,7 @@
  		
  		
  	</resultMap>
- 	
- 	<insert id="insertRecipe" parameterType="com.oneyo.spring.recipe.domain.RecipeVO" useGeneratedKeys="true" keyProperty="recipeNo">
-	    INSERT INTO Recipe (RECIPE_NO, RECIPE_TITLE, MEMBER_ID, recipe_filename, recipe_filerename, recipe_filepath)
-	    VALUES (RECIPE_SEQ.NEXTVAL, #{recipeTitle}, #{memberId}, #{recipeFilename}, #{recipeFileRename}, #{recipeFilePath})
-	</insert>
- 	
+ 		
  	<select id="selectList" resultMap ="recipeResultMap">
  		SELECT 
  			RECIPE.RECIPE_NO, RECIPE.MEMBER_ID, RECIPE.RECIPE_TITLE, RECIPE.VIEW_COUNT, MEMBER.MEMBER_NICKNAME 

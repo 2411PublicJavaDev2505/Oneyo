@@ -43,6 +43,6 @@ public interface MyRefStore {
 
 	List<MySourceList> searchSourceList(SqlSession session, int currentPage, SearchSourceRequest searchList);
 
-	int findDuplicated(SqlSession session, SourceAddRequest addSource);
+	//int findDuplicated(SqlSession session, SourceAddRequest addSource);
 
 }

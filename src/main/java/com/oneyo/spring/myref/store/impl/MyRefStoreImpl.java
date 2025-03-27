@@ -123,12 +123,12 @@ public class MyRefStoreImpl implements MyRefStore{
 		int result = session.selectOne("sourceList.getSearchCount", searchList);
 		return result;
 	}
-	@Override
-	public int findDuplicated(SqlSession session, SourceAddRequest addSource) {
-		int duplication = session.selectOne("sourceList.findDuplicated", addSource);
-		System.out.println("중복 : " + duplication);
-		return duplication;
-	}
+//	@Override
+//	public int findDuplicated(SqlSession session, SourceAddRequest addSource) {
+//		int duplication = session.selectOne("sourceList.findDuplicated", addSource);
+//		System.out.println("중복 : " + duplication);
+//		return duplication;
+//	}
 
 
 

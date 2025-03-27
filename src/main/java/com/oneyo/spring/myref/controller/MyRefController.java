@@ -209,8 +209,8 @@ public class MyRefController {
 		String storageCode = "C";		
 		
 		SourceAddRequest addSource = new SourceAddRequest(memberId, firstCategory, secondCategory, thirdCategory, sourceCount, sourceName, dueDate, storageDate, storageCode);
-		int duplication = mService.findDuplicated(addSource);
-		System.out.println(duplication);
+//		int duplication = mService.findDuplicated(addSource);
+//		System.out.println(duplication);
 		
 		if(addSource != null) {
 			int result = mService.addSource(addSource);

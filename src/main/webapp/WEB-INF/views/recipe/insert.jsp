@@ -51,7 +51,6 @@
 									</select><br>
 								</div>
 							</div>
-<<<<<<< HEAD
 
 							
 						</div>
@@ -90,7 +89,6 @@
 					            <div class="step-info">
 					                <input type="text" name="stepInfo3" placeholder="레시피를 입력하세요" ></input>
 					                <input type="text" name="stepAmount3" placeholder="수량" >g</input>
-=======
 						</div>
 						<input type="hidden" id="firstChoice" name="firstSource" value="">
 						<input type="hidden" id="secondChoice" name="secondSource" value="">
@@ -124,7 +122,6 @@
 					            </div>
 					            <div class="step-info">
 					                <input type="text" name="stepInfo3" placeholder="레시피를 입력하세요" ></input>
->>>>>>> refs/remotes/origin/kangu
 					            </div>
 					            <div class="recipe-image">
 					                <img src="" alt="등록된 사진이 없습니다.">

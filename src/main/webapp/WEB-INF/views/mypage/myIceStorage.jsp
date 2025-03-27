@@ -154,6 +154,7 @@
 		                                <td class="due-date" value="${source.dueDate }">${source.dueDate }</td>
 		                                <td class="count">${source.sourceCount }</td>
 		                                <td class="action">
+		                                	<form action="/mypage/myIceStorage" method="post">
 		                                        <button type="button" class="edit-btn"
 											        data-source-no="${source.sourcesNo}"
 											        data-source-name="${source.sourceName}"
@@ -161,6 +162,7 @@
 											        data-due-date="${source.dueDate}">
 											        수정
 											    </button>
+											    </form>
 		                                    <form action="/mypage/delete" id="deleteForm" method="get">
 		                                    	<input type="hidden" name="sourcesNo" value="${source.sourcesNo}">
 		                                    	<input type="hidden" name="dueDate" value="${source.dueDate }">

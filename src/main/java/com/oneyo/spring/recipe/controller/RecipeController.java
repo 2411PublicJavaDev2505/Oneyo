@@ -211,7 +211,6 @@ public class RecipeController {
 	        model.addAttribute("recipe", recipe);
 //	        model.addAttribute("stepList", stepList);
 //	        model.addAttribute("sourceList", sourceList);
-	        
 	        return "recipe/modify";
 	    } catch(Exception e) {
 	        e.printStackTrace();
