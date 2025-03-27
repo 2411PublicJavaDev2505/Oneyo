@@ -109,12 +109,13 @@ public class RecipeController {
 
     @GetMapping("/search")
     public String showSearchList(
-            @RequestParam("searchKeyword") String searchkeyword,
+            @RequestParam("searchKeyword") String searchKeyword,
             @RequestParam(value="currentPage", defaultValue="1")int currentPage,
             Model model) {
         try {
             Map<String, String> paramMap = new HashMap<>();
-            paramMap.put("searchkeyword", searchkeyword);
+            System.out.println(searchKeyword);
+            paramMap.put("searchKeyword", searchKeyword);
             List<RecipeVO> searchList = rService.selectSearchList(paramMap, currentPage);
             int totalCount = rService.getTotalCount(paramMap);
             Map<String, Integer> pageInfo = page.generatePageInfo(totalCount, currentPage);
@@ -122,11 +123,11 @@ public class RecipeController {
             model.addAttribute("startNavi", pageInfo.get("startNavi"));
             model.addAttribute("endNavi", pageInfo.get("endNavi"));
             model.addAttribute("searchList", searchList);
-            model.addAttribute("searchkeyword", searchkeyword);
+            model.addAttribute("searchKeyword", searchKeyword);
             return "recipe/search";
         } catch (Exception e) {
             e.printStackTrace();
-            model.addAttribute("errorMessage", e.getMessage());
+            model.addAttribute("errorMsg", e.getMessage());
             return "common/error";
         }
     }

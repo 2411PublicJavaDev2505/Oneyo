@@ -66,13 +66,12 @@
  		SELECT COUNT(*) FROM RECIPE
  	</select>
  	<select id="getSearchCount" resultType="_int">
- 		SELECT COUNT(*) FROM RECIPE WHERE RECIPE_TITLE LIKE '%' #{searchKeyword}
+ 		SELECT COUNT(*) FROM RECIPE WHERE RECIPE_TITLE LIKE '%'||#{searchKeyword}||'%'
  	</select>
+ 	
  	<select id="selectSearchList" resultMap="recipeResultMap">
- 		SELECT * FROM RECIPE
- 		<where>
- 			RECIPE_TITLE LIKE '%' || #{searchKeyword} || '%'
- 		</where>
+ 		SELECT * FROM RECIPE WHERE
+ 			RECIPE_TITLE LIKE '%'||#{searchKeyword}||'%'
  		ORDER BY RECIPE_NO DESC
  	</select>
  	

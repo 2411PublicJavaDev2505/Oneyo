@@ -53,7 +53,7 @@ public class RecipeStoreLogic implements RecipeStore{
 		int limit = 8;
 		int offset = (currentPage -1)*limit;
 		RowBounds rowBounds = new RowBounds(offset, limit);
-		List<RecipeVO> searchList = session.selectList("RecipeMapper.selectSerachList", paramMap, rowBounds);
+		List<RecipeVO> searchList = session.selectList("RecipeMapper.selectSearchList", paramMap, rowBounds);
 		return searchList;
 	}
 	
