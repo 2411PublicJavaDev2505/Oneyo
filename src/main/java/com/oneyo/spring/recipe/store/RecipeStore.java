@@ -39,4 +39,6 @@ public interface RecipeStore {
 	RecipeVO selectRecipeByNo(SqlSession session, int recipeNo);
 
 	Integer countViewUpdate(SqlSession session, int recipeNo);
+	
+	int selectCurrentSeq(SqlSession session);
 }

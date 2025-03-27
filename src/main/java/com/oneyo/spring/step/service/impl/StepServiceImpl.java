@@ -9,6 +9,7 @@ import com.oneyo.spring.recipe.domain.RecipeVO;
 import com.oneyo.spring.recipe.store.RecipeStore;
 import com.oneyo.spring.sources.domin.SourcesVO;
 import com.oneyo.spring.sources.store.SourcesStore;
+import com.oneyo.spring.step.controller.dto.AddStepRequest;
 import com.oneyo.spring.step.controller.dto.StepInsertRequest;
 import com.oneyo.spring.step.controller.dto.StepUpdateRequest;
 import com.oneyo.spring.step.domain.StepVO;
@@ -99,6 +100,12 @@ public class StepServiceImpl implements StepService {
 	public void insertStep(StepVO step) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public int addStep(List<AddStepRequest> aList) {
+		int addStepResult = sStore.addStep(session, aList);
+		return addStepResult;
 	}
 
 	

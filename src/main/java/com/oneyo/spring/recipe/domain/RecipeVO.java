@@ -21,6 +21,16 @@ public class RecipeVO {
 	
 	public RecipeVO() {}
 
+	
+
+	public RecipeVO(String memberId, String recipeTitle) {
+		super();
+		this.memberId = memberId;
+		this.recipeTitle = recipeTitle;
+	}
+
+
+
 
 	public List<StepVO> getStepList() {
 		return stepList;

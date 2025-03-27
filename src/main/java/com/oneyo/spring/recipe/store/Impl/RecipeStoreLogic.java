@@ -95,8 +95,8 @@ public class RecipeStoreLogic implements RecipeStore{
 	}
 	@Override
 	public int insertRecipe(SqlSession session, RecipeVO recipe) {
-		// TODO Auto-generated method stub
-		return 0;
+		int getRecipeNo = session.insert("RecipeMapper.insertRecipe", recipe);
+		return getRecipeNo;
 	}
 	
 	public RecipeVO selectRecipeByNo(SqlSession session, int recipeNo) {
@@ -106,5 +106,10 @@ public class RecipeStoreLogic implements RecipeStore{
 	@Override // 조회수 카운트
 	public Integer countViewUpdate(SqlSession session, int recipeNo) {
 		return session.selectOne("RecipeMapper.countViewUpdate", recipeNo);
+	}
+	@Override
+	public int selectCurrentSeq(SqlSession session) {
+		int currentSeq = session.selectOne("RecipeMapper.selectCurval");
+		return currentSeq;
 	}
 }

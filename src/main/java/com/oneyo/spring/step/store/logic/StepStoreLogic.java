@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.oneyo.spring.sources.domin.SourcesVO;
+import com.oneyo.spring.step.controller.dto.AddStepRequest;
 import com.oneyo.spring.step.controller.dto.StepInsertRequest;
 import com.oneyo.spring.step.controller.dto.StepUpdateRequest;
 import com.oneyo.spring.step.domain.StepVO;
@@ -56,6 +57,12 @@ public class StepStoreLogic implements StepStore{
 	public void insertStep(SqlSession session, StepVO step) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public int addStep(SqlSession session, List<AddStepRequest> aList) {
+		int addStepResult = session.insert("StepMapper.addStep", aList);
+		return addStepResult;
 	}
 
 

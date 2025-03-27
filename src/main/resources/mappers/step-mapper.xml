@@ -19,18 +19,31 @@
         	RECIPE_NO = #{recipeNo}
         ORDER BY STEP_NO ASC
     </select>
+    
     <insert id="insertStep">
     	INSERT INTO STEP (STEP_NO, RECIPE_NO, STEP_CONTENT, STEP_AMOUNT)
     	VALUES (SEQ_STEP_NO.NEXTVAL, #{recipeNo}, #{stepContent}, #{stepAmount})
     </insert>
+    
     <update id ="updateStep">
     	UPDATE STEP
     	SET STEP_CONTENT = #{stepContent}
     	, STEP_AMOUNT = #{stepAmount} 
     	WHERE STEP_NO = #{stepNo} AND RECIPE_NO = #{recipeNo};
     </update>
+    
     <delete id="deleteStep">
     	DELETE FROM RECIPE_STEP
     	WHERE STEP_NO = #{stepNo}
     </delete>
+    
+    
+    <insert id="addStep">
+		INSERT ALL
+		    INTO RECIPE_STEP VALUES ('1', #{stepInfo1}, #{stepAmount1}, #{insert})
+		    INTO RECIPE_STEP VALUES ('2', #{stepInfo2}, #{stepAmount2}, #{insert})
+		    INTO RECIPE_STEP VALUES ('3', #{stepInfo3}, #{stepAmount3}, #{insert})
+		SELECT 1 FROM DUAL;
+    </insert>
+    
 </mapper>

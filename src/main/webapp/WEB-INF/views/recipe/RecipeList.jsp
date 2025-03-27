@@ -15,9 +15,9 @@
 	<div class="recipe-container">
 		<main class="recipe-main">
             <div class="button-container">
-                <a href="/recipe/insert">
-                	<button class="write-recipe">레시피 작성하기</button>
-                </a>
+               
+                <button class="write-recipe"> <a href="/recipe/insert">레시피 작성하기 </a></button>
+               
             </div>
             <section class="recipe-list">
 	            <c:forEach items="${rList }" var="recipe">
