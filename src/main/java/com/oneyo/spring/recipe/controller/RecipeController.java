@@ -90,6 +90,7 @@ public class RecipeController {
             RecipeVO recipe = rService.selectOneByNo(recipeNo);
             List<StepVO> stepList = sService.getStepsByNo(recipeNo);
             List<SourcesVO>sourceList = sourceService.getSourcesByrecipeNo(recipeNo);
+            Integer viewCount = rService.countViewUpdate(recipeNo);
             System.out.println(sourceList);
             recipe.setStepList(stepList);
             model.addAttribute("recipe", recipe);

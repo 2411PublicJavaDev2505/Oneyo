@@ -89,5 +89,10 @@ public class RecipeServiceImpl implements RecipeService {
 		return null;
 	}
 
+	@Override // 조회수 카운트
+	public Integer countViewUpdate(int recipeNo) {
+		return rStore.countViewUpdate(session, recipeNo);
+	}
+
 
 }

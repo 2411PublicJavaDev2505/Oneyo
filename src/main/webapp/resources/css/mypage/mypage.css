@@ -42,11 +42,13 @@
     padding-top:20px;
 }
 
-.detailInformation button {
+.deleteMember, .updateMember {
     width:80%;
     margin-top: 25px;
     border-radius: 10px;
     background-color:#c2b480; 
+    border-style: none;
+    height: 33.3333px;    
 }
 
 .detailInformation button a {

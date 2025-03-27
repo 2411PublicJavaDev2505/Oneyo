@@ -103,4 +103,8 @@ public class RecipeStoreLogic implements RecipeStore{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override // 조회수 카운트
+	public Integer countViewUpdate(SqlSession session, int recipeNo) {
+		return session.selectOne("RecipeMapper.countViewUpdate", recipeNo);
+	}
 }

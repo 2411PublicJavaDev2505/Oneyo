@@ -39,7 +39,7 @@
                      ${board.boardContent }
                 </div> 
                 <div class="board-file">
-                    <h4>첨부파일</h4>
+                    
                     <a href="../..${board.boardFilepath }" download>${board.boardFilename }</a>
                 </div> 
             </div>
@@ -62,7 +62,7 @@
                 <span class="reply-content">${reply.replyContent }</span>
             </c:forEach>
             </div> 
-            <!-- 댓글 입력 (공지사항은 입력불가) -->
+            <!-- 댓글 입력 -->
          
             <form class="reply-insert" action="${pageContext.request.contextPath}/replyInsert" method="post">
             	<input type="hidden" name="boardNo"  value="${board.boardNo }">

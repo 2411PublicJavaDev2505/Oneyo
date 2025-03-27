@@ -22,8 +22,8 @@
                     
                     <div class="linkButtons">
                         <a href="/member/join" class="register-link">회원가입</a>
-                        <a href="/member/findid" class="findid-link">|아이디 찾기</a>
-                        <a href="/member/findpw" class="findpw-link">|비밀번호 찾기</a>
+                        <a href="/member/findid" class="findid-link">| 아이디 찾기</a>
+                        <a href="/member/findpw" class="findpw-link">| 비밀번호 찾기</a>
                         
                     </div>
 

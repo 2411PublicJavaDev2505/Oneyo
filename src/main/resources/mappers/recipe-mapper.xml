@@ -77,7 +77,7 @@
  	
 	<insert id="insertRecipe">
 		INSERT INTO RECIPE (RECIPE_NO, RECIPE_TITLE, RECIPE_CONTENT_NO, MEMBER_ID, RECIPE_DATE, UPDATE_DATE, DEL_YN, VIEW_COUNT, RECIPE_SOURCES_NO)
-    	VALUES (SEQ_RECIPE_NO.NEXTVAL, #{recipeTitle}, #{recipeContentNo}, #{memberId}, SYSDATE, SYSDATE, 'N', 0, #{recipeSourcesNo})
+    	VALUES (SEQ_RECIPE_NO.NEXTVAL, #{recipeTitle}, #{recipeContentNo}, #{memberId}, SYSDATE, SYSDATE, 'N', default, #{recipeSourcesNo})
 	</insert>
 	
 	<update id="updateRecipe">
@@ -88,8 +88,14 @@
 		, UPDATE_DATE = SYSDATE
 		WHERE RECIPE_NO = #{recipeNo} 
 	</update>
+	
+	<!-- 조회수 -->
+	<update id="countViewUpdate" parameterType="_int">
+		update recipe set VIEW_COUNT = VIEW_COUNT +1 where RECIPE_NO = #{recipeNo}
+	</update>
+	
 	<delete id="deleteRecipe">
-		UPDATE RECIPE_TBL
+		UPDATE RECIPE
 		SET DEL_YN = 'Y'
 		WHERE RECIPE_NO = #{recipeNo}
 	</delete>

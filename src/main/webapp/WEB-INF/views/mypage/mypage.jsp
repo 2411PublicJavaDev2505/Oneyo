@@ -22,12 +22,12 @@
 			</c:choose>
 		    
     <main class="main">
-		<div class="myPageMain">
+	<form class="myPageMain" action="/mypage/mypage" method="get">
       <section class="Info">
         <nav class="myInfomation">
           <div class="myPicture"></div>
             <div class="detailInformation">
-              <div>이름 :${memberName}</div>
+              <div>이름 : ${memberName}</div>
               <div>닉네임 : ${memberNickname}</div>
               <div>전화번호 : ${memberPhone}</div>
               <c:choose>
@@ -78,7 +78,7 @@
             </div>
           </div>
       </div>
-		</div>
+	</form>
     </main>
  		<jsp:include page = "/WEB-INF/views/include/footer.jsp"></jsp:include> 	 		
  		

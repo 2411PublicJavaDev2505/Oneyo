@@ -31,4 +31,7 @@ public interface RecipeService {
 	int updateRecipe(RecipeUpdateRequest recipe);
 
 	public void insertRecipe(RecipeVO recipe);
+
+
+	Integer countViewUpdate(int recipeNo);
 }
