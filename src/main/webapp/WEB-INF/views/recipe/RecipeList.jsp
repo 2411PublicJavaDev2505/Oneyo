@@ -30,7 +30,7 @@
 	            <c:forEach items="${rList }" var="recipe">
 	                <a href="/recipe/detail/${recipe.recipeNo }" class="recipe">
 	                    <div class="recipe-style">
-	                        <img src="/Oneyo/src/main/webapp/resources/img/김치찌개냠냠굿.jpg" alt="요리 썸네일">
+	                        <img src="../resources/img/${recipe.fileName }" alt="요리 썸네일">
 	                        <section class="recipe-inf">
 	                            <p class="recipe-name">${recipe.recipeTitle }</p>
 								<span class="recipe-writer">${recipe.memberNickName }</span>
