@@ -201,7 +201,7 @@
 		}
      		
 	  	function deleteConfirm(sourcesNo, dueDate, storageCode) {
-			var result = confirm("삭제할거임?");
+			var result = confirm("정말 삭제하시겠습니까?");
 			if(result) {
 				document.getElementById('deleteForm').submit();
 			}
