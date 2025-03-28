@@ -29,7 +29,7 @@
 			            <div class="myPicture"></div>
 			            <div class="detailInformation">
 			                <div>이름 :  ${memberName}</div>
-			                <div>닉네임 : ${sessionScope.memberNickname}</div>
+			                <div>닉네임 : ${member.memberNickname}</div>
 			 			  <c:choose>
 						    <c:when test="${sessionScope.member1.memberId eq 'ADMIN01'}">
 						        <button class="deleteMember" ><a href="/admin/member">회원관리</a></button>

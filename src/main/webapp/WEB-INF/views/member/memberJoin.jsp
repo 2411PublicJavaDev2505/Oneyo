@@ -36,6 +36,8 @@
     <jsp:include page = "/WEB-INF/views/include/footer.jsp"></jsp:include> 	
 	<script>
 		document.addEventListener("DOMContentLoaded", function(){
+		    document.querySelector("#signup-button").addEventListener("click", function(event){
+				
 		    var pwTag = document.querySelector("#MEMBER_PW");
 		    var pwReTag = document.querySelector("#MEMBER_PW_RE");
 	
@@ -47,7 +49,6 @@
 		    var msgTag = document.createElement("div");
 		    pwReTag.parentNode.insertBefore(msgTag, pwReTag.nextSibling);
 	
-		    document.querySelector("#signup-button").addEventListener("click", function(event){
 		        if (pwTag.value.trim() !== pwReTag.value.trim()) {
 		            msgTag.innerText = "비밀번호가 일치하지 않습니다";
 		            msgTag.style.color = "red";
