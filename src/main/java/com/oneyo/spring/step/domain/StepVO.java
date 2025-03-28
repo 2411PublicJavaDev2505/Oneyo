@@ -5,7 +5,7 @@ public class StepVO {
 		private int stepNo;
 	    private String stepContent;
 	    private String stepAmount;
-	    private String fileName;
+	    private String stepFileName;
 	    
 	    public void StepVO() {}
 
@@ -33,17 +33,17 @@ public class StepVO {
 			this.stepAmount = stepAmount;
 		}
 
-		public String getFileName() {
-			return fileName;
+		public String getStepFileName() {
+			return stepFileName;
 		}
 
-		public void setFileName(String fileName) {
-			this.fileName = fileName;
+		public void setStepFileName(String stepFileName) {
+			this.stepFileName = stepFileName;
 		}
 
 		@Override
 		public String toString() {
 			return "StepVO [stepNo=" + stepNo + ", stepContent=" + stepContent + ", stepAmount=" + stepAmount
-					+ ", fileName=" + fileName + "]";
+					+ ", stepFileName=" + stepFileName + "]";
 		}
 }

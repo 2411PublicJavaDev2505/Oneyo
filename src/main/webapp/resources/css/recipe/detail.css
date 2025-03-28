@@ -109,6 +109,7 @@
 /* 번호와 내용, 이미지를 한 줄로 배치 */
 .step-number, .step-info, .recipe-image {
     display: inline-block;
+    font-size: 30px;
 }
 
 .step-number {
@@ -118,11 +119,12 @@
 .step-info {
     width: 60%; /* 내용 영역의 너비 */
     padding-left: 10px;
+    font-size: 20px;
 }
 
 .recipe-image img {
-    width: 100px; /* 이미지 크기 조정 */
-    height: 100px;
+    width: 200px; /* 이미지 크기 조정 */
+    height: 200px;
     object-fit: cover;
 }
 

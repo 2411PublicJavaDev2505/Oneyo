@@ -46,7 +46,7 @@
 				</div>
 			</div>
 			<div class="recipe-step">
-			    <c:forEach items="${recipe.stepList}" var="step">
+			    <c:forEach items="${stepList}" var="step">
 			        <div class="step-container">
 			            <div class="step-number">
 			                <p>${step.stepNo }</p>
@@ -55,7 +55,7 @@
 			                <span>${step.stepContent }</span>
 			            </div>
 			            <div class="recipe-image">
-			                <img src="${pageContext.request.contextPath}/resources/img/${step.fileName }" alt="등록된 사진이 없습니다.">
+			                <img src="${pageContext.request.contextPath}/resources/img/${step.stepFileName }" alt="등록된 사진이 없습니다.">
 			            </div>
 			        </div>
 			    </c:forEach>

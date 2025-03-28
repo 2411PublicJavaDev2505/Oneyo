@@ -8,7 +8,7 @@
     	<result property="stepContent" column="STEP_CONTENT"/>
     	<result property="stepAmount" column="STEP_AMOUNT"/>
     	<result property="recipeNo" column="RECIPE_NO"/>
-    	<result property="fileName" column="STEP_FILENAME"/>
+    	<result property="stepFileName" column="STEP_FILENAME"/>
     </resultMap>
     
     <select id="getStepsByNo" resultType="com.oneyo.spring.step.domain.StepVO">

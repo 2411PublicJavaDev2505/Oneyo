@@ -220,11 +220,6 @@
             //'on' class 제거
             modal.classList.remove('on');
         });        
-       
-
-
-
-       	 // gpt 꺼임
         // categoryList 데이터를 JS 객체로 변환
         const categoryData = [
             <c:forEach items="${categoryList}" var="cateList">
