@@ -107,6 +107,8 @@ spring.datasource.password
 ![recipeList.jsp](https://github.com/user-attachments/assets/267e770e-c232-4dc9-ae30-aa53650352d4)
 ### 레시피 상세 페이지
 ![레시피 상세 페이지](https://github.com/user-attachments/assets/ec7520e5-ca8d-4059-87c1-bd4cb471a8e4)
+![레시피 상세페이지 2](https://github.com/user-attachments/assets/ef7cb267-acb4-4d6b-a713-45e37d641582)
+![레시피 상세페이지1](https://github.com/user-attachments/assets/044e49ca-3c8b-4249-91ca-4bf1e582f382)
 ### 레시피 검색 페이지
 ![레시피 검색 페이지](https://github.com/user-attachments/assets/5747bf29-1b22-4d09-9495-d1a8534f45ed)
 ### 로그인
