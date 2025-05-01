@@ -48,7 +48,7 @@ spring.datasource.password
 # 3. 프로젝트 구조
 [프로젝트 구조.pdf]
 # 4. 주요기능 
-### 회원관리
+### 회원관리 : 이솔
 |기능명|상세|
 |--|--|
 |회원 가입|아이디, 비밀번호, 이름, 닉네임, 전화번호를 입력 후 가입하며 자신의 계정을 생성합니다. 회원가입 폼에는 일정한 형식을 지켜야 하며 만약 지키지 않을 시 오류가 납니다. |
@@ -60,7 +60,7 @@ spring.datasource.password
 |내가쓴글|마이페이지 내에서 내가 쓴글 버튼을 클릭하면 게시판에 내가 작성한 글을 확인할수 있습니다|
 |나의 댓글| 마이페이지 내에서 나의 댓글 버튼을 클릭하면 내가 작성한 글을 확인 할수 있습니다|
 
-### 레시피
+### 레시피 : 김지용, 강우혁
 |기능명|상세|
 |--|--|
 |레시피 등록|관리자 또는 사용자가 레시피를 등록하는 페이지입니다. 최소 1개이상의 주재료를 선택해야하며, 부재료, 사진은 생략가능합니다. |
@@ -69,7 +69,7 @@ spring.datasource.password
 |레시피 추천(비회원)|비회원은 메인페이지에 보여지는 추천 레시피 외에 자신의 재료로 레시피 추천 받는것이 불가하며, 레시피 검색만 가능합니다.|
 |레시피 추천(회원)| 로그인한 회원의 경우 등록된 마이냉장고의 재료를 활용하여 만들 수 있는 레시피를 레시피 전체 리스트 조회시 추천받을수 있습니다|
 
-### 마이냉장고
+### 마이냉장고 : 이성수
 |기능명|상세|
 |--|--|
 |냉장고 칸 분리 조회|마이페이지 내에 등록한 마이냉장고의 칸을 (냉동실, 냉장실) 분리하여 관리가 가능합니다. |
@@ -78,7 +78,7 @@ spring.datasource.password
 |냉장고 재료 등록|새로운 재료나 이미 냉장고에 있더라도 소비기한 및 등록일이 다른 재료들을 등록할 수 있습니다.|
 |냉장고 재료 삭제| 마이 냉장고내에 등록된 재료를 삭제 할 수 있다.|
 
-### 게시판
+### 게시판 : 배미애
 |기능명|상세|
 |--|--|
 |게시글 작성|로그인한 사용자 및 관리자만 게시글을 등록할 수 있습니다. |
@@ -88,24 +88,37 @@ spring.datasource.password
 |댓글 등록| 사용자는 게시글에 댓글을 등록할 수 있습니다.|
 |댓글 삭제| 사용자는 자신이 작성한 댓글을 삭제 할 수 있습니다.|
 
-### 전체 회원관리
+### 전체 회원관리 : 배미애
 |기능명|상세|
 |--|--|
 |회원탈퇴| 관리자는 회원의 탈퇴요청 또는 내부규정에 의거하여 탈퇴시킬 수 있습니다. |
 |회원조회| 관리자는 회원 아이디, 닉네임, 이름 등으로 조회하여 출력할 수 있다.|
 
 # 5.개발일정
-## 화면 구현
+
+# 6.화면 구현
 ### 메인페이지
 ![index.jsp](https://github.com/user-attachments/assets/d7b9f317-73bf-4ba7-b526-91245e2f3cc3)
-### 비회원시 레시피 페이지
-
+### 비회원 로그인시 레시피 페이지
+![recipeList.jsp](https://github.com/user-attachments/assets/8c709fb8-ea0c-4941-aeb8-f07d706b3fe2)
+### 회원 로그인시 레시피 페이지
+![recipeList.jsp](https://github.com/user-attachments/assets/8c709fb8-ea0c-4941-aeb8-f07d706b3fe2)
+### 레시피 등록 페이지
+![recipeList.jsp](https://github.com/user-attachments/assets/267e770e-c232-4dc9-ae30-aa53650352d4)
 ### 로그인
+![login.jsp](https://github.com/user-attachments/assets/8d681cd7-ebff-4b63-89a6-958611a702e9)
 ### 회원가입
+![memberjoin.jsp](https://github.com/user-attachments/assets/d3d37ceb-64f9-4df5-8b3b-d07d12c416c5)
 ### 아이디 찾기
+![getid.jsp](https://github.com/user-attachments/assets/8fc9d98c-ef30-459a-a726-da380ffe155b)
+
 ### 비밀번호 찾기
+![getpw.jsp](https://github.com/user-attachments/assets/472f27a2-fbb0-4585-906d-2ae0af8b8991)
 ### 마이페이지 / 나의 냉장고
+
 ### 마이페이지 / 나의 냉장고/ 재료 선택
+### 마이페이지 / 나의 냉장고/ 재료 선택
+
 
 # 7. 프로젝트 후기
 
@@ -117,12 +130,11 @@ spring.datasource.password
 
 
 # 프로젝트 산출문서
-- [기획보고서]
-- [요구사항정의서] 
-- [와이어프레임]
-- [DB설계]
-- [시퀀스 다이어그램]
-- [클래스 다이어그램]
-- [최종보고서]
+- [기획보고서] ![기획보고서](https://drive.google.com/file/d/1Y3C14sBiMuAqhevhRxZlfjbmgGT4GhmF/view?usp=sharing)
+- [요구사항정의서] ![요구사항정의서](https://drive.google.com/file/d/1RgoGpFdt7A6zdXNJZFLO3oyVxlTvvoMP/view?usp=sharing)
+- [와이어프레임]  ![와이어프레임](https://drive.google.com/file/d/1drb5eNbOQtC9XqX8JaLTMBPpR8I4RiNi/view?usp=sharing)
+- [DB설계]  ![DB설계](https://drive.google.com/file/d/1SE5tLfgGzGzj8OrBYAIF9nInZ62CDEUw/view?usp=sharing)
+- [시퀀스 다이어그램] ![시퀀스다이어그램](https://drive.google.com/file/d/1irW7kdzmYZ89WgiY9pEnN1GOeHFss63n/view?usp=sharing)
+- [최종보고서] ![최종보고서](https://drive.google.com/file/d/15LTXkWCVk_EyxEJraH7CNYtN0ssnEkft/view?usp=sharing)
 - [프로젝스 소스 DB]
-- [시연영상] 
+- [시연영상]  ![시연영상](https://drive.google.com/file/d/1DTl3d_0OV_ZmpOyd2yzz-2jdzmypbnID/view?usp=sharing)
