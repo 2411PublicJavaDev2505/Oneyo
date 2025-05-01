@@ -38,7 +38,7 @@ spring.datasource.password
 ![java  Script](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)<br>
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
 ![Eclipse](https://img.shields.io/badge/Eclipse-FE7A16.svg?style=for-the-badge&logo=Eclipse&logoColor=white)
-![Apache Tomcat](https://img.shields.io/badge/apache%20tomcat-%23F8DC75.svg?style=for-the-badge&logo=apache-tomcat&logoColor=black
+![Apache Tomcat](https://img.shields.io/badge/apache%20tomcat-%23F8DC75.svg?style=for-the-badge&logo=apache-tomcat&logoColor=black)
 
 # 2. 브랜치 전략
 ## Git Flow 방식
@@ -47,23 +47,30 @@ spring.datasource.password
   ![git_flow](https://github.com/2405PublicJavaDev/sulgilddara/blob/main/img/github_flow.png?raw=true)
 # 3. 프로젝트 구조
 [프로젝트 구조.pdf]
-# 4. 프로젝트 역할 분담
-## 이솔:
-## 이성수:
-## 배미애:
-## 강우혁:
-## 김지용:
+# 4. 주요기능 
+### 회원관리
 
+|기능명|상세|
+|--|--|
+|회원 가입|아이디, 비밀번호, 이름, 닉네임, 전화번호를 입력 후 가입하며 자신의 계정을 생성합니다. 회원가입 폼에는 일정한 형식을 지켜야 하며 만약 지키지 않을 시 오류가 납니다. |
+|회원 정보 수정| 필요시 계정 정보를 수정할 수 있습니다. 아이디, 생년월일, 성별을 제외한 나머지 정보를 수정할 수 있습니다.|
+|로그인 및 로그아웃|로그인하여 사이트의 레시피 등록, 나의 냉장고 속 재료 등록 및 삭제 게시판 글 작성 및 댓글 작성등의 기능을 사용할 수 있으며, 비회원은 레시피 열람 및 게시판 열람 등 기본적인 기능만 제한적으로 사용할 수 있습니다. 사용 후에는 로그아웃을 통해 계정을 안전하게 보호할 수 있습니다.|
+|회원탈퇴|로그인한 상태에서 회원 탈퇴를 진행할 수 있습니다.|
+|회원 정보 조회| 회원의 닉네임, 아이디, 이메일, 휴대전화 번호를 조회할 수 있습니다.|
+|마이냉장고|현재 등록되어있는 재료명, 수량, 유통기한 등을 확인할 수 있습니다.|
+|내가쓴글|마이페이지 내에서 내가 쓴글 버튼을 클릭하면 게시판에 내가 작성한 글을 확인할수 있습니다|
+|나의 댓글| 마이페이지 내에서 나의 댓글 버튼을 클릭하면 내가 작성한 글을 확인 할수 있습니다|
 
 # 5.개발일정
-# 6. 페이지별 기능
-## 이솔:
+## 화면 구현
+### 메인페이지
+### 비회원시 레시피 페이지
+### 로그인
 ### 회원가입
-###
-## 이성수:
-## 배미애:
-## 강우혁:
-## 김지용:
+### 아이디 찾기
+### 비밀번호 찾기
+### 마이페이지 / 나의 냉장고
+### 마이페이지 / 나의 냉장고/ 재료 선택
 
 # 7. 프로젝트 후기
 
