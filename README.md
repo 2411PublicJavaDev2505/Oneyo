@@ -105,6 +105,10 @@ spring.datasource.password
 ![recipeList.jsp](https://github.com/user-attachments/assets/8c709fb8-ea0c-4941-aeb8-f07d706b3fe2)
 ### 레시피 등록 페이지
 ![recipeList.jsp](https://github.com/user-attachments/assets/267e770e-c232-4dc9-ae30-aa53650352d4)
+### 레시피 상세 페이지
+![레시피 상세 페이지](https://github.com/user-attachments/assets/ec7520e5-ca8d-4059-87c1-bd4cb471a8e4)
+### 레시피 검색 페이지
+![레시피 검색 페이지](https://github.com/user-attachments/assets/5747bf29-1b22-4d09-9495-d1a8534f45ed)
 ### 로그인
 ![login.jsp](https://github.com/user-attachments/assets/8d681cd7-ebff-4b63-89a6-958611a702e9)
 ### 회원가입
@@ -126,7 +130,8 @@ spring.datasource.password
 ## 이성수:
 ## 배미애:
 ## 강우혁:
-## 김지용:
+## 김지용: 프로젝트를 진행하면서 우선순위를 정하고 팀원과의 소통을 통하여 진행하는것이 굉장히 중요하다는 것을 꺠닫게 되었고 자신의 부족한 점에 대해서 깨닫고 성장할 수 있는 기회가 된 것 같습니다. 막히는 부분이 있을때 도움을 주셨던 팀원 및 강사님께 감사드립니다.
+
 
 
 # 프로젝트 산출문서
