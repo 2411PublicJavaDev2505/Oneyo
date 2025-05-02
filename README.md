@@ -23,9 +23,7 @@ spring.datasource.password
 ```
 를 참고하여 로컬에 db 계정 생성
 계정 생성 후 권한 부여 및 테이블 생성
-
 테이블, 시퀀스 생성 및 데이터 삽입 스크립트
-6 months ago
 
 [ADD] db 스크립트 추가
 - [A.ONEYO.sql](https://drive.google.com/file/d/1cSPpFyTk-KAC-y55RQNaak4GEStNA7by/view?usp=sharing)
@@ -46,7 +44,7 @@ spring.datasource.password
 - 기능 구현이 완료되면 Main 브랜치에 병합
   ![git_flow](https://github.com/2405PublicJavaDev/sulgilddara/blob/main/img/github_flow.png?raw=true)
 # 3. 프로젝트 구조
-[프로젝트 구조.pdf]
+![프로젝트.PDF](https://drive.google.com/file/d/1arzy92_JuM-9a01Ubx2IDwtzkzLpSCXK/view?usp=sharing)
 # 4. 주요기능 
 ### 회원관리 : 이솔
 |기능명|상세|
@@ -95,6 +93,7 @@ spring.datasource.password
 |회원조회| 관리자는 회원 아이디, 닉네임, 이름 등으로 조회하여 출력할 수 있다.|
 
 # 5.개발일정
+![개발일정](https://github.com/user-attachments/assets/9c867c03-307b-4882-a4f3-ab1c268a6db6)
 
 # 6.화면 구현
 ### 메인페이지
@@ -153,11 +152,11 @@ spring.datasource.password
 
 
 # 프로젝트 산출문서
-- [기획보고서] (https://drive.google.com/file/d/1Y3C14sBiMuAqhevhRxZlfjbmgGT4GhmF/view?usp=sharing)
-- [요구사항정의서] (https://drive.google.com/file/d/1RgoGpFdt7A6zdXNJZFLO3oyVxlTvvoMP/view?usp=sharing)
-- [와이어프레임]  (https://drive.google.com/file/d/1drb5eNbOQtC9XqX8JaLTMBPpR8I4RiNi/view?usp=sharing)
-- [DB설계] (https://drive.google.com/file/d/1SE5tLfgGzGzj8OrBYAIF9nInZ62CDEUw/view?usp=sharing)
-- [시퀀스 다이어그램] (https://drive.google.com/file/d/1irW7kdzmYZ89WgiY9pEnN1GOeHFss63n/view?usp=sharing)
-- [최종보고서] (https://drive.google.com/file/d/15LTXkWCVk_EyxEJraH7CNYtN0ssnEkft/view?usp=sharing)
-- [프로젝스 소스 DB] (https://drive.google.com/file/d/1cSPpFyTk-KAC-y55RQNaak4GEStNA7by/view?usp=sharing)
-- [시연영상] (https://drive.google.com/file/d/1DTl3d_0OV_ZmpOyd2yzz-2jdzmypbnID/view?usp=sharing)
+- [기획보고서](https://drive.google.com/file/d/1Y3C14sBiMuAqhevhRxZlfjbmgGT4GhmF/view?usp=sharing)
+- [요구사항정의서](https://drive.google.com/file/d/1RgoGpFdt7A6zdXNJZFLO3oyVxlTvvoMP/view?usp=sharing)
+- [와이어프레임](https://drive.google.com/file/d/1drb5eNbOQtC9XqX8JaLTMBPpR8I4RiNi/view?usp=sharing)
+- [DB설계](https://drive.google.com/file/d/1SE5tLfgGzGzj8OrBYAIF9nInZ62CDEUw/view?usp=sharing)
+- [시퀀스 다이어그램](https://drive.google.com/file/d/1irW7kdzmYZ89WgiY9pEnN1GOeHFss63n/view?usp=sharing)
+- [최종보고서](https://drive.google.com/file/d/15LTXkWCVk_EyxEJraH7CNYtN0ssnEkft/view?usp=sharing)
+- [프로젝스 소스 DB](https://drive.google.com/file/d/1cSPpFyTk-KAC-y55RQNaak4GEStNA7by/view?usp=sharing)
+- [시연영상](https://drive.google.com/file/d/1DTl3d_0OV_ZmpOyd2yzz-2jdzmypbnID/view?usp=sharing)
