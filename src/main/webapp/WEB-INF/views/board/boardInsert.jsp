@@ -24,7 +24,8 @@
         <section class="title">
             <h3 >게시글 등록</h3>
         </section>
-        <form action="/board/insert" method="post" enctype="multipart/form-data">
+        <div class="board-form">
+        <form  action="/board/insert" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label>작성자</label>
                 <input class="writer" type="text" value="${sessionScope.memberNickname }"  readonly>
@@ -51,7 +52,7 @@
                 </div>  
             </div>            
         </form>
-        
+        </div>
     </main>
     <!-- 푸터자리 -->
 	<jsp:include page ="/WEB-INF/views/include/footer.jsp"></jsp:include>

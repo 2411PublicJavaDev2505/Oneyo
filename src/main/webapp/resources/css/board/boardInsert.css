@@ -12,10 +12,9 @@ main{
 .title{
     color: #777134;
 }
-form {
+.board-form form{
     display: flex;
-    flex-direction: column;
-    
+    flex-direction: column;    
 }
 label {
     width: 130px;
