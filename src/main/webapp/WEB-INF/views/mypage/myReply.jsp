@@ -79,11 +79,10 @@
 			                    <c:forEach items="${rList }" var="reply" varStatus="i">
 			                        <tr class="sources">
 			                            <td class="num">${i.count }</td>
-			                            <td class="board-title"><a href="<c:url value='/board/detail/${board.boardNo}'/>">${reply.replyContent}</a></td>
+			                            <td class="board-title"><a href="/board/detail/${reply.boardNo}">${reply.replyContent}</a></td>
 			                            <td class="writer">${memberNickname}</td>
 			                            <td class="date">${reply.replyDate}</td>
-			                            <td class="delete"><button class="delete-myReply" onclick="confirmDeleteReply(${reply.replyNo}, ${board.boardNo})">
-			                            		DEL</button></td>
+			                            <td class="delete"><button class="delete-myReply" >DEL</button></td>
 			                        </tr>
 			                    
 			                    </c:forEach> 		                    
