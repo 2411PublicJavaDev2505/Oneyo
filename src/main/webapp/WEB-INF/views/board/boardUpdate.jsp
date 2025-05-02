@@ -24,6 +24,7 @@
         <section class="title">
             <h3 >게시글 등록</h3>
         </section>
+        <div class="board-form">
         <form action="/board/update" method="post" enctype="multipart/form-data">
         	<input type="hidden" name="boardNo" value="${board.boardNo }">
         	<input type="hidden" name="memberId" value="${board.memberId }">
@@ -62,7 +63,7 @@
                 </div>
             </div>            
         </form>
-        
+        </div>
     </main>
     <!-- 푸터자리 -->
 	<jsp:include page ="/WEB-INF/views/include/footer.jsp"></jsp:include>

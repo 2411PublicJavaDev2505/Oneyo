@@ -88,7 +88,7 @@
 	</select>
 	
 	<select id="getTotalCount"  resultType="_int">
-		select count(*) from board 
+		select count(*) from board where DEL_YN = 'N'
 	</select>	
 	<select id="getSearchCount"  resultType="_int">
 		select count(*) from board B
