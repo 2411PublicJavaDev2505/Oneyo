@@ -137,12 +137,6 @@ spring.datasource.password
 ![myReply.jsp](https://github.com/user-attachments/assets/8b80fea4-63c5-49fe-91fc-e488b02cae44)
 
 ## 게시판
-
-
-
-
-
-
 ### 게시판 / 목록
 ![boardlist.jsp](https://github.com/user-attachments/assets/e319cc82-936e-4acb-932f-ae51d67c0eb0)
 ![boardlist2.jsp](https://github.com/user-attachments/assets/62711142-d48b-4736-83f1-9e76c0cb9fa6)
