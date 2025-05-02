@@ -99,6 +99,7 @@ spring.datasource.password
 # 6.화면 구현
 ### 메인페이지
 ![index.jsp](https://github.com/user-attachments/assets/d7b9f317-73bf-4ba7-b526-91245e2f3cc3)
+##회원관리
 ### 비회원 로그인시 레시피 페이지
 ![recipeList.jsp](https://github.com/user-attachments/assets/8c709fb8-ea0c-4941-aeb8-f07d706b3fe2)
 ### 회원 로그인시 레시피 페이지
@@ -106,9 +107,7 @@ spring.datasource.password
 ### 레시피 등록 페이지
 ![recipeList.jsp](https://github.com/user-attachments/assets/267e770e-c232-4dc9-ae30-aa53650352d4)
 ### 레시피 상세 페이지
-![레시피 상세 페이지](https://github.com/user-attachments/assets/ec7520e5-ca8d-4059-87c1-bd4cb471a8e4)
-![레시피 상세페이지 2](https://github.com/user-attachments/assets/ef7cb267-acb4-4d6b-a713-45e37d641582)
-![레시피 상세페이지1](https://github.com/user-attachments/assets/044e49ca-3c8b-4249-91ca-4bf1e582f382)
+![레시피 상세 페이지](https://github.com/user-attachments/assets/e7996bd7-a973-4e53-a7a6-239af1886989)
 ### 레시피 검색 페이지
 ![레시피 검색 페이지](https://github.com/user-attachments/assets/5747bf29-1b22-4d09-9495-d1a8534f45ed)
 ### 로그인
@@ -117,22 +116,39 @@ spring.datasource.password
 ![memberjoin.jsp](https://github.com/user-attachments/assets/d3d37ceb-64f9-4df5-8b3b-d07d12c416c5)
 ### 아이디 찾기
 ![getid.jsp](https://github.com/user-attachments/assets/8fc9d98c-ef30-459a-a726-da380ffe155b)
-
 ### 비밀번호 찾기
 ![getpw.jsp](https://github.com/user-attachments/assets/472f27a2-fbb0-4585-906d-2ae0af8b8991)
-### 마이페이지 / 나의 냉장고
+### 회원정보수정
+![updatemember.jsp](https://github.com/user-attachments/assets/3da72ada-3621-4074-b527-937dc51d9123)
 
+## 마이페이지(나의냉장고)
+### 마이페이지 / 나의 냉장고(냉동/냉장)
+![mypage.jsp](https://github.com/user-attachments/assets/2a8df011-5b4c-441b-ba9e-db5a8f8b3660)
 ### 마이페이지 / 나의 냉장고/ 재료 선택
-### 마이페이지 / 나의 냉장고/ 재료 선택
+![myIceStorage.jsp](https://github.com/user-attachments/assets/68388d14-2a86-45ba-a50a-fcd454472e3d)
+### 마이페이지 / 나의 냉장고/ 재료 수정
+![myIceStorage.jsp](https://github.com/user-attachments/assets/36734b73-c3ba-426b-857c-84dd74e6dfac)
+### 마이페이지 / 나의 냉장고/ 재료 추가
+![updateStorage.jsp](https://github.com/user-attachments/assets/0c097667-1ad9-478e-9e1d-5bcd6459e33c)
+### 마이페이지 / 나의 냉장고/ 재료 삭제
+![deleteStorage.jsp](https://github.com/user-attachments/assets/2e3e045d-f6a4-4398-a957-e94e15d183c5)
+### 마이페이지/ 내가쓴글 
+![myBoard.jsp](https://github.com/user-attachments/assets/54abd17e-6f89-48f3-b367-c732c2fe0ca6)
+### 마이페이지/나의 댓글
+![myReply.jsp](https://github.com/user-attachments/assets/8b80fea4-63c5-49fe-91fc-e488b02cae44)
+
+## 게시판
+
+
+
 
 
 # 7. 프로젝트 후기
-
-## 이솔:
-## 이성수:
-## 배미애:
-## 강우혁:
-## 김지용: 프로젝트를 진행하면서 우선순위를 정하고 팀원과의 소통을 통하여 진행하는것이 굉장히 중요하다는 것을 꺠닫게 되었고 자신의 부족한 점에 대해서 깨닫고 성장할 수 있는 기회가 된 것 같습니다. 막히는 부분이 있을때 도움을 주셨던 팀원 및 강사님께 감사드립니다.
+### 이솔: 사실, 구현을 과연 할 수 있을까 하는 걱정으로 설계를 시작했었지만 팀원분들 한분한분 각자 맡으신 부분을 잘 수행해주셔서 감사했습니다. 꼼꼼하게 하는 설계의 중요성을 많이 느끼게 되었습니다. 
+### 이성수: 스스로 부족함과 성취감, 섬세한 설계의 중요성을 동시에 많이 느꼈고 착하고 소통이 잘되는 팀원들의 소중함이 좋았습니다. 
+### 배미애: 처음에는 자신감이 많이 없었고 1인분만이라도 잘하자는 마음으로 시작했습니다. 그러나 팀원들과 함께 고민하고 서로 도와가며 조금이나마 성장했던 계기가 된것 같습니다. 시간이 조금더 있었다면 하는 아쉬움이 있지만 MVC 흐름에 대해서 더 이해하고 개발에 더 흥미를 느끼게 된 시간들이였습니다. 함께해준 팀원들과 강사님께 감사를 표합니다. 
+### 강우혁: 우선 저와 함께 해준 팀원분들께 감사드립니다. 저의 아이디어로 프로젝트를 진행하면서 제가 부족한 점이 많았는데 다들 끝까지 함께 완성해주셔서 기쁩니다. 
+### 김지용: 프로젝트를 진행하면서 우선순위를 정하고 팀원과의 소통을 통하여 진행하는것이 굉장히 중요하다는 것을 꺠닫게 되었고 자신의 부족한 점에 대해서 깨닫고 성장할 수 있는 기회가 된 것 같습니다. 막히는 부분이 있을때 도움을 주셨던 팀원 및 강사님께 감사드립니다.
 
 
 
