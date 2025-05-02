@@ -142,6 +142,23 @@ spring.datasource.password
 
 
 
+
+### 게시판 / 목록
+![boardlist.jsp](https://github.com/user-attachments/assets/e319cc82-936e-4acb-932f-ae51d67c0eb0)
+![boardlist2.jsp](https://github.com/user-attachments/assets/62711142-d48b-4736-83f1-9e76c0cb9fa6)
+### 게시판 / 글쓰기
+![boardinsert.jsp](https://github.com/user-attachments/assets/411d3f2a-bb4f-4670-98b8-f7d4eca84b13)
+### 게시판 / 상세 페이지
+![boarddetail.jsp](https://github.com/user-attachments/assets/e80f3e8f-439c-4bb6-aa02-ca2df8559996)
+### 게시판 / 수정 페이지
+![boardupdate.jsp](https://github.com/user-attachments/assets/f795ad37-65b8-44c7-bb17-63e06d37ef32)
+![boardupdate2.jsp](https://github.com/user-attachments/assets/87757d3f-8d11-4899-b5cc-6cbd15dddfe7)
+### 게시판 / 삭제 팝업
+![boarddelete.jsp](https://github.com/user-attachments/assets/82d83ba2-2f7c-43dc-b0c7-668f035ff04b)
+### 게시판 / 검색
+![boardsearch.jsp](https://github.com/user-attachments/assets/a6a37784-f5b7-4d72-9101-93dab38bab45)
+
+
 # 7. 프로젝트 후기
 ### 이솔: 사실, 구현을 과연 할 수 있을까 하는 걱정으로 설계를 시작했었지만 팀원분들 한분한분 각자 맡으신 부분을 잘 수행해주셔서 감사했습니다. 꼼꼼하게 하는 설계의 중요성을 많이 느끼게 되었습니다. 
 ### 이성수: 스스로 부족함과 성취감, 섬세한 설계의 중요성을 동시에 많이 느꼈고 착하고 소통이 잘되는 팀원들의 소중함이 좋았습니다. 
