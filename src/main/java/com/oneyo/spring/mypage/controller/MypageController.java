@@ -84,14 +84,13 @@ public class MypageController {
 	}
 	@GetMapping("/mypage/myReply")
 	public String showMyReply(@RequestParam(value="currentPage", defaultValue="1")		
-	int currentPage, Model model,HttpSession session) {
+	int currentPage, Model model,HttpSession session, Object board) {
 		try {
 			// 로그인한 세션에서 아이디 가져오기
 			String memberId = (String) session.getAttribute("memberId");
-//			int boardNo=(Integer) session.getAttribute("boardNo");
-//			System.out.println(boardNo);
 			// 아이디가 작성한 댓글 가져오기 
 			List<MyReplyVO> rList = mService.selectReplyList(memberId,currentPage);
+			model.addAttribute("board", board);
 			int totalCount = mService.getTotalCount(memberId);	
 			Map<String, Integer>pageInfo = pageUtil.generatePageInfo(totalCount, currentPage, 7);
 			model.addAttribute("maxPage", pageInfo.get("maxPage"));
