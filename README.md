@@ -126,6 +126,23 @@ spring.datasource.password
 ### 마이페이지 / 나의 냉장고/ 재료 선택
 
 
+
+### 게시판 / 목록
+![boardlist.jsp](https://github.com/user-attachments/assets/e319cc82-936e-4acb-932f-ae51d67c0eb0)
+![boardlist2.jsp](https://github.com/user-attachments/assets/62711142-d48b-4736-83f1-9e76c0cb9fa6)
+### 게시판 / 글쓰기
+![boardinsert.jsp](https://github.com/user-attachments/assets/411d3f2a-bb4f-4670-98b8-f7d4eca84b13)
+### 게시판 / 상세 페이지
+![boarddetail.jsp](https://github.com/user-attachments/assets/e80f3e8f-439c-4bb6-aa02-ca2df8559996)
+### 게시판 / 수정 페이지
+![boardupdate.jsp](https://github.com/user-attachments/assets/f795ad37-65b8-44c7-bb17-63e06d37ef32)
+![boardupdate2.jsp](https://github.com/user-attachments/assets/87757d3f-8d11-4899-b5cc-6cbd15dddfe7)
+### 게시판 / 삭제 팝업
+![boarddelete.jsp](https://github.com/user-attachments/assets/82d83ba2-2f7c-43dc-b0c7-668f035ff04b)
+### 게시판 / 검색
+![boardsearch.jsp](https://github.com/user-attachments/assets/a6a37784-f5b7-4d72-9101-93dab38bab45)
+
+
 # 7. 프로젝트 후기
 
 ## 이솔:
