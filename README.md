@@ -44,7 +44,7 @@ spring.datasource.password
 - 기능 구현이 완료되면 Main 브랜치에 병합
   ![git_flow](https://github.com/2405PublicJavaDev/sulgilddara/blob/main/img/github_flow.png?raw=true)
 # 3. 프로젝트 구조
-![프로젝트.PDF](https://drive.google.com/file/d/1arzy92_JuM-9a01Ubx2IDwtzkzLpSCXK/view?usp=sharing)
+[프로젝트.PDF](https://drive.google.com/file/d/1arzy92_JuM-9a01Ubx2IDwtzkzLpSCXK/view?usp=sharing)
 # 4. 주요기능 
 ### 회원관리 : 이솔
 |기능명|상세|
